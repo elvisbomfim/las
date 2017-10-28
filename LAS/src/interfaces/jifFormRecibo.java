@@ -92,6 +92,8 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
          * Definição de modelos de tabela e buscas na tabela
          */
         tbRecibo.setModel(modeloTabelaRecibos);
+        
+        System.out.println("teste");
 
         //----------------buscas na tabela--------------------------------------
         buscarRecibosTabela();
