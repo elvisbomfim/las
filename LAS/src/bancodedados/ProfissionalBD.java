@@ -154,51 +154,36 @@ public class ProfissionalBD extends ConexaoBanco {
 
     }
 
-    public ArrayList<Profissional> selecionarProfissionalEspecifico(int profissional_id) {
-        ArrayList<Profissional> listaProfissionais = new ArrayList();
-        Profissional profissional = new Profissional();
-
+    public int pesquisarCpf(int id, String cpf){
+        int situacao=0;
         try {
             conectarBanco();
 
             stm = con.createStatement();
 
-            sql = "SELECT * "
-                    + "FROM PROFISSIONAL WHERE profissional_id = " + profissional_id;
+            if (id == 0) {
+                sql = "SELECT * "
+                        + "FROM PROFISSIONAL WHERE PROFISSIONAL_CPF = '" + cpf + "'";
+            } else {
+                sql = "SELECT * "
+                        + "FROM PROFISSIONAL WHERE PROFISSIONAL_ID != " + id + " AND PROFISSIONAL_CPF = '" + cpf + "'";
+            }
 
             tabelaRetornada = stm.executeQuery(sql);
-
-            while (tabelaRetornada.next()) // Enquanto houverem linhas na tabela para serem lidas
-            {
-                profissional = new Profissional();
-
-                profissional.setProfissional_id(tabelaRetornada.getInt("PROFISSIONAL_ID"));
-                profissional.setProfissional_nome(tabelaRetornada.getString("PROFISSIONAL_NOME"));
-                profissional.setProfissional_endereco(tabelaRetornada.getString("PROFISSIONAL_ENDERECO"));
-                profissional.setProfissional_numero(tabelaRetornada.getString("PROFISSIONAL_NUMERO"));
-                profissional.setProfissional_complemento(tabelaRetornada.getString("PROFISSIONAL_COMPLEMENTO"));
-                profissional.setProfissional_bairro(tabelaRetornada.getString("PROFISSIONAL_BAIRRO"));
-                profissional.setProfissional_cidade(tabelaRetornada.getString("PROFISSIONAL_CIDADE"));
-                profissional.setProfissional_estado(tabelaRetornada.getString("PROFISSIONAL_ESTADO"));
-                profissional.setProfissional_cep(tabelaRetornada.getString("PROFISSIONAL_CEP"));
-                profissional.setProfissional_cpf(tabelaRetornada.getString("PROFISSIONAL_CPF"));
-                profissional.setProfissional_telefone(tabelaRetornada.getString("PROFISSIONAL_TELEFONE"));
-                profissional.setProfissional_profissao(tabelaRetornada.getString("PROFISSIONAL_PROFISSAO"));
-                profissional.setProfissional_crea(tabelaRetornada.getString("PROFISSIONAL_CREA"));
-                profissional.setProfissional_ctma(tabelaRetornada.getString("PROFISSIONAL_CTMA"));
-                profissional.setProfissional_rcc(tabelaRetornada.getString("PROFISSIONAL_RCC"));
-
-                listaProfissionais.add(profissional);
+            if(tabelaRetornada.next()){
+                situacao = 1;
+            }else{
+                situacao = 0;
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             desconectarBanco();
-            return listaProfissionais;
-        }
-
+            return situacao;
+        }        
     }
+    
 
     public Calendar retornaDateBanco(Date dataBanco) {
         Calendar cal = Calendar.getInstance();

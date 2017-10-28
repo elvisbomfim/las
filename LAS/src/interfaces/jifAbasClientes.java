@@ -45,6 +45,8 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
      */
     ClienteBD conexaoTabelaClientes = new ClienteBD();
 
+    int st;
+
     public jifAbasClientes() {
         initComponents();
 
@@ -509,10 +511,49 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(pnCadastrarNovoCliente, "Por favor insira o nome do cliente", "Aviso", 2);
             tfClienteNome.requestFocus();
         } else {
+
             if ((tfClienteCpf.getValue() == null) && (tfCliente_Cnpj.getValue() == null)) {
                 JOptionPane.showMessageDialog(pnCadastrarNovoCliente, "Por favor insira o cpf ou o cnpj do cliente", "Aviso", 2);
                 tfClienteCpf.requestFocus();
             } else {
+                if (btFinalizarCadastroCliente.getToolTipText().equals("Cadastrar")) {
+                    if (tfClienteCpf.getValue() != null) {
+                        st = conexaoTabelaClientes.pesquisarCpf(0 ,tfClienteCpf.getText());
+                        if (st == 1) {
+                            JOptionPane.showMessageDialog(pnCadastrarNovoCliente, "O cpf informado já existe!", "Aviso", 2);
+                            tfClienteCpf.requestFocus();
+                            return;
+                        }
+                    }
+                    if (tfCliente_Cnpj.getValue() != null) {
+                        st = conexaoTabelaClientes.pesquisarCnpj(0, tfCliente_Cnpj.getText());
+                        if (st == 1) {
+                            JOptionPane.showMessageDialog(pnCadastrarNovoCliente, "O cnpj informado já existe!", "Aviso", 2);
+                            tfCliente_Cnpj.requestFocus();
+                            return;
+                        }
+                    }
+                    
+                } else {
+                    Cliente cliente = modeloTabelaCliente.retornaListaClientes().get(tbClientesCadastrados.getSelectedRow());
+                    if ((tfClienteCpf.getValue() != null)) {
+                        st = conexaoTabelaClientes.pesquisarCpf(cliente.getCliente_id(), tfClienteCpf.getText());
+                        if (st == 1) {
+                            JOptionPane.showMessageDialog(pnCadastrarNovoCliente, "O cpf informado já existe!", "Aviso", 2);
+                            tfClienteCpf.requestFocus();
+                            return;
+                        }
+                    }
+                    if (tfCliente_Cnpj.getValue() != null) {
+                        st = conexaoTabelaClientes.pesquisarCnpj(cliente.getCliente_id(), tfCliente_Cnpj.getText());
+                        if (st == 1) {
+                            JOptionPane.showMessageDialog(pnCadastrarNovoCliente, "O cnpj informado já existe!", "Aviso", 2);
+                            tfCliente_Cnpj.requestFocus();
+                            return;
+                        }
+                    }
+                }
+
                 if (tfClienteInscEstadual.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(pnCadastrarNovoCliente, "Por favor insira a inscrição estadual do cliente", "Aviso", 2);
                     tfClienteInscEstadual.requestFocus();
@@ -521,7 +562,7 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
                         JOptionPane.showMessageDialog(pnCadastrarNovoCliente, "Por favor insira a inscrição munícipal do cliente", "Aviso", 2);
                         tfClienteInscMunicipal.requestFocus();
                     } else {
-                        if (tfClienteCep.getValue()==null) {
+                        if (tfClienteCep.getValue() == null) {
                             JOptionPane.showMessageDialog(pnCadastrarNovoCliente, "Por favor insira o cep do cliente", "Aviso", 2);
                             tfClienteCep.requestFocus();
                         } else {

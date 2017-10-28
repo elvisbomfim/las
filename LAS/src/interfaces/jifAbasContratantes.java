@@ -18,7 +18,7 @@ import modelos.Contratante;
 public class jifAbasContratantes extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form jifAbasClientes
+     * Creates new form jifAbasContratantes
      */
     /**
      * Objetos temporarios
@@ -39,6 +39,8 @@ public class jifAbasContratantes extends javax.swing.JInternalFrame {
      * Classes de conexão com o banco
      */
     ContratanteBD conexaoTabelaContratantes = new ContratanteBD();
+    
+    int st=0;
 
     public jifAbasContratantes() {
         initComponents();
@@ -368,10 +370,47 @@ public class jifAbasContratantes extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(pnCadastrarNovoContratante, "Por favor insira o nome do contratante", "Aviso", 2);
             tfContratanteNome.requestFocus();
         } else {
-            if ((tfContratanteCpf.getValue()==null) && (tfContratanteCnpj.getValue()==null)) {
+            if ((tfContratanteCpf.getValue() == null) && (tfContratanteCnpj.getValue() == null)) {
                 JOptionPane.showMessageDialog(pnCadastrarNovoContratante, "Por favor insira o cnpj ou cpf", "Aviso", 2);
                 tfContratanteCpf.requestFocus();
             } else {
+                if (btFinalizarCadastroContratante.getToolTipText().equals("Cadastrar")) {
+                    if (tfContratanteCpf.getValue() != null) {
+                        st = conexaoTabelaContratantes.pesquisarCpf(0 ,tfContratanteCpf.getText());
+                        if (st == 1) {
+                            JOptionPane.showMessageDialog(pnCadastrarNovoContratante, "O cpf informado já existe!", "Aviso", 2);
+                            tfContratanteCpf.requestFocus();
+                            return;
+                        }
+                    }
+                    if (tfContratanteCnpj.getValue() != null) {
+                        st = conexaoTabelaContratantes.pesquisarCnpj(0, tfContratanteCnpj.getText());
+                        if (st == 1) {
+                            JOptionPane.showMessageDialog(pnCadastrarNovoContratante, "O cnpj informado já existe!", "Aviso", 2);
+                            tfContratanteCnpj.requestFocus();
+                            return;
+                        }
+                    }
+                    
+                } else {
+                    Contratante cliente = modeloTabelaContratante.retornarListaContratantes().get(tbContratantesCadastrados.getSelectedRow());
+                    if ((tfContratanteCpf.getValue() != null)) {
+                        st = conexaoTabelaContratantes.pesquisarCpf(cliente.getContratante_id(), tfContratanteCpf.getText());
+                        if (st == 1) {
+                            JOptionPane.showMessageDialog(pnCadastrarNovoContratante, "O cpf informado já existe!", "Aviso", 2);
+                            tfContratanteCpf.requestFocus();
+                            return;
+                        }
+                    }
+                    if (tfContratanteCnpj.getValue() != null) {
+                        st = conexaoTabelaContratantes.pesquisarCnpj(cliente.getContratante_id(), tfContratanteCnpj.getText());
+                        if (st == 1) {
+                            JOptionPane.showMessageDialog(pnCadastrarNovoContratante, "O cnpj informado já existe!", "Aviso", 2);
+                            tfContratanteCnpj.requestFocus();
+                            return;
+                        }
+                    }
+                }
                 if (btFinalizarCadastroContratante.getToolTipText().equals("Cadastrar")) {
 
                     conexaoTabelaContratantes.inserirNovoContratante(preencherDadosCadastroContratante());
@@ -460,7 +499,7 @@ public class jifAbasContratantes extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, "Não existem contratantes selecionados para serem deletados");
         } else if (tbContratantesCadastrados.getRowCount() == 0) {
             JOptionPane.showMessageDialog(rootPane, "Não existem mais contratantes para serem deletados");
-        } else if (JOptionPane.showConfirmDialog(rootPane, "Deseja realmente excluir esse aluno?", "Excluir Aluno", 0) == 0) {
+        } else if (JOptionPane.showConfirmDialog(rootPane, "Deseja realmente excluir esse contratante?", "Excluir Contratante", 0) == 0) {
             if (tbContratantesCadastrados.getSelectedRow() != -1) {
                 conexaoTabelaContratantes.removerContratante(modeloTabelaContratante.retornarListaContratantes().get(tbContratantesCadastrados.getSelectedRow()).getContratante_id(), tbContratantesCadastrados.getValueAt(tbContratantesCadastrados.getSelectedRow(), 0).toString());
                 modeloTabelaContratante.inserirListaContratantes(conexaoTabelaContratantes.selecionarTodosContratantes());

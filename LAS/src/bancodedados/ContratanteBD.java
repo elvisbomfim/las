@@ -132,42 +132,64 @@ public class ContratanteBD extends ConexaoBanco {
 
     }
 
-    public ArrayList<Contratante> selecionarContratanteEspecifico(int contratante_id) {
-        ArrayList<Contratante> listaContratantes = new ArrayList();
-        Contratante contratante = new Contratante();
-
+     public int pesquisarCpf(int id, String cpf){
+        int situacao=0;
         try {
             conectarBanco();
 
             stm = con.createStatement();
 
-            sql = "SELECT * "
-                    + "FROM CONTRATANTE WHERE contratante_id = " + contratante_id;
+            if (id == 0) {
+                sql = "SELECT * "
+                        + "FROM CONTRATANTE WHERE CONTRATANTE_CPF = '" + cpf + "'";
+            } else {
+                sql = "SELECT * "
+                        + "FROM CONTRATANTE WHERE CONTRATANTE_ID != " + id + " AND CONTRATANTE_CPF = '" + cpf + "'";
+            }
 
             tabelaRetornada = stm.executeQuery(sql);
-
-            while (tabelaRetornada.next()) // Enquanto houverem linhas na tabela para serem lidas
-            {
-                contratante = new Contratante();
-
-                // CLIENTE_CONTRATANTE, CLIENTE_NOME, CLIENTE_FANTASIA, CLIENTE_CNPJ_CPF, CLIENTE_INSC_ESTADUAL, CLIENTE_INSC_MUNICIPAL, CLIENTE_ENDERECO, CLIENTE_NUMERO, CLIENTE_COMPLEMENTO, CLIENTE_BAIRRO, CLIENTE_MUNICIPIO, CLIENTE_ESTADO, CLIENTE_CEP, CLIENTE_TELEFONE, CLIENTE_CELULAR
-                contratante.setContratante_id(tabelaRetornada.getInt("CONTRATANTE_ID"));
-                contratante.setContratante_empresa(tabelaRetornada.getString("CONTRATANTE_EMPRESA"));
-                contratante.setContratante_cpf(tabelaRetornada.getString("CONTRATANTE_CPF"));
-                contratante.setContratante_cnpj(tabelaRetornada.getString("CONTRATANTE_CNPJ"));
-                contratante.setContratante_telefone(tabelaRetornada.getString("CONTRATANTE_TELEFONE"));
-                contratante.setContratante_celular(tabelaRetornada.getString("CONTRATANTE_CELULAR"));
-
-                listaContratantes.add(contratante);
+            if(tabelaRetornada.next()){
+                situacao = 1;
+            }else{
+                situacao = 0;
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             desconectarBanco();
-            return listaContratantes;
-        }
+            return situacao;
+        }        
+    }
+    
+        public int pesquisarCnpj(int id, String cnpj){
+            int situacao=0;
+        try {
+            conectarBanco();
 
+            stm = con.createStatement();
+
+            if (id == 0) {
+                sql = "SELECT * "
+                        + "FROM CONTRATANTE WHERE CONTRATANTE_CNPJ = '" + cnpj + "'";
+            } else {
+                sql = "SELECT * "
+                        + "FROM CONTRATANTE WHERE CONTRATANTE_ID != " + id + " AND CONTRATANTE_CNPJ = '" + cnpj + "'";
+            }
+
+            tabelaRetornada = stm.executeQuery(sql);
+            if(tabelaRetornada.next()){
+                situacao = 1;
+            }else{
+                situacao = 0;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            desconectarBanco();
+            return situacao;
+        }       
     }
 
     public Calendar retornaDateBanco(Date dataBanco) {

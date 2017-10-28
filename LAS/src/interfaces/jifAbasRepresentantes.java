@@ -39,6 +39,8 @@ public class jifAbasRepresentantes extends javax.swing.JInternalFrame {
      * Classes de conexão com o banco
      */
     RepresentanteBD conexaoTabelaRepresentantes = new RepresentanteBD();
+    
+    int st=0;
 
     public jifAbasRepresentantes() {
         initComponents();
@@ -473,6 +475,27 @@ public class jifAbasRepresentantes extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(pnCadastrarNovosRepresentantes, "Por favor insira o cpf do representante", "Aviso", 2);
                 tfRepresentanteCpf.requestFocus();
             } else {
+                if (btFinalizarCadastroRepresentante.getToolTipText().equals("Cadastrar")) {
+                    if (tfRepresentanteCpf.getValue() != null) {
+                        st = conexaoTabelaRepresentantes.pesquisarCpf(0 ,tfRepresentanteCpf.getText());
+                        if (st == 1) {
+                            JOptionPane.showMessageDialog(pnCadastrarNovosRepresentantes, "O cpf informado já existe!", "Aviso", 2);
+                            tfRepresentanteCpf.requestFocus();
+                            return;
+                        }
+                    }
+                    
+                } else {
+                    Representante cliente = modeloTabelaRepresentante.retornaListaRepresentantes().get(tbRepresentantesCadastrados.getSelectedRow());
+                    if ((tfRepresentanteCpf.getValue() != null)) {
+                        st = conexaoTabelaRepresentantes.pesquisarCpf(cliente.getRepresentante_id(), tfRepresentanteCpf.getText());
+                        if (st == 1) {
+                            JOptionPane.showMessageDialog(pnCadastrarNovosRepresentantes, "O cpf informado já existe!", "Aviso", 2);
+                            tfRepresentanteCpf.requestFocus();
+                            return;
+                        }
+                    }
+                }
                 if ((tfRepresentanteTelefone.getValue() == null) && (tfRepresentanteCelular.getValue() == null)) {
                     JOptionPane.showMessageDialog(pnCadastrarNovosRepresentantes, "Por favor insira o número do telefone ou do celular do representante", "Aviso", 2);
                     tfRepresentanteTelefone.requestFocus();

@@ -18,7 +18,7 @@ import modelos.Profissional;
 public class jifAbasProfissionais extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form jifAbasClientes
+     * Creates new form jifAbasProfissionals
      */
     /**
      * Objetos temporarios
@@ -39,6 +39,8 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
      * Classes de conexão com o banco
      */
     ProfissionalBD conexaoTabelaProfissionais = new ProfissionalBD();
+    
+    int st=0;
 
     public jifAbasProfissionais() {
         initComponents();
@@ -621,7 +623,7 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
 
     private void btFinalizarCadastroProfissionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFinalizarCadastroProfissionalActionPerformed
         // TODO add your handling code here:
-       if (tfProfissionalNome.getText().isEmpty()) {
+        if (tfProfissionalNome.getText().isEmpty()) {
             JOptionPane.showMessageDialog(pnCadastrarNovoProfissional, "Por favor insira o nome do profissional", "Aviso", 2);
             tfProfissionalNome.requestFocus();
         } else {
@@ -633,6 +635,27 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
                     JOptionPane.showMessageDialog(pnCadastrarNovoProfissional, "Por favor insira o cpf do profissional", "Aviso", 2);
                     tfProfissionalCpf.requestFocus();
                 } else {
+                if (btFinalizarCadastroProfissional.getToolTipText().equals("Cadastrar")) {
+                    if (tfProfissionalCpf.getValue() != null) {
+                        st = conexaoTabelaProfissionais.pesquisarCpf(0 ,tfProfissionalCpf.getText());
+                        if (st == 1) {
+                            JOptionPane.showMessageDialog(pnCadastrarNovoProfissional, "O cpf informado já existe!", "Aviso", 2);
+                            tfProfissionalCpf.requestFocus();
+                            return;
+                        }
+                    }
+                    
+                } else {
+                    Profissional cliente = modeloTabelaProfissional.retornaListaProfissionais().get(tbProfissionaisCadastrados.getSelectedRow());
+                    if ((tfProfissionalCpf.getValue() != null)) {
+                        st = conexaoTabelaProfissionais.pesquisarCpf(cliente.getProfissional_id(), tfProfissionalCpf.getText());
+                        if (st == 1) {
+                            JOptionPane.showMessageDialog(pnCadastrarNovoProfissional, "O cpf informado já existe!", "Aviso", 2);
+                            tfProfissionalCpf.requestFocus();
+                            return;
+                        }
+                    }
+                }
                     if (tfProfissionalCrea.getText().isEmpty()) {
                         JOptionPane.showMessageDialog(pnCadastrarNovoProfissional, "Por favor insira o crea do profissional", "Aviso", 2);
                         tfProfissionalCrea.requestFocus();

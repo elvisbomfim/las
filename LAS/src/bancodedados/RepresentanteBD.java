@@ -26,7 +26,7 @@ public class RepresentanteBD extends ConexaoBanco {
 
             //String dtNasc = aluno.getDataNascimento().get(Calendar.YEAR)+"-"+(aluno.getDataNascimento().get(Calendar.MONTH)+1)+"-"+aluno.getDataNascimento().get(Calendar.DAY_OF_MONTH);
             sql = "INSERT INTO REPRESENTANTE (REPRESENTANTE_NOME, REPRESENTANTE_ENDERECO, REPRESENTANTE_NUMERO, REPRESENTANTE_COMPLEMENTO, REPRESENTANTE_BAIRRO, REPRESENTANTE_MUNICIPIO, REPRESENTANTE_ESTADO, REPRESENTANTE_CEP, REPRESENTANTE_CPF, REPRESENTANTE_TELEFONE, REPRESENTANTE_CELULAR, REPRESENTANTE_NACIONALIDADE)"
-                    + "VALUES ('" + representante.getRepresentante_nome() + "', '" + representante.getRepresentante_rua() + "', '" + representante.getRepresentante_numero() + "', '" + representante.getRepresentante_complemento() + "', '" + representante.getRepresentante_bairro() + "', '" + representante.getRepresentante_municipio() + "', '" + representante.getRepresentante_estado() + "', '" + representante.getRepresentante_cep() + "', '" + representante.getRepresentante_cpf() + "', '" + representante.getRepresentante_telefone() + "', '" + representante.getRepresentante_celular() +"', '" + representante.getRepresentante_nacionalidade() + "')";
+                    + "VALUES ('" + representante.getRepresentante_nome() + "', '" + representante.getRepresentante_rua() + "', '" + representante.getRepresentante_numero() + "', '" + representante.getRepresentante_complemento() + "', '" + representante.getRepresentante_bairro() + "', '" + representante.getRepresentante_municipio() + "', '" + representante.getRepresentante_estado() + "', '" + representante.getRepresentante_cep() + "', '" + representante.getRepresentante_cpf() + "', '" + representante.getRepresentante_telefone() + "', '" + representante.getRepresentante_celular() + "', '" + representante.getRepresentante_nacionalidade() + "')";
 
             stm.executeUpdate(sql);
 
@@ -85,7 +85,7 @@ public class RepresentanteBD extends ConexaoBanco {
 
             //String dtNasc = aluno.getDataNascimento().get(Calendar.YEAR)+"-"+(aluno.getDataNascimento().get(Calendar.MONTH)+1)+"-"+aluno.getDataNascimento().get(Calendar.DAY_OF_MONTH);
             sql = "UPDATE REPRESENTANTE "
-                    + "SET REPRESENTANTE_NOME='" + representante.getRepresentante_nome() + "', REPRESENTANTE_ENDERECO='" + representante.getRepresentante_rua() + "', REPRESENTANTE_NUMERO='" + representante.getRepresentante_numero() + "', REPRESENTANTE_COMPLEMENTO='" + representante.getRepresentante_complemento() + "', REPRESENTANTE_BAIRRO='" + representante.getRepresentante_bairro() + "', REPRESENTANTE_MUNICIPIO='" + representante.getRepresentante_municipio() + "', REPRESENTANTE_ESTADO='" + representante.getRepresentante_estado() + "', REPRESENTANTE_CEP='" + representante.getRepresentante_cep() + "', REPRESENTANTE_CPF='" + representante.getRepresentante_cpf() + "', REPRESENTANTE_TELEFONE='" + representante.getRepresentante_telefone() + "', REPRESENTANTE_CELULAR='" + representante.getRepresentante_celular() +  "', REPRESENTANTE_NACIONALIDADE='" + representante.getRepresentante_nacionalidade() + "' "
+                    + "SET REPRESENTANTE_NOME='" + representante.getRepresentante_nome() + "', REPRESENTANTE_ENDERECO='" + representante.getRepresentante_rua() + "', REPRESENTANTE_NUMERO='" + representante.getRepresentante_numero() + "', REPRESENTANTE_COMPLEMENTO='" + representante.getRepresentante_complemento() + "', REPRESENTANTE_BAIRRO='" + representante.getRepresentante_bairro() + "', REPRESENTANTE_MUNICIPIO='" + representante.getRepresentante_municipio() + "', REPRESENTANTE_ESTADO='" + representante.getRepresentante_estado() + "', REPRESENTANTE_CEP='" + representante.getRepresentante_cep() + "', REPRESENTANTE_CPF='" + representante.getRepresentante_cpf() + "', REPRESENTANTE_TELEFONE='" + representante.getRepresentante_telefone() + "', REPRESENTANTE_CELULAR='" + representante.getRepresentante_celular() + "', REPRESENTANTE_NACIONALIDADE='" + representante.getRepresentante_nacionalidade() + "' "
                     + "WHERE representante_id=" + representante_id;
 
             stm.executeUpdate(sql);
@@ -141,6 +141,36 @@ public class RepresentanteBD extends ConexaoBanco {
             return listaRepresentantes;
         }
 
+    }
+
+    public int pesquisarCpf(int id, String cpf) {
+        int situacao = 0;
+        try {
+            conectarBanco();
+
+            stm = con.createStatement();
+
+            if (id == 0) {
+                sql = "SELECT * "
+                        + "FROM CLIENTE WHERE CLIENTE_CPF = '" + cpf + "'";
+            } else {
+                sql = "SELECT * "
+                        + "FROM CLIENTE WHERE CLIENTE_ID != " + id + " AND CLIENTE_CPF = '" + cpf + "'";
+            }
+
+            tabelaRetornada = stm.executeQuery(sql);
+            if (tabelaRetornada.next()) {
+                situacao = 1;
+            } else {
+                situacao = 0;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            desconectarBanco();
+            return situacao;
+        }
     }
 
 }

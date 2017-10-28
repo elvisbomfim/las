@@ -44,12 +44,12 @@ public class ClienteBD extends ConexaoBanco {
                     + "CLIENTE_TELEFONE, "
                     + "CLIENTE_CELULAR,"
                     + "CLIENTE_EMAIL)"
-                    + "VALUES ('" 
+                    + "VALUES ('"
                     + cliente.getCliente_nome() + "', '"
                     + cliente.getCliente_fantasia() + "', '"
                     + cliente.getCliente_cpf() + "', '"
                     + cliente.getCliente_cnpj() + "', '"
-                    + cliente.getCliente_insc_estadual() +"', '"
+                    + cliente.getCliente_insc_estadual() + "', '"
                     + cliente.getCliente_insc_municipal() + "', '"
                     + cliente.getCliente_endereco() + "', '"
                     + cliente.getCliente_numero() + "', '"
@@ -85,7 +85,7 @@ public class ClienteBD extends ConexaoBanco {
             sql = "DELETE FROM RELATORIO WHERE cliente_id=" + cliente_id;
 
             stm.executeUpdate(sql);
-            
+
             sql = "DELETE FROM TRA WHERE cliente_id=" + cliente_id;
 
             stm.executeUpdate(sql);
@@ -183,51 +183,67 @@ public class ClienteBD extends ConexaoBanco {
 
     }
 
-    public ArrayList<Cliente> selecionarTodosClientesRecibo() {
-        ArrayList<Cliente> listaClientes = new ArrayList();
-        Cliente cliente = new Cliente();
+    public int pesquisarCpf(int id, String cpf) {
+        int situacao = 0;
+        System.out.println("ID = " + id);
+        String variavel_id = "";
 
         try {
             conectarBanco();
 
             stm = con.createStatement();
-
-            sql = "SELECT * FROM CLIENTE,PROFISSIONAL, RECIBO"
-                    + "WHERE cliente.cliente_id = recibo.cliente_id AND profissinal.profissional_id = recibo.profissional_id ";
-            /*select * from usuario where situacao = 'Indisponivel';*/
+ 
+            if (id == 0) {
+                sql = "SELECT * "
+                        + "FROM CLIENTE WHERE CLIENTE_CPF = '" + cpf + "'";
+            } else {
+                sql = "SELECT * "
+                        + "FROM CLIENTE WHERE CLIENTE_ID != " + id + " AND CLIENTE_CPF = '" + cpf + "'";
+            }
             tabelaRetornada = stm.executeQuery(sql);
-
-            while (tabelaRetornada.next()) // Enquanto houverem linhas na tabela para serem lidas
-            {
-                cliente = new Cliente();
-
-                cliente.setCliente_id(tabelaRetornada.getInt("cliente_id"));
-                cliente.setCliente_nome(tabelaRetornada.getString("CLIENTE_NOME"));
-                cliente.setCliente_fantasia(tabelaRetornada.getString("CLIENTE_FANTASIA"));
-                cliente.setCliente_cpf(tabelaRetornada.getString("CLIENTE_CPF"));
-                cliente.setCliente_cnpj(tabelaRetornada.getString("CLIENTE_CNPJ"));
-                cliente.setCliente_insc_estadual(tabelaRetornada.getString("CLIENTE_INSC_ESTADUAL"));
-                cliente.setCliente_insc_municipal(tabelaRetornada.getString("CLIENTE_INSC_MUNICIPAL"));
-                cliente.setCliente_endereco(tabelaRetornada.getString("CLIENTE_ENDERECO"));
-                cliente.setCliente_numero(tabelaRetornada.getString("CLIENTE_NUMERO"));
-                cliente.setCliente_complemento(tabelaRetornada.getString("CLIENTE_COMPLEMENTO"));
-                cliente.setCliente_bairro(tabelaRetornada.getString("CLIENTE_BAIRRO"));
-                cliente.setCliente_municipio(tabelaRetornada.getString("CLIENTE_MUNICIPIO"));
-                cliente.setCliente_estado(tabelaRetornada.getString("CLIENTE_ESTADO"));
-                cliente.setCliente_cep(tabelaRetornada.getString("CLIENTE_CEP"));
-                cliente.setCliente_telefone(tabelaRetornada.getString("CLIENTE_TELEFONE"));
-                cliente.setCliente_celular(tabelaRetornada.getString("CLIENTE_CELULAR"));
-
-                listaClientes.add(cliente);
+            if (tabelaRetornada.next()) {
+                situacao = 1;
+            } else {
+                situacao = 0;
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             desconectarBanco();
-            return listaClientes;
+            return situacao;
         }
+    }
 
+    public int pesquisarCnpj(int id, String cnpj) {
+        int situacao = 0;
+
+        try {
+            conectarBanco();
+
+            stm = con.createStatement();
+
+            if (id == 0) {
+                sql = "SELECT * "
+                        + "FROM CLIENTE WHERE CLIENTE_CNPJ = '" + cnpj + "'";
+            } else {
+                sql = "SELECT * "
+                        + "FROM CLIENTE WHERE CLIENTE_ID != " + id + " AND CLIENTE_CNPJ = '" + cnpj + "'";
+            }
+
+            tabelaRetornada = stm.executeQuery(sql);
+            if (tabelaRetornada.next()) {
+                situacao = 1;
+            } else {
+                situacao = 0;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            desconectarBanco();
+            return situacao;
+        }
     }
 
     public Calendar retornaDateBanco(Date dataBanco) {
