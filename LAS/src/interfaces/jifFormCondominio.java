@@ -9,6 +9,7 @@ import bancodedados.ClienteBD;
 import bancodedados.ConexaoPDF;
 import bancodedados.ProfissionalBD;
 import bancodedados.RelatorioPrincipalBD;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -3290,9 +3291,10 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
             System.out.println(fc.getSelectedFile());
 
             try {
-                imagem = ManipularImagem.setImagemDimensao(arquivo.getAbsolutePath(), 400, 300);
+                imagem = ManipularImagem.setImagemDimensao(arquivo.getAbsolutePath(), 1024, 768);
 
-                lblImagem.setIcon(new ImageIcon(imagem));
+                lblImagem.setIcon(new ImageIcon(new javax.swing.ImageIcon(imagem).getImage().getScaledInstance(400, 300, Image.SCALE_SMOOTH)));
+
 
             } catch (Exception ex) {
                 // System.out.println(ex.printStackTrace().toString());
