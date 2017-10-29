@@ -5,15 +5,13 @@
  */
 package interfaces;
 
+import Utilitarios.WebServiceCep;
 import bancodedados.ClienteBD;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import javax.swing.JOptionPane;
 import modelo.tabelas.ModeloTabelaClientes;
 import modelos.Cliente;
-import org.jsoup.Jsoup;
+import modelos.LetrasMaiusculas;
 
 /**
  *
@@ -21,10 +19,7 @@ import org.jsoup.Jsoup;
  */
 public class jifAbasClientes extends javax.swing.JInternalFrame {
 
-    Map<String, String> query = new HashMap<String, String>();
-    /**
-     * Creates new form jifAbasClientes
-     */
+    //Map<String, String> query = new HashMap<String, String>();
     /**
      * Objetos temporarios
      */
@@ -61,6 +56,17 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
         //teste tst = new teste(null, true);
         //tst.setVisible(true);
 //        
+        tfClienteNome.setDocument(new LetrasMaiusculas());
+        tfClienteFantasia.setDocument(new LetrasMaiusculas());
+        tfClienteEmail.setDocument(new LetrasMaiusculas());
+        tfClienteInscMunicipal.setDocument(new LetrasMaiusculas());
+        tfClienteInscEstadual.setDocument(new LetrasMaiusculas());
+        tfClienteCep.setDocument(new LetrasMaiusculas());
+        tfClienteRua.setDocument(new LetrasMaiusculas());
+        tfClienteNumero.setDocument(new LetrasMaiusculas());
+        tfClienteBairro.setDocument(new LetrasMaiusculas());
+        tfClienteCidade.setDocument(new LetrasMaiusculas());
+        tfClienteComplemento.setDocument(new LetrasMaiusculas());
     }
 
     /**
@@ -135,6 +141,12 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
 
         jLabel12.setText("Nome:");
 
+        tfClienteNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfClienteNomeActionPerformed(evt);
+            }
+        });
+
         jLabel37.setText("Nome Fantasia:");
 
         jLabel38.setText("CPF:");
@@ -189,9 +201,9 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        tfClienteCep.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                tfClienteCepFocusLost(evt);
+        tfClienteCep.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tfClienteCepKeyReleased(evt);
             }
         });
 
@@ -518,7 +530,7 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
             } else {
                 if (btFinalizarCadastroCliente.getToolTipText().equals("Cadastrar")) {
                     if (tfClienteCpf.getValue() != null) {
-                        st = conexaoTabelaClientes.pesquisarCpf(0 ,tfClienteCpf.getText());
+                        st = conexaoTabelaClientes.pesquisarCpf(0, tfClienteCpf.getText());
                         if (st == 1) {
                             JOptionPane.showMessageDialog(pnCadastrarNovoCliente, "O cpf informado já existe!", "Aviso", 2);
                             tfClienteCpf.requestFocus();
@@ -533,7 +545,7 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
                             return;
                         }
                     }
-                    
+
                 } else {
                     Cliente cliente = modeloTabelaCliente.retornaListaClientes().get(tbClientesCadastrados.getSelectedRow());
                     if ((tfClienteCpf.getValue() != null)) {
@@ -774,37 +786,43 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btCancelarAtualizacaoClienteActionPerformed
 
-    private void tfClienteCepFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfClienteCepFocusLost
+    private void tfClienteNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfClienteNomeActionPerformed
         // TODO add your handling code here:
-        try {
-            query.put("cepEntrada", tfClienteCep.getText().toString());
-            //FAZ A BUSCA PELO SITE DO CORREIO 
-            query.put("tipoCep", "");
-            query.put("cepTemp", "");
-            query.put("metodo", "buscarCep");
+    }//GEN-LAST:event_tfClienteNomeActionPerformed
 
-            org.jsoup.nodes.Document doc = Jsoup.connect("http://m.correios.com.br/movel/buscaCepConfirma.do")
-                    .data(query)
-                    .post();
+    private void tfClienteCepKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfClienteCepKeyReleased
+        String cp = tfClienteCep.getText();
+        cp = cp.replaceAll("\\D*", ""); //ignora qualquer coisa que não seja numero.  
+        int cont = cp.length();
 
-            org.jsoup.select.Elements elemetos = doc.select(".respostadestaque");
-
-            if (elemetos.size() >= 4) {
-                //RETORNA O ENDEREÇO ENCONTRADO                            
-                tfClienteRua.setText(elemetos.get(0).text().toUpperCase());
-                tfClienteBairro.setText(elemetos.get(1).text().toUpperCase());
-                int x = elemetos.get(2).text().lastIndexOf("/");
-                tfClienteCidade.setText(elemetos.get(2).text().substring(0, x).toUpperCase());
-                System.out.println(elemetos.get(2).text().substring(x + 1));
-                String uf = elemetos.get(2).text().substring(x + 1);
-
-                cbClienteEstado.setSelectedItem(uf);
+        if (cont == 8) {
+            try {
+                correio();
+            } catch (Error e) {
+                JOptionPane.showMessageDialog(null, e);
             }
-        } catch (IOException ex) {
-            System.err.println(ex.getMessage());
         }
-    }//GEN-LAST:event_tfClienteCepFocusLost
+    }//GEN-LAST:event_tfClienteCepKeyReleased
 
+    public  void correio() {
+    
+                String cep =  tfClienteCep.getText();
+		
+                WebServiceCep webServiceCep = WebServiceCep.searchCep(cep);
+
+		if (webServiceCep.wasSuccessful()) {
+                       
+                        tfClienteRua.setText(webServiceCep.getLogradouroFull()); 
+                        tfClienteBairro.setText(webServiceCep.getBairro());                        
+                        tfClienteCidade.setText(webServiceCep.getCidade());
+                        cbClienteEstado.setSelectedItem( webServiceCep.getUf());
+
+		} else {
+                         JOptionPane.showMessageDialog(null, webServiceCep.getResultText());
+                        
+		}
+			
+	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCancelarAtualizacaoCliente;

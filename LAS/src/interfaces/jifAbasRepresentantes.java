@@ -5,10 +5,12 @@
  */
 package interfaces;
 
+import Utilitarios.WebServiceCep;
 import bancodedados.RepresentanteBD;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.tabelas.ModeloTabelaRepresentantes;
+import modelos.LetrasMaiusculas;
 import modelos.Representante;
 
 /**
@@ -39,8 +41,8 @@ public class jifAbasRepresentantes extends javax.swing.JInternalFrame {
      * Classes de conexão com o banco
      */
     RepresentanteBD conexaoTabelaRepresentantes = new RepresentanteBD();
-    
-    int st=0;
+
+    int st = 0;
 
     public jifAbasRepresentantes() {
         initComponents();
@@ -51,6 +53,14 @@ public class jifAbasRepresentantes extends javax.swing.JInternalFrame {
         btCancelarAtualizacaoRepresentantes.setVisible(false);
 
         buscarRepresentantesTabela();
+
+        tfRepresentanteNome.setText("");
+        tfRepresentanteRua.setText("");
+        tfRepresentanteNumero.setText("");
+        tfRepresentanteComplemento.setText("");
+        tfRepresentanteBairro.setText("");
+        tfRepresentanteCidade.setText("");
+        tfRepresentanteNacionalidade.setText("");
     }
 
     public void buscarRepresentantesTabela() {
@@ -78,17 +88,17 @@ public class jifAbasRepresentantes extends javax.swing.JInternalFrame {
     }
 
     public void limparCamposCadastroRepresentante() {
-        tfRepresentanteNome.setText("");
-        tfRepresentanteRua.setText("");
-        tfRepresentanteNumero.setText("");
-        tfRepresentanteComplemento.setText("");
-        tfRepresentanteBairro.setText("");
-        tfRepresentanteCidade.setText("");
-        tfRepresentanteCep.setText("");
-        tfRepresentanteCpf.setText("");
-        tfRepresentanteTelefone.setText("");
-        tfRepresentanteCelular.setText("");
-        tfRepresentanteNacionalidade.setText("");
+        tfRepresentanteNome.setDocument(new LetrasMaiusculas());
+        tfRepresentanteRua.setDocument(new LetrasMaiusculas());
+        tfRepresentanteNumero.setDocument(new LetrasMaiusculas());
+        tfRepresentanteComplemento.setDocument(new LetrasMaiusculas());
+        tfRepresentanteBairro.setDocument(new LetrasMaiusculas());
+        tfRepresentanteCidade.setDocument(new LetrasMaiusculas());
+        tfRepresentanteCep.setDocument(new LetrasMaiusculas());
+        tfRepresentanteCpf.setDocument(new LetrasMaiusculas());
+        tfRepresentanteTelefone.setDocument(new LetrasMaiusculas());
+        tfRepresentanteCelular.setDocument(new LetrasMaiusculas());
+        tfRepresentanteNacionalidade.setDocument(new LetrasMaiusculas());
 
         cbRepresentanteEstado.setSelectedIndex(0);
 
@@ -168,6 +178,11 @@ public class jifAbasRepresentantes extends javax.swing.JInternalFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        tfRepresentanteCep.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tfRepresentanteCepKeyReleased(evt);
+            }
+        });
 
         try {
             tfRepresentanteTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
@@ -477,14 +492,14 @@ public class jifAbasRepresentantes extends javax.swing.JInternalFrame {
             } else {
                 if (btFinalizarCadastroRepresentante.getToolTipText().equals("Cadastrar")) {
                     if (tfRepresentanteCpf.getValue() != null) {
-                        st = conexaoTabelaRepresentantes.pesquisarCpf(0 ,tfRepresentanteCpf.getText());
+                        st = conexaoTabelaRepresentantes.pesquisarCpf(0, tfRepresentanteCpf.getText());
                         if (st == 1) {
                             JOptionPane.showMessageDialog(pnCadastrarNovosRepresentantes, "O cpf informado já existe!", "Aviso", 2);
                             tfRepresentanteCpf.requestFocus();
                             return;
                         }
                     }
-                    
+
                 } else {
                     Representante cliente = modeloTabelaRepresentante.retornaListaRepresentantes().get(tbRepresentantesCadastrados.getSelectedRow());
                     if ((tfRepresentanteCpf.getValue() != null)) {
@@ -649,6 +664,39 @@ public class jifAbasRepresentantes extends javax.swing.JInternalFrame {
         tbRepresentantesCadastrados.updateUI();
     }//GEN-LAST:event_tfPalavraChaveRepresentanteKeyReleased
 
+    private void tfRepresentanteCepKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfRepresentanteCepKeyReleased
+        String cp = tfRepresentanteCep.getText();
+        cp = cp.replaceAll("\\D*", ""); //ignora qualquer coisa que não seja numero.  
+        int cont = cp.length();
+
+        if (cont == 8) {
+            try {
+                correio();
+            } catch (Error e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+    }//GEN-LAST:event_tfRepresentanteCepKeyReleased
+
+    public void correio() {
+
+        String cep = tfRepresentanteCep.getText();
+
+        WebServiceCep webServiceCep = WebServiceCep.searchCep(cep);
+
+        if (webServiceCep.wasSuccessful()) {
+
+            tfRepresentanteRua.setText(webServiceCep.getLogradouroFull());
+            tfRepresentanteBairro.setText(webServiceCep.getBairro());
+            tfRepresentanteCidade.setText(webServiceCep.getCidade());
+            cbRepresentanteEstado.setSelectedItem(webServiceCep.getUf());
+
+        } else {
+            JOptionPane.showMessageDialog(null, webServiceCep.getResultText());
+
+        }
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCancelarAtualizacaoRepresentantes;

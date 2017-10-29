@@ -5,10 +5,12 @@
  */
 package interfaces;
 
+import Utilitarios.WebServiceCep;
 import bancodedados.ProfissionalBD;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.tabelas.ModeloTabelaProfissionais;
+import modelos.LetrasMaiusculas;
 import modelos.Profissional;
 
 /**
@@ -39,8 +41,8 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
      * Classes de conexão com o banco
      */
     ProfissionalBD conexaoTabelaProfissionais = new ProfissionalBD();
-    
-    int st=0;
+
+    int st = 0;
 
     public jifAbasProfissionais() {
         initComponents();
@@ -52,6 +54,16 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
 
         //----------------Desabilitar bostoes cancelar atualização--------------
         btCancelarAtualizacaoProfissional.setVisible(false);
+
+        tfProfissionalNome.setDocument(new LetrasMaiusculas());
+        tfProfissionalProfissao.setDocument(new LetrasMaiusculas());
+        tfProfissionalCrea.setDocument(new LetrasMaiusculas());
+        tfProfissionalCtma.setDocument(new LetrasMaiusculas());
+        tfProfissionalRua.setDocument(new LetrasMaiusculas());
+        tfProfissionalNumero.setDocument(new LetrasMaiusculas());
+        tfProfissionalBairro.setDocument(new LetrasMaiusculas());
+        tfProfissionalCidade.setDocument(new LetrasMaiusculas());
+        tfProfissionalRCC.setDocument(new LetrasMaiusculas());
 
     }
 
@@ -174,6 +186,11 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        tfProfissionalCep.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tfProfissionalCepKeyReleased(evt);
+            }
+        });
 
         jLabel15.setText("Rua:");
 
@@ -635,27 +652,27 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
                     JOptionPane.showMessageDialog(pnCadastrarNovoProfissional, "Por favor insira o cpf do profissional", "Aviso", 2);
                     tfProfissionalCpf.requestFocus();
                 } else {
-                if (btFinalizarCadastroProfissional.getToolTipText().equals("Cadastrar")) {
-                    if (tfProfissionalCpf.getValue() != null) {
-                        st = conexaoTabelaProfissionais.pesquisarCpf(0 ,tfProfissionalCpf.getText());
-                        if (st == 1) {
-                            JOptionPane.showMessageDialog(pnCadastrarNovoProfissional, "O cpf informado já existe!", "Aviso", 2);
-                            tfProfissionalCpf.requestFocus();
-                            return;
+                    if (btFinalizarCadastroProfissional.getToolTipText().equals("Cadastrar")) {
+                        if (tfProfissionalCpf.getValue() != null) {
+                            st = conexaoTabelaProfissionais.pesquisarCpf(0, tfProfissionalCpf.getText());
+                            if (st == 1) {
+                                JOptionPane.showMessageDialog(pnCadastrarNovoProfissional, "O cpf informado já existe!", "Aviso", 2);
+                                tfProfissionalCpf.requestFocus();
+                                return;
+                            }
+                        }
+
+                    } else {
+                        Profissional cliente = modeloTabelaProfissional.retornaListaProfissionais().get(tbProfissionaisCadastrados.getSelectedRow());
+                        if ((tfProfissionalCpf.getValue() != null)) {
+                            st = conexaoTabelaProfissionais.pesquisarCpf(cliente.getProfissional_id(), tfProfissionalCpf.getText());
+                            if (st == 1) {
+                                JOptionPane.showMessageDialog(pnCadastrarNovoProfissional, "O cpf informado já existe!", "Aviso", 2);
+                                tfProfissionalCpf.requestFocus();
+                                return;
+                            }
                         }
                     }
-                    
-                } else {
-                    Profissional cliente = modeloTabelaProfissional.retornaListaProfissionais().get(tbProfissionaisCadastrados.getSelectedRow());
-                    if ((tfProfissionalCpf.getValue() != null)) {
-                        st = conexaoTabelaProfissionais.pesquisarCpf(cliente.getProfissional_id(), tfProfissionalCpf.getText());
-                        if (st == 1) {
-                            JOptionPane.showMessageDialog(pnCadastrarNovoProfissional, "O cpf informado já existe!", "Aviso", 2);
-                            tfProfissionalCpf.requestFocus();
-                            return;
-                        }
-                    }
-                }
                     if (tfProfissionalCrea.getText().isEmpty()) {
                         JOptionPane.showMessageDialog(pnCadastrarNovoProfissional, "Por favor insira o crea do profissional", "Aviso", 2);
                         tfProfissionalCrea.requestFocus();
@@ -742,6 +759,39 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfProfissionalCreaActionPerformed
 
+    private void tfProfissionalCepKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfProfissionalCepKeyReleased
+        String cp = tfProfissionalCep.getText();
+        cp = cp.replaceAll("\\D*", ""); //ignora qualquer coisa que não seja numero.  
+        int cont = cp.length();
+
+        if (cont == 8) {
+            try {
+                correio();
+            } catch (Error e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+    }//GEN-LAST:event_tfProfissionalCepKeyReleased
+
+    public void correio() {
+
+        String cep = tfProfissionalCep.getText();
+
+        WebServiceCep webServiceCep = WebServiceCep.searchCep(cep);
+
+        if (webServiceCep.wasSuccessful()) {
+
+            tfProfissionalRua.setText(webServiceCep.getLogradouroFull());
+            tfProfissionalBairro.setText(webServiceCep.getBairro());
+            tfProfissionalCidade.setText(webServiceCep.getCidade());
+            cbProfissionalEstado.setSelectedItem(webServiceCep.getUf());
+
+        } else {
+            JOptionPane.showMessageDialog(null, webServiceCep.getResultText());
+
+        }
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCancelarAtualizacaoProfissional;

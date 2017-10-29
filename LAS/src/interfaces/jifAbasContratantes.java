@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.tabelas.ModeloTabelaContratantes;
 import modelos.Contratante;
+import modelos.LetrasMaiusculas;
 
 /**
  *
@@ -39,8 +40,8 @@ public class jifAbasContratantes extends javax.swing.JInternalFrame {
      * Classes de conexão com o banco
      */
     ContratanteBD conexaoTabelaContratantes = new ContratanteBD();
-    
-    int st=0;
+
+    int st = 0;
 
     public jifAbasContratantes() {
         initComponents();
@@ -52,6 +53,10 @@ public class jifAbasContratantes extends javax.swing.JInternalFrame {
 
         //----------------Desabilitar bostoes cancelar atualização--------------
         btCancelarAtualizacaoContratante.setVisible(false);
+
+        tfContratanteNome.setDocument(new LetrasMaiusculas());
+        tfContratanteTelefone.setDocument(new LetrasMaiusculas());
+        tfContratanteCelular.setDocument(new LetrasMaiusculas());
 
     }
 
@@ -376,7 +381,7 @@ public class jifAbasContratantes extends javax.swing.JInternalFrame {
             } else {
                 if (btFinalizarCadastroContratante.getToolTipText().equals("Cadastrar")) {
                     if (tfContratanteCpf.getValue() != null) {
-                        st = conexaoTabelaContratantes.pesquisarCpf(0 ,tfContratanteCpf.getText());
+                        st = conexaoTabelaContratantes.pesquisarCpf(0, tfContratanteCpf.getText());
                         if (st == 1) {
                             JOptionPane.showMessageDialog(pnCadastrarNovoContratante, "O cpf informado já existe!", "Aviso", 2);
                             tfContratanteCpf.requestFocus();
@@ -391,7 +396,7 @@ public class jifAbasContratantes extends javax.swing.JInternalFrame {
                             return;
                         }
                     }
-                    
+
                 } else {
                     Contratante cliente = modeloTabelaContratante.retornarListaContratantes().get(tbContratantesCadastrados.getSelectedRow());
                     if ((tfContratanteCpf.getValue() != null)) {
