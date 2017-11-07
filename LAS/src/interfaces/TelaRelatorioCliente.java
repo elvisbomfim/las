@@ -20,21 +20,25 @@ public class TelaRelatorioCliente extends javax.swing.JDialog {
     ClienteBD conexaoTabelaCliente = new ClienteBD();
     ArrayList<Cliente> listaOriginalTemporariaCliente = new ArrayList();
     Cliente clienteSelecionado = new Cliente();
-
+    int categoria = 0;
     /**
      * Creates new form TelaRelatorioRecibo
      */
-    public TelaRelatorioCliente(java.awt.Frame parent, boolean modal) {
+    public TelaRelatorioCliente(java.awt.Frame parent, boolean modal, int categoria_id) {
         super(parent, modal);
         initComponents();
-
+        
+        this.categoria = categoria_id;
+        
         this.setLocationRelativeTo(parent);
         this.setTitle("Gerencia de clientes");
         tfBuscarCliente.requestFocus();
         tbListaClientes.setModel(modeloTabelaCliente);
         tbListaClientes.getTableHeader().setReorderingAllowed(false);
 
-        buscarClientesNaTabela();
+        buscarClientesNaTabela(categoria_id);
+        
+        System.out.println(this.categoria);
     }
 
     /**
@@ -152,9 +156,9 @@ public class TelaRelatorioCliente extends javax.swing.JDialog {
 
     private void tfBuscarClienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfBuscarClienteKeyReleased
         if (tfBuscarCliente.getText().isEmpty()) {
-            modeloTabelaCliente.inserirListaClientes(conexaoTabelaCliente.selecionarTodosClientes());
+            modeloTabelaCliente.inserirListaClientes(conexaoTabelaCliente.selecionarClientesCategoria(this.categoria));
         } else {
-            modeloTabelaCliente.inserirListaClientes(conexaoTabelaCliente.selecionarTodosClientes());
+            modeloTabelaCliente.inserirListaClientes(conexaoTabelaCliente.selecionarClientesCategoria(this.categoria));
             listaOriginalTemporariaCliente.clear();
 
             for (int i = 0; i < modeloTabelaCliente.retornaListaClientes().size(); i++) {
@@ -204,9 +208,9 @@ public class TelaRelatorioCliente extends javax.swing.JDialog {
 // TODO add your handling code here:
     }
 
-    public void buscarClientesNaTabela() {
-
-        modeloTabelaCliente.inserirListaClientes(conexaoTabelaCliente.selecionarTodosClientes());
+    public void buscarClientesNaTabela(int cate) {
+        
+        modeloTabelaCliente.inserirListaClientes(conexaoTabelaCliente.selecionarClientesCategoria(cate));
         listaOriginalTemporariaCliente = modeloTabelaCliente.retornaListaClientes();
         tbListaClientes.updateUI();
 
@@ -249,7 +253,7 @@ public class TelaRelatorioCliente extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                TelaRelatorioCliente dialog = new TelaRelatorioCliente(new javax.swing.JFrame(), true);
+                TelaRelatorioCliente dialog = new TelaRelatorioCliente(new javax.swing.JFrame(), true, 0);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

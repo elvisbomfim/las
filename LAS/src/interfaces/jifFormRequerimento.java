@@ -761,7 +761,7 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
 
     private void tfRequerimentoClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfRequerimentoClienteMouseClicked
         // TODO add your handling code here:
-        TelaRelatorioCliente telaRelatorioCliente = new TelaRelatorioCliente(null, true);
+        TelaRelatorioCliente telaRelatorioCliente = new TelaRelatorioCliente(null, true, 0);
         telaRelatorioCliente.setVisible(true);
         // Criando o contratante à receber o contratante da tela relatoriorecibo
         Cliente clienteSelecionado = new Cliente();

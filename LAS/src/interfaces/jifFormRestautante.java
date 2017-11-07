@@ -3517,7 +3517,7 @@ public class jifFormRestautante extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_rbLocalizacaoZonaUrbanaMouseClicked
 
     private void tfNomeClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfNomeClienteMouseClicked
-        TelaRelatorioCliente telaRelatorioCliente = new TelaRelatorioCliente(null, true);
+        TelaRelatorioCliente telaRelatorioCliente = new TelaRelatorioCliente(null, true, 1);
         telaRelatorioCliente.setVisible(true);
         // Criando o contratante à receber o contratante da tela relatoriorecibo
         Cliente clienteSelecionado = new Cliente();

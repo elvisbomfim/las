@@ -397,26 +397,11 @@ public class jifAbasContratantes extends javax.swing.JInternalFrame {
                         }
                     }
 
-                } else {
-                    Contratante cliente = modeloTabelaContratante.retornarListaContratantes().get(tbContratantesCadastrados.getSelectedRow());
-                    if ((tfContratanteCpf.getValue() != null)) {
-                        st = conexaoTabelaContratantes.pesquisarCpf(cliente.getContratante_id(), tfContratanteCpf.getText());
-                        if (st == 1) {
-                            JOptionPane.showMessageDialog(pnCadastrarNovoContratante, "O cpf informado já existe!", "Aviso", 2);
-                            tfContratanteCpf.requestFocus();
-                            return;
-                        }
+                    if ((tfContratanteTelefone.getValue() == null) && (tfContratanteCelular.getValue() == null)) {
+                        JOptionPane.showMessageDialog(pnCadastrarNovoContratante, "Por favor insira o telefone ou celular", "Aviso", 2);
+                        tfContratanteTelefone.requestFocus();
+                        return;
                     }
-                    if (tfContratanteCnpj.getValue() != null) {
-                        st = conexaoTabelaContratantes.pesquisarCnpj(cliente.getContratante_id(), tfContratanteCnpj.getText());
-                        if (st == 1) {
-                            JOptionPane.showMessageDialog(pnCadastrarNovoContratante, "O cnpj informado já existe!", "Aviso", 2);
-                            tfContratanteCnpj.requestFocus();
-                            return;
-                        }
-                    }
-                }
-                if (btFinalizarCadastroContratante.getToolTipText().equals("Cadastrar")) {
 
                     conexaoTabelaContratantes.inserirNovoContratante(preencherDadosCadastroContratante());
                     //conexaoTabelaContratantes.inserirNovoContratante(contratanteCadastro);
@@ -424,6 +409,23 @@ public class jifAbasContratantes extends javax.swing.JInternalFrame {
                     limparCamposCadastroContratante();
 
                 } else {
+                    Contratante contratante = modeloTabelaContratante.retornarListaContratantes().get(tbContratantesCadastrados.getSelectedRow());
+                    if ((tfContratanteCpf.getValue() != null)) {
+                        st = conexaoTabelaContratantes.pesquisarCpf(contratante.getContratante_id(), tfContratanteCpf.getText());
+                        if (st == 1) {
+                            JOptionPane.showMessageDialog(pnCadastrarNovoContratante, "O cpf informado já existe!", "Aviso", 2);
+                            tfContratanteCpf.requestFocus();
+                            return;
+                        }
+                    }
+                    if (tfContratanteCnpj.getValue() != null) {
+                        st = conexaoTabelaContratantes.pesquisarCnpj(contratante.getContratante_id(), tfContratanteCnpj.getText());
+                        if (st == 1) {
+                            JOptionPane.showMessageDialog(pnCadastrarNovoContratante, "O cnpj informado já existe!", "Aviso", 2);
+                            tfContratanteCnpj.requestFocus();
+                            return;
+                        }
+                    }
                     conexaoTabelaContratantes.alterarContratante(modeloTabelaContratante.retornarListaContratantes().get(tbContratantesCadastrados.getSelectedRow()).getContratante_id(), preencherDadosCadastroContratante());
 
                     buscarContratantesTabela();

@@ -202,7 +202,7 @@ public class jifAbasRepresentantes extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
 
-        jLabel6.setText("Rua:");
+        jLabel6.setText("Logradouro:");
 
         jLabel7.setText("Bairro:");
 
@@ -275,16 +275,16 @@ public class jifAbasRepresentantes extends javax.swing.JInternalFrame {
                                         .addComponent(tfRepresentanteCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(pnCadastrarNovosRepresentantesLayout.createSequentialGroup()
                                         .addGroup(pnCadastrarNovosRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(tfRepresentanteNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(tfRepresentanteCep, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                                        .addGroup(pnCadastrarNovosRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(pnCadastrarNovosRepresentantesLayout.createSequentialGroup()
+                                                .addComponent(tfRepresentanteNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                                                 .addComponent(jLabel7)
                                                 .addGap(13, 13, 13))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCadastrarNovosRepresentantesLayout.createSequentialGroup()
+                                            .addGroup(pnCadastrarNovosRepresentantesLayout.createSequentialGroup()
+                                                .addComponent(tfRepresentanteCep, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jLabel6)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                         .addGroup(pnCadastrarNovosRepresentantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(tfRepresentanteRua, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(tfRepresentanteBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))))

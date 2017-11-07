@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.awt.Image;
 import java.awt.Graphics;
+import java.util.Locale;
 import javax.swing.ImageIcon;
 
 /**
@@ -60,6 +61,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         miRelatorios = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
@@ -129,7 +131,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(jmiRecibo);
 
-        jMenuItem2.setText("Tra");
+        jMenuItem2.setText("TRA");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -153,13 +155,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem4);
 
+        jMenu3.setText("Caracterização");
+
         jMenuItem5.setText("Restaurante");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem5ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem5);
+        jMenu3.add(jMenuItem5);
 
         miRelatorios.setText("Condomínio");
         miRelatorios.addActionListener(new java.awt.event.ActionListener() {
@@ -167,7 +171,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 miRelatoriosActionPerformed(evt);
             }
         });
-        jMenu2.add(miRelatorios);
+        jMenu3.add(miRelatorios);
 
         jMenuItem6.setText("Turísticos");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
@@ -175,7 +179,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 jMenuItem6ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem6);
+        jMenu3.add(jMenuItem6);
 
         jMenuItem7.setText("Terraplanagem");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
@@ -183,7 +187,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 jMenuItem7ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem7);
+        jMenu3.add(jMenuItem7);
+
+        jMenu2.add(jMenu3);
 
         jMenuBar1.add(jMenu2);
 
@@ -194,7 +200,40 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmiCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCadastrarClienteActionPerformed
-        // TODO add your handling code here:
+        jifAbasContratantes contratante = new jifAbasContratantes();
+        jdptelaPrincipal.add(contratante);
+        contratante.setVisible(false);
+        jifAbasProfissionais profissionais = new jifAbasProfissionais();
+        jdptelaPrincipal.add(profissionais);
+        profissionais.setVisible(false);
+        jifAbasRepresentantes representante = new jifAbasRepresentantes();
+        jdptelaPrincipal.add(representante);
+        representante.setVisible(false);
+        jifFormCondominio condominio = new jifFormCondominio();
+        jdptelaPrincipal.add(condominio);
+        condominio.setVisible(false);
+        jifFormProcuracao procuracao = new jifFormProcuracao();
+        jdptelaPrincipal.add(procuracao);
+        procuracao.setVisible(false);
+        jifFormRecibo recibo = new jifFormRecibo();
+        jdptelaPrincipal.add(recibo);
+        recibo.setVisible(false);
+        jifFormRequerimento requerimento = new jifFormRequerimento();
+        jdptelaPrincipal.add(requerimento);
+        requerimento.setVisible(false);
+        jifFormRestautante restaurante = new jifFormRestautante();
+        jdptelaPrincipal.add(restaurante);
+        restaurante.setVisible(false);
+        jifFormTerraplanagem terraplanagem = new jifFormTerraplanagem();
+        jdptelaPrincipal.add(terraplanagem);
+        terraplanagem.setVisible(false);
+        jifFormTra tra = new jifFormTra();
+        jdptelaPrincipal.add(tra);
+        tra.setVisible(false);
+        jifFormTuristico turistico = new jifFormTuristico();
+        jdptelaPrincipal.add(turistico);
+        turistico.setVisible(false);
+        
         jifAbasClientes obj = new jifAbasClientes();
         jdptelaPrincipal.add(obj);
         obj.setVisible(true);
@@ -313,6 +352,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;

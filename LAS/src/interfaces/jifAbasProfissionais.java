@@ -63,7 +63,7 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
         tfProfissionalNumero.setDocument(new LetrasMaiusculas());
         tfProfissionalBairro.setDocument(new LetrasMaiusculas());
         tfProfissionalCidade.setDocument(new LetrasMaiusculas());
-        tfProfissionalRCC.setDocument(new LetrasMaiusculas());
+        tfProfissionalComplemento.setDocument(new LetrasMaiusculas());
 
     }
 
@@ -108,7 +108,7 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
         tfProfissionalCtma = new javax.swing.JFormattedTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        tfProfissionalRCC = new javax.swing.JTextField();
+        tfProfissionalComplemento = new javax.swing.JTextField();
         pnGerenciarProfissionais = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -192,7 +192,7 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel15.setText("Rua:");
+        jLabel15.setText("Logradouro:");
 
         jLabel11.setText("Número:");
 
@@ -236,7 +236,7 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
 
         jLabel2.setText("CTMA:");
 
-        jLabel3.setText(" Registro no Conselho de Classe:");
+        jLabel3.setText("Complamento:");
 
         javax.swing.GroupLayout pnCadastrarNovoProfissionalLayout = new javax.swing.GroupLayout(pnCadastrarNovoProfissional);
         pnCadastrarNovoProfissional.setLayout(pnCadastrarNovoProfissionalLayout);
@@ -252,45 +252,36 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
                 .addGap(20, 20, 20)
                 .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnCadastrarNovoProfissionalLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfProfissionalRCC, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(pnCadastrarNovoProfissionalLayout.createSequentialGroup()
-                            .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addGap(49, 49, 49)
-                            .addComponent(tfProfissionalCtma, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(pnCadastrarNovoProfissionalLayout.createSequentialGroup()
-                            .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel7)
-                                .addComponent(jLabel20))
-                            .addGap(18, 18, 18)
-                            .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(pnCadastrarNovoProfissionalLayout.createSequentialGroup()
-                                    .addComponent(tfProfissionalCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel21)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(tfProfissionalCrea, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(tfProfissionalNome, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(tfProfissionalProfissao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(pnCadastrarNovoProfissionalLayout.createSequentialGroup()
+                        .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel20))
+                        .addGap(30, 30, 30)
+                        .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tfProfissionalProfissao)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCadastrarNovoProfissionalLayout.createSequentialGroup()
+                                .addComponent(tfProfissionalCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(86, 86, 86)
+                                .addComponent(jLabel21)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tfProfissionalCrea, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tfProfissionalNome)))
+                    .addGroup(pnCadastrarNovoProfissionalLayout.createSequentialGroup()
+                        .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel14)
-                            .addGap(61, 61, 61)
-                            .addComponent(tfProfissionalCep, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(39, 39, 39)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(tfProfissionalRua))
-                        .addGroup(pnCadastrarNovoProfissionalLayout.createSequentialGroup()
-                            .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel11)
-                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel19))
-                            .addGap(25, 25, 25)
-                            .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel8))
+                        .addGap(25, 25, 25)
+                        .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfProfissionalCtma, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(pnCadastrarNovoProfissionalLayout.createSequentialGroup()
+                                    .addComponent(tfProfissionalCep, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(tfProfissionalRua))
                                 .addGroup(pnCadastrarNovoProfissionalLayout.createSequentialGroup()
                                     .addComponent(tfProfissionalNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(36, 36, 36)
@@ -298,20 +289,25 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
                                     .addGap(18, 18, 18)
                                     .addComponent(tfProfissionalBairro))
                                 .addGroup(pnCadastrarNovoProfissionalLayout.createSequentialGroup()
-                                    .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(tfProfissionalCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tfProfissionalTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(pnCadastrarNovoProfissionalLayout.createSequentialGroup()
-                                            .addComponent(jLabel18)
-                                            .addGap(16, 16, 16)
-                                            .addComponent(cbProfissionalEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(73, 73, 73))
-                                        .addGroup(pnCadastrarNovoProfissionalLayout.createSequentialGroup()
-                                            .addComponent(jLabel10)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(tfProfissionalCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
+                                    .addComponent(tfProfissionalCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                                    .addComponent(jLabel18)
+                                    .addGap(16, 16, 16)
+                                    .addComponent(cbProfissionalEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(73, 73, 73)))))
+                    .addGroup(pnCadastrarNovoProfissionalLayout.createSequentialGroup()
+                        .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel19))
+                        .addGap(18, 18, 18)
+                        .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnCadastrarNovoProfissionalLayout.createSequentialGroup()
+                                .addComponent(tfProfissionalTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfProfissionalCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tfProfissionalComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(49, Short.MAX_VALUE))
         );
         pnCadastrarNovoProfissionalLayout.setVerticalGroup(
@@ -353,17 +349,17 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
                     .addComponent(tfProfissionalCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18)
                     .addComponent(cbProfissionalEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfProfissionalTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel19)
-                    .addComponent(tfProfissionalCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(tfProfissionalRCC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                    .addComponent(tfProfissionalComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfProfissionalTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel19)
+                    .addComponent(jLabel10)
+                    .addComponent(tfProfissionalCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btCancelarAtualizacaoProfissional, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btFinalizarCadastroProfissional, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -521,7 +517,7 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
         profissionalCadastro.setProfissional_estado(cbProfissionalEstado.getSelectedItem().toString());
         profissionalCadastro.setProfissional_telefone(tfProfissionalTelefone.getText());
         profissionalCadastro.setProfissional_celular(tfProfissionalCelular.getText());
-        profissionalCadastro.setProfissional_rcc(tfProfissionalRCC.getText());
+        profissionalCadastro.setProfissional_complemento(tfProfissionalComplemento.getText());
 
         return profissionalCadastro;
 
@@ -541,7 +537,7 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
         cbProfissionalEstado.setSelectedIndex(0);
         tfProfissionalTelefone.setText("");
         tfProfissionalCelular.setText("");
-        tfProfissionalRCC.setText("");
+        tfProfissionalComplemento.setText("");
         tpnAbasProfissionais.setTitleAt(0, "Cadastrar Novos Profissionais");
         btFinalizarCadastroProfissional.setToolTipText("Cadastrar");
         tpnAbasProfissionais.setEnabledAt(1, true);
@@ -619,7 +615,7 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
             cbProfissionalEstado.setSelectedItem(profissional.getProfissional_estado());
             tfProfissionalTelefone.setText(profissional.getProfissional_telefone());
             tfProfissionalCelular.setText(profissional.getProfissional_celular());
-            tfProfissionalRCC.setText(profissional.getProfissional_rcc());
+            tfProfissionalComplemento.setText(profissional.getProfissional_complemento());
 
             tpnAbasProfissionais.setSelectedIndex(0); // Mudando para a PRIMEIRA aba
 
@@ -748,7 +744,7 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
         cbProfissionalEstado.setSelectedIndex(0);
         tfProfissionalTelefone.setText("");
         tfProfissionalCelular.setText("");
-        tfProfissionalRCC.setText("");
+        tfProfissionalComplemento.setText("");
     }//GEN-LAST:event_btCancelarAtualizacaoProfissionalActionPerformed
 
     private void tfProfissionalBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfProfissionalBairroActionPerformed
@@ -827,13 +823,13 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
     private javax.swing.JFormattedTextField tfProfissionalCelular;
     private javax.swing.JFormattedTextField tfProfissionalCep;
     private javax.swing.JTextField tfProfissionalCidade;
+    private javax.swing.JTextField tfProfissionalComplemento;
     private javax.swing.JFormattedTextField tfProfissionalCpf;
     private javax.swing.JFormattedTextField tfProfissionalCrea;
     private javax.swing.JFormattedTextField tfProfissionalCtma;
     private javax.swing.JTextField tfProfissionalNome;
     private javax.swing.JTextField tfProfissionalNumero;
     private javax.swing.JTextField tfProfissionalProfissao;
-    private javax.swing.JTextField tfProfissionalRCC;
     private javax.swing.JTextField tfProfissionalRua;
     private javax.swing.JFormattedTextField tfProfissionalTelefone;
     private javax.swing.JTabbedPane tpnAbasProfissionais;

@@ -28,6 +28,7 @@ public class Cliente {
     private String cliente_telefone;
     private String cliente_celular;
     private String cliente_email;
+    private int categoria_id;
 
     public int getCliente_id() {
         return cliente_id;
@@ -164,6 +165,15 @@ public class Cliente {
     public void setCliente_email(String cliente_email) {
         this.cliente_email = cliente_email;
     }
+
+    public int getCategoria_id() {
+        return categoria_id;
+    }
+
+    public void setCategoria_id(int categoria_id) {
+        this.categoria_id = categoria_id;
+    }
+
 
  
 }

@@ -82,7 +82,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="btCancelarAtualizacaoCliente" max="-2" attributes="0"/>
-                                  <EmptySpace pref="231" max="32767" attributes="0"/>
+                                  <EmptySpace pref="235" max="32767" attributes="0"/>
                                   <Component id="btFinalizarCadastroCliente" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -94,17 +94,6 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="tfClienteNome" alignment="0" max="32767" attributes="0"/>
                                       <Component id="tfClienteFantasia" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="tfClienteTelefone" max="32767" attributes="0"/>
-                                      <Component id="tfClienteCelular" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -136,6 +125,22 @@
                                       <Component id="tfCliente_Cnpj" alignment="1" max="32767" attributes="0"/>
                                       <Component id="tfClienteCpf" alignment="1" max="32767" attributes="0"/>
                                       <Component id="cbClienteEstado" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="tfClienteTelefone" max="32767" attributes="0"/>
+                                      <Component id="tfClienteCelular" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="cbClienteAtividade" min="-2" pref="138" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
@@ -226,7 +231,12 @@
                               <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="tfClienteCelular" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbClienteAtividade" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="31" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="btFinalizarCadastroCliente" max="-2" attributes="0"/>
                               <Component id="btCancelarAtualizacaoCliente" max="-2" attributes="0"/>
@@ -346,7 +356,7 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel4">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Rua:"/>
+                    <Property name="text" type="java.lang.String" value="Logradouro:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel5">
@@ -453,6 +463,27 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="tfClienteEmail">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel14">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Atividade:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cbClienteAtividade">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="5">
+                        <StringItem index="0" value="--Selecionar--"/>
+                        <StringItem index="1" value="Restaurante"/>
+                        <StringItem index="2" value="Condom&#xed;nio"/>
+                        <StringItem index="3" value="Tur&#xed;stico"/>
+                        <StringItem index="4" value="Terraplanagem"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>

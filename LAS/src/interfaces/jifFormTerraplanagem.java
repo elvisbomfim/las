@@ -1958,7 +1958,7 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tfNomeClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfNomeClienteMouseClicked
-        TelaRelatorioCliente telaRelatorioCliente = new TelaRelatorioCliente(null, true);
+        TelaRelatorioCliente telaRelatorioCliente = new TelaRelatorioCliente(null, true, 4);
         telaRelatorioCliente.setVisible(true);
         // Criando o contratante à receber o contratante da tela relatoriorecibo
         Cliente clienteSelecionado = new Cliente();
