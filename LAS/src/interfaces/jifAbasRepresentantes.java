@@ -54,13 +54,18 @@ public class jifAbasRepresentantes extends javax.swing.JInternalFrame {
 
         buscarRepresentantesTabela();
 
-        tfRepresentanteNome.setText("");
-        tfRepresentanteRua.setText("");
-        tfRepresentanteNumero.setText("");
-        tfRepresentanteComplemento.setText("");
-        tfRepresentanteBairro.setText("");
-        tfRepresentanteCidade.setText("");
-        tfRepresentanteNacionalidade.setText("");
+        tfRepresentanteNome.setDocument(new LetrasMaiusculas());
+        tfRepresentanteRua.setDocument(new LetrasMaiusculas());
+        tfRepresentanteNumero.setDocument(new LetrasMaiusculas());
+        tfRepresentanteComplemento.setDocument(new LetrasMaiusculas());
+        tfRepresentanteBairro.setDocument(new LetrasMaiusculas());
+        tfRepresentanteCidade.setDocument(new LetrasMaiusculas());
+        tfRepresentanteCep.setDocument(new LetrasMaiusculas());
+        tfRepresentanteCpf.setDocument(new LetrasMaiusculas());
+        tfRepresentanteTelefone.setDocument(new LetrasMaiusculas());
+        tfRepresentanteCelular.setDocument(new LetrasMaiusculas());
+        tfRepresentanteNacionalidade.setDocument(new LetrasMaiusculas());
+
     }
 
     public void buscarRepresentantesTabela() {
@@ -88,17 +93,18 @@ public class jifAbasRepresentantes extends javax.swing.JInternalFrame {
     }
 
     public void limparCamposCadastroRepresentante() {
-        tfRepresentanteNome.setDocument(new LetrasMaiusculas());
-        tfRepresentanteRua.setDocument(new LetrasMaiusculas());
-        tfRepresentanteNumero.setDocument(new LetrasMaiusculas());
-        tfRepresentanteComplemento.setDocument(new LetrasMaiusculas());
-        tfRepresentanteBairro.setDocument(new LetrasMaiusculas());
-        tfRepresentanteCidade.setDocument(new LetrasMaiusculas());
-        tfRepresentanteCep.setDocument(new LetrasMaiusculas());
-        tfRepresentanteCpf.setDocument(new LetrasMaiusculas());
-        tfRepresentanteTelefone.setDocument(new LetrasMaiusculas());
-        tfRepresentanteCelular.setDocument(new LetrasMaiusculas());
-        tfRepresentanteNacionalidade.setDocument(new LetrasMaiusculas());
+
+        tfRepresentanteNome.setText("");
+        tfRepresentanteRua.setText("");
+        tfRepresentanteNumero.setText("");
+        tfRepresentanteComplemento.setText("");
+        tfRepresentanteBairro.setText("");
+        tfRepresentanteCidade.setText("");
+        tfRepresentanteCep.setText("");
+        tfRepresentanteCpf.setText("");
+        tfRepresentanteTelefone.setText("");
+        tfRepresentanteCelular.setText("");
+        tfRepresentanteNacionalidade.setText("");
 
         cbRepresentanteEstado.setSelectedIndex(0);
 

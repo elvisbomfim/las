@@ -26,7 +26,7 @@ public class ClienteBD extends ConexaoBanco {
 
             stm = con.createStatement();
 
-            //String dtNasc = aluno.getDataNascimento().get(Calendar.YEAR)+"-"+(aluno.getDataNascimento().get(Calendar.MONTH)+1)+"-"+aluno.getDataNascimento().get(Calendar.DAY_OF_MONTH);
+            String data = cliente.getCliente_data_atividade().get(Calendar.YEAR) + "-" + (cliente.getCliente_data_atividade().get(Calendar.MONTH) + 1) + "-" + cliente.getCliente_data_atividade().get(Calendar.DAY_OF_MONTH);
             sql = "INSERT INTO CLIENTE "
                     + "(CLIENTE_NOME, "
                     + "CLIENTE_FANTASIA, "
@@ -44,6 +44,9 @@ public class ClienteBD extends ConexaoBanco {
                     + "CLIENTE_TELEFONE, "
                     + "CLIENTE_CELULAR,"
                     + "CLIENTE_EMAIL,"
+                    + "CLIENTE_DATA_ATIVIDADE,"
+                    + "CLIENTE_UTMN,"
+                    + "CLIENTE_UTME,"
                     + "CATEGORIA_ID)"
                     + "VALUES ('"
                     + cliente.getCliente_nome() + "', '"
@@ -61,7 +64,10 @@ public class ClienteBD extends ConexaoBanco {
                     + cliente.getCliente_cep() + "', '"
                     + cliente.getCliente_telefone() + "', '"
                     + cliente.getCliente_celular() + "', '"
-                    + cliente.getCliente_email()+ "', "
+                    + cliente.getCliente_email() + "', '"
+                    + data + "', '"
+                    + cliente.getCliente_utmn() + "', '"
+                    + cliente.getCliente_utme() + "', "
                     + cliente.getCategoria_id() + ")";
 
             stm.executeUpdate(sql);
@@ -96,7 +102,7 @@ public class ClienteBD extends ConexaoBanco {
 
             stm.executeUpdate(sql);
 
-            sql = "DELETE FROM RELATORIO WHERE cliente_id=" + cliente_id;
+            sql = "DELETE FROM RECIBO WHERE cliente_id=" + cliente_id;
 
             stm.executeUpdate(sql);
 
@@ -119,10 +125,10 @@ public class ClienteBD extends ConexaoBanco {
 
             stm = con.createStatement();
 
-            //String dtNasc = aluno.getDataNascimento().get(Calendar.YEAR)+"-"+(aluno.getDataNascimento().get(Calendar.MONTH)+1)+"-"+aluno.getDataNascimento().get(Calendar.DAY_OF_MONTH);
+            String data = cliente.getCliente_data_atividade().get(Calendar.YEAR) + "-" + (cliente.getCliente_data_atividade().get(Calendar.MONTH) + 1) + "-" + cliente.getCliente_data_atividade().get(Calendar.DAY_OF_MONTH);
             // CLIENTE_CONTRATANTE, CLIENTE_NOME, CLIENTE_FANTASIA, CLIENTE_CNPJ_CPF, CLIENTE_INSC_ESTADUAL, CLIENTE_INSC_MUNICIPAL, CLIENTE_ENDERECO, CLIENTE_NUMERO, CLIENTE_COMPLEMENTO, CLIENTE_BAIRRO, CLIENTE_MUNICIPIO, CLIENTE_ESTADO, CLIENTE_CEP, CLIENTE_TELEFONE, CLIENTE_CELULAR
             sql = "UPDATE CLIENTE "
-                    + "SET CLIENTE_NOME='" + cliente.getCliente_nome() + "', CLIENTE_FANTASIA='" + cliente.getCliente_fantasia() + "', CLIENTE_CPF='" + cliente.getCliente_cpf() + "', CLIENTE_CNPJ='" + cliente.getCliente_cnpj() + "', CLIENTE_INSC_ESTADUAL='" + cliente.getCliente_insc_estadual() + "', CLIENTE_INSC_MUNICIPAL='" + cliente.getCliente_insc_municipal() + "', CLIENTE_ENDERECO='" + cliente.getCliente_endereco() + "', CLIENTE_NUMERO='" + cliente.getCliente_numero() + "', CLIENTE_COMPLEMENTO='" + cliente.getCliente_complemento() + "', CLIENTE_BAIRRO='" + cliente.getCliente_bairro() + "', CLIENTE_MUNICIPIO='" + cliente.getCliente_municipio() + "', CLIENTE_ESTADO='" + cliente.getCliente_estado() + "', CLIENTE_CEP='" + cliente.getCliente_cep() + "', CLIENTE_TELEFONE='" + cliente.getCliente_telefone() + "', CLIENTE_CELULAR='" + cliente.getCliente_celular() + "', CLIENTE_EMAIL='" + cliente.getCliente_email() + "', CATEGORIA_ID=" + cliente.getCategoria_id() + " "
+                    + "SET CLIENTE_NOME='" + cliente.getCliente_nome() + "', CLIENTE_FANTASIA='" + cliente.getCliente_fantasia() + "', CLIENTE_CPF='" + cliente.getCliente_cpf() + "', CLIENTE_CNPJ='" + cliente.getCliente_cnpj() + "', CLIENTE_INSC_ESTADUAL='" + cliente.getCliente_insc_estadual() + "', CLIENTE_INSC_MUNICIPAL='" + cliente.getCliente_insc_municipal() + "', CLIENTE_ENDERECO='" + cliente.getCliente_endereco() + "', CLIENTE_NUMERO='" + cliente.getCliente_numero() + "', CLIENTE_COMPLEMENTO='" + cliente.getCliente_complemento() + "', CLIENTE_BAIRRO='" + cliente.getCliente_bairro() + "', CLIENTE_MUNICIPIO='" + cliente.getCliente_municipio() + "', CLIENTE_ESTADO='" + cliente.getCliente_estado() + "', CLIENTE_CEP='" + cliente.getCliente_cep() + "', CLIENTE_TELEFONE='" + cliente.getCliente_telefone() + "', CLIENTE_CELULAR='" + cliente.getCliente_celular() + "', CLIENTE_EMAIL='" + cliente.getCliente_email() + "', CLIENTE_DATA_ATIVIDADE='" + data + "', CLIENTE_UTMN='" + cliente.getCliente_utmn() + "', CLIENTE_UTME='" + cliente.getCliente_utme() + "', CATEGORIA_ID=" + cliente.getCategoria_id() + " "
                     + "WHERE cliente_id=" + cliente_id;
 
             stm.executeUpdate(sql);
@@ -172,6 +178,9 @@ public class ClienteBD extends ConexaoBanco {
                 cliente.setCliente_telefone(tabelaRetornada.getString("CLIENTE_TELEFONE"));
                 cliente.setCliente_celular(tabelaRetornada.getString("CLIENTE_CELULAR"));
                 cliente.setCliente_email(tabelaRetornada.getString("CLIENTE_EMAIL"));
+                cliente.setCliente_utmn(tabelaRetornada.getString("CLIENTE_UTMN"));
+                cliente.setCliente_utme(tabelaRetornada.getString("CLIENTE_UTME"));
+                cliente.setCliente_data_atividade(retornaDateBanco(tabelaRetornada.getDate("CLIENTE_DATA_ATIVIDADE")));
                 cliente.setCategoria_id(tabelaRetornada.getInt("CATEGORIA_ID"));
 
                 listaClientes.add(cliente);
@@ -195,7 +204,7 @@ public class ClienteBD extends ConexaoBanco {
             conectarBanco();
 
             stm = con.createStatement();
- 
+
             if (id == 0) {
                 sql = "SELECT * "
                         + "FROM CLIENTE WHERE CLIENTE_CPF = '" + cpf + "'";
@@ -248,7 +257,7 @@ public class ClienteBD extends ConexaoBanco {
             return situacao;
         }
     }
-    
+
     public ArrayList<Cliente> selecionarClientesCategoria(int categoria_id) {
         ArrayList<Cliente> listaClientes = new ArrayList();
         Cliente cliente = new Cliente();
@@ -260,7 +269,7 @@ public class ClienteBD extends ConexaoBanco {
 
             sql = "SELECT c.* FROM cliente c "
                     + "INNER JOIN categoria cat ON cat.categoria_id = c.categoria_id "
-                    + "WHERE cat.categoria_id = " + categoria_id +" ORDER by c.cliente_id DESC";
+                    + "WHERE cat.categoria_id = " + categoria_id + " ORDER by c.cliente_id DESC";
 
             tabelaRetornada = stm.executeQuery(sql);
 
@@ -286,6 +295,9 @@ public class ClienteBD extends ConexaoBanco {
                 cliente.setCliente_telefone(tabelaRetornada.getString("CLIENTE_TELEFONE"));
                 cliente.setCliente_celular(tabelaRetornada.getString("CLIENTE_CELULAR"));
                 cliente.setCliente_email(tabelaRetornada.getString("CLIENTE_EMAIL"));
+                cliente.setCliente_utmn(tabelaRetornada.getString("CLIENTE_UTMN"));
+                cliente.setCliente_utme(tabelaRetornada.getString("CLIENTE_UTME"));
+                cliente.setCliente_data_atividade(retornaDateBanco(tabelaRetornada.getDate("CLIENTE_DATA_ATIVIDADE")));
 
                 listaClientes.add(cliente);
             }
@@ -297,7 +309,7 @@ public class ClienteBD extends ConexaoBanco {
             return listaClientes;
         }
 
-    }    
+    }
 
     public Calendar retornaDateBanco(Date dataBanco) {
         Calendar cal = Calendar.getInstance();

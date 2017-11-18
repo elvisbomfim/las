@@ -21,23 +21,28 @@ public class TelaRelatorioCliente extends javax.swing.JDialog {
     ArrayList<Cliente> listaOriginalTemporariaCliente = new ArrayList();
     Cliente clienteSelecionado = new Cliente();
     int categoria = 0;
+
     /**
      * Creates new form TelaRelatorioRecibo
      */
     public TelaRelatorioCliente(java.awt.Frame parent, boolean modal, int categoria_id) {
         super(parent, modal);
         initComponents();
-        
+
         this.categoria = categoria_id;
-        
+
         this.setLocationRelativeTo(parent);
         this.setTitle("Gerencia de clientes");
         tfBuscarCliente.requestFocus();
         tbListaClientes.setModel(modeloTabelaCliente);
         tbListaClientes.getTableHeader().setReorderingAllowed(false);
 
-        buscarClientesNaTabela(categoria_id);
-        
+        if (this.categoria == 4) {
+            buscarClientes();
+        } else {
+            buscarClientesNaTabela(categoria_id);
+        }
+
         System.out.println(this.categoria);
     }
 
@@ -155,23 +160,46 @@ public class TelaRelatorioCliente extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tfBuscarClienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfBuscarClienteKeyReleased
-        if (tfBuscarCliente.getText().isEmpty()) {
-            modeloTabelaCliente.inserirListaClientes(conexaoTabelaCliente.selecionarClientesCategoria(this.categoria));
-        } else {
-            modeloTabelaCliente.inserirListaClientes(conexaoTabelaCliente.selecionarClientesCategoria(this.categoria));
-            listaOriginalTemporariaCliente.clear();
+        if (this.categoria == 4) {
+            if (tfBuscarCliente.getText().isEmpty()) {
+                modeloTabelaCliente.inserirListaClientes(conexaoTabelaCliente.selecionarTodosClientes());
+            } else {
+                modeloTabelaCliente.inserirListaClientes(conexaoTabelaCliente.selecionarTodosClientes());
+                listaOriginalTemporariaCliente.clear();
 
-            for (int i = 0; i < modeloTabelaCliente.retornaListaClientes().size(); i++) {
-                if (modeloTabelaCliente.retornaListaClientes().get(i).getCliente_nome().toLowerCase().contains(tfBuscarCliente.getText().toLowerCase())) {
-                    listaOriginalTemporariaCliente.add(modeloTabelaCliente.retornaListaClientes().get(i));
+                for (int i = 0; i < modeloTabelaCliente.retornaListaClientes().size(); i++) {
+                    if (modeloTabelaCliente.retornaListaClientes().get(i).getCliente_nome().toLowerCase().contains(tfBuscarCliente.getText().toLowerCase())) {
+                        listaOriginalTemporariaCliente.add(modeloTabelaCliente.retornaListaClientes().get(i));
+                    }
                 }
+
+                modeloTabelaCliente.inserirListaClientes(listaOriginalTemporariaCliente);
+
             }
 
-            modeloTabelaCliente.inserirListaClientes(listaOriginalTemporariaCliente);
+            tbListaClientes.updateUI();
+            
+        } else {
+            if (tfBuscarCliente.getText().isEmpty()) {
+                modeloTabelaCliente.inserirListaClientes(conexaoTabelaCliente.selecionarClientesCategoria(this.categoria));
+            } else {
+                modeloTabelaCliente.inserirListaClientes(conexaoTabelaCliente.selecionarClientesCategoria(this.categoria));
+                listaOriginalTemporariaCliente.clear();
 
+                for (int i = 0; i < modeloTabelaCliente.retornaListaClientes().size(); i++) {
+                    if (modeloTabelaCliente.retornaListaClientes().get(i).getCliente_nome().toLowerCase().contains(tfBuscarCliente.getText().toLowerCase())) {
+                        listaOriginalTemporariaCliente.add(modeloTabelaCliente.retornaListaClientes().get(i));
+                    }
+                }
+
+                modeloTabelaCliente.inserirListaClientes(listaOriginalTemporariaCliente);
+
+            }
+
+            tbListaClientes.updateUI();
+            
         }
 
-        tbListaClientes.updateUI();
     }//GEN-LAST:event_tfBuscarClienteKeyReleased
 
     private void btCancelarSelecaoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarSelecaoClienteActionPerformed
@@ -209,8 +237,16 @@ public class TelaRelatorioCliente extends javax.swing.JDialog {
     }
 
     public void buscarClientesNaTabela(int cate) {
-        
+
         modeloTabelaCliente.inserirListaClientes(conexaoTabelaCliente.selecionarClientesCategoria(cate));
+        listaOriginalTemporariaCliente = modeloTabelaCliente.retornaListaClientes();
+        tbListaClientes.updateUI();
+
+    }
+
+    public void buscarClientes() {
+
+        modeloTabelaCliente.inserirListaClientes(conexaoTabelaCliente.selecionarTodosClientes());
         listaOriginalTemporariaCliente = modeloTabelaCliente.retornaListaClientes();
         tbListaClientes.updateUI();
 

@@ -5,6 +5,8 @@
  */
 package modelos;
 
+import java.util.Calendar;
+
 /**
  *
  * @author Jean
@@ -28,6 +30,9 @@ public class Cliente {
     private String cliente_telefone;
     private String cliente_celular;
     private String cliente_email;
+    private Calendar cliente_data_atividade;
+    private String cliente_utmn;
+    private String cliente_utme;
     private int categoria_id;
 
     public int getCliente_id() {
@@ -166,6 +171,30 @@ public class Cliente {
         this.cliente_email = cliente_email;
     }
 
+    public Calendar getCliente_data_atividade() {
+        return cliente_data_atividade;
+    }
+
+    public void setCliente_data_atividade(Calendar cliente_data_atividade) {
+        this.cliente_data_atividade = cliente_data_atividade;
+    }
+
+    public String getCliente_utmn() {
+        return cliente_utmn;
+    }
+
+    public void setCliente_utmn(String cliente_utmn) {
+        this.cliente_utmn = cliente_utmn;
+    }
+
+    public String getCliente_utme() {
+        return cliente_utme;
+    }
+
+    public void setCliente_utme(String cliente_utme) {
+        this.cliente_utme = cliente_utme;
+    }
+
     public int getCategoria_id() {
         return categoria_id;
     }
@@ -173,7 +202,6 @@ public class Cliente {
     public void setCategoria_id(int categoria_id) {
         this.categoria_id = categoria_id;
     }
-
 
  
 }

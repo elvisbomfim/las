@@ -13,10 +13,12 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -52,10 +54,10 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
     /**
      * Strings concatenadas
      */
-    String CheckBoxFAA="";
-    String CheckBoxFGE="";
-    String CheckBoxGR="";
-    String CheckBoxEA="";
+    String CheckBoxFAA = "";
+    String CheckBoxFGE = "";
+    String CheckBoxGR = "";
+    String CheckBoxEA = "";
 
     /**
      * Creates new form jifFormRestaurante
@@ -205,6 +207,10 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
         rbInseridoEmAreaOutra = new javax.swing.JRadioButton();
         jLabel11 = new javax.swing.JLabel();
         tfInseridoEmAreaOutraEspecificar = new javax.swing.JTextField();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        tfLeiPerimetroUrbano = new javax.swing.JTextField();
+        tfPlanoDiretorUrbano = new javax.swing.JTextField();
         jPanel30 = new javax.swing.JPanel();
         jLabel79 = new javax.swing.JLabel();
         rbDeclividadeNao = new javax.swing.JRadioButton();
@@ -333,8 +339,8 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
         tfSDPEEspecificar = new javax.swing.JTextField();
         jPanel32 = new javax.swing.JPanel();
         jLabel64 = new javax.swing.JLabel();
-        rbMovimentacaoTerraSim = new javax.swing.JRadioButton();
         rbMovimentacaoTerraNao = new javax.swing.JRadioButton();
+        rbMovimentacaoTerraSim = new javax.swing.JRadioButton();
         jLabel84 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         ckbEAProveniente = new javax.swing.JCheckBox();
@@ -351,6 +357,7 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
         jPanel10 = new javax.swing.JPanel();
         btCancelarAtualizacao = new javax.swing.JButton();
         btFinalizarCadastro = new javax.swing.JButton();
+        jLabel31 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jPanel33 = new javax.swing.JPanel();
         jLabel86 = new javax.swing.JLabel();
@@ -381,6 +388,12 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         jLabel1.setText("Área útil:");
+
+        tfAreaUtil.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfAreaUtilFocusLost(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "INFORMAÇÕES DO EMPREENDIMENTO", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
@@ -449,15 +462,20 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
                             .addComponent(tfNomeCliente)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(tfNomeFantasia)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                         .addComponent(tfCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel18)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(tfCep))
-                                    .addComponent(tfEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(tfEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tfCpfCnpj))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel7)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -465,17 +483,11 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel8)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tfBairro))
+                                        .addComponent(tfBairro, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel19)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tfTelefone))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(tfNomeFantasia, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfCpfCnpj, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE))))
+                                        .addComponent(tfTelefone))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel70)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -492,12 +504,11 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
                     .addComponent(tfNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(tfCpfCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfCpfCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel3)
-                        .addComponent(tfNomeFantasia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(tfNomeFantasia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel6)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -612,6 +623,12 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
         jLabel74.setText("Áreas:");
 
         jLabel75.setText("Lote de de menor área:");
+
+        tfLoteMenorArea.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfLoteMenorAreaFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
         jPanel24.setLayout(jPanel24Layout);
@@ -924,6 +941,10 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
 
         jLabel11.setText("Especificar:");
 
+        jLabel32.setText("Lei de perímetro urbado:");
+
+        jLabel33.setText("Plano Diretor Urbano Lei Nº:");
+
         javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
         jPanel29.setLayout(jPanel29Layout);
         jPanel29Layout.setHorizontalGroup(
@@ -931,10 +952,21 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
             .addGroup(jPanel29Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(rbLocalizacaoZonaUrbana)
-                    .addComponent(rbLocalizacaoZonaRural))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel29Layout.createSequentialGroup()
+                        .addComponent(jLabel33)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tfPlanoDiretorUrbano))
+                    .addGroup(jPanel29Layout.createSequentialGroup()
+                        .addComponent(jLabel32)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(tfLeiPerimetroUrbano, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel29Layout.createSequentialGroup()
+                        .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addComponent(rbLocalizacaoZonaUrbana)
+                            .addComponent(rbLocalizacaoZonaRural))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel29Layout.createSequentialGroup()
                         .addComponent(rbInseridoEmAreaOutra)
@@ -969,11 +1001,18 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
                     .addComponent(rbInseridoEmAreaMista))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbLocalizacaoZonaRural)
                     .addComponent(rbInseridoEmAreaOutra)
                     .addComponent(jLabel11)
-                    .addComponent(tfInseridoEmAreaOutraEspecificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(tfInseridoEmAreaOutraEspecificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel32)
+                    .addComponent(tfLeiPerimetroUrbano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel33)
+                    .addComponent(tfPlanoDiretorUrbano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addComponent(rbLocalizacaoZonaRural)
+                .addContainerGap())
         );
 
         jPanel30.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -1080,7 +1119,11 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
 
         jLabel20.setText("UTM (N):");
 
+        tfCoordenadasUtmN.setEditable(false);
+
         jLabel21.setText("UTM (E):");
+
+        tfCoordenadasUtmE.setEditable(false);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -1214,6 +1257,8 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
 
         jLabel26.setText("Previsão de Consumo de água:");
 
+        tfFAAConsumoDeAgua.setText("150");
+
         jLabel27.setText("L/hab.dia.");
 
         ckbFAAOutorga.setText("Outorga para uso de recurso hídrico.");
@@ -1231,6 +1276,8 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
         ckbFAAOpcaoLonga.setText("<html>Não passível atualmente de outorga ou dispensa: realiza captação de águas subterrâneas, pluviais, não utiliza recurso hídrico<br> diretamente para abastecimento próprio e não realiza lançamento de efluentes em corpos de água (serviços disponibilizados pela<br> concessionária de água e esgoto).</html>");
 
         jLabel58.setText("Informar nome da Concessionária / Empresa:");
+
+        tfFAAEmpresa.setText("CESAN");
 
         jLabel61.setText("Informar: Tipo:");
 
@@ -1840,17 +1887,17 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
 
         jLabel64.setText("Haverá movimentação de terra na área?");
 
-        rbMovimentacaoTerraSim.setText("Não.");
-        rbMovimentacaoTerraSim.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                rbMovimentacaoTerraSimMouseClicked(evt);
-            }
-        });
-
-        rbMovimentacaoTerraNao.setText("Sim.");
+        rbMovimentacaoTerraNao.setText("Não.");
         rbMovimentacaoTerraNao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 rbMovimentacaoTerraNaoMouseClicked(evt);
+            }
+        });
+
+        rbMovimentacaoTerraSim.setText("Sim.");
+        rbMovimentacaoTerraSim.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rbMovimentacaoTerraSimMouseClicked(evt);
             }
         });
 
@@ -1865,11 +1912,11 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
                 .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel32Layout.createSequentialGroup()
                         .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rbMovimentacaoTerraSim)
+                            .addComponent(rbMovimentacaoTerraNao)
                             .addComponent(jLabel64))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel32Layout.createSequentialGroup()
-                        .addComponent(rbMovimentacaoTerraNao)
+                        .addComponent(rbMovimentacaoTerraSim)
                         .addGap(78, 78, 78)
                         .addComponent(jLabel84)
                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -1880,10 +1927,10 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel64)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rbMovimentacaoTerraSim)
+                .addComponent(rbMovimentacaoTerraNao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbMovimentacaoTerraNao)
+                    .addComponent(rbMovimentacaoTerraSim)
                     .addComponent(jLabel84))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1967,7 +2014,7 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
                         .addGroup(pnCROQUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblImagem))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 6, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnCROQUILayout.setVerticalGroup(
@@ -2020,18 +2067,22 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
                 .addGap(28, 28, 28))
         );
 
+        jLabel31.setText("m²");
+
         javax.swing.GroupLayout pnCondominioLayout = new javax.swing.GroupLayout(pnCondominio);
         pnCondominio.setLayout(pnCondominioLayout);
         pnCondominioLayout.setHorizontalGroup(
             pnCondominioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(pnCondominioLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(39, Short.MAX_VALUE)
                 .addGroup(pnCondominioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnCondominioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(pnCondominioLayout.createSequentialGroup()
                             .addComponent(jLabel1)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(tfAreaUtil, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfAreaUtil, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel31)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jLabel69)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2062,7 +2113,8 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1)
                     .addComponent(tfAreaUtil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel69)
-                    .addComponent(tfNHabitacoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfNHabitacoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel31))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2252,11 +2304,17 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
             tfBairro.setText(clienteSelecionado.getCliente_bairro());
             tfTelefone.setText(clienteSelecionado.getCliente_telefone());
             tfCep.setText(clienteSelecionado.getCliente_cep());
-            if (clienteSelecionado.getCliente_cpf() != null) {
-                tfCpfCnpj.setText(clienteSelecionado.getCliente_cpf());
+            tfCoordenadasUtmN.setText(clienteSelecionado.getCliente_utmn());
+            tfCoordenadasUtmE.setText(clienteSelecionado.getCliente_utme());
+            if ((clienteSelecionado.getCliente_cnpj().equals("  .   .   /    -  ") == false) && (clienteSelecionado.getCliente_cpf().equals("   .   .   -  ") == false)) {
+                tfCpfCnpj.setText(clienteSelecionado.getCliente_cpf() + " - " + clienteSelecionado.getCliente_cnpj());
             } else {
-                if (clienteSelecionado.getCliente_cpf() != null) {
-                    tfCpfCnpj.setText(clienteSelecionado.getCliente_cnpj());
+                if (clienteSelecionado.getCliente_cpf().equals("   .   .   -  ") == false) {
+                    tfCpfCnpj.setText(clienteSelecionado.getCliente_cpf());
+                } else {
+                    if (clienteSelecionado.getCliente_cnpj().equals("  .   .   /    -  ") == false) {
+                        tfCpfCnpj.setText(clienteSelecionado.getCliente_cnpj());
+                    }
                 }
             }
             clienteTemporario = telaRelatorioCliente.retornarClienteSelecionado();
@@ -2279,14 +2337,14 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
         if (rbTipoFinanciamentoSim.isSelected()) {
             condominioCadastro.setRELATORIO_TIPO_DE_FINANCIAMENTO(1);
         }
-        if (rbTipoFinanciamentoSim.isSelected()) {
+        if (rbTipoFinanciamentoNao.isSelected()) {
             condominioCadastro.setRELATORIO_TIPO_DE_FINANCIAMENTO(0);
         }
         if (rbLocalizacaoZonaUrbana.isSelected()) {
             condominioCadastro.setRELATORIO_LOCALIZACAO(0);
         }
         if (rbLocalizacaoZonaRural.isSelected()) {
-            condominioCadastro.setRELATORIO_LOCALIZACAO(0);
+            condominioCadastro.setRELATORIO_LOCALIZACAO(1);
         }
         if (rbInseridoEmAreaIndustrial.isSelected()) {
             condominioCadastro.setRELATORIO_INSERIDO_EM_AREA(0);
@@ -2304,6 +2362,8 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
             condominioCadastro.setRELATORIO_INSERIDO_EM_AREA(4);
         }
         condominioCadastro.setRELATORIO_INSERIDO_EM_AREA_OUTRA_ESPECIFICAR(tfInseridoEmAreaOutraEspecificar.getText());
+        condominioCadastro.setRELATORIO_LOCALIZACAO_LEI(tfLeiPerimetroUrbano.getText());
+        condominioCadastro.setRELATORIO_LOCALIZACAO_PLANO(tfPlanoDiretorUrbano.getText());
         if (rbHaResidenciasSim.isSelected()) {
             condominioCadastro.setRELATORIO_HA_RESIDENCIAS(1);
         }
@@ -2322,7 +2382,7 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
         if (rbHaPatrimonioSim.isSelected()) {
             condominioCadastro.setRELATORIO_HA_PATRIMONIO(1);
         }
-        if (rbHaPatrimonioSim.isSelected()) {
+        if (rbHaPatrimonioNao.isSelected()) {
             condominioCadastro.setRELATORIO_HA_PATRIMONIO(0);
         }
         condominioCadastro.setRELATORIO_N_IPHAN(tfNIphan.getText());
@@ -2434,10 +2494,10 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
         condominioCadastro.setRELATORIO_F_A_A_CONSUMO_DE_AGUA(tfFAAConsumoDeAgua.getText());
         condominioCadastro.setRELATORIO_F_A_A_N_DOCUMENTO_OUTORGA_R_H(tfFAANDocumentoOutorgaRh.getText());
         condominioCadastro.setRELATORIO_F_A_A_N_DOCUMENTO_CERTIDAO_D_O(tfFAANDocumentoCertidaoDo.getText());
-        if (rbMovimentacaoTerraSim.isSelected()) {
+        if (rbMovimentacaoTerraNao.isSelected()) {
             condominioCadastro.setRELATORIO_MOVIMENTACAO_DE_TERRA(1);
         }
-        if (rbMovimentacaoTerraNao.isSelected()) {
+        if (rbMovimentacaoTerraSim.isSelected()) {
             condominioCadastro.setRELATORIO_MOVIMENTACAO_DE_TERRA(0);
         }
         if (ckbGRAlojamento.isSelected()) {
@@ -2486,12 +2546,15 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
             CheckBoxGR += "ckbGRToneisBombados-";
         }
         condominioCadastro.setRELATORIO_GERENCIAMENTO_DE_RESIDUOS(CheckBoxGR);
+        condominioCadastro.setRELATORIO_G_R_CONSUMEO_DE_AGUA_L_DIA(GRConsumoAguaLDia.getText());
+        condominioCadastro.setRELATORIO_G_R_CONSUMEO_DE_AGUA_M_MES(GRConsumoAguaMMes.getText());
         condominioCadastro.setRELATORIO_G_R_ESPECIFICAR_1(tfGREspecificar1.getText());
         condominioCadastro.setRELATORIO_G_R_ESPECIFICAR_2(tfGREspecificar2.getText());
         condominioCadastro.setRELATORIO_G_R_NOME_1(tfGRNome1.getText());
         condominioCadastro.setRELATORIO_G_R_NOME_2(tfGRNome2.getText());
         condominioCadastro.setRELATORIO_G_R_NUMERO_LICENCA_1(tfGRNumeroLicenca1.getText());
         condominioCadastro.setRELATORIO_G_R_NUMERO_LICENCA_2(tfGRNumeroLicenca2.getText());
+        condominioCadastro.setRELATORIO_G_R_NUMERO_LICENCA_3(tfGRNDeclaracao.getText());
         if (ckbEAProveniente.isSelected()) {
             CheckBoxEA += "ckbEAProveniente";
         }
@@ -2539,9 +2602,9 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
             } catch (IOException ex) {
                 Logger.getLogger(jifFormRestautante.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }else{           
-                condominioCadastro.setRELATORIO_CROQUI_DE_LOCALIZACAO_EMPREENDIMENTO("sem_imagem.jpg");   
-                imagem = null;
+        } else {
+            condominioCadastro.setRELATORIO_CROQUI_DE_LOCALIZACAO_EMPREENDIMENTO("sem_imagem.jpg");
+            imagem = null;
         }
         return condominioCadastro;
 
@@ -2568,10 +2631,12 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
             tpnAbasCondominios.setEnabledAt(1, true);
             btCancelarAtualizacao.setVisible(false);
             imagem = null;
-            CheckBoxFAA="";
-            CheckBoxFGE="";
-            CheckBoxGR="";
-            CheckBoxEA="";            
+            CheckBoxFAA = "";
+            CheckBoxFGE = "";
+            CheckBoxGR = "";
+            CheckBoxEA = "";
+            tfAreaUtil.setText("");
+            tfNHabitacoes.setText("");
             tfNomeCliente.setText("");
             tfNomeFantasia.setText("");
             tfEndereco.setText("");
@@ -2581,6 +2646,10 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
             tfBairro.setText("");
             tfTelefone.setText("");
             tfCep.setText("");
+            tfCoordenadasUtmN.setText("");
+            tfCoordenadasUtmE.setText("");
+            rbTipoFinanciamentoSim.setSelected(false);
+            rbTipoFinanciamentoNao.setSelected(false);
             rbLocalizacaoZonaUrbana.setSelected(false);
             rbLocalizacaoZonaRural.setSelected(false);
             rbInseridoEmAreaIndustrial.setSelected(false);
@@ -2593,11 +2662,24 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
             rbHaResidenciasNao.setSelected(false);
             rbAreaDaUcSim.setSelected(false);
             tfAreaDaUcNDocumento.setText("");
+            tfAreaDaUcAdministrador.setText("");
             tfAreaDaUcNome.setText("");
             rbAreaDaUcNao.setSelected(false);
+            rbHaPatrimonioSim.setSelected(false);
             rbSuprecaoVegetacaoSim.setSelected(false);
+            rbSuprecaoVegetacaoNao.setSelected(false);
+            tfNIphan.setText("");
             tfSuprecaoVegetacaoDocumentoIdaf.setText("");
             rbSuprecaoVegetacaoNao.setSelected(false);
+            tfLoteMenorArea.setText("");
+            rbCondicoesTerrenoNao.setSelected(false);
+            rbCondicoesTerrenoSim.setSelected(false);
+            rbCondicoesTerrenoOpcoesExecucao.setSelected(false);
+            rbCondicoesTerrenoOpcoesOutraSolucao.setSelected(false);
+            tfCondicoesTerrenoEspecificar.setText("");
+            rbDeclividadeNao.setSelected(false);
+            rbDeclividadeSim.setSelected(false);
+            tfDeclividadeEspecificar.setText("");
             tfCoordenadasUtmN.setText("");
             tfCoordenadasUtmE.setText("");
             rbISAPlanejamento.setSelected(false);
@@ -2605,6 +2687,10 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
             rbISAOperacao.setSelected(false);
             tfISAPrevisaoVegetacao.setText("");
             tfNEmpregados.setText("");
+            rbSDPEEscoamentoSuperficial.setSelected(false);
+            rbSDPERedeColetora.setSelected(false);
+            rbSDPEOutros.setSelected(false);
+            tfSDPEEspecificar.setText("");
             ckbFAARedePublica.setSelected(false);
             ckbFAAPoco.setSelected(false);
             ckbFAAReservatorios.setSelected(false);
@@ -2620,6 +2706,7 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
             ckbFAACertidao.setSelected(false);
             ckbFAAFederal.setSelected(false);
             ckbFAAEstadual.setSelected(false);
+            tfFAANDocumentoCertidaoDo.setText("");
             ckbFAAOpcaoLonga.setSelected(false);
             tfFAAEmpresa.setText("");
             tfFAAPocoTipo.setText("");
@@ -2627,13 +2714,47 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
             tfFAANumeroLicenca.setText("");
             tfFAACursoDaguaNome.setText("");
             tfFAALagoNome.setText("");
-            tfFAAOutrasEspecificar.setText("");;
+            tfFAAOutrasEspecificar.setText("");
+            rbMovimentacaoTerraNao.setSelected(false);
+            rbMovimentacaoTerraSim.setSelected(false);
             taRoteiroAcesso.setText("");
             rbCLENadamaisexisteadeclarar.setSelected(false);
             rbCLEDeclaramosoqueconstaemanexo.setSelected(false);
             taTextoAnexo.setText("");
             tfProfissional.setText("");
+            tfLeiPerimetroUrbano.setText("");
+            tfPlanoDiretorUrbano.setText("");
             lblImagem.setIcon(new ImageIcon(""));
+            GRConsumoAguaLDia.setText("");
+            GRConsumoAguaMMes.setText("");
+            ckbGRAlojamento.setSelected(false);
+            ckbGRRefeitoria.setSelected(false);
+            ckbGRAreaManutencao.setSelected(false);
+            ckbGRNaoHaveraInstalacao.setSelected(false);
+            ckbGRSanitarioQuimico.setSelected(false);
+            ckbGRSistemaFossa1.setSelected(false);
+            ckbGRRedeColetaDistribuicao.setSelected(false);
+            ckbGRResiduosConstrucao.setSelected(false);
+            ckbGRNaoHaGeracao1.setSelected(false);
+            ckbGRColetaPublica1.setSelected(false);
+            ckbGROutra.setSelected(false);
+            ckbGROutraFormaArmazenamento.setSelected(false);
+            ckbGROutra.setSelected(false);
+            ckbGRResiduosConstrucao.setSelected(false);
+            ckbGRToneisBombados.setSelected(false);
+            tfGREspecificar1.setText("");
+            tfGREspecificar2.setText("");
+            tfGRNome1.setText("");
+            tfGRNome2.setText("");
+            tfGRNumeroLicenca1.setText("");
+            tfGRNumeroLicenca2.setText("");
+            tfGRNDeclaracao.setText("");
+            ckbEAProveniente.setSelected(false);
+            ckbEACirculacao.setSelected(false);
+            ckbEANaoHaGeracao.setSelected(false);
+            ckbEAUmectacao.setSelected(false);
+            ckbEAOutro.setSelected(false);
+            tfEAEspecificar.setText("");
 
         }
     }//GEN-LAST:event_btCancelarAtualizacaoActionPerformed
@@ -2641,10 +2762,11 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
     public void limparCamposCadastroCondominio() {
 
         imagem = null;
-        CheckBoxFAA="";
-        CheckBoxFGE="";
-        CheckBoxGR="";
-        CheckBoxEA="";        
+        CheckBoxFAA = "";
+        CheckBoxFGE = "";
+        CheckBoxGR = "";
+        CheckBoxEA = "";
+        tfAreaUtil.setText("");
         tfNHabitacoes.setText("");
         tfNomeCliente.setText("");
         tfNomeFantasia.setText("");
@@ -2655,6 +2777,8 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
         tfBairro.setText("");
         tfTelefone.setText("");
         tfCep.setText("");
+        tfCoordenadasUtmN.setText("");
+        tfCoordenadasUtmE.setText("");
         rbTipoFinanciamentoSim.setSelected(false);
         rbTipoFinanciamentoNao.setSelected(false);
         rbLocalizacaoZonaUrbana.setSelected(false);
@@ -2678,6 +2802,7 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
         tfNIphan.setText("");
         tfSuprecaoVegetacaoDocumentoIdaf.setText("");
         rbSuprecaoVegetacaoNao.setSelected(false);
+        tfLoteMenorArea.setText("");
         rbCondicoesTerrenoNao.setSelected(false);
         rbCondicoesTerrenoSim.setSelected(false);
         rbCondicoesTerrenoOpcoesExecucao.setSelected(false);
@@ -2705,13 +2830,14 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
         ckbFAACaptacao.setSelected(false);
         ckbFAANascente.setSelected(false);
         ckbFAAOutros.setSelected(false);
+        ckbFAANaoSeAplica.setSelected(false);
         tfFAAConsumoDeAgua.setText("");
         ckbFAAOutorga.setSelected(false);
         tfFAANDocumentoOutorgaRh.setText("");
         ckbFAACertidao.setSelected(false);
         ckbFAAFederal.setSelected(false);
         ckbFAAEstadual.setSelected(false);
-        tfFAANDocumentoCertidaoDo = new javax.swing.JTextField();
+        tfFAANDocumentoCertidaoDo.setText("");
         ckbFAAOpcaoLonga.setSelected(false);
         tfFAAEmpresa.setText("");
         tfFAAPocoTipo.setText("");
@@ -2720,14 +2846,46 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
         tfFAACursoDaguaNome.setText("");
         tfFAALagoNome.setText("");
         tfFAAOutrasEspecificar.setText("");
-        rbMovimentacaoTerraSim.setSelected(false);
         rbMovimentacaoTerraNao.setSelected(false);
+        rbMovimentacaoTerraSim.setSelected(false);
         taRoteiroAcesso.setText("");
         rbCLENadamaisexisteadeclarar.setSelected(false);
         rbCLEDeclaramosoqueconstaemanexo.setSelected(false);
         taTextoAnexo.setText("");
         tfProfissional.setText("");
+        tfLeiPerimetroUrbano.setText("");
+        tfPlanoDiretorUrbano.setText("");
         lblImagem.setIcon(new ImageIcon(""));
+        GRConsumoAguaLDia.setText("");
+        GRConsumoAguaMMes.setText("");
+        ckbGRAlojamento.setSelected(false);
+        ckbGRRefeitoria.setSelected(false);
+        ckbGRAreaManutencao.setSelected(false);
+        ckbGRNaoHaveraInstalacao.setSelected(false);
+        ckbGRSanitarioQuimico.setSelected(false);
+        ckbGRSistemaFossa1.setSelected(false);
+        ckbGRRedeColetaDistribuicao.setSelected(false);
+        ckbGRResiduosConstrucao.setSelected(false);
+        ckbGRNaoHaGeracao1.setSelected(false);
+        ckbGRColetaPublica1.setSelected(false);
+        ckbGROutra.setSelected(false);
+        ckbGROutraFormaArmazenamento.setSelected(false);
+        ckbGROutra.setSelected(false);
+        ckbGRResiduosConstrucao.setSelected(false);
+        ckbGRToneisBombados.setSelected(false);
+        tfGREspecificar1.setText("");
+        tfGREspecificar2.setText("");
+        tfGRNome1.setText("");
+        tfGRNome2.setText("");
+        tfGRNumeroLicenca1.setText("");
+        tfGRNumeroLicenca2.setText("");
+        tfGRNDeclaracao.setText("");
+        ckbEAProveniente.setSelected(false);
+        ckbEACirculacao.setSelected(false);
+        ckbEANaoHaGeracao.setSelected(false);
+        ckbEAUmectacao.setSelected(false);
+        ckbEAOutro.setSelected(false);
+        tfEAEspecificar.setText("");
 
         tpnAbasCondominios.setSelectedIndex(0); // Mudando para a PRIMEIRA aba
 
@@ -2798,13 +2956,13 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, "Não existem mais relatórios para serem deletados");
         } else if (JOptionPane.showConfirmDialog(rootPane, "Deseja realmente excluir esse relatorio?", "Excluir cliente", 0) == 0) {
             if (tbRelatoriosCadastrados.getSelectedRow() != -1) {
-                
+
                 relatorioExcluir = modeloTabelaCondominio.retornaListaRelatorioPrincipal().get(tbRelatoriosCadastrados.getSelectedRow());
                 if (!"sem_imagem.jpg".equals(relatorioExcluir.getRELATORIO_CROQUI_DE_LOCALIZACAO_EMPREENDIMENTO())) {
                     File file = new File("build/classes/imagens/" + relatorioExcluir.getRELATORIO_CROQUI_DE_LOCALIZACAO_EMPREENDIMENTO());
                     file.delete();
-                }               
-                
+                }
+
                 conexaoTabelaRelatorio.removerRelatorio(modeloTabelaCondominio.retornaListaRelatorioPrincipal().get(tbRelatoriosCadastrados.getSelectedRow()).getRELATORIO_ID());
                 modeloTabelaCondominio.inserirListaRelatorioPrincipal(conexaoTabelaRelatorio.selecionarTodosRelatorios(2));
 
@@ -2827,6 +2985,8 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
             tfNHabitacoes.setText(relatorioPrincipal.getRELATORIO_N_HABITACOES());
             //relatorioPrincipal.getRELATORIO_AREA_INTERVENCAO();
             //relatorioPrincipal.getRELATORIO_ALTURA_DO_TALUDE();
+            tfLeiPerimetroUrbano.setText(relatorioPrincipal.getRELATORIO_LOCALIZACAO_LEI());
+            tfPlanoDiretorUrbano.setText(relatorioPrincipal.getRELATORIO_LOCALIZACAO_PLANO());
             tfNomeCliente.setText(relatorioPrincipal.getCLIENTE_NOME());
             tfNomeFantasia.setText(relatorioPrincipal.getCLIENTE_FANTASIA());
             tfEndereco.setText(relatorioPrincipal.getCLIENTE_ENDERECO());
@@ -2835,11 +2995,18 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
             tfBairro.setText(relatorioPrincipal.getCLIENTE_BAIRRO());
             tfTelefone.setText(relatorioPrincipal.getCLIENTE_TELEFONE());
             tfCep.setText(relatorioPrincipal.getCLIENTE_CEP());
-            if (relatorioPrincipal.getCLIENTE_CPF() != null) {
-                tfCpfCnpj.setText(relatorioPrincipal.getCLIENTE_CPF());
+            tfCoordenadasUtmN.setText(relatorioPrincipal.getCLIENTE_UTMN());
+            tfCoordenadasUtmE.setText(relatorioPrincipal.getCLIENTE_UTME());
+
+            if ((relatorioPrincipal.getCLIENTE_CPF().equals("   .   .   -  ") == false) && (relatorioPrincipal.getCLIENTE_CNPJ().equals("  .   .   /    -  ") == false)) {
+                tfCpfCnpj.setText(relatorioPrincipal.getCLIENTE_CPF() + " - " + relatorioPrincipal.getCLIENTE_CNPJ());
             } else {
-                if (relatorioPrincipal.getCLIENTE_CNPJ() != null) {
-                    tfCpfCnpj.setText(relatorioPrincipal.getCLIENTE_CNPJ());
+                if (relatorioPrincipal.getCLIENTE_CPF().equals("   .   .   -  ") == false) {
+                    tfCpfCnpj.setText(relatorioPrincipal.getCLIENTE_CPF());
+                } else {
+                    if (relatorioPrincipal.getCLIENTE_CNPJ().equals("  .   .   /    -  ") == false) {
+                        tfCpfCnpj.setText(relatorioPrincipal.getCLIENTE_CNPJ());
+                    }
                 }
             }
             clienteTemporario.setCliente_id(relatorioPrincipal.getCLIENTE_ID());
@@ -2938,7 +3105,6 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
                 rbISAInstalacao.setSelected(true);
             }
             if (relatorioPrincipal.getRELATORIO_INFORMACOES_SOBRE_A_ATIVIDADE() == 2) {
-
                 rbISAOperacao.setSelected(true);
             }
             Date data = relatorioPrincipal.getRELATORIO_I_S_A_DATA().getTime();
@@ -2946,6 +3112,16 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
             tfISAPrevisaoVegetacao.setText(relatorioPrincipal.getRELATORIO_I_S_A_PREVISAO_OPERACAO());
             tfNEmpregados.setText(relatorioPrincipal.getRELATORIO_I_S_A_N_EMPREGADOS());
 
+            if (relatorioPrincipal.getRELATORIO_SISTEMA_DE_DRENAGEM_PLUVIAL_EXISTENTE() == 0) {
+                rbSDPEEscoamentoSuperficial.setSelected(true);
+            }
+            if (relatorioPrincipal.getRELATORIO_SISTEMA_DE_DRENAGEM_PLUVIAL_EXISTENTE() == 1) {
+                rbSDPERedeColetora.setSelected(true);
+            }
+            if (relatorioPrincipal.getRELATORIO_SISTEMA_DE_DRENAGEM_PLUVIAL_EXISTENTE() == 2) {
+                rbSDPEOutros.setSelected(true);
+            }
+            tfSDPEEspecificar.setText(relatorioPrincipal.getRELATORIO_S_D_P_E_ESPECIFICAR());
             if (relatorioPrincipal.getRELATORIO_FONTES_DE_ABASTECIMENTO_AGUA().contains("ckbFAARedePublica")) {
                 ckbFAARedePublica.setSelected(true);
             }
@@ -2977,6 +3153,9 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
                 ckbFAAOutorga.setSelected(true);
             }
             if (relatorioPrincipal.getRELATORIO_FONTES_DE_ABASTECIMENTO_AGUA().contains("ckbFAACertidao")) {
+                ckbFAACertidao.setSelected(true);
+            }
+            if (relatorioPrincipal.getRELATORIO_FONTES_DE_ABASTECIMENTO_AGUA().contains("ckbFAAOpcaoLonga")) {
                 ckbFAAOpcaoLonga.setSelected(true);
             }
             if (relatorioPrincipal.getRELATORIO_FONTES_DE_ABASTECIMENTO_AGUA().contains("ckbFAAFederal")) {
@@ -2997,7 +3176,7 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
             tfFAANDocumentoCertidaoDo.setText(relatorioPrincipal.getRELATORIO_F_A_A_N_DOCUMENTO_CERTIDAO_D_O());
 
             if (relatorioPrincipal.getRELATORIO_MOVIMENTACAO_DE_TERRA() == 1) {
-                rbMovimentacaoTerraSim.setSelected(true);
+                rbMovimentacaoTerraNao.setSelected(true);
             }
             if (relatorioPrincipal.getRELATORIO_MOVIMENTACAO_DE_TERRA() == 0) {
                 rbMovimentacaoTerraSim.setSelected(true);
@@ -3048,12 +3227,15 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
             if (relatorioPrincipal.getRELATORIO_GERENCIAMENTO_DE_RESIDUOS().contains("ckbGRToneisBombados")) {
                 ckbGRToneisBombados.setSelected(true);
             }
+            GRConsumoAguaLDia.setText(relatorioPrincipal.getRELATORIO_G_R_CONSUMEO_DE_AGUA_L_DIA());
+            GRConsumoAguaMMes.setText(relatorioPrincipal.getRELATORIO_G_R_CONSUMEO_DE_AGUA_M_MES());
             tfGREspecificar1.setText(relatorioPrincipal.getRELATORIO_G_R_ESPECIFICAR_1());
             tfGREspecificar2.setText(relatorioPrincipal.getRELATORIO_G_R_ESPECIFICAR_2());
             tfGRNome1.setText(relatorioPrincipal.getRELATORIO_G_R_NOME_1());
             tfGRNome2.setText(relatorioPrincipal.getRELATORIO_G_R_NOME_2());
             tfGRNumeroLicenca1.setText(relatorioPrincipal.getRELATORIO_G_R_NUMERO_LICENCA_1());
             tfGRNumeroLicenca2.setText(relatorioPrincipal.getRELATORIO_G_R_NUMERO_LICENCA_2());
+            tfGRNDeclaracao.setText(relatorioPrincipal.getRELATORIO_G_R_NUMERO_LICENCA_3());
             if (relatorioPrincipal.getRELATORIO_EMISSOES_ATMOSFERICAS().contains("ckbEAProveniente")) {
                 ckbEAProveniente.setSelected(true);
             }
@@ -3065,6 +3247,9 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
             }
             if (relatorioPrincipal.getRELATORIO_EMISSOES_ATMOSFERICAS().contains("ckbEAUmectacao")) {
                 ckbEAUmectacao.setSelected(true);
+            }
+            if (relatorioPrincipal.getRELATORIO_EMISSOES_ATMOSFERICAS().contains("ckbEAOutro")) {
+                ckbEAOutro.setSelected(true);
             }
             tfEAEspecificar.setText(relatorioPrincipal.getRELATORIO_E_A_ESPECIFICAR());
             taRoteiroAcesso.setText(relatorioPrincipal.getRELATORIO_ROTEIRO_DE_ACESSO());
@@ -3231,13 +3416,13 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
         rbSDPEEscoamentoSuperficial.setSelected(false);
     }//GEN-LAST:event_rbSDPEOutrosMouseClicked
 
-    private void rbMovimentacaoTerraNaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbMovimentacaoTerraNaoMouseClicked
-        rbMovimentacaoTerraSim.setSelected(false);
-    }//GEN-LAST:event_rbMovimentacaoTerraNaoMouseClicked
-
     private void rbMovimentacaoTerraSimMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbMovimentacaoTerraSimMouseClicked
         rbMovimentacaoTerraNao.setSelected(false);
     }//GEN-LAST:event_rbMovimentacaoTerraSimMouseClicked
+
+    private void rbMovimentacaoTerraNaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbMovimentacaoTerraNaoMouseClicked
+        rbMovimentacaoTerraSim.setSelected(false);
+    }//GEN-LAST:event_rbMovimentacaoTerraNaoMouseClicked
 
     private void rbCLENadamaisexisteadeclararMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbCLENadamaisexisteadeclararMouseClicked
         rbCLEDeclaramosoqueconstaemanexo.setSelected(false);
@@ -3259,7 +3444,7 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
 
             RelatorioPrincipal condominio = modeloTabelaCondominio.retornaListaRelatorioPrincipal().get(tbRelatoriosCadastrados.getSelectedRow());
             condominio.getRELATORIO_ID();
-            
+
             DecimalFormat form = new DecimalFormat("00");
             String data;
             data = form.format(condominio.getRELATORIO_DATA_ATUAL().get(Calendar.DAY_OF_MONTH)) + "/" + form.format(condominio.getRELATORIO_DATA_ATUAL().get(Calendar.MONTH) + 1) + "/" + condominio.getRELATORIO_DATA_ATUAL().get(Calendar.YEAR);
@@ -3295,7 +3480,6 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
 
                 lblImagem.setIcon(new ImageIcon(new javax.swing.ImageIcon(imagem).getImage().getScaledInstance(400, 300, Image.SCALE_SMOOTH)));
 
-
             } catch (Exception ex) {
                 // System.out.println(ex.printStackTrace().toString());
             }
@@ -3304,6 +3488,28 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Você não selecionou nenhum arquivo.");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tfAreaUtilFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfAreaUtilFocusLost
+        String a = tfAreaUtil.getText();
+        String d = a.replace("R$", "").replace(" ", "").replace(".", "").replace(",", ".").replace("m²", "");
+        BigDecimal valor = new BigDecimal(d);
+        //NumberFormat nf = NumberFormat.getCurrencyInstance();
+        DecimalFormat nf = new DecimalFormat();
+        nf.applyPattern("#,##0.00");
+        String formatado = nf.format(valor);
+        tfAreaUtil.setText(formatado + " m²");
+    }//GEN-LAST:event_tfAreaUtilFocusLost
+
+    private void tfLoteMenorAreaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfLoteMenorAreaFocusLost
+        String a = tfLoteMenorArea.getText();
+        String d = a.replace("R$", "").replace(" ", "").replace(".", "").replace(",", ".").replace("m²", "");
+        BigDecimal valor = new BigDecimal(d);
+        //NumberFormat nf = NumberFormat.getCurrencyInstance();
+        DecimalFormat nf = new DecimalFormat();
+        nf.applyPattern("#,##0.00");
+        String formatado = nf.format(valor);
+        tfLoteMenorArea.setText(formatado + " m²");
+    }//GEN-LAST:event_tfLoteMenorAreaFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -3374,6 +3580,9 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
@@ -3531,6 +3740,7 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
     private javax.swing.JTextField tfGRNumeroLicenca2;
     private javax.swing.JTextField tfISAPrevisaoVegetacao;
     private javax.swing.JTextField tfInseridoEmAreaOutraEspecificar;
+    private javax.swing.JTextField tfLeiPerimetroUrbano;
     private javax.swing.JTextField tfLoteMenorArea;
     private javax.swing.JTextField tfNEmpregados;
     private javax.swing.JTextField tfNHabitacoes;
@@ -3539,6 +3749,7 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
     private javax.swing.JTextField tfNomeFantasia;
     private javax.swing.JTextField tfNumero;
     private javax.swing.JTextField tfPalavraChaveCondominio;
+    private javax.swing.JTextField tfPlanoDiretorUrbano;
     private javax.swing.JTextField tfProfissional;
     private javax.swing.JTextField tfSDPEEspecificar;
     private javax.swing.JTextField tfSuprecaoVegetacaoDocumentoIdaf;

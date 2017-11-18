@@ -81,9 +81,8 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="tfReciboCidade" max="32767" attributes="0"/>
-                                  <Component id="tfReciboContratante" max="32767" attributes="0"/>
+                                  <Component id="tfReciboCliente" max="32767" attributes="0"/>
                                   <Component id="tfReciboProfissional" max="32767" attributes="0"/>
-                                  <Component id="tfReciboValor" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="pnDataAtual" min="-2" max="-2" attributes="0"/>
@@ -91,6 +90,7 @@
                                       </Group>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
+                                  <Component id="tfReciboValor" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -104,7 +104,7 @@
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfReciboContratante" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfReciboCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -144,12 +144,12 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Contratante:"/>
+                <Property name="text" type="java.lang.String" value="Cliente:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Profissional"/>
+                <Property name="text" type="java.lang.String" value="Profissional:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
@@ -237,12 +237,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCancelarAtualizacaoReciboActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="tfReciboContratante">
+            <Component class="javax.swing.JTextField" name="tfReciboCliente">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tfReciboContratanteMouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tfReciboClienteMouseClicked"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="tfReciboProfissional">
@@ -258,14 +258,17 @@
                 <Property name="text" type="java.lang.String" value="Valor:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="tfReciboValor">
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Data:"/>
               </Properties>
             </Component>
             <Component class="com.toedter.calendar.JDayChooser" name="pnDataAtual">
+            </Component>
+            <Component class="javax.swing.JTextField" name="tfReciboValor">
+              <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfReciboValorFocusLost"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -392,7 +395,7 @@
                               <Component id="tfPalavraChaveRecibo" pref="414" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                                  <Component id="ckbReciboContratante" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ckbReciboCliente" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="ckbTraProfissional" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -412,7 +415,7 @@
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="ckbReciboContratante" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="ckbReciboCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="ckbTraProfissional" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="25" max="32767" attributes="0"/>
@@ -431,9 +434,9 @@
                     <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tfPalavraChaveReciboKeyReleased"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="ckbReciboContratante">
+                <Component class="javax.swing.JCheckBox" name="ckbReciboCliente">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Contratante"/>
+                    <Property name="text" type="java.lang.String" value="Cliente"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="ckbTraProfissional">

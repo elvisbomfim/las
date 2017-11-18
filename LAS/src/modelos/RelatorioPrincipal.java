@@ -135,6 +135,8 @@ public class RelatorioPrincipal {
     private String CLIENTE_CEP;
     private String CLIENTE_CPF;
     private String CLIENTE_CNPJ;
+    private String CLIENTE_UTMN;
+    private String CLIENTE_UTME;
     private String PROFISSIONAL_NOME;
     private String CATEGORIA_NOME;
 
@@ -1114,6 +1116,22 @@ public class RelatorioPrincipal {
         this.CLIENTE_CNPJ = CLIENTE_CNPJ;
     }
 
+    public String getCLIENTE_UTMN() {
+        return CLIENTE_UTMN;
+    }
+
+    public void setCLIENTE_UTMN(String CLIENTE_UTMN) {
+        this.CLIENTE_UTMN = CLIENTE_UTMN;
+    }
+
+    public String getCLIENTE_UTME() {
+        return CLIENTE_UTME;
+    }
+
+    public void setCLIENTE_UTME(String CLIENTE_UTME) {
+        this.CLIENTE_UTME = CLIENTE_UTME;
+    }
+
     public String getPROFISSIONAL_NOME() {
         return PROFISSIONAL_NOME;
     }
@@ -1130,5 +1148,5 @@ public class RelatorioPrincipal {
         this.CATEGORIA_NOME = CATEGORIA_NOME;
     }
 
-    
+  
 }

@@ -86,13 +86,15 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="39" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="tfAreaUtil" min="-2" pref="200" max="-2" attributes="0"/>
+                                      <Component id="tfAreaUtil" min="-2" pref="164" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jLabel31" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabel69" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -131,6 +133,7 @@
                               <Component id="tfAreaUtil" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel69" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="tfNHabitacoes" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel31" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
@@ -170,6 +173,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="tfAreaUtil">
+                  <Events>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfAreaUtilFocusLost"/>
+                  </Events>
                 </Component>
                 <Container class="javax.swing.JPanel" name="jPanel1">
                   <Properties>
@@ -197,9 +203,10 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="tfNomeCliente" alignment="0" max="32767" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
+                                          <Component id="tfNomeCliente" max="32767" attributes="0"/>
+                                          <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="tfNomeFantasia" max="32767" attributes="0"/>
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Component id="tfCidade" min="-2" pref="120" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
@@ -207,10 +214,15 @@
                                                       <EmptySpace max="-2" attributes="0"/>
                                                       <Component id="tfCep" max="32767" attributes="0"/>
                                                   </Group>
-                                                  <Component id="tfEndereco" alignment="1" min="-2" pref="248" max="-2" attributes="0"/>
+                                                  <Component id="tfEndereco" alignment="1" pref="248" max="32767" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="tfCpfCnpj" max="32767" attributes="0"/>
+                                                  </Group>
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
@@ -218,7 +230,7 @@
                                                       <EmptySpace max="-2" attributes="0"/>
                                                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="tfBairro" max="32767" attributes="0"/>
+                                                      <Component id="tfBairro" pref="236" max="32767" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
@@ -226,13 +238,6 @@
                                                       <Component id="tfTelefone" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="tfNomeFantasia" min="-2" pref="356" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="tfCpfCnpj" pref="178" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -257,13 +262,11 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="tfCpfCnpj" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="tfCpfCnpj" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="tfNomeFantasia" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -634,6 +637,9 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="tfLoteMenorArea">
+                          <Events>
+                            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfLoteMenorAreaFocusLost"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -997,14 +1003,29 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="rbLocalizacaoZonaUrbana" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="rbLocalizacaoZonaRural" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabel33" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="tfPlanoDiretorUrbano" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabel32" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="tfLeiPerimetroUrbano" min="-2" pref="152" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="rbLocalizacaoZonaUrbana" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="rbLocalizacaoZonaRural" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="rbInseridoEmAreaOutra" min="-2" max="-2" attributes="0"/>
@@ -1046,12 +1067,20 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="rbLocalizacaoZonaRural" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="rbInseridoEmAreaOutra" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="tfInseridoEmAreaOutraEspecificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel32" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tfLeiPerimetroUrbano" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel33" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tfPlanoDiretorUrbano" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace pref="7" max="32767" attributes="0"/>
+                                  <Component id="rbLocalizacaoZonaRural" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1129,6 +1158,20 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="tfInseridoEmAreaOutraEspecificar">
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="jLabel32">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Lei de per&#xed;metro urbado:"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="jLabel33">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Plano Diretor Urbano Lei N&#xba;:"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="tfLeiPerimetroUrbano">
+                        </Component>
+                        <Component class="javax.swing.JTextField" name="tfPlanoDiretorUrbano">
                         </Component>
                       </SubComponents>
                     </Container>
@@ -1276,6 +1319,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="tfCoordenadasUtmN">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel21">
                       <Properties>
@@ -1283,6 +1329,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="tfCoordenadasUtmE">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                      </Properties>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1662,6 +1711,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="tfFAAConsumoDeAgua">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="150"/>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel27">
                       <Properties>
@@ -1713,6 +1765,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="tfFAAEmpresa">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="CESAN"/>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel61">
                       <Properties>
@@ -2516,13 +2571,13 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="rbMovimentacaoTerraSim" min="-2" max="-2" attributes="0"/>
+                                          <Component id="rbMovimentacaoTerraNao" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel64" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="rbMovimentacaoTerraNao" min="-2" max="-2" attributes="0"/>
+                                      <Component id="rbMovimentacaoTerraSim" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                                       <Component id="jLabel84" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -2537,10 +2592,10 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel64" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="rbMovimentacaoTerraSim" min="-2" max="-2" attributes="0"/>
+                              <Component id="rbMovimentacaoTerraNao" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="rbMovimentacaoTerraNao" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rbMovimentacaoTerraSim" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel84" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
@@ -2554,20 +2609,20 @@
                         <Property name="text" type="java.lang.String" value="Haver&#xe1; movimenta&#xe7;&#xe3;o de terra na &#xe1;rea?"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JRadioButton" name="rbMovimentacaoTerraSim">
+                    <Component class="javax.swing.JRadioButton" name="rbMovimentacaoTerraNao">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="N&#xe3;o."/>
                       </Properties>
                       <Events>
-                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rbMovimentacaoTerraSimMouseClicked"/>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rbMovimentacaoTerraNaoMouseClicked"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JRadioButton" name="rbMovimentacaoTerraNao">
+                    <Component class="javax.swing.JRadioButton" name="rbMovimentacaoTerraSim">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Sim."/>
                       </Properties>
                       <Events>
-                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rbMovimentacaoTerraNaoMouseClicked"/>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rbMovimentacaoTerraSimMouseClicked"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel84">
@@ -2799,6 +2854,11 @@
                     </Component>
                   </SubComponents>
                 </Container>
+                <Component class="javax.swing.JLabel" name="jLabel31">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="m&#xb2;"/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
           </SubComponents>

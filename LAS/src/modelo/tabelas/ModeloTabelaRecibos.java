@@ -36,7 +36,7 @@ public class ModeloTabelaRecibos extends  javax.swing.table.AbstractTableModel
     {
         switch(columnIndex)
         {
-            case 0: return "Contratante";
+            case 0: return "Cliente";
             case 1: return "Profissional";
             case 2: return "Data Relatório";
         }
@@ -54,7 +54,7 @@ public class ModeloTabelaRecibos extends  javax.swing.table.AbstractTableModel
         
         switch(columnIndex)
         {
-            case 0: return recibo.getRecibo_contratante();
+            case 0: return recibo.getRecibo_cliente();
             case 1: return recibo.getRecibo_profissional();
             case 2: return form.format(recibo.getRecibo_data().get(Calendar.DAY_OF_MONTH)) + "/" + form.format(recibo.getRecibo_data().get(Calendar.MONTH) + 1) + "/" + recibo.getRecibo_data().get(Calendar.YEAR);
 

@@ -8,16 +8,22 @@ package interfaces;
 import Utilitarios.WebServiceCep;
 import bancodedados.ClienteBD;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import modelo.tabelas.ModeloTabelaClientes;
 import modelos.Cliente;
 import modelos.LetrasMaiusculas;
+import net.sf.nachocalendar.CalendarFactory;
+import net.sf.nachocalendar.components.DateField;
 
 /**
  *
  * @author Jean
  */
 public class jifAbasClientes extends javax.swing.JInternalFrame {
+
+    DateField dataInicioOperacao = CalendarFactory.createDateField();
 
     //Map<String, String> query = new HashMap<String, String>();
     /**
@@ -44,7 +50,7 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
 
     public jifAbasClientes() {
         initComponents();
-        
+
         tbClientesCadastrados.setModel(modeloTabelaCliente);
 
         //----------------buscas na tabela--------------------------------------
@@ -67,6 +73,11 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
         tfClienteBairro.setDocument(new LetrasMaiusculas());
         tfClienteCidade.setDocument(new LetrasMaiusculas());
         tfClienteComplemento.setDocument(new LetrasMaiusculas());
+        Calendar cal = Calendar.getInstance();
+        dataInicioOperacao.setBaseDate(cal.getTime());
+        pnDataAtual.add(dataInicioOperacao);
+        //Definindo o botão DateField (Data Inicio do Semestre) para seleção de uma data e atribuindo uma ação de mudança à ele.
+        dataInicioOperacao.setSize((pnDataAtual.getWidth()), (pnDataAtual.getHeight()));
     }
 
     /**
@@ -117,6 +128,12 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
         tfClienteEmail = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         cbClienteAtividade = new javax.swing.JComboBox<>();
+        jLabel15 = new javax.swing.JLabel();
+        pnDataAtual = new com.toedter.calendar.JDayChooser();
+        jLabel16 = new javax.swing.JLabel();
+        tfClienteUtmn = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        tfClienteUtme = new javax.swing.JTextField();
         pnGerenciarClientes = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -245,6 +262,12 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
 
         cbClienteAtividade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecionar--", "Restaurante", "Condomínio", "Turístico", "Terraplanagem" }));
 
+        jLabel15.setText("Data da Atividade:");
+
+        jLabel16.setText("UTM(N):");
+
+        jLabel17.setText("UTM(E):");
+
         javax.swing.GroupLayout pnCadastrarNovoClienteLayout = new javax.swing.GroupLayout(pnCadastrarNovoCliente);
         pnCadastrarNovoCliente.setLayout(pnCadastrarNovoClienteLayout);
         pnCadastrarNovoClienteLayout.setHorizontalGroup(
@@ -254,7 +277,7 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
                 .addGroup(pnCadastrarNovoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCadastrarNovoClienteLayout.createSequentialGroup()
                         .addComponent(btCancelarAtualizacaoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 235, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btFinalizarCadastroCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnCadastrarNovoClienteLayout.createSequentialGroup()
                         .addGroup(pnCadastrarNovoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,14 +319,27 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
                         .addGroup(pnCadastrarNovoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
                             .addComponent(jLabel10)
-                            .addComponent(jLabel14))
-                        .addGap(37, 37, 37)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel16))
+                        .addGap(31, 31, 31)
                         .addGroup(pnCadastrarNovoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfClienteTelefone)
-                            .addComponent(tfClienteCelular)
                             .addGroup(pnCadastrarNovoClienteLayout.createSequentialGroup()
-                                .addComponent(cbClienteAtividade, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addGroup(pnCadastrarNovoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cbClienteAtividade, 0, 144, Short.MAX_VALUE)
+                                    .addComponent(tfClienteUtmn))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pnCadastrarNovoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnCadastrarNovoClienteLayout.createSequentialGroup()
+                                        .addComponent(jLabel17)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tfClienteUtme, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(pnCadastrarNovoClienteLayout.createSequentialGroup()
+                                        .addComponent(jLabel15)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(pnDataAtual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 60, Short.MAX_VALUE))
+                            .addComponent(tfClienteCelular, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(tfClienteTelefone))))
                 .addContainerGap())
         );
         pnCadastrarNovoClienteLayout.setVerticalGroup(
@@ -374,10 +410,19 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
                     .addComponent(jLabel10)
                     .addComponent(tfClienteCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnCadastrarNovoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pnCadastrarNovoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel14)
+                        .addComponent(cbClienteAtividade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel15))
+                    .addComponent(pnDataAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnCadastrarNovoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(cbClienteAtividade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                    .addComponent(jLabel16)
+                    .addComponent(tfClienteUtmn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17)
+                    .addComponent(tfClienteUtme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(pnCadastrarNovoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btFinalizarCadastroCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btCancelarAtualizacaoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -495,7 +540,7 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
                 .addGap(77, 77, 77)
                 .addGroup(pnGerenciarClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btEditarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -515,10 +560,10 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 703, Short.MAX_VALUE)
         );
 
-        setBounds(0, 0, 600, 699);
+        setBounds(0, 0, 600, 733);
     }// </editor-fold>//GEN-END:initComponents
 
     public void buscarClientesTabela() {
@@ -612,26 +657,26 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
                                                 JOptionPane.showMessageDialog(pnCadastrarNovoCliente, "Por favor insira o estado do cliente", "Aviso", 2);
                                                 cbClienteEstado.requestFocus();
                                             } else {
-                                            if (cbClienteAtividade.getSelectedIndex() == 0) {
-                                                JOptionPane.showMessageDialog(pnCadastrarNovoCliente, "Por favor insira a atividade do cliente", "Aviso", 2);
-                                                cbClienteEstado.requestFocus();
-                                            } else {
-                                                if (btFinalizarCadastroCliente.getToolTipText().equals("Cadastrar")) {
-                                                    conexaoTabelaClientes.inserirNovoCliente(preencherDadosCadastroCliente());
-                                                    buscarClientesTabela();
-                                                    limparCamposCadastroCliente();
+                                                if (cbClienteAtividade.getSelectedIndex() == 0) {
+                                                    JOptionPane.showMessageDialog(pnCadastrarNovoCliente, "Por favor insira a atividade do cliente", "Aviso", 2);
+                                                    cbClienteEstado.requestFocus();
                                                 } else {
-                                                    conexaoTabelaClientes.alterarCliente(modeloTabelaCliente.retornaListaClientes().get(tbClientesCadastrados.getSelectedRow()).getCliente_id(), preencherDadosCadastroCliente());
+                                                    if (btFinalizarCadastroCliente.getToolTipText().equals("Cadastrar")) {
+                                                        conexaoTabelaClientes.inserirNovoCliente(preencherDadosCadastroCliente());
+                                                        buscarClientesTabela();
+                                                        limparCamposCadastroCliente();
+                                                    } else {
+                                                        conexaoTabelaClientes.alterarCliente(modeloTabelaCliente.retornaListaClientes().get(tbClientesCadastrados.getSelectedRow()).getCliente_id(), preencherDadosCadastroCliente());
 
-                                                    buscarClientesTabela();
+                                                        buscarClientesTabela();
 
-                                                    limparCamposCadastroCliente();
+                                                        limparCamposCadastroCliente();
+                                                    }
+
                                                 }
-
                                             }
                                         }
                                     }
-                                }
                                 }
                             }
                         }
@@ -659,8 +704,13 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
         clienteCadastro.setCliente_estado(cbClienteEstado.getSelectedItem().toString());
         clienteCadastro.setCategoria_id(cbClienteAtividade.getSelectedIndex());
         clienteCadastro.setCliente_complemento(tfClienteComplemento.getText());
+        clienteCadastro.setCliente_utmn(tfClienteUtmn.getText());
+        clienteCadastro.setCliente_utme(tfClienteUtme.getText());
         clienteCadastro.setCliente_telefone(tfClienteTelefone.getText());
         clienteCadastro.setCliente_celular(tfClienteCelular.getText());
+        Calendar cal = Calendar.getInstance();
+        cal.setTime((Date) dataInicioOperacao.getValue());
+        clienteCadastro.setCliente_data_atividade(cal);
 
         return clienteCadastro;
 
@@ -684,6 +734,8 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
         tfClienteTelefone.setText("");
         tfClienteCelular.setText("");
         tfClienteComplemento.setText("");
+        tfClienteUtmn.setText("");
+        tfClienteUtme.setText("");
         tpnAbasClientes.setTitleAt(0, "Cadastrar Novos Clientes");
         btFinalizarCadastroCliente.setToolTipText("Cadastrar");
         tpnAbasClientes.setEnabledAt(1, true);
@@ -769,6 +821,12 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
             tfClienteComplemento.setText(cliente.getCliente_complemento());
             tfClienteTelefone.setText(cliente.getCliente_telefone());
             tfClienteCelular.setText(cliente.getCliente_celular());
+            Date data1 = cliente.getCliente_data_atividade().getTime();
+            tfClienteUtmn.setText(cliente.getCliente_utmn());
+            tfClienteUtme.setText(cliente.getCliente_utme());
+
+            dataInicioOperacao.setValue(data1);
+
             tpnAbasClientes.setSelectedIndex(0); // Mudando para a PRIMEIRA aba
             btFinalizarCadastroCliente.setToolTipText("Atualizar");
             tpnAbasClientes.setTitleAt(0, "Atualizar dados");
@@ -825,25 +883,25 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_tfClienteCepKeyReleased
 
-    public  void correio() {
-    
-                String cep =  tfClienteCep.getText();
-		
-                WebServiceCep webServiceCep = WebServiceCep.searchCep(cep);
+    public void correio() {
 
-		if (webServiceCep.wasSuccessful()) {
-                       
-                        tfClienteRua.setText(webServiceCep.getLogradouroFull()); 
-                        tfClienteBairro.setText(webServiceCep.getBairro());                        
-                        tfClienteCidade.setText(webServiceCep.getCidade());
-                        cbClienteEstado.setSelectedItem( webServiceCep.getUf());
+        String cep = tfClienteCep.getText();
 
-		} else {
-                         JOptionPane.showMessageDialog(null, webServiceCep.getResultText());
-                        
-		}
-			
-	}
+        WebServiceCep webServiceCep = WebServiceCep.searchCep(cep);
+
+        if (webServiceCep.wasSuccessful()) {
+
+            tfClienteRua.setText(webServiceCep.getLogradouroFull());
+            tfClienteBairro.setText(webServiceCep.getBairro());
+            tfClienteCidade.setText(webServiceCep.getCidade());
+            cbClienteEstado.setSelectedItem(webServiceCep.getUf());
+
+        } else {
+            JOptionPane.showMessageDialog(null, webServiceCep.getResultText());
+
+        }
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCancelarAtualizacaoCliente;
@@ -861,6 +919,9 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
@@ -877,6 +938,7 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel pnCadastrarNovoCliente;
+    private com.toedter.calendar.JDayChooser pnDataAtual;
     private javax.swing.JPanel pnGerenciarClientes;
     private javax.swing.JTable tbClientesCadastrados;
     private javax.swing.JTextField tfClienteBairro;
@@ -893,6 +955,8 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
     private javax.swing.JTextField tfClienteNumero;
     private javax.swing.JTextField tfClienteRua;
     private javax.swing.JFormattedTextField tfClienteTelefone;
+    private javax.swing.JTextField tfClienteUtme;
+    private javax.swing.JTextField tfClienteUtmn;
     private javax.swing.JFormattedTextField tfCliente_Cnpj;
     private javax.swing.JTextField tfPalavraChaveCliente;
     private javax.swing.JTabbedPane tpnAbasClientes;

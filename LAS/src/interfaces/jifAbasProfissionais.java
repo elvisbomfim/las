@@ -109,6 +109,7 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         tfProfissionalComplemento = new javax.swing.JTextField();
+        cbAbreviacao = new javax.swing.JComboBox<>();
         pnGerenciarProfissionais = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -236,7 +237,9 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
 
         jLabel2.setText("CTMA:");
 
-        jLabel3.setText("Complamento:");
+        jLabel3.setText("Complemento:");
+
+        cbAbreviacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "Dr.", "Eng.", "Ms." }));
 
         javax.swing.GroupLayout pnCadastrarNovoProfissionalLayout = new javax.swing.GroupLayout(pnCadastrarNovoProfissional);
         pnCadastrarNovoProfissional.setLayout(pnCadastrarNovoProfissionalLayout);
@@ -264,7 +267,10 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel21)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(tfProfissionalCrea, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(tfProfissionalNome)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCadastrarNovoProfissionalLayout.createSequentialGroup()
+                                .addComponent(cbAbreviacao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfProfissionalNome, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(pnCadastrarNovoProfissionalLayout.createSequentialGroup()
                         .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11)
@@ -316,7 +322,8 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
                 .addGap(49, 49, 49)
                 .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(tfProfissionalNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfProfissionalNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbAbreviacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfProfissionalProfissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -504,7 +511,7 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
 
     public Profissional preencherDadosCadastroProfissional() {
 
-        profissionalCadastro.setProfissional_nome(tfProfissionalNome.getText());
+        profissionalCadastro.setProfissional_nome(cbAbreviacao.getSelectedItem().toString() + " " +tfProfissionalNome.getText());
         profissionalCadastro.setProfissional_profissao(tfProfissionalProfissao.getText());
         profissionalCadastro.setProfissional_cpf(tfProfissionalCpf.getText());
         profissionalCadastro.setProfissional_crea(tfProfissionalCrea.getText());
@@ -535,6 +542,7 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
         tfProfissionalBairro.setText("");
         tfProfissionalCidade.setText("");
         cbProfissionalEstado.setSelectedIndex(0);
+        cbAbreviacao.setSelectedIndex(0);
         tfProfissionalTelefone.setText("");
         tfProfissionalCelular.setText("");
         tfProfissionalComplemento.setText("");
@@ -599,10 +607,13 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
         if (tbProfissionaisCadastrados.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(rootPane, "Não existem profissionais selecionados para serem editados");
         } else {
-
+            
             Profissional profissional = modeloTabelaProfissional.retornaListaProfissionais().get(tbProfissionaisCadastrados.getSelectedRow());
 
-            tfProfissionalNome.setText(profissional.getProfissional_nome());
+            String Nome[] = profissional.getProfissional_nome().split(" ");
+            cbAbreviacao.setSelectedItem(Nome[0]);
+            System.out.println(Nome[1]);
+            tfProfissionalNome.setText(Nome[1]);
             tfProfissionalProfissao.setText(profissional.getProfissional_profissao());
             tfProfissionalCpf.setText(profissional.getProfissional_cpf());
             tfProfissionalCrea.setText(profissional.getProfissional_crea());
@@ -742,6 +753,7 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
         tfProfissionalBairro.setText("");
         tfProfissionalCidade.setText("");
         cbProfissionalEstado.setSelectedIndex(0);
+        cbAbreviacao.setSelectedIndex(0);
         tfProfissionalTelefone.setText("");
         tfProfissionalCelular.setText("");
         tfProfissionalComplemento.setText("");
@@ -794,6 +806,7 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
     private javax.swing.JButton btEditarProfissional;
     private javax.swing.JButton btExcluirProfissional;
     private javax.swing.JButton btFinalizarCadastroProfissional;
+    private javax.swing.JComboBox<String> cbAbreviacao;
     private javax.swing.JComboBox<String> cbProfissionalEstado;
     private javax.swing.JCheckBox ckbProfissionalCpf;
     private javax.swing.JCheckBox ckbProfissionalNome;

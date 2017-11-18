@@ -8,27 +8,31 @@ package interfaces;
 import bancodedados.ClienteBD;
 import bancodedados.ConexaoBanco;
 import bancodedados.ConexaoPDF;
-import bancodedados.ContratanteBD;
+import bancodedados.ClienteBD;
 import bancodedados.ProfissionalBD;
 import bancodedados.ReciboBD;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
-import modelo.tabelas.ModeloTabelaContratantes;
+import modelo.tabelas.ModeloTabelaClientes;
 import modelo.tabelas.ModeloTabelaProfissionais;
 import modelo.tabelas.ModeloTabelaRecibos;
 import modelos.Cliente;
-import modelos.Contratante;
+import modelos.Cliente;
+import modelos.Moeda;
 import modelos.Profissional;
 import modelos.Recibo;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -56,7 +60,7 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
      * Objetos temporarios
      */
     Recibo reciboCadastro = new Recibo();
-    Contratante contratanteTemporario = new Contratante();
+    Cliente clienteTemporario = new Cliente();
     Profissional profissionalTemporario = new Profissional();
 
     /**
@@ -64,7 +68,7 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
      */
     ModeloTabelaRecibos modeloTabelaRecibos = new ModeloTabelaRecibos();
 
-    ModeloTabelaContratantes modeloTabelaContratantes;
+    ModeloTabelaClientes modeloTabelaClientes;
     ModeloTabelaProfissionais modeloTabelaProfissionais;
 
     /**
@@ -73,12 +77,14 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
     ReciboBD conexaoTabelaRecibos = new ReciboBD();
     ClienteBD conexaoTabelaClientes = new ClienteBD();
     ProfissionalBD conexaoTabelaProfissionais = new ProfissionalBD();
-    ContratanteBD conexaoTabelaContratante = new ContratanteBD();
 
     //PDF Conexao
     Connection conexao = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
+
+    Moeda m = new Moeda();
+    //double salarioDoTioBill = 1923823023.921;
 
     public jifFormRecibo() {
         initComponents();
@@ -92,11 +98,12 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
          * Definição de modelos de tabela e buscas na tabela
          */
         tbRecibo.setModel(modeloTabelaRecibos);
-        
+
         System.out.println("teste");
 
         //----------------buscas na tabela--------------------------------------
         buscarRecibosTabela();
+
     }
 
     /**
@@ -119,12 +126,12 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
         cbReciboEstado = new javax.swing.JComboBox<>();
         btFinalizarCadastroRecibo = new javax.swing.JButton();
         btCancelarAtualizacaoRecibo = new javax.swing.JButton();
-        tfReciboContratante = new javax.swing.JTextField();
+        tfReciboCliente = new javax.swing.JTextField();
         tfReciboProfissional = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        tfReciboValor = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         pnDataAtual = new com.toedter.calendar.JDayChooser();
+        tfReciboValor = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbRecibo = new javax.swing.JTable();
@@ -133,7 +140,7 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         tfPalavraChaveRecibo = new javax.swing.JTextField();
-        ckbReciboContratante = new javax.swing.JCheckBox();
+        ckbReciboCliente = new javax.swing.JCheckBox();
         ckbTraProfissional = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
 
@@ -143,9 +150,9 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setTitle("Recibo");
 
-        jLabel1.setText("Contratante:");
+        jLabel1.setText("Cliente:");
 
-        jLabel2.setText("Profissional");
+        jLabel2.setText("Profissional:");
 
         jLabel3.setText("Cidade:");
 
@@ -173,10 +180,10 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
             }
         });
 
-        tfReciboContratante.setEditable(false);
-        tfReciboContratante.addMouseListener(new java.awt.event.MouseAdapter() {
+        tfReciboCliente.setEditable(false);
+        tfReciboCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tfReciboContratanteMouseClicked(evt);
+                tfReciboClienteMouseClicked(evt);
             }
         });
 
@@ -190,6 +197,12 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
         jLabel5.setText("Valor:");
 
         jLabel7.setText("Data:");
+
+        tfReciboValor.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfReciboValorFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -213,14 +226,14 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfReciboCidade)
-                            .addComponent(tfReciboContratante)
+                            .addComponent(tfReciboCliente)
                             .addComponent(tfReciboProfissional)
-                            .addComponent(tfReciboValor)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(pnDataAtual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cbReciboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(tfReciboValor))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -229,7 +242,7 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(tfReciboContratante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfReciboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -302,7 +315,7 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
             }
         });
 
-        ckbReciboContratante.setText("Contratante");
+        ckbReciboCliente.setText("Cliente");
 
         ckbTraProfissional.setText("Profissional");
 
@@ -318,7 +331,7 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
                     .addComponent(tfPalavraChaveRecibo, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(56, 56, 56)
-                        .addComponent(ckbReciboContratante)
+                        .addComponent(ckbReciboCliente)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ckbTraProfissional)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -333,7 +346,7 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
                     .addComponent(tfPalavraChaveRecibo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ckbReciboContratante)
+                    .addComponent(ckbReciboCliente)
                     .addComponent(ckbTraProfissional))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
@@ -405,15 +418,16 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
 
     public Recibo preencherDadosCadastroRecibo() {
 
-        reciboCadastro.setContratante_id(contratanteTemporario.getContratante_id());
-        System.out.println(contratanteTemporario.getContratante_id());
+        reciboCadastro.setCliente_id(clienteTemporario.getCliente_id());
+        System.out.println(clienteTemporario.getCliente_id());
         System.out.println(profissionalTemporario.getProfissional_id());
         reciboCadastro.setProfissional_id(profissionalTemporario.getProfissional_id());
         reciboCadastro.setRecibo_profissional(tfReciboProfissional.getText());
-        reciboCadastro.setRecibo_contratante(tfReciboContratante.getText());
+        reciboCadastro.setRecibo_cliente(tfReciboCliente.getText());
         reciboCadastro.setRecibo_estado(cbReciboEstado.getSelectedItem().toString());
         reciboCadastro.setRecibo_cidade(tfReciboCidade.getText());
         reciboCadastro.setRecibo_valor(tfReciboValor.getText());
+        //reciboCadastro.setRecibo_valor(m.mascaraDinheiro(Double.parseDouble(tfReciboValor.getText()), Moeda.DINHEIRO_REAL));
 
         Calendar cal = Calendar.getInstance();
         cal.setTime((Date) dataAtual.getValue());
@@ -427,7 +441,7 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
     }
 
     public void limparCamposCadastroCliente() {
-        tfReciboContratante.setText("");
+        tfReciboCliente.setText("");
         tfReciboProfissional.setText("");
         tfReciboCidade.setText("");
         tfReciboValor.setText("");
@@ -443,13 +457,13 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
 
     private void btFinalizarCadastroReciboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFinalizarCadastroReciboActionPerformed
         // TODO add your handling code here:
-        if (tfReciboContratante.getText().isEmpty()) {
+        if (tfReciboCliente.getText().isEmpty()) {
             JOptionPane.showMessageDialog(tpnAbasRecibos, "Por favor selecione o contratente", "Aviso", 2);
-            tfReciboContratante.requestFocus();
+            tfReciboCliente.requestFocus();
         } else {
             if (tfReciboProfissional.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(tpnAbasRecibos, "Por favor selecione o profissional", "Aviso", 2);
-                tfReciboContratante.requestFocus();
+                tfReciboCliente.requestFocus();
             } else {
                 if (btFinalizarCadastroRecibo.getToolTipText().equals("Cadastrar")) {
                     conexaoTabelaRecibos.inserirNovoRecibo(preencherDadosCadastroRecibo());
@@ -468,18 +482,18 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btFinalizarCadastroReciboActionPerformed
 
-    private void tfReciboContratanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfReciboContratanteMouseClicked
+    private void tfReciboClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfReciboClienteMouseClicked
         // TODO add your handling code here:
-        TelaRelatorioContrante telaRelatorioContratante = new TelaRelatorioContrante(null, true);
-        telaRelatorioContratante.setVisible(true);
-        // Criando o contratante à receber o contratante da tela relatoriorecibo
-        Contratante contratanteSelecionado = new Contratante();
-        contratanteSelecionado = telaRelatorioContratante.retornarContratanteSelecionado();
-        if (contratanteSelecionado != null) {
-            tfReciboContratante.setText(contratanteSelecionado.getContratante_empresa());
-            contratanteTemporario = telaRelatorioContratante.retornarContratanteSelecionado();
+        TelaRelatorioCliente telaRelatorioCliente = new TelaRelatorioCliente(null, true, 0);
+        telaRelatorioCliente.setVisible(true);
+        // Criando o cliente à receber o cliente da tela relatoriorecibo
+        Cliente clienteSelecionado = new Cliente();
+        clienteSelecionado = telaRelatorioCliente.retornarClienteSelecionado();
+        if (clienteSelecionado != null) {
+            tfReciboCliente.setText(clienteSelecionado.getCliente_nome());
+            clienteTemporario = telaRelatorioCliente.retornarClienteSelecionado();
         }
-    }//GEN-LAST:event_tfReciboContratanteMouseClicked
+    }//GEN-LAST:event_tfReciboClienteMouseClicked
 
     private void tfReciboProfissionalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfReciboProfissionalMouseClicked
         // TODO add your handling code here:
@@ -502,20 +516,20 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
 
             Recibo recibo = modeloTabelaRecibos.retornaListaRecibos().get(tbRecibo.getSelectedRow());
             recibo.getRecibo_id();
-            //Contratante contratant =  new Contratante();
-            //ArrayList<Contratante> contratante = conexaoTabelaContratante.selecionarContratanteEspecifico(recibo.getContratante_id());
+            //Cliente contratant =  new Cliente();
+            //ArrayList<Cliente> cliente = conexaoTabelaCliente.selecionarClienteEspecifico(recibo.getCliente_id());
             //ArrayList<Profissional> profissional = conexaoTabelaProfissionais.selecionarProfissionalEspecifico(recibo.getProfissional_id());
 
-            System.out.println(recibo.getRecibo_contratante());
-            // tfReciboContratante.setText();
-            tfReciboContratante.setText(recibo.getRecibo_contratante());
+            System.out.println(recibo.getRecibo_cliente());
+            // tfReciboCliente.setText();
+            tfReciboCliente.setText(recibo.getRecibo_cliente());
             tfReciboProfissional.setText(recibo.getRecibo_profissional());
             tfReciboCidade.setText(recibo.getRecibo_cidade());
             String valor;
             valor = "" + recibo.getRecibo_valor() + "";
             tfReciboValor.setText(valor);
             cbReciboEstado.setSelectedItem(recibo.getRecibo_estado());
-            contratanteTemporario.setContratante_id(recibo.getContratante_id());
+            clienteTemporario.setCliente_id(recibo.getCliente_id());
             profissionalTemporario.setProfissional_id(recibo.getProfissional_id());
 
             Date data1 = recibo.getRecibo_data().getTime();
@@ -544,7 +558,7 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
             tpnAbasRecibos.setEnabledAt(1, true);
             tpnAbasRecibos.setSelectedIndex(1);
             tpnAbasRecibos.setTitleAt(0, "Gerar Recibos");
-            tfReciboContratante.setText("");
+            tfReciboCliente.setText("");
             tfReciboProfissional.setText("");
             tfReciboCidade.setText("");
             tfReciboValor.setText("");
@@ -577,9 +591,9 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
             modeloTabelaRecibos.inserirListaRecibos(conexaoTabelaRecibos.selecionarTodosRecibos());
             listaOriginalTemporariaRecibo.clear();
 
-            if (ckbReciboContratante.isSelected()) {
+            if (ckbReciboCliente.isSelected()) {
                 for (int i = 0; i < modeloTabelaRecibos.retornaListaRecibos().size(); i++) {
-                    if (modeloTabelaRecibos.retornaListaRecibos().get(i).getRecibo_contratante().toLowerCase().contains(tfPalavraChaveRecibo.getText().toLowerCase())) {
+                    if (modeloTabelaRecibos.retornaListaRecibos().get(i).getRecibo_cliente().toLowerCase().contains(tfPalavraChaveRecibo.getText().toLowerCase())) {
                         listaOriginalTemporariaRecibo.add(modeloTabelaRecibos.retornaListaRecibos().get(i));
                     }
                 }
@@ -611,8 +625,6 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
 
             DateFormat df = DateFormat.getDateInstance(DateFormat.LONG);
 
-           
-
             try {
                 //usando a clsse HashMap para criar um filtro
                 //  JOptionPane.showMessageDialog(rootPane, recibo.getRecibo_id());
@@ -632,6 +644,17 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void tfReciboValorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfReciboValorFocusLost
+        String a = tfReciboValor.getText();
+        String d = a.replace("R$", "").replace(" ", "").replace(".", "").replace(",", ".");
+        BigDecimal valor = new BigDecimal(d);
+        NumberFormat nf = NumberFormat.getCurrencyInstance();
+        //DecimalFormat nf = new DecimalFormat();  
+        //nf.applyPattern("#,##0.00");
+        String formatado = nf.format(valor);
+        tfReciboValor.setText(formatado);
+    }//GEN-LAST:event_tfReciboValorFocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCancelarAtualizacaoRecibo;
@@ -639,7 +662,7 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
     private javax.swing.JButton btExcluirRecibo;
     private javax.swing.JButton btFinalizarCadastroRecibo;
     private javax.swing.JComboBox<String> cbReciboEstado;
-    private javax.swing.JCheckBox ckbReciboContratante;
+    private javax.swing.JCheckBox ckbReciboCliente;
     private javax.swing.JCheckBox ckbTraProfissional;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -658,7 +681,7 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
     private javax.swing.JTable tbRecibo;
     private javax.swing.JTextField tfPalavraChaveRecibo;
     private javax.swing.JTextField tfReciboCidade;
-    private javax.swing.JTextField tfReciboContratante;
+    private javax.swing.JTextField tfReciboCliente;
     private javax.swing.JTextField tfReciboProfissional;
     private javax.swing.JTextField tfReciboValor;
     private javax.swing.JTabbedPane tpnAbasRecibos;

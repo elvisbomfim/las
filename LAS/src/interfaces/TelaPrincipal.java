@@ -56,6 +56,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jmiCadastrarContratante = new javax.swing.JMenuItem();
         jmiCadastrarProfissional = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jmiRecibo = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -117,6 +118,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem1);
+
+        jMenuItem8.setText("Atualizar Secretaria");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem8);
 
         jMenuBar1.add(jMenu1);
 
@@ -314,6 +323,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         obj.setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        jifAbasSecretarias obj = new jifAbasSecretarias();
+        jdptelaPrincipal.add(obj);
+        obj.setVisible(true);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -361,6 +376,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JDesktopPane jdptelaPrincipal;
     private javax.swing.JMenuItem jmiCadastrarCliente;
     private javax.swing.JMenuItem jmiCadastrarContratante;

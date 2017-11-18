@@ -568,6 +568,8 @@ public class RelatorioPrincipalBD extends ConexaoBanco {
                 r.setCLIENTE_CEP(tabelaRetornada.getString("CLIENTE_CEP"));
                 r.setCLIENTE_CPF(tabelaRetornada.getString("CLIENTE_CPF"));
                 r.setCLIENTE_CNPJ(tabelaRetornada.getString("CLIENTE_CNPJ"));
+                r.setCLIENTE_UTMN(tabelaRetornada.getString("CLIENTE_UTMN"));
+                r.setCLIENTE_UTME(tabelaRetornada.getString("CLIENTE_UTME"));
                 r.setCLIENTE_FANTASIA(tabelaRetornada.getString("CLIENTE_FANTASIA"));
                 r.setPROFISSIONAL_NOME(tabelaRetornada.getString("PROFISSIONAL_NOME"));
                 r.setCATEGORIA_NOME(tabelaRetornada.getString("CATEGORIA_NOME"));

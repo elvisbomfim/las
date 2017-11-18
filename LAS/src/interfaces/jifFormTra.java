@@ -263,7 +263,7 @@ public class jifFormTra extends javax.swing.JInternalFrame {
 
         jLabel11.setText("Data:");
 
-        jLabel12.setText("N° Artigo:");
+        jLabel12.setText("ART N°:");
 
         javax.swing.GroupLayout pnCadastrarNovosTraLayout = new javax.swing.GroupLayout(pnCadastrarNovosTra);
         pnCadastrarNovosTra.setLayout(pnCadastrarNovosTraLayout);

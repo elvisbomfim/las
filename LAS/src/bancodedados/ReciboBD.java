@@ -28,8 +28,8 @@ public class ReciboBD extends ConexaoBanco {
 
             String dtRecibo = recibo.getRecibo_data().get(Calendar.YEAR) + "-" + (recibo.getRecibo_data().get(Calendar.MONTH) + 1) + "-" + recibo.getRecibo_data().get(Calendar.DAY_OF_MONTH);
 
-            sql = "INSERT INTO RECIBO (CONTRATANTE_ID, PROFISSIONAL_ID, RECIBO_CIDADE, RECIBO_ESTADO, RECIBO_DATA, RECIBO_VALOR)"
-                    + "VALUES (" + recibo.getContratante_id() + ", " + recibo.getProfissional_id() + ", '" + recibo.getRecibo_cidade() + "', '" + recibo.getRecibo_estado() + "', '" + dtRecibo + "', '" + recibo.getRecibo_valor() + "')";
+            sql = "INSERT INTO RECIBO (CLIENTE_ID, PROFISSIONAL_ID, RECIBO_CIDADE, RECIBO_ESTADO, RECIBO_DATA, RECIBO_VALOR)"
+                    + "VALUES (" + recibo.getCliente_id() + ", " + recibo.getProfissional_id() + ", '" + recibo.getRecibo_cidade() + "', '" + recibo.getRecibo_estado() + "', '" + dtRecibo + "', '" + recibo.getRecibo_valor() + "')";
 
             stm.executeUpdate(sql);
 
@@ -73,7 +73,7 @@ public class ReciboBD extends ConexaoBanco {
             String dtRecibo = recibo.getRecibo_data().get(Calendar.YEAR) + "-" + (recibo.getRecibo_data().get(Calendar.MONTH) + 1) + "-" + recibo.getRecibo_data().get(Calendar.DAY_OF_MONTH);
             // CLIENTE_CONTRATANTE, CLIENTE_NOME, CLIENTE_FANTASIA, CLIENTE_CNPJ_CPF, CLIENTE_INSC_ESTADUAL, CLIENTE_INSC_MUNICIPAL, CLIENTE_ENDERECO, CLIENTE_NUMERO, CLIENTE_COMPLEMENTO, CLIENTE_BAIRRO, CLIENTE_MUNICIPIO, CLIENTE_ESTADO, CLIENTE_CEP, CLIENTE_TELEFONE, CLIENTE_CELULAR
             sql = "UPDATE RECIBO "
-                    + "SET CONTRATANTE_ID=" + recibo.getContratante_id() + ", PROFISSIONAL_ID=" + recibo.getProfissional_id() + ", RECIBO_CIDADE='" + recibo.getRecibo_cidade() + "', RECIBO_ESTADO='" + recibo.getRecibo_estado() + "', RECIBO_DATA='" + dtRecibo + "', RECIBO_VALOR='" + recibo.getRecibo_valor() + "' "
+                    + "SET CLIENTE_ID=" + recibo.getCliente_id() + ", PROFISSIONAL_ID=" + recibo.getProfissional_id() + ", RECIBO_CIDADE='" + recibo.getRecibo_cidade() + "', RECIBO_ESTADO='" + recibo.getRecibo_estado() + "', RECIBO_DATA='" + dtRecibo + "', RECIBO_VALOR='" + recibo.getRecibo_valor() + "' "
                     + "WHERE recibo_id=" + recibo_id;
 
             stm.executeUpdate(sql);
@@ -96,9 +96,9 @@ public class ReciboBD extends ConexaoBanco {
 
             stm = con.createStatement();
 
-            sql = "SELECT r.*, c.contratante_empresa, p.profissional_nome "
+            sql = "SELECT r.*, c.cliente_nome, p.profissional_nome "
                     + "FROM RECIBO r "
-                    + "LEFT JOIN CONTRATANTE c ON c.contratante_id =  r.contratante_id "
+                    + "LEFT JOIN CLIENTE c ON c.cliente_id =  r.cliente_id "
                     + "LEFT JOIN PROFISSIONAL p ON p.profissional_id = r.profissional_id "
                     + "ORDER BY r.recibo_id DESC";
             //sql = "SELECT * "
@@ -112,9 +112,9 @@ public class ReciboBD extends ConexaoBanco {
 
                 // CLIENTE_CONTRATANTE, CLIENTE_NOME, CLIENTE_FANTASIA, CLIENTE_CNPJ_CPF, CLIENTE_INSC_ESTADUAL, CLIENTE_INSC_MUNICIPAL, CLIENTE_ENDERECO, CLIENTE_NUMERO, CLIENTE_COMPLEMENTO, CLIENTE_BAIRRO, CLIENTE_MUNICIPIO, CLIENTE_ESTADO, CLIENTE_CEP, CLIENTE_TELEFONE, CLIENTE_CELULAR
                 recibo.setRecibo_id(tabelaRetornada.getInt("RECIBO_ID"));
-                recibo.setContratante_id(tabelaRetornada.getInt("CONTRATANTE_ID"));
+                recibo.setCliente_id(tabelaRetornada.getInt("CLIENTE_ID"));
                 recibo.setProfissional_id(tabelaRetornada.getInt("PROFISSIONAL_ID"));
-                recibo.setRecibo_contratante(tabelaRetornada.getString("CONTRATANTE_EMPRESA"));
+                recibo.setRecibo_cliente(tabelaRetornada.getString("CLIENTE_NOME"));
                 recibo.setRecibo_profissional(tabelaRetornada.getString("PROFISSIONAL_NOME"));
                 recibo.setRecibo_estado(tabelaRetornada.getString("RECIBO_ESTADO"));
                 recibo.setRecibo_cidade(tabelaRetornada.getString("RECIBO_CIDADE"));

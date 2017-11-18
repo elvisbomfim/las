@@ -53,17 +53,16 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
     /**
      * Strings concatenadas
      */
-    String CheckBoxFAA="";
-    String CheckBoxFGE="";
-    String CheckBoxGR="";
-    String CheckBoxEA="";
+    String CheckBoxFAA = "";
+    String CheckBoxFGE = "";
+    String CheckBoxGR = "";
+    String CheckBoxEA = "";
 
     /**
      * Creates new form jifFormRestaurante
      */
-    
     int condicao = 0;
-    
+
     RelatorioPrincipal terraplanagemCadastro = new RelatorioPrincipal();
     Cliente clienteTemporario = new Cliente();
     Profissional profissionalTemporario = new Profissional();
@@ -217,7 +216,20 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
         if (rbBotaForaOpcao2Sim.isSelected()) {
             terraplanagemCadastro.setRELATORIO_BOTA_FORA_OPCAO_2(1);
         }
+        if (rbBotaForaOpcao3Nao.isSelected()) {
+            terraplanagemCadastro.setRELATORIO_BOTA_FORA_OPCAO_3(0);
+        }
+        if (rbBotaForaOpcao3Sim.isSelected()) {
+            terraplanagemCadastro.setRELATORIO_BOTA_FORA_OPCAO_3(1);
+        }
+        if (rbBotaForaOpcao4Nao.isSelected()) {
+            terraplanagemCadastro.setRELATORIO_BOTA_FORA_OPCAO_4(0);
+        }
+        if (rbBotaForaOpcao4Sim.isSelected()) {
+            terraplanagemCadastro.setRELATORIO_BOTA_FORA_OPCAO_4(1);
+        }
         terraplanagemCadastro.setRELATORIO_BOTA_FORA_N_DA_UC1(tfBotaForaNDaUc1.getText());
+        terraplanagemCadastro.setRELATORIO_BOTA_FORA_N_DA_UC2(tfBotaForaNDaUc2.getText());
         if (rbBotaFora2Nao.isSelected()) {
             terraplanagemCadastro.setRELATORIO_BOTA_FORA2(0);
         }
@@ -257,31 +269,30 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
         terraplanagemCadastro.setRELATORIO_DATA_ATUAL(cal);
         terraplanagemCadastro.setPROFISSIONAL_ID(profissionalTemporario.getProfissional_id());
         terraplanagemCadastro.setCATEGORIA_ID(4);
-        
-        System.out.println("imagem fora do  if:"+ imagem);
-        if(imagem != null){
-        try {
-            
-            
-            // TODO add your handling code here:
-            String caminho = "build/classes/imagens/";
-            System.out.println(caminho);
+
+        System.out.println("imagem fora do  if:" + imagem);
+        if (imagem != null) {
+            try {
+
+                // TODO add your handling code here:
+                String caminho = "build/classes/imagens/";
+                System.out.println(caminho);
                 SimpleDateFormat d = new SimpleDateFormat("yyyyMMddHHmmssSSS");
                 //System.out.println(d.format(new Date()));
                 File outputfile = new File(caminho + "image" + d.format(new Date()) + ".jpg");
-            terraplanagemCadastro.setRELATORIO_CROQUI_DE_LOCALIZACAO_EMPREENDIMENTO(outputfile.getName());
-            System.out.println(outputfile.getName());
-            ImageIO.write(imagem, "jpg", outputfile);
-            //JOptionPane.showMessageDialog(rootPane, "Imagem enviada com sucesso");
-        
-            imagem = null;
-            System.out.println("imagem dentro do  if:"+ imagem);
-        } catch (IOException ex) {
-            Logger.getLogger(jifFormRestautante.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        }else{           
-                terraplanagemCadastro.setRELATORIO_CROQUI_DE_LOCALIZACAO_EMPREENDIMENTO("sem_imagem.jpg");
+                terraplanagemCadastro.setRELATORIO_CROQUI_DE_LOCALIZACAO_EMPREENDIMENTO(outputfile.getName());
+                System.out.println(outputfile.getName());
+                ImageIO.write(imagem, "jpg", outputfile);
+                //JOptionPane.showMessageDialog(rootPane, "Imagem enviada com sucesso");
+
                 imagem = null;
+                System.out.println("imagem dentro do  if:" + imagem);
+            } catch (IOException ex) {
+                Logger.getLogger(jifFormRestautante.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            terraplanagemCadastro.setRELATORIO_CROQUI_DE_LOCALIZACAO_EMPREENDIMENTO("sem_imagem.jpg");
+            imagem = null;
         }
         return terraplanagemCadastro;
 
@@ -289,10 +300,12 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
 
     public void limparCamposCadastroTuristico() {
 
-        CheckBoxFAA="";
-        CheckBoxFGE="";
-        CheckBoxGR="";
-        CheckBoxEA="";        
+        CheckBoxFAA = "";
+        CheckBoxFGE = "";
+        CheckBoxGR = "";
+        CheckBoxEA = "";
+        tfAreaIntervencao.setText("");
+        tfAlturaTalude.setText("");
         tfNomeCliente.setText("");
         tfNomeFantasia.setText("");
         tfEndereco.setText("");
@@ -302,6 +315,8 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
         tfBairro.setText("");
         tfTelefone.setText("");
         tfCep.setText("");
+        tfCoordenadasUtmN.setText("");
+        tfCoordenadasUtmE.setText("");
         rbLocalizacaoZonaUrbana.setSelected(false);
         rbLocalizacaoZonaRural.setSelected(false);
         rbInseridoEmAreaIndustrial.setSelected(false);
@@ -324,6 +339,37 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
         rbISAInstalacao.setSelected(false);
         rbISAOperacao.setSelected(false);
         tfISAPrevisaoVegetacao.setText("");
+        tfISAAreaTotalMovimentacaoTerra.setText("");
+        tfISAAreaCorte.setText("");
+        tfISAAreaAterro.setText("");
+        tfISATaludesFormados.setText("");
+        tfRHNome1.setText("");
+        tfRHDistancia1.setText("");
+        rbRHSim1.setSelected(false);
+        rbRHNao1.setSelected(false);
+        rbBotaFora1Nao.setSelected(false);
+        rbBotaFora1Sim.setSelected(false);
+        tfBotaForaUtmN1.setText("");
+        tfBotaForaUtmE1.setText("");
+        rbBotaForaOpcao1Nao.setSelected(false);
+        rbBotaForaOpcao1Sim.setSelected(false);
+        tfBotaForaNDaUc1.setText("");
+        rbBotaForaOpcao2Sim.setSelected(false);
+        rbBotaForaOpcao2Nao.setSelected(false);
+        rbRHNao2.setText("");
+        rbRHSim2.setText("");
+        tfRHNome2.setText("");
+        tfRHDistancia2.setText("");
+        tfBotaForaUtmN2.setText("");
+        tfBotaForaUtmE2.setText("");
+        tfBotaForaAreaEmprestimo.setText("");
+        rbBotaForaOpcao3Sim.setSelected(false);
+        rbBotaForaOpcao3Nao.setSelected(false);
+        tfBotaForaNDaUc2.setText("");
+        rbRHNao3.setText("");
+        rbRHSim3.setText("");
+        tfRHNome3.setText("");
+        tfRHDistancia3.setText("");
         tfNEmpregados.setText("");
         taRoteiroAcesso.setText("");
         rbCLENadamaisexisteadeclarar.setSelected(false);
@@ -498,7 +544,7 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
         jLabel98 = new javax.swing.JLabel();
         rbBotaForaOpcao3Sim = new javax.swing.JRadioButton();
         jLabel99 = new javax.swing.JLabel();
-        jTextField17 = new javax.swing.JTextField();
+        tfBotaForaNDaUc2 = new javax.swing.JTextField();
         rbBotaForaOpcao3Nao = new javax.swing.JRadioButton();
         jLabel100 = new javax.swing.JLabel();
         rbBotaForaOpcao4Sim = new javax.swing.JRadioButton();
@@ -552,21 +598,38 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Cidade:");
 
+        tfNomeCliente.setEditable(false);
         tfNomeCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tfNomeClienteMouseClicked(evt);
             }
         });
 
+        tfNomeFantasia.setEditable(false);
+
+        tfEndereco.setEditable(false);
+
+        tfCidade.setEditable(false);
+
         jLabel6.setText("CNPJ/CPF:");
+
+        tfCpfCnpj.setEditable(false);
 
         jLabel7.setText("N°:");
 
+        tfNumero.setEditable(false);
+
         jLabel8.setText("Bairro:");
+
+        tfBairro.setEditable(false);
 
         jLabel18.setText(" CEP:");
 
+        tfCep.setEditable(false);
+
         jLabel19.setText("Tel:");
+
+        tfTelefone.setEditable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -584,15 +647,20 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
                     .addComponent(tfNomeCliente)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(tfNomeFantasia)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(tfCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel18)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(tfCep))
-                            .addComponent(tfEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tfEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfCpfCnpj))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -600,17 +668,11 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfBairro))
+                                .addComponent(tfBairro, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel19)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfTelefone))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(tfNomeFantasia, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfCpfCnpj, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)))
+                                .addComponent(tfTelefone)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -621,12 +683,11 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
                     .addComponent(tfNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(tfCpfCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfCpfCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel3)
-                        .addComponent(tfNomeFantasia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(tfNomeFantasia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel6)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -861,7 +922,11 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
 
         jLabel20.setText("UTM (N):");
 
+        tfCoordenadasUtmN.setEditable(false);
+
         jLabel21.setText("UTM (E):");
+
+        tfCoordenadasUtmE.setEditable(false);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -1069,7 +1134,7 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(144, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1656,7 +1721,7 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel106))
                             .addComponent(jLabel107, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(tfBotaForaNDaUc2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel28Layout.createSequentialGroup()
                         .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(rbBotaFora1Nao)
@@ -1720,7 +1785,7 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
                     .addComponent(rbBotaForaOpcao3Sim)
                     .addComponent(jLabel99))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfBotaForaNDaUc2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rbBotaForaOpcao3Nao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1776,9 +1841,9 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
         pnTerraplanagemLayout.setHorizontalGroup(
             pnTerraplanagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnTerraplanagemLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(30, Short.MAX_VALUE)
                 .addGroup(pnTerraplanagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 868, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel24, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1970,14 +2035,19 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
             tfCidade.setText(clienteSelecionado.getCliente_municipio());
             tfNumero.setText(clienteSelecionado.getCliente_numero());
             tfBairro.setText(clienteSelecionado.getCliente_bairro());
-            tfEndereco.setText(clienteSelecionado.getCliente_cep());
             tfTelefone.setText(clienteSelecionado.getCliente_telefone());
             tfCep.setText(clienteSelecionado.getCliente_cep());
-            if (clienteSelecionado.getCliente_cpf() != null) {
-                tfCpfCnpj.setText(clienteSelecionado.getCliente_cpf());
+            tfCoordenadasUtmN.setText(clienteSelecionado.getCliente_utmn());
+            tfCoordenadasUtmE.setText(clienteSelecionado.getCliente_utme());
+            if ((clienteSelecionado.getCliente_cnpj().equals("  .   .   /    -  ") == false) && (clienteSelecionado.getCliente_cpf().equals("   .   .   -  ") == false)) {
+                tfCpfCnpj.setText(clienteSelecionado.getCliente_cpf() + " - " + clienteSelecionado.getCliente_cnpj());
             } else {
-                if (clienteSelecionado.getCliente_cpf() != null) {
-                    tfCpfCnpj.setText(clienteSelecionado.getCliente_cnpj());
+                if (clienteSelecionado.getCliente_cpf().equals("   .   .   -  ") == false) {
+                    tfCpfCnpj.setText(clienteSelecionado.getCliente_cpf());
+                } else {
+                    if (clienteSelecionado.getCliente_cnpj().equals("  .   .   /    -  ") == false) {
+                        tfCpfCnpj.setText(clienteSelecionado.getCliente_cnpj());
+                    }
                 }
             }
             clienteTemporario = telaRelatorioCliente.retornarClienteSelecionado();
@@ -2033,10 +2103,12 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
             //tpnAbasRequerimentos.setEnabledAt(1, true);
             //tpnAbasRequerimentos.setSelectedIndex(1);
             //tpnAbasRequerimentos.setTitleAt(0, "Gerar Requerimento");
-            CheckBoxFAA="";
-            CheckBoxFGE="";
-            CheckBoxGR="";
-            CheckBoxEA="";            
+            CheckBoxFAA = "";
+            CheckBoxFGE = "";
+            CheckBoxGR = "";
+            CheckBoxEA = "";
+            tfAreaIntervencao.setText("");
+            tfAlturaTalude.setText("");
             tfNomeCliente.setText("");
             tfNomeFantasia.setText("");
             tfEndereco.setText("");
@@ -2046,6 +2118,8 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
             tfBairro.setText("");
             tfTelefone.setText("");
             tfCep.setText("");
+            tfCoordenadasUtmN.setText("");
+            tfCoordenadasUtmE.setText("");
             rbLocalizacaoZonaUrbana.setSelected(false);
             rbLocalizacaoZonaRural.setSelected(false);
             rbInseridoEmAreaIndustrial.setSelected(false);
@@ -2061,7 +2135,6 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
             tfAreaDaUcNome.setText("");
             rbAreaDaUcNao.setSelected(false);
             rbSuprecaoVegetacaoSim.setSelected(false);
-//            tfSuprecaoVegetacaoDocumentoIdaf.setText("");
             rbSuprecaoVegetacaoNao.setSelected(false);
             tfCoordenadasUtmN.setText("");
             tfCoordenadasUtmE.setText("");
@@ -2069,18 +2142,45 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
             rbISAInstalacao.setSelected(false);
             rbISAOperacao.setSelected(false);
             tfISAPrevisaoVegetacao.setText("");
-//            tfISAData.setText("");
+            tfISAAreaTotalMovimentacaoTerra.setText("");
+            tfISAAreaCorte.setText("");
+            tfISAAreaAterro.setText("");
+            tfISATaludesFormados.setText("");
+            tfRHNome1.setText("");
+            tfRHDistancia1.setText("");
+            rbRHSim1.setSelected(false);
+            rbRHNao1.setSelected(false);
+            rbBotaFora1Nao.setSelected(false);
+            rbBotaFora1Sim.setSelected(false);
+            tfBotaForaUtmN1.setText("");
+            tfBotaForaUtmE1.setText("");
+            rbBotaForaOpcao1Nao.setSelected(false);
+            rbBotaForaOpcao1Sim.setSelected(false);
+            tfBotaForaNDaUc1.setText("");
+            rbBotaForaOpcao2Sim.setSelected(false);
+            rbBotaForaOpcao2Nao.setSelected(false);
+            rbRHNao2.setText("");
+            rbRHSim2.setText("");
+            tfRHNome2.setText("");
+            tfRHDistancia2.setText("");
+            tfBotaForaUtmN2.setText("");
+            tfBotaForaUtmE2.setText("");
+            tfBotaForaAreaEmprestimo.setText("");
+            rbBotaForaOpcao3Sim.setSelected(false);
+            rbBotaForaOpcao3Nao.setSelected(false);
+            tfBotaForaNDaUc2.setText("");
+            rbRHNao3.setText("");
+            rbRHSim3.setText("");
+            tfRHNome3.setText("");
+            tfRHDistancia3.setText("");
             tfNEmpregados.setText("");
-
             taRoteiroAcesso.setText("");
             rbCLENadamaisexisteadeclarar.setSelected(false);
             rbCLEDeclaramosoqueconstaemanexo.setSelected(false);
             taTextoAnexo.setText("");
-//            tfDataAtual.setText("");
             tfProfissional.setText("");
             imagem = null;
             lblImagem.setIcon(new ImageIcon(""));
-
             tpnAbasTerraplanagem.setSelectedIndex(1); // Mudando para a PRIMEIRA aba
 
             tpnAbasTerraplanagem.setTitleAt(0, "Cadastrar Relatório Terraplanagem");
@@ -2122,13 +2222,13 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(rootPane, "Não existem mais relatórios para serem deletados");
         } else if (JOptionPane.showConfirmDialog(rootPane, "Deseja realmente excluir esse relatorio?", "Excluir cliente", 0) == 0) {
             if (tbRelatoriosCadastrados.getSelectedRow() != -1) {
-                
+
                 relatorioExcluir = modeloTabelaTerraplanagem.retornaListaRelatorioPrincipal().get(tbRelatoriosCadastrados.getSelectedRow());
                 if (!"sem_imagem.jpg".equals(relatorioExcluir.getRELATORIO_CROQUI_DE_LOCALIZACAO_EMPREENDIMENTO())) {
                     File file = new File("build/classes/imagens/" + relatorioExcluir.getRELATORIO_CROQUI_DE_LOCALIZACAO_EMPREENDIMENTO());
                     file.delete();
-                }             
-                
+                }
+
                 conexaoTabelaRelatorio.removerRelatorio(modeloTabelaTerraplanagem.retornaListaRelatorioPrincipal().get(tbRelatoriosCadastrados.getSelectedRow()).getRELATORIO_ID());
                 modeloTabelaTerraplanagem.inserirListaRelatorioPrincipal(conexaoTabelaRelatorio.selecionarTodosRelatorios(4));
 
@@ -2153,11 +2253,18 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
             tfBairro.setText(relatorioPrincipal.getCLIENTE_BAIRRO());
             tfTelefone.setText(relatorioPrincipal.getCLIENTE_TELEFONE());
             tfCep.setText(relatorioPrincipal.getCLIENTE_CEP());
-            if (relatorioPrincipal.getCLIENTE_CPF() != null) {
-                tfCpfCnpj.setText(relatorioPrincipal.getCLIENTE_CPF());
+            tfCoordenadasUtmN.setText(relatorioPrincipal.getCLIENTE_UTMN());
+            tfCoordenadasUtmE.setText(relatorioPrincipal.getCLIENTE_UTME());
+
+            if ((relatorioPrincipal.getCLIENTE_CPF().equals("   .   .   -  ") == false) && (relatorioPrincipal.getCLIENTE_CNPJ().equals("  .   .   /    -  ") == false)) {
+                tfCpfCnpj.setText(relatorioPrincipal.getCLIENTE_CPF() + " - " + relatorioPrincipal.getCLIENTE_CNPJ());
             } else {
-                if (relatorioPrincipal.getCLIENTE_CNPJ() != null) {
-                    tfCpfCnpj.setText(relatorioPrincipal.getCLIENTE_CNPJ());
+                if (relatorioPrincipal.getCLIENTE_CPF().equals("   .   .   -  ") == false) {
+                    tfCpfCnpj.setText(relatorioPrincipal.getCLIENTE_CPF());
+                } else {
+                    if (relatorioPrincipal.getCLIENTE_CNPJ().equals("  .   .   /    -  ") == false) {
+                        tfCpfCnpj.setText(relatorioPrincipal.getCLIENTE_CNPJ());
+                    }
                 }
             }
             clienteTemporario.setCliente_id(relatorioPrincipal.getCLIENTE_ID());
@@ -2275,8 +2382,22 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
             if (relatorioPrincipal.getRELATORIO_BOTA_FORA_OPCAO_2() == 1) {
                 rbBotaForaOpcao2Sim.setSelected(true);
             }
-            tfBotaForaNDaUc1.setText(relatorioPrincipal.getRELATORIO_BOTA_FORA_N_DA_UC1());
+            if (relatorioPrincipal.getRELATORIO_BOTA_FORA_OPCAO_3() == 0) {
+                rbBotaForaOpcao3Nao.setSelected(true);
+            }
 
+            if (relatorioPrincipal.getRELATORIO_BOTA_FORA_OPCAO_3() == 1) {
+                rbBotaForaOpcao3Sim.setSelected(true);
+            }
+            if (relatorioPrincipal.getRELATORIO_BOTA_FORA_OPCAO_4() == 0) {
+                rbBotaForaOpcao4Nao.setSelected(true);
+            }
+
+            if (relatorioPrincipal.getRELATORIO_BOTA_FORA_OPCAO_4() == 1) {
+                rbBotaForaOpcao4Sim.setSelected(true);
+            }
+            tfBotaForaNDaUc1.setText(relatorioPrincipal.getRELATORIO_BOTA_FORA_N_DA_UC1());
+            tfBotaForaNDaUc2.setText(relatorioPrincipal.getRELATORIO_BOTA_FORA_N_DA_UC2());
             if (relatorioPrincipal.getRELATORIO_BOTA_FORA2() == 0) {
                 rbBotaFora2Nao.setSelected(true);
             }
@@ -2324,19 +2445,18 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
             profissionalTemporario.setProfissional_id(relatorioPrincipal.getPROFISSIONAL_ID());
             tfProfissional.setText(relatorioPrincipal.getPROFISSIONAL_NOME());
             relatorioPrincipal.setCATEGORIA_ID(4);
-           
-                try {
-                    String caminho = "build/classes/imagens/";
 
-                    File outputfile = new File(caminho + relatorioPrincipal.getRELATORIO_CROQUI_DE_LOCALIZACAO_EMPREENDIMENTO());
-                    imagem = ManipularImagem.setImagemDimensao(outputfile.getAbsolutePath(), 600, 600);
+            try {
+                String caminho = "build/classes/imagens/";
 
-                    lblImagem.setIcon(new ImageIcon(imagem));
+                File outputfile = new File(caminho + relatorioPrincipal.getRELATORIO_CROQUI_DE_LOCALIZACAO_EMPREENDIMENTO());
+                imagem = ManipularImagem.setImagemDimensao(outputfile.getAbsolutePath(), 600, 600);
 
-                } catch (Exception ex) {
-                    // System.out.println(ex.printStackTrace().toString());
-                }
-            
+                lblImagem.setIcon(new ImageIcon(imagem));
+
+            } catch (Exception ex) {
+                // System.out.println(ex.printStackTrace().toString());
+            }
 
             tpnAbasTerraplanagem.setSelectedIndex(0); // Mudando para a PRIMEIRA aba
 
@@ -2510,12 +2630,11 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
 
             RelatorioPrincipal terraplanagem = modeloTabelaTerraplanagem.retornaListaRelatorioPrincipal().get(tbRelatoriosCadastrados.getSelectedRow());
             terraplanagem.getRELATORIO_ID();
-            
+
             DecimalFormat form = new DecimalFormat("00");
             String data;
             data = form.format(terraplanagem.getRELATORIO_DATA_ATUAL().get(Calendar.DAY_OF_MONTH)) + "/" + form.format(terraplanagem.getRELATORIO_DATA_ATUAL().get(Calendar.MONTH) + 1) + "/" + terraplanagem.getRELATORIO_DATA_ATUAL().get(Calendar.YEAR);
 
-            
             try {
                 //usando a clsse HashMap para criar um filtro
                 //  JOptionPane.showMessageDialog(rootPane, recibo.getRecibo_id());
@@ -2543,10 +2662,9 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
             System.out.println(fc.getSelectedFile());
 
             try {
-               imagem = ManipularImagem.setImagemDimensao(arquivo.getAbsolutePath(), 1024, 768);
+                imagem = ManipularImagem.setImagemDimensao(arquivo.getAbsolutePath(), 1024, 768);
 
                 lblImagem.setIcon(new ImageIcon(new javax.swing.ImageIcon(imagem).getImage().getScaledInstance(400, 300, Image.SCALE_SMOOTH)));
-
 
             } catch (Exception ex) {
                 // System.out.println(ex.printStackTrace().toString());
@@ -2657,7 +2775,6 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextField jTextField17;
     private javax.swing.JLabel lblImagem;
     private javax.swing.JPanel pnCROQUI;
     private com.toedter.calendar.JDayChooser pnDataAtual;
@@ -2709,6 +2826,7 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
     private javax.swing.JTextField tfBairro;
     private javax.swing.JTextField tfBotaForaAreaEmprestimo;
     private javax.swing.JTextField tfBotaForaNDaUc1;
+    private javax.swing.JTextField tfBotaForaNDaUc2;
     private javax.swing.JTextField tfBotaForaUtmE1;
     private javax.swing.JTextField tfBotaForaUtmE2;
     private javax.swing.JTextField tfBotaForaUtmN1;

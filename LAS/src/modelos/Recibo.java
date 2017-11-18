@@ -17,9 +17,9 @@ public class Recibo {
     private String recibo_cidade;
     private String recibo_estado;
     private Calendar recibo_data;
-    private int contratante_id;
+    private int cliente_id;
     private int profissional_id;
-    private String recibo_contratante;
+    private String recibo_cliente;
     private String recibo_profissional;
     private String recibo_valor;
 
@@ -55,12 +55,12 @@ public class Recibo {
         this.recibo_data = recibo_data;
     }
 
-    public int getContratante_id() {
-        return contratante_id;
+    public int getCliente_id() {
+        return cliente_id;
     }
 
-    public void setContratante_id(int contratante_id) {
-        this.contratante_id = contratante_id;
+    public void setCliente_id(int cliente_id) {
+        this.cliente_id = cliente_id;
     }
 
     public int getProfissional_id() {
@@ -71,12 +71,12 @@ public class Recibo {
         this.profissional_id = profissional_id;
     }
 
-    public String getRecibo_contratante() {
-        return recibo_contratante;
+    public String getRecibo_cliente() {
+        return recibo_cliente;
     }
 
-    public void setRecibo_contratante(String recibo_contratante) {
-        this.recibo_contratante = recibo_contratante;
+    public void setRecibo_cliente(String recibo_cliente) {
+        this.recibo_cliente = recibo_cliente;
     }
 
     public String getRecibo_profissional() {
@@ -93,10 +93,6 @@ public class Recibo {
 
     public void setRecibo_valor(String recibo_valor) {
         this.recibo_valor = recibo_valor;
-    }
-
-    public String format(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
  

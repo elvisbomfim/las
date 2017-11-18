@@ -45,7 +45,7 @@ import net.sf.nachocalendar.components.DateField;
  */
 public class jifFormRequerimento extends javax.swing.JInternalFrame {
 
-    DateField dataInicioOperacao = CalendarFactory.createDateField();
+    //DateField dataInicioOperacao = CalendarFactory.createDateField();
     DateField dataAtual = CalendarFactory.createDateField();
     /**
      * Definição de ArrayList's
@@ -87,10 +87,10 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
         initComponents();
         conexao = ConexaoPDF.conector();
         Calendar cal = Calendar.getInstance();
-        dataInicioOperacao.setBaseDate(cal.getTime());
-        pnDataAtual.add(dataInicioOperacao);
+//        dataInicioOperacao.setBaseDate(cal.getTime());
+ //       pnDataAtual.add(dataInicioOperacao);
         //Definindo o botão DateField (Data Inicio do Semestre) para seleção de uma data e atribuindo uma ação de mudança à ele.
-        dataInicioOperacao.setSize((pnDataAtual.getWidth()), (pnDataAtual.getHeight()));
+ //       dataInicioOperacao.setSize((pnDataAtual.getWidth()), (pnDataAtual.getHeight()));
 
         tbRequerimento.setModel(modeloTabelaRequerimentos);
 
@@ -152,12 +152,12 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
         requerimentoCadastro.setRequerimento_representante2(tfRequerimentoRepresentante2.getText());
         requerimentoCadastro.setRequerimento_profissional1(tfRequerimentoProfissional1.getText());
         requerimentoCadastro.setRequerimento_profissional2(tfRequerimentoProfissional2.getText());
-        Calendar cal = Calendar.getInstance();
-        cal.setTime((Date) dataInicioOperacao.getValue());
-        requerimentoCadastro.setRequerimento_fase_empreendimento_data(cal);
+//        Calendar cal = Calendar.getInstance();
+//        cal.setTime((Date) dataInicioOperacao.getValue());
+//        requerimentoCadastro.setRequerimento_fase_empreendimento_data(cal);
         Calendar cal1 = Calendar.getInstance();
         dataAtual.setBaseDate(cal1.getTime());
-        requerimentoCadastro.setRequerimento_data(cal);
+ //       requerimentoCadastro.setRequerimento_data(cal);
         requerimentoCadastro.setRequerimento_num_processo_protocolo(tfRequerimentoProtocolo.getText());
         requerimentoCadastro.setRequerimento_num_licenca_anterior(tfRequerimentoLicencaiAnterior.getText());
         requerimentoCadastro.setRequerimento_latn(tfRequerimentoLatN.getText());
@@ -247,8 +247,6 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
         tfRequerimentoLicencaiAnterior = new javax.swing.JTextField();
         btFinalizarCadastroRequerimento = new javax.swing.JButton();
         btCancelarAtualizacaoRequerimento = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        pnDataAtual = new com.toedter.calendar.JDayChooser();
         jLabel12 = new javax.swing.JLabel();
         tfRequerimentoLatN = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
@@ -446,11 +444,13 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel11.setText("Data de início da operaçao:");
-
         jLabel12.setText("Coordenadas Geogrαficas/UTM: LAT(N):");
 
+        tfRequerimentoLatN.setEditable(false);
+
         jLabel13.setText("Coordenadas Geogrαficas/UTM: LAT(E):");
+
+        tfRequerimentoLatE.setEditable(false);
 
         jLabel14.setText("(Espaço reservado a SEMA):");
 
@@ -511,28 +511,28 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
                                 .addGap(14, 14, 14)
                                 .addComponent(tfRequerimentoLicencaiAnterior))
                             .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
-                                .addComponent(rbPlanejamento)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rbInstalacao)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rbOperacao)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                                .addComponent(jLabel11))
-                            .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
-                                .addComponent(jLabel12)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfRequerimentoLatN, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
-                                .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel13)
-                                    .addComponent(jLabel14))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfRequerimentoSema)
-                                    .addComponent(tfRequerimentoLatE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pnDataAtual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
+                                        .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel13)
+                                            .addComponent(jLabel14))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(tfRequerimentoSema)
+                                            .addComponent(tfRequerimentoLatE)))
+                                    .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
+                                            .addComponent(rbPlanejamento)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(rbInstalacao)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(rbOperacao))
+                                        .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
+                                            .addComponent(jLabel12)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(tfRequerimentoLatN, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(83, 83, 83)))
+                        .addGap(181, 181, 181)))
                 .addContainerGap())
         );
         pnCadastrarNovoRequerimentoLayout.setVerticalGroup(
@@ -579,40 +579,34 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
-                        .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rbPlanejamento)
-                            .addComponent(rbInstalacao)
-                            .addComponent(rbOperacao)
-                            .addComponent(jLabel11))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(tfRequerimentoProtocolo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(tfRequerimentoLicencaiAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
-                            .addComponent(tfRequerimentoLatN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel13)
-                            .addComponent(tfRequerimentoLatE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel14)
-                            .addComponent(tfRequerimentoSema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                        .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btFinalizarCadastroRequerimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btCancelarAtualizacaoRequerimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
-                        .addComponent(pnDataAtual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbPlanejamento)
+                    .addComponent(rbInstalacao)
+                    .addComponent(rbOperacao))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(tfRequerimentoProtocolo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(tfRequerimentoLicencaiAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(tfRequerimentoLatN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(tfRequerimentoLatE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(tfRequerimentoSema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btFinalizarCadastroRequerimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btCancelarAtualizacaoRequerimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -768,6 +762,8 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
         clienteSelecionado = telaRelatorioCliente.retornarClienteSelecionado();
         if (clienteSelecionado != null) {
             tfRequerimentoCliente.setText(clienteSelecionado.getCliente_nome());
+            tfRequerimentoLatN.setText(clienteSelecionado.getCliente_utmn());
+            tfRequerimentoLatE.setText(clienteSelecionado.getCliente_utme());
             clienteTemporario = telaRelatorioCliente.retornarClienteSelecionado();
         }
     }//GEN-LAST:event_tfRequerimentoClienteMouseClicked
@@ -892,9 +888,9 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
             profissionalTemporario2.setProfissional_id(requerimento.getProfissional_id2());
             tfRequerimentoProtocolo.setText(requerimento.getRequerimento_num_processo_protocolo());
             tfRequerimentoLicencaiAnterior.setText(requerimento.getRequerimento_num_licenca_anterior());
-            Date data1 = requerimento.getRequerimento_fase_empreendimento_data().getTime();
+          //  Date data1 = requerimento.getRequerimento_fase_empreendimento_data().getTime();
 
-            dataInicioOperacao.setValue(data1);
+           // dataInicioOperacao.setValue(data1);
 
             tfRequerimentoLatN.setText(requerimento.getRequerimento_latn());
             tfRequerimentoLatE.setText(requerimento.getRequerimento_late());
@@ -1180,7 +1176,6 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -1195,7 +1190,6 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel pnCadastrarNovoRequerimento;
-    private com.toedter.calendar.JDayChooser pnDataAtual;
     private javax.swing.JPanel pnGerenciarRequerimentos;
     private javax.swing.JRadioButton rbAA;
     private javax.swing.JRadioButton rbInstalacao;
