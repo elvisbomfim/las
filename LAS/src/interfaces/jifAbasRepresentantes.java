@@ -585,10 +585,10 @@ public class jifAbasRepresentantes extends javax.swing.JInternalFrame {
             tfRepresentanteComplemento.setText(representante.getRepresentante_complemento());
             tfRepresentanteBairro.setText(representante.getRepresentante_bairro());
             tfRepresentanteCidade.setText(representante.getRepresentante_municipio());
-            tfRepresentanteCep.setText(representante.getRepresentante_cep());
-            tfRepresentanteCpf.setText(representante.getRepresentante_cpf());
-            tfRepresentanteTelefone.setText(representante.getRepresentante_telefone());
-            tfRepresentanteCelular.setText(representante.getRepresentante_celular());
+            tfRepresentanteCep.setValue(representante.getRepresentante_cep());
+            tfRepresentanteCpf.setValue(representante.getRepresentante_cpf());
+            tfRepresentanteTelefone.setValue(representante.getRepresentante_telefone());
+            tfRepresentanteCelular.setValue(representante.getRepresentante_celular());
             tfRepresentanteNacionalidade.setText(representante.getRepresentante_nacionalidade());
 
             cbRepresentanteEstado.setSelectedItem(representante.getRepresentante_estado());

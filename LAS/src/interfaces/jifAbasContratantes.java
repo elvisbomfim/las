@@ -525,8 +525,8 @@ public class jifAbasContratantes extends javax.swing.JInternalFrame {
             Contratante contratante = modeloTabelaContratante.retornarListaContratantes().get(tbContratantesCadastrados.getSelectedRow());
 
             tfContratanteNome.setText(contratante.getContratante_empresa());
-            tfContratanteCpf.setText(contratante.getContratante_cpf());
-            tfContratanteCnpj.setText(contratante.getContratante_cnpj());
+            tfContratanteCpf.setValue(contratante.getContratante_cpf());
+            tfContratanteCnpj.setValue(contratante.getContratante_cnpj());
             tfContratanteTelefone.setText(contratante.getContratante_telefone());
             tfContratanteCelular.setText(contratante.getContratante_celular());
 

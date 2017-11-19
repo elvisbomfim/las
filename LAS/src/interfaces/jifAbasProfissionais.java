@@ -612,13 +612,13 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
 
             String Nome[] = profissional.getProfissional_nome().split(" ");
             cbAbreviacao.setSelectedItem(Nome[0]);
-            System.out.println(Nome[1]);
+//            System.out.println(Nome[1]);
             tfProfissionalNome.setText(Nome[1]);
             tfProfissionalProfissao.setText(profissional.getProfissional_profissao());
-            tfProfissionalCpf.setText(profissional.getProfissional_cpf());
+            tfProfissionalCpf.setValue(profissional.getProfissional_cpf());
             tfProfissionalCrea.setText(profissional.getProfissional_crea());
             tfProfissionalCtma.setText(profissional.getProfissional_ctma());
-            tfProfissionalCep.setText(profissional.getProfissional_cep());
+            tfProfissionalCep.setValue(profissional.getProfissional_cep());
             tfProfissionalRua.setText(profissional.getProfissional_endereco());
             tfProfissionalNumero.setText(profissional.getProfissional_numero());
             tfProfissionalBairro.setText(profissional.getProfissional_bairro());

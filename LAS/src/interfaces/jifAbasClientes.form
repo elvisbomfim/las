@@ -264,7 +264,7 @@
                               <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="tfClienteUtme" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="39" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="btFinalizarCadastroCliente" max="-2" attributes="0"/>
                               <Component id="btCancelarAtualizacaoCliente" max="-2" attributes="0"/>

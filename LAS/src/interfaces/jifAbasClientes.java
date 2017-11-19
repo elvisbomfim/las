@@ -807,11 +807,11 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
             tfClienteNome.setText(cliente.getCliente_nome());
             tfClienteFantasia.setText(cliente.getCliente_fantasia());
             tfClienteEmail.setText(cliente.getCliente_email());
-            tfClienteCpf.setText(cliente.getCliente_cpf());
-            tfCliente_Cnpj.setText(cliente.getCliente_cnpj());
+            tfClienteCpf.setValue(cliente.getCliente_cpf());
+            tfCliente_Cnpj.setValue(cliente.getCliente_cnpj());
             tfClienteInscMunicipal.setText(cliente.getCliente_insc_municipal());
             tfClienteInscEstadual.setText(cliente.getCliente_insc_estadual());
-            tfClienteCep.setText(cliente.getCliente_cep());
+            tfClienteCep.setValue(cliente.getCliente_cep());
             tfClienteRua.setText(cliente.getCliente_endereco());
             tfClienteNumero.setText(cliente.getCliente_numero());
             tfClienteBairro.setText(cliente.getCliente_bairro());
