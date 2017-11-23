@@ -40,6 +40,7 @@ public class jifAbasSecretarias extends javax.swing.JInternalFrame {
     public jifAbasSecretarias() {
         initComponents();
 
+        //this.setSize(500, 600);
         //tbSecretariasCadastrados.setModel(modeloTabelaSecretaria);
         //----------------buscas na tabela--------------------------------------
         //buscarSecretariasTabela();
@@ -66,8 +67,6 @@ public class jifAbasSecretarias extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         pnCadastrarNovoContratante = new javax.swing.JPanel();
-        btCancelarAtualizacao = new javax.swing.JButton();
-        btFinalizarCadastroContratante = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         tfCep = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -84,33 +83,14 @@ public class jifAbasSecretarias extends javax.swing.JInternalFrame {
         tfEmail = new javax.swing.JTextField();
         tfEndereco = new javax.swing.JTextField();
         tfNumero = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        btFinalizarCadastroContratante = new javax.swing.JButton();
+        btCancelarAtualizacao = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
         setTitle("Secretaria");
-        setPreferredSize(new java.awt.Dimension(600, 600));
-
-        pnCadastrarNovoContratante.setPreferredSize(new java.awt.Dimension(600, 550));
-
-        btCancelarAtualizacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/if_edit-not-validated_85308.png"))); // NOI18N
-        btCancelarAtualizacao.setToolTipText("Cancelar Atualização");
-        btCancelarAtualizacao.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btCancelarAtualizacao.setPreferredSize(new java.awt.Dimension(150, 150));
-        btCancelarAtualizacao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btCancelarAtualizacaoActionPerformed(evt);
-            }
-        });
-
-        btFinalizarCadastroContratante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/complete-file.png"))); // NOI18N
-        btFinalizarCadastroContratante.setToolTipText("Cadastrar");
-        btFinalizarCadastroContratante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btFinalizarCadastroContratante.setPreferredSize(new java.awt.Dimension(150, 150));
-        btFinalizarCadastroContratante.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btFinalizarCadastroContratanteActionPerformed(evt);
-            }
-        });
+        setPreferredSize(new java.awt.Dimension(515, 600));
 
         jLabel3.setText("CEP:");
 
@@ -136,61 +116,98 @@ public class jifAbasSecretarias extends javax.swing.JInternalFrame {
 
         cbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecionar--", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
 
+        btFinalizarCadastroContratante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/complete-file.png"))); // NOI18N
+        btFinalizarCadastroContratante.setToolTipText("Cadastrar");
+        btFinalizarCadastroContratante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btFinalizarCadastroContratante.setPreferredSize(new java.awt.Dimension(150, 150));
+        btFinalizarCadastroContratante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btFinalizarCadastroContratanteActionPerformed(evt);
+            }
+        });
+
+        btCancelarAtualizacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/if_edit-not-validated_85308.png"))); // NOI18N
+        btCancelarAtualizacao.setToolTipText("Cancelar Atualização");
+        btCancelarAtualizacao.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btCancelarAtualizacao.setPreferredSize(new java.awt.Dimension(150, 150));
+        btCancelarAtualizacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelarAtualizacaoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btCancelarAtualizacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
+                .addComponent(btFinalizarCadastroContratante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btCancelarAtualizacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btFinalizarCadastroContratante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        btFinalizarCadastroContratante.getAccessibleContext().setAccessibleDescription("Atualizar");
+
         javax.swing.GroupLayout pnCadastrarNovoContratanteLayout = new javax.swing.GroupLayout(pnCadastrarNovoContratante);
         pnCadastrarNovoContratante.setLayout(pnCadastrarNovoContratanteLayout);
         pnCadastrarNovoContratanteLayout.setHorizontalGroup(
             pnCadastrarNovoContratanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnCadastrarNovoContratanteLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(btCancelarAtualizacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btFinalizarCadastroContratante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53))
-            .addGroup(pnCadastrarNovoContratanteLayout.createSequentialGroup()
-                .addGap(80, 80, 80)
+                .addContainerGap()
                 .addGroup(pnCadastrarNovoContratanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnCadastrarNovoContratanteLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnCadastrarNovoContratanteLayout.createSequentialGroup()
-                        .addGroup(pnCadastrarNovoContratanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnCadastrarNovoContratanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(tfCep, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
-                            .addComponent(tfCidade, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfBairro, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfNumero, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfEndereco, javax.swing.GroupLayout.Alignment.LEADING)))
                     .addGroup(pnCadastrarNovoContratanteLayout.createSequentialGroup()
                         .addGroup(pnCadastrarNovoContratanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
                             .addComponent(jLabel8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addGroup(pnCadastrarNovoContratanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfEmail)
+                            .addComponent(tfTelefone)))
+                    .addGroup(pnCadastrarNovoContratanteLayout.createSequentialGroup()
+                        .addGroup(pnCadastrarNovoContratanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel1))
+                        .addGap(14, 14, 14)
+                        .addGroup(pnCadastrarNovoContratanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnCadastrarNovoContratanteLayout.createSequentialGroup()
-                                .addComponent(tfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(124, 124, 124))
+                                .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(tfBairro, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(tfNumero, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(tfCep, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(tfEndereco)
+                            .addComponent(tfCidade)))
+                    .addGroup(pnCadastrarNovoContratanteLayout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         pnCadastrarNovoContratanteLayout.setVerticalGroup(
             pnCadastrarNovoContratanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnCadastrarNovoContratanteLayout.createSequentialGroup()
-                .addGap(97, 97, 97)
-                .addGroup(pnCadastrarNovoContratanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnCadastrarNovoContratanteLayout.createSequentialGroup()
-                        .addGroup(pnCadastrarNovoContratanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(tfCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel2))
-                    .addComponent(tfEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addGroup(pnCadastrarNovoContratanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(tfCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnCadastrarNovoContratanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnCadastrarNovoContratanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -199,7 +216,7 @@ public class jifAbasSecretarias extends javax.swing.JInternalFrame {
                 .addGroup(pnCadastrarNovoContratanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(tfBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnCadastrarNovoContratanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(tfCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -207,7 +224,7 @@ public class jifAbasSecretarias extends javax.swing.JInternalFrame {
                 .addGroup(pnCadastrarNovoContratanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(pnCadastrarNovoContratanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(tfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -215,33 +232,23 @@ public class jifAbasSecretarias extends javax.swing.JInternalFrame {
                 .addGroup(pnCadastrarNovoContratanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addGroup(pnCadastrarNovoContratanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btCancelarAtualizacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btFinalizarCadastroContratante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(70, 70, 70))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
-
-        btFinalizarCadastroContratante.getAccessibleContext().setAccessibleDescription("Atualizar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(pnCadastrarNovoContratante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(pnCadastrarNovoContratante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 10, Short.MAX_VALUE)
-                .addComponent(pnCadastrarNovoContratante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 10, Short.MAX_VALUE))
+            .addComponent(pnCadastrarNovoContratante, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        pack();
+        setBounds(0, 0, 515, 600);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btFinalizarCadastroContratanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFinalizarCadastroContratanteActionPerformed
@@ -319,6 +326,7 @@ public class jifAbasSecretarias extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel pnCadastrarNovoContratante;
     private javax.swing.JTextField tfBairro;
     private javax.swing.JTextField tfCep;

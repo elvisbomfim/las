@@ -6,6 +6,7 @@
 package interfaces;
 
 import bancodedados.ConexaoBanco;
+import java.awt.Dimension;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,6 +14,7 @@ import java.awt.Image;
 import java.awt.Graphics;
 import java.util.Locale;
 import javax.swing.ImageIcon;
+import javax.swing.JInternalFrame;
 
 /**
  *
@@ -30,6 +32,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public TelaPrincipal() {
         initComponents();
 
+       
     }
 
     /**
@@ -209,130 +212,129 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmiCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCadastrarClienteActionPerformed
-        jifAbasContratantes contratante = new jifAbasContratantes();
-        jdptelaPrincipal.add(contratante);
-        contratante.setVisible(false);
-        jifAbasProfissionais profissionais = new jifAbasProfissionais();
-        jdptelaPrincipal.add(profissionais);
-        profissionais.setVisible(false);
-        jifAbasRepresentantes representante = new jifAbasRepresentantes();
-        jdptelaPrincipal.add(representante);
-        representante.setVisible(false);
-        jifFormCondominio condominio = new jifFormCondominio();
-        jdptelaPrincipal.add(condominio);
-        condominio.setVisible(false);
-        jifFormProcuracao procuracao = new jifFormProcuracao();
-        jdptelaPrincipal.add(procuracao);
-        procuracao.setVisible(false);
-        jifFormRecibo recibo = new jifFormRecibo();
-        jdptelaPrincipal.add(recibo);
-        recibo.setVisible(false);
-        jifFormRequerimento requerimento = new jifFormRequerimento();
-        jdptelaPrincipal.add(requerimento);
-        requerimento.setVisible(false);
-        jifFormRestautante restaurante = new jifFormRestautante();
-        jdptelaPrincipal.add(restaurante);
-        restaurante.setVisible(false);
-        jifFormTerraplanagem terraplanagem = new jifFormTerraplanagem();
-        jdptelaPrincipal.add(terraplanagem);
-        terraplanagem.setVisible(false);
-        jifFormTra tra = new jifFormTra();
-        jdptelaPrincipal.add(tra);
-        tra.setVisible(false);
-        jifFormTuristico turistico = new jifFormTuristico();
-        jdptelaPrincipal.add(turistico);
-        turistico.setVisible(false);
-        
+        Fechar();
         jifAbasClientes obj = new jifAbasClientes();
         jdptelaPrincipal.add(obj);
         obj.setVisible(true);
+        
+        Dimension d = obj.getDesktopPane().getSize();
+        obj.setLocation((d.width - obj.getSize().width) / 2, (d.height - obj.getSize().height) / 2);
+        
     }//GEN-LAST:event_jmiCadastrarClienteActionPerformed
 
     private void jmiCadastrarContratanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCadastrarContratanteActionPerformed
-        // TODO add your handling code here:
+        Fechar();
         jifAbasContratantes obj = new jifAbasContratantes();
         jdptelaPrincipal.add(obj);
         obj.setVisible(true);
+        setPosicao(obj);
     }//GEN-LAST:event_jmiCadastrarContratanteActionPerformed
 
     private void jmiCadastrarProfissionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCadastrarProfissionalActionPerformed
-        // TODO add your handling code here:
+        Fechar();
         jifAbasProfissionais obj = new jifAbasProfissionais();
         jdptelaPrincipal.add(obj);
         obj.setVisible(true);
+        setPosicao(obj);
     }//GEN-LAST:event_jmiCadastrarProfissionalActionPerformed
 
     private void jmiReciboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiReciboActionPerformed
-        // TODO add your handling code here:
+        Fechar();
         jifFormRecibo recibo = new jifFormRecibo();
         recibo.setVisible(true);
         jdptelaPrincipal.add(recibo);
+        setPosicao(recibo);
     }//GEN-LAST:event_jmiReciboActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+        Fechar();
         jifAbasRepresentantes representante = new jifAbasRepresentantes();
         representante.setVisible(true);
         jdptelaPrincipal.add(representante);
+        setPosicao(representante);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
+        Fechar();
         jifFormTra tra = new jifFormTra();
         tra.setVisible(true);
         jdptelaPrincipal.add(tra);
+        setPosicao(tra);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-        // TODO add your handling code here:
+        Fechar();
         jifFormRequerimento requerimento = new jifFormRequerimento();
         requerimento.setVisible(true);
         jdptelaPrincipal.add(requerimento);
+        setPosicao(requerimento);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
+        Fechar();
         jifFormProcuracao procuracao = new jifFormProcuracao();
         procuracao.setVisible(true);
         jdptelaPrincipal.add(procuracao);
+        setPosicao(procuracao);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        Fechar();
         jifFormRestautante obj = new jifFormRestautante();
         jdptelaPrincipal.add(obj);
         obj.setVisible(true);
+        setPosicao(obj);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void miRelatoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miRelatoriosActionPerformed
+        Fechar();
         jifFormCondominio obj = new jifFormCondominio();
         jdptelaPrincipal.add(obj);
         obj.setVisible(true);
+        setPosicao(obj);
     }//GEN-LAST:event_miRelatoriosActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        // TODO add your handling code here:
+        Fechar();
         jifFormTuristico obj = new jifFormTuristico();
         jdptelaPrincipal.add(obj);
         obj.setVisible(true);
+        setPosicao(obj);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        Fechar();
         jifFormTerraplanagem obj = new jifFormTerraplanagem();
         jdptelaPrincipal.add(obj);
         obj.setVisible(true);
+        setPosicao(obj);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        Fechar();
         jifAbasSecretarias obj = new jifAbasSecretarias();
         jdptelaPrincipal.add(obj);
         obj.setVisible(true);
+        setPosicao(obj);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
+    public void Fechar() {
+        JInternalFrame[] frames = jdptelaPrincipal.getAllFrames();
+        for (int i = 0; i < frames.length; i++) {
+            frames[i].dispose();
+        }
+    }
+
+    public void setPosicao(JInternalFrame fr) {
+        Dimension d = fr.getDesktopPane().getSize();
+        fr.setLocation((d.width - fr.getSize().width) / 2, (d.height - fr.getSize().height) / 2);
+    }
+
+
+/**
+ * @param args the command line arguments
+ */
+public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -343,16 +345,28 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
+                
+
+}
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaPrincipal.class
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        
+
+} catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(TelaPrincipal.class
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        
+
+} catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(TelaPrincipal.class
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        
+
+} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(TelaPrincipal.class
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

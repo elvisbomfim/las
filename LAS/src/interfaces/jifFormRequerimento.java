@@ -92,6 +92,8 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
         //Definindo o botão DateField (Data Inicio do Semestre) para seleção de uma data e atribuindo uma ação de mudança à ele.
  //       dataInicioOperacao.setSize((pnDataAtual.getWidth()), (pnDataAtual.getHeight()));
 
+        btCancelarAtualizacaoRequerimento.setVisible(false);
+ 
         tbRequerimento.setModel(modeloTabelaRequerimentos);
 
         buscarRequerimentosTabela();
@@ -245,14 +247,15 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
         tfRequerimentoProtocolo = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         tfRequerimentoLicencaiAnterior = new javax.swing.JTextField();
-        btFinalizarCadastroRequerimento = new javax.swing.JButton();
-        btCancelarAtualizacaoRequerimento = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         tfRequerimentoLatN = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         tfRequerimentoLatE = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         tfRequerimentoSema = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        btFinalizarCadastroRequerimento = new javax.swing.JButton();
+        btCancelarAtualizacaoRequerimento = new javax.swing.JButton();
         pnGerenciarRequerimentos = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -262,9 +265,10 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
         ckbTraRepresentante = new javax.swing.JCheckBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbRequerimento = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
         btEditarRequerimento = new javax.swing.JButton();
-        btExcluirRequerimento = new javax.swing.JButton();
         btnImprimir = new javax.swing.JButton();
+        btExcluirRequerimento = new javax.swing.JButton();
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -293,6 +297,7 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setTitle("Requerimento");
+        setPreferredSize(new java.awt.Dimension(560, 680));
 
         jLabel1.setText("Cliente:");
 
@@ -424,6 +429,16 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
 
         jLabel9.setText("Número da Licenηa Anterior:");
 
+        jLabel12.setText("Coordenadas Geogrαficas/UTM: LAT(N):");
+
+        tfRequerimentoLatN.setEditable(false);
+
+        jLabel13.setText("Coordenadas Geogrαficas/UTM: LAT(E):");
+
+        tfRequerimentoLatE.setEditable(false);
+
+        jLabel14.setText("(Espaço reservado a SEMA):");
+
         btFinalizarCadastroRequerimento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/complete-file.png"))); // NOI18N
         btFinalizarCadastroRequerimento.setToolTipText("Cadastrar");
         btFinalizarCadastroRequerimento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -444,15 +459,24 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel12.setText("Coordenadas Geogrαficas/UTM: LAT(N):");
-
-        tfRequerimentoLatN.setEditable(false);
-
-        jLabel13.setText("Coordenadas Geogrαficas/UTM: LAT(E):");
-
-        tfRequerimentoLatE.setEditable(false);
-
-        jLabel14.setText("(Espaço reservado a SEMA):");
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addComponent(btCancelarAtualizacaoRequerimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
+                .addComponent(btFinalizarCadastroRequerimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btCancelarAtualizacaoRequerimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btFinalizarCadastroRequerimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout pnCadastrarNovoRequerimentoLayout = new javax.swing.GroupLayout(pnCadastrarNovoRequerimento);
         pnCadastrarNovoRequerimento.setLayout(pnCadastrarNovoRequerimentoLayout);
@@ -463,53 +487,6 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
                 .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
                         .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfRequerimentoCliente)
-                            .addComponent(tfRequerimentoRepresentante1)))
-                    .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
-                        .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfRequerimentoRepresentante2)
-                            .addComponent(tfRequerimentoProfissional1)
-                            .addComponent(tfRequerimentoProfissional2)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
-                        .addComponent(btCancelarAtualizacaoRequerimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btFinalizarCadastroRequerimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
-                        .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
-                                .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(rbAA)
-                                    .addComponent(rbLMP)
-                                    .addComponent(rbLMO)
-                                    .addComponent(rbLAR))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(rbRLMO)
-                                    .addComponent(rbLMU)
-                                    .addComponent(rbLMI)
-                                    .addComponent(rbLAS)))
-                            .addComponent(jLabel7))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
-                        .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfRequerimentoProtocolo))
-                            .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addGap(14, 14, 14)
-                                .addComponent(tfRequerimentoLicencaiAnterior))
                             .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
                                 .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
@@ -531,9 +508,55 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
                                             .addComponent(jLabel12)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(tfRequerimentoLatN, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(83, 83, 83)))
-                        .addGap(181, 181, 181)))
-                .addContainerGap())
+                                .addGap(83, 83, 83))
+                            .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
+                                .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tfRequerimentoProtocolo, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
+                                        .addComponent(jLabel9)
+                                        .addGap(14, 14, 14)
+                                        .addComponent(tfRequerimentoLicencaiAnterior)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(191, 191, 191))
+                    .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
+                        .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
+                                .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(tfRequerimentoProfissional1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
+                                    .addComponent(tfRequerimentoProfissional2)
+                                    .addComponent(tfRequerimentoRepresentante2, javax.swing.GroupLayout.Alignment.LEADING)))
+                            .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
+                                .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tfRequerimentoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
+                                    .addComponent(tfRequerimentoRepresentante1)))
+                            .addComponent(jLabel6)
+                            .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
+                                .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rbAA)
+                                    .addComponent(rbLMP)
+                                    .addComponent(rbLMO)
+                                    .addComponent(rbLAR))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rbRLMO)
+                                    .addComponent(rbLMU)
+                                    .addComponent(rbLMI)
+                                    .addComponent(rbLAS)))
+                            .addComponent(jLabel7)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         pnCadastrarNovoRequerimentoLayout.setVerticalGroup(
             pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -603,10 +626,8 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
                 .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(tfRequerimentoSema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
-                .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btFinalizarCadastroRequerimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btCancelarAtualizacaoRequerimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -685,16 +706,6 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
             }
         });
 
-        btExcluirRequerimento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/delete-file.png"))); // NOI18N
-        btExcluirRequerimento.setToolTipText("Excluir");
-        btExcluirRequerimento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btExcluirRequerimento.setPreferredSize(new java.awt.Dimension(150, 150));
-        btExcluirRequerimento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btExcluirRequerimentoActionPerformed(evt);
-            }
-        });
-
         btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/printer-128.png"))); // NOI18N
         btnImprimir.setToolTipText("Editar");
         btnImprimir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -705,6 +716,38 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
             }
         });
 
+        btExcluirRequerimento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/delete-file.png"))); // NOI18N
+        btExcluirRequerimento.setToolTipText("Excluir");
+        btExcluirRequerimento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btExcluirRequerimento.setPreferredSize(new java.awt.Dimension(150, 150));
+        btExcluirRequerimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExcluirRequerimentoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addComponent(btExcluirRequerimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(btEditarRequerimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btExcluirRequerimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btEditarRequerimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout pnGerenciarRequerimentosLayout = new javax.swing.GroupLayout(pnGerenciarRequerimentos);
         pnGerenciarRequerimentos.setLayout(pnGerenciarRequerimentosLayout);
         pnGerenciarRequerimentosLayout.setHorizontalGroup(
@@ -712,15 +755,11 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
             .addGroup(pnGerenciarRequerimentosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnGerenciarRequerimentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 633, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnGerenciarRequerimentosLayout.createSequentialGroup()
-                        .addComponent(btExcluirRequerimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(89, 89, 89)
-                        .addComponent(btEditarRequerimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addGroup(pnGerenciarRequerimentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 526, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnGerenciarRequerimentosLayout.setVerticalGroup(
             pnGerenciarRequerimentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -728,12 +767,9 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(pnGerenciarRequerimentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btExcluirRequerimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btEditarRequerimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -750,7 +786,7 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
             .addComponent(tpnAbasRequerimentos)
         );
 
-        pack();
+        setBounds(0, 0, 560, 680);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tfRequerimentoClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfRequerimentoClienteMouseClicked
@@ -1188,6 +1224,8 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel pnCadastrarNovoRequerimento;
     private javax.swing.JPanel pnGerenciarRequerimentos;

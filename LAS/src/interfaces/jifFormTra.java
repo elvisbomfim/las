@@ -90,6 +90,8 @@ public class jifFormTra extends javax.swing.JInternalFrame {
         //Definindo o botão DateField (Data Inicio do Semestre) para seleção de uma data e atribuindo uma ação de mudança à ele.
         dataAtual.setSize((pnDataAtual.getWidth()), (pnDataAtual.getHeight()));
 
+        btCancelarAtualizacaoTra.setVisible(false);
+        
         tbTra.setModel(modeloTabelaTra);
 
         //----------------buscas na tabela--------------------------------------
@@ -122,8 +124,6 @@ public class jifFormTra extends javax.swing.JInternalFrame {
         tfTraProfissional = new javax.swing.JTextField();
         tfTraCliente = new javax.swing.JTextField();
         cbTraEstado = new javax.swing.JComboBox<>();
-        btFinalizarCadastroTra = new javax.swing.JButton();
-        btCancelarAtualizacaoTra = new javax.swing.JButton();
         rbTraLocalizado = new javax.swing.JRadioButton();
         rbTraAselocalizar = new javax.swing.JRadioButton();
         rbTraJaInstalado = new javax.swing.JRadioButton();
@@ -134,6 +134,9 @@ public class jifFormTra extends javax.swing.JInternalFrame {
         pnDataAtual = new com.toedter.calendar.JDayChooser();
         jLabel12 = new javax.swing.JLabel();
         tfTraNArtigo = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        btFinalizarCadastroTra = new javax.swing.JButton();
+        btCancelarAtualizacaoTra = new javax.swing.JButton();
         pnGerenciarTra = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -143,13 +146,15 @@ public class jifFormTra extends javax.swing.JInternalFrame {
         ckbTraRepresentante = new javax.swing.JCheckBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbTra = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
         btEditarTra = new javax.swing.JButton();
-        btExcluirTra = new javax.swing.JButton();
         btnImprimir = new javax.swing.JButton();
+        btExcluirTra = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
         setTitle("Termo de Responsabilidade Ambiental");
+        setPreferredSize(new java.awt.Dimension(515, 600));
 
         jLabel1.setText("Cliente:");
 
@@ -199,26 +204,6 @@ public class jifFormTra extends javax.swing.JInternalFrame {
 
         cbTraEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Selecionar---", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
 
-        btFinalizarCadastroTra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/complete-file.png"))); // NOI18N
-        btFinalizarCadastroTra.setToolTipText("Cadastrar");
-        btFinalizarCadastroTra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btFinalizarCadastroTra.setPreferredSize(new java.awt.Dimension(150, 150));
-        btFinalizarCadastroTra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btFinalizarCadastroTraActionPerformed(evt);
-            }
-        });
-
-        btCancelarAtualizacaoTra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/if_edit-not-validated_85308.png"))); // NOI18N
-        btCancelarAtualizacaoTra.setToolTipText("Cancelar");
-        btCancelarAtualizacaoTra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btCancelarAtualizacaoTra.setPreferredSize(new java.awt.Dimension(150, 150));
-        btCancelarAtualizacaoTra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btCancelarAtualizacaoTraActionPerformed(evt);
-            }
-        });
-
         rbTraLocalizado.setText("localizado");
         rbTraLocalizado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -265,6 +250,45 @@ public class jifFormTra extends javax.swing.JInternalFrame {
 
         jLabel12.setText("ART N°:");
 
+        btFinalizarCadastroTra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/complete-file.png"))); // NOI18N
+        btFinalizarCadastroTra.setToolTipText("Cadastrar");
+        btFinalizarCadastroTra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btFinalizarCadastroTra.setPreferredSize(new java.awt.Dimension(150, 150));
+        btFinalizarCadastroTra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btFinalizarCadastroTraActionPerformed(evt);
+            }
+        });
+
+        btCancelarAtualizacaoTra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/if_edit-not-validated_85308.png"))); // NOI18N
+        btCancelarAtualizacaoTra.setToolTipText("Cancelar");
+        btCancelarAtualizacaoTra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btCancelarAtualizacaoTra.setPreferredSize(new java.awt.Dimension(150, 150));
+        btCancelarAtualizacaoTra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelarAtualizacaoTraActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addComponent(btCancelarAtualizacaoTra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
+                .addComponent(btFinalizarCadastroTra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btCancelarAtualizacaoTra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btFinalizarCadastroTra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout pnCadastrarNovosTraLayout = new javax.swing.GroupLayout(pnCadastrarNovosTra);
         pnCadastrarNovosTra.setLayout(pnCadastrarNovosTraLayout);
         pnCadastrarNovosTraLayout.setHorizontalGroup(
@@ -273,14 +297,10 @@ public class jifFormTra extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(pnCadastrarNovosTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCadastrarNovosTraLayout.createSequentialGroup()
-                        .addComponent(btCancelarAtualizacaoTra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btFinalizarCadastroTra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCadastrarNovosTraLayout.createSequentialGroup()
                         .addGroup(pnCadastrarNovosTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
                             .addComponent(jLabel8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(pnCadastrarNovosTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCadastrarNovosTraLayout.createSequentialGroup()
                                 .addComponent(jLabel9)
@@ -319,9 +339,13 @@ public class jifFormTra extends javax.swing.JInternalFrame {
                                 .addGroup(pnCadastrarNovosTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(rbTraAseinstalar)
                                     .addComponent(rbTraAselocalizar)))
-                            .addComponent(tfTraCidade)
-                            .addComponent(tfTraNArtigo))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addGroup(pnCadastrarNovosTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(tfTraNArtigo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
+                                .addComponent(tfTraCidade, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCadastrarNovosTraLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         pnCadastrarNovosTraLayout.setVerticalGroup(
@@ -372,11 +396,9 @@ public class jifFormTra extends javax.swing.JInternalFrame {
                 .addGroup(pnCadastrarNovosTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnDataAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
-                .addGroup(pnCadastrarNovosTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btFinalizarCadastroTra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btCancelarAtualizacaoTra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         tpnAbasTra.addTab("Gerar Relatorio TRA", pnCadastrarNovosTra);
@@ -412,7 +434,7 @@ public class jifFormTra extends javax.swing.JInternalFrame {
                         .addComponent(ckbTraProfissional)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ckbTraRepresentante)
-                        .addGap(0, 197, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(tfPalavraChaveTra))
                 .addContainerGap())
         );
@@ -454,6 +476,15 @@ public class jifFormTra extends javax.swing.JInternalFrame {
             }
         });
 
+        btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/printer-128.png"))); // NOI18N
+        btnImprimir.setToolTipText("Gerar PDF");
+        btnImprimir.setPreferredSize(new java.awt.Dimension(150, 150));
+        btnImprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImprimirActionPerformed(evt);
+            }
+        });
+
         btExcluirTra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/delete-file.png"))); // NOI18N
         btExcluirTra.setToolTipText("Excluir");
         btExcluirTra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -464,14 +495,27 @@ public class jifFormTra extends javax.swing.JInternalFrame {
             }
         });
 
-        btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/printer-128.png"))); // NOI18N
-        btnImprimir.setToolTipText("Gerar PDF");
-        btnImprimir.setPreferredSize(new java.awt.Dimension(150, 150));
-        btnImprimir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnImprimirActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addComponent(btExcluirTra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(btEditarTra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btExcluirTra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btEditarTra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout pnGerenciarTraLayout = new javax.swing.GroupLayout(pnGerenciarTra);
         pnGerenciarTra.setLayout(pnGerenciarTraLayout);
@@ -479,19 +523,16 @@ public class jifFormTra extends javax.swing.JInternalFrame {
             pnGerenciarTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnGerenciarTraLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnGerenciarTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(pnGerenciarTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnGerenciarTraLayout.createSequentialGroup()
-                        .addComponent(btExcluirTra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(75, 75, 75)
-                        .addComponent(btEditarTra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(pnGerenciarTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnGerenciarTraLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         pnGerenciarTraLayout.setVerticalGroup(
@@ -499,18 +540,14 @@ public class jifFormTra extends javax.swing.JInternalFrame {
             .addGroup(pnGerenciarTraLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 298, Short.MAX_VALUE)
-                .addGroup(pnGerenciarTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnGerenciarTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btExcluirTra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btEditarTra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 246, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(pnGerenciarTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnGerenciarTraLayout.createSequentialGroup()
-                    .addContainerGap(145, Short.MAX_VALUE)
+                    .addContainerGap(139, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(200, Short.MAX_VALUE)))
+                    .addContainerGap(194, Short.MAX_VALUE)))
         );
 
         tpnAbasTra.addTab("Gerenciar Relatorios TRA", pnGerenciarTra);
@@ -526,7 +563,7 @@ public class jifFormTra extends javax.swing.JInternalFrame {
             .addComponent(tpnAbasTra)
         );
 
-        pack();
+        setBounds(0, 0, 515, 600);
     }// </editor-fold>//GEN-END:initComponents
 
     public void buscarTraTabela() {
@@ -909,6 +946,8 @@ public class jifFormTra extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel pnCadastrarNovosTra;
     private com.toedter.calendar.JDayChooser pnDataAtual;
