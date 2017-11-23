@@ -25,6 +25,7 @@ import modelo.tabelas.ModeloTabelaProfissionais;
 import modelo.tabelas.ModeloTabelaRepresentantes;
 import modelo.tabelas.ModeloTabelaTra;
 import modelos.Cliente;
+import modelos.LetrasMaiusculas;
 import modelos.Profissional;
 import modelos.Recibo;
 import modelos.Representante;
@@ -91,11 +92,18 @@ public class jifFormTra extends javax.swing.JInternalFrame {
         dataAtual.setSize((pnDataAtual.getWidth()), (pnDataAtual.getHeight()));
 
         btCancelarAtualizacaoTra.setVisible(false);
-        
+
         tbTra.setModel(modeloTabelaTra);
 
         //----------------buscas na tabela--------------------------------------
         buscarTraTabela();
+
+        tfTraCliente.setDocument(new LetrasMaiusculas());
+        tfTraProfissional.setDocument(new LetrasMaiusculas());
+        tfTraRepresentante1.setDocument(new LetrasMaiusculas());
+        tfTraRepresentante2.setDocument(new LetrasMaiusculas());
+        tfTraCidade.setDocument(new LetrasMaiusculas());
+        tfTraNArtigo.setDocument(new LetrasMaiusculas());
     }
 
     /**
@@ -574,7 +582,7 @@ public class jifFormTra extends javax.swing.JInternalFrame {
 
     private void tfTraClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfTraClienteMouseClicked
         // TODO add your handling code here:
-        TelaRelatorioCliente telaRelatorioCliente = new TelaRelatorioCliente(null, true, 0);
+        TelaRelatorioCliente telaRelatorioCliente = new TelaRelatorioCliente(null, true, 4);
         telaRelatorioCliente.setVisible(true);
         // Criando o contratante à receber o contratante da tela relatoriorecibo
         Cliente clienteSelecionado = new Cliente();
@@ -892,7 +900,7 @@ public class jifFormTra extends javax.swing.JInternalFrame {
 
         //traCadastro.setTra_data(df.format(c.getTime()));
         traCadastro.setTra_data(cal);
-        
+
         traCadastro.setTra_n_artigo(tfTraNArtigo.getText());
 
         return traCadastro;

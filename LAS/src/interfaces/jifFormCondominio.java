@@ -34,6 +34,7 @@ import modelo.tabelas.ModeloTabelaClientes;
 import modelo.tabelas.ModeloTabelaProfissionais;
 import modelo.tabelas.ModeloTabelaRelatorios;
 import modelos.Cliente;
+import modelos.LetrasMaiusculas;
 import modelos.ManipularImagem;
 import modelos.Profissional;
 import modelos.RelatorioPrincipal;
@@ -116,6 +117,59 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
         dataISA.setSize((pnISAData.getWidth()), (pnISAData.getHeight()));
         tbRelatoriosCadastrados.setModel(modeloTabelaCondominio);
         buscarRelatoriosTabela();
+
+        
+        tfNHabitacoes.setDocument(new LetrasMaiusculas());
+        tfNomeCliente.setDocument(new LetrasMaiusculas());
+        tfNomeFantasia.setDocument(new LetrasMaiusculas());
+        tfEndereco.setDocument(new LetrasMaiusculas());
+        tfCidade.setDocument(new LetrasMaiusculas());
+        tfCpfCnpj.setDocument(new LetrasMaiusculas());
+        tfNumero.setDocument(new LetrasMaiusculas());
+        tfBairro.setDocument(new LetrasMaiusculas());
+        tfTelefone.setDocument(new LetrasMaiusculas());
+        tfCep.setDocument(new LetrasMaiusculas());
+        tfCoordenadasUtmN.setDocument(new LetrasMaiusculas());
+        tfCoordenadasUtmE.setDocument(new LetrasMaiusculas());
+        tfInseridoEmAreaOutraEspecificar.setDocument(new LetrasMaiusculas());
+        tfAreaDaUcNDocumento.setDocument(new LetrasMaiusculas());
+        tfAreaDaUcAdministrador.setDocument(new LetrasMaiusculas());
+        tfAreaDaUcNome.setDocument(new LetrasMaiusculas());
+        tfNIphan.setDocument(new LetrasMaiusculas());
+        tfSuprecaoVegetacaoDocumentoIdaf.setDocument(new LetrasMaiusculas());
+        tfLoteMenorArea.setDocument(new LetrasMaiusculas());
+        tfCondicoesTerrenoEspecificar.setDocument(new LetrasMaiusculas());
+        tfDeclividadeEspecificar.setDocument(new LetrasMaiusculas());
+        tfCoordenadasUtmN.setDocument(new LetrasMaiusculas());
+        tfCoordenadasUtmE.setDocument(new LetrasMaiusculas());
+        tfISAPrevisaoVegetacao.setDocument(new LetrasMaiusculas());
+        tfNEmpregados.setDocument(new LetrasMaiusculas());
+        tfSDPEEspecificar.setDocument(new LetrasMaiusculas());
+        tfFAAConsumoDeAgua.setDocument(new LetrasMaiusculas());
+        tfFAANDocumentoOutorgaRh.setDocument(new LetrasMaiusculas());
+        tfFAANDocumentoCertidaoDo.setDocument(new LetrasMaiusculas());
+        tfFAAEmpresa.setDocument(new LetrasMaiusculas());
+        tfFAAPocoTipo.setDocument(new LetrasMaiusculas());
+        tfFAAPocoQtd.setDocument(new LetrasMaiusculas());
+        tfFAANumeroLicenca.setDocument(new LetrasMaiusculas());
+        tfFAACursoDaguaNome.setDocument(new LetrasMaiusculas());
+        tfFAALagoNome.setDocument(new LetrasMaiusculas());
+        tfFAAOutrasEspecificar.setDocument(new LetrasMaiusculas());
+        taRoteiroAcesso.setDocument(new LetrasMaiusculas());
+        taTextoAnexo.setDocument(new LetrasMaiusculas());
+        tfProfissional.setDocument(new LetrasMaiusculas());
+        tfLeiPerimetroUrbano.setDocument(new LetrasMaiusculas());
+        tfPlanoDiretorUrbano.setDocument(new LetrasMaiusculas());
+        GRConsumoAguaLDia.setDocument(new LetrasMaiusculas());
+        GRConsumoAguaMMes.setDocument(new LetrasMaiusculas());
+        tfGREspecificar1.setDocument(new LetrasMaiusculas());
+        tfGREspecificar2.setDocument(new LetrasMaiusculas());
+        tfGRNome1.setDocument(new LetrasMaiusculas());
+        tfGRNome2.setDocument(new LetrasMaiusculas());
+        tfGRNumeroLicenca1.setDocument(new LetrasMaiusculas());
+        tfGRNumeroLicenca2.setDocument(new LetrasMaiusculas());
+        tfGRNDeclaracao.setDocument(new LetrasMaiusculas());
+        tfEAEspecificar.setDocument(new LetrasMaiusculas());
 
     }
 
@@ -2650,7 +2704,7 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
             CheckBoxFGE = "";
             CheckBoxGR = "";
             CheckBoxEA = "";
-            tfAreaUtil.setText("");
+            tfAreaUtil.setDocument(new LetrasMaiusculas());
             tfNHabitacoes.setText("");
             tfNomeCliente.setText("");
             tfNomeFantasia.setText("");

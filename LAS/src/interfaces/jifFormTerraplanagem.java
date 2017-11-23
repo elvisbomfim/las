@@ -32,6 +32,7 @@ import modelo.tabelas.ModeloTabelaClientes;
 import modelo.tabelas.ModeloTabelaProfissionais;
 import modelo.tabelas.ModeloTabelaRelatorios;
 import modelos.Cliente;
+import modelos.LetrasMaiusculas;
 import modelos.ManipularImagem;
 import modelos.Profissional;
 import modelos.RelatorioPrincipal;
@@ -110,6 +111,47 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
         dataISA.setSize((pnISAData.getWidth()), (pnISAData.getHeight()));
         tbRelatoriosCadastrados.setModel(modeloTabelaTerraplanagem);
         buscarRelatoriosTabela();
+
+        tfAreaIntervencao.setDocument(new LetrasMaiusculas());
+        tfAlturaTalude.setDocument(new LetrasMaiusculas());
+        tfNomeCliente.setDocument(new LetrasMaiusculas());
+        tfNomeFantasia.setDocument(new LetrasMaiusculas());
+        tfEndereco.setDocument(new LetrasMaiusculas());
+        tfCidade.setDocument(new LetrasMaiusculas());
+        tfCpfCnpj.setDocument(new LetrasMaiusculas());
+        tfNumero.setDocument(new LetrasMaiusculas());
+        tfBairro.setDocument(new LetrasMaiusculas());
+        tfTelefone.setDocument(new LetrasMaiusculas());
+        tfCep.setDocument(new LetrasMaiusculas());
+        tfCoordenadasUtmN.setDocument(new LetrasMaiusculas());
+        tfCoordenadasUtmE.setDocument(new LetrasMaiusculas());
+        tfInseridoEmAreaOutraEspecificar.setDocument(new LetrasMaiusculas());
+        tfAreaDaUcNDocumento.setDocument(new LetrasMaiusculas());
+        tfAreaDaUcNome.setDocument(new LetrasMaiusculas());
+        tfCoordenadasUtmN.setDocument(new LetrasMaiusculas());
+        tfCoordenadasUtmE.setDocument(new LetrasMaiusculas());
+        tfISAPrevisaoVegetacao.setDocument(new LetrasMaiusculas());
+        tfISAAreaTotalMovimentacaoTerra.setDocument(new LetrasMaiusculas());
+        tfISAAreaCorte.setDocument(new LetrasMaiusculas());
+        tfISAAreaAterro.setDocument(new LetrasMaiusculas());
+        tfISATaludesFormados.setDocument(new LetrasMaiusculas());
+        tfRHNome1.setDocument(new LetrasMaiusculas());
+        tfRHDistancia1.setDocument(new LetrasMaiusculas());
+        tfBotaForaUtmN1.setDocument(new LetrasMaiusculas());
+        tfBotaForaUtmE1.setDocument(new LetrasMaiusculas());
+        tfBotaForaNDaUc1.setDocument(new LetrasMaiusculas());
+        tfRHNome2.setDocument(new LetrasMaiusculas());
+        tfRHDistancia2.setDocument(new LetrasMaiusculas());
+        tfBotaForaUtmN2.setDocument(new LetrasMaiusculas());
+        tfBotaForaUtmE2.setDocument(new LetrasMaiusculas());
+        tfBotaForaAreaEmprestimo.setDocument(new LetrasMaiusculas());
+        tfBotaForaNDaUc2.setDocument(new LetrasMaiusculas());
+        tfRHNome3.setDocument(new LetrasMaiusculas());
+        tfRHDistancia3.setDocument(new LetrasMaiusculas());
+        tfNEmpregados.setDocument(new LetrasMaiusculas());
+        taRoteiroAcesso.setDocument(new LetrasMaiusculas());
+        taTextoAnexo.setDocument(new LetrasMaiusculas());
+        tfProfissional.setDocument(new LetrasMaiusculas());
 
     }
 
@@ -360,8 +402,8 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
         tfBotaForaNDaUc1.setText("");
         rbBotaForaOpcao2Sim.setSelected(false);
         rbBotaForaOpcao2Nao.setSelected(false);
-        rbRHNao2.setText("");
-        rbRHSim2.setText("");
+        rbRHNao2.setSelected(false);
+        rbRHSim2.setSelected(false);
         tfRHNome2.setText("");
         tfRHDistancia2.setText("");
         tfBotaForaUtmN2.setText("");
@@ -370,8 +412,8 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
         rbBotaForaOpcao3Sim.setSelected(false);
         rbBotaForaOpcao3Nao.setSelected(false);
         tfBotaForaNDaUc2.setText("");
-        rbRHNao3.setText("");
-        rbRHSim3.setText("");
+        rbRHNao3.setSelected(false);
+        rbRHSim3.setSelected(false);
         tfRHNome3.setText("");
         tfRHDistancia3.setText("");
         tfNEmpregados.setText("");

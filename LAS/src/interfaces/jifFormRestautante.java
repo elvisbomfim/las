@@ -33,6 +33,7 @@ import modelo.tabelas.ModeloTabelaClientes;
 import modelo.tabelas.ModeloTabelaProfissionais;
 import modelo.tabelas.ModeloTabelaRelatorios;
 import modelos.Cliente;
+import modelos.LetrasMaiusculas;
 import modelos.ManipularImagem;
 import modelos.Profissional;
 import modelos.Recibo;
@@ -102,7 +103,7 @@ public class jifFormRestautante extends javax.swing.JInternalFrame {
         dataAtual.setSize((pnDataAtual.getWidth()), (pnDataAtual.getHeight()));
 
         btCancelarAtualizacao.setVisible(false);
-        
+
         Calendar calISA = Calendar.getInstance();
         dataISA.setBaseDate(calISA.getTime());
         pnISAData.add(dataISA);
@@ -110,7 +111,58 @@ public class jifFormRestautante extends javax.swing.JInternalFrame {
         dataISA.setSize((pnISAData.getWidth()), (pnISAData.getHeight()));
         tbRelatoriosCadastrados.setModel(modeloTabelaRestaurante);
         buscarRelatoriosTabela();
-        //this.setSize(500, 600);
+
+        
+        tfNomeCliente.setDocument(new LetrasMaiusculas());
+        tfNomeFantasia.setDocument(new LetrasMaiusculas());
+        tfEndereco.setDocument(new LetrasMaiusculas());
+        tfCidade.setDocument(new LetrasMaiusculas());
+        tfCpfCnpj.setDocument(new LetrasMaiusculas());
+        tfNumero.setDocument(new LetrasMaiusculas());
+        tfBairro.setDocument(new LetrasMaiusculas());
+        tfTelefone.setDocument(new LetrasMaiusculas());
+        tfCep.setDocument(new LetrasMaiusculas());
+        tfCoordenadasUtmN.setDocument(new LetrasMaiusculas());
+        tfCoordenadasUtmE.setDocument(new LetrasMaiusculas());
+ 
+        tfInseridoEmAreaOutraEspecificar.setDocument(new LetrasMaiusculas());
+ 
+        tfAreaDaUcNDocumento.setDocument(new LetrasMaiusculas());
+        tfAreaDaUcNome.setDocument(new LetrasMaiusculas());
+        tfSuprecaoVegetacaoDocumentoIdaf.setDocument(new LetrasMaiusculas());
+        tfCoordenadasUtmN.setDocument(new LetrasMaiusculas());
+        tfCoordenadasUtmE.setDocument(new LetrasMaiusculas());
+        tfISAPrevisaoVegetacao.setDocument(new LetrasMaiusculas());
+        //pnISAData.setDocument(new LetrasMaiusculas());
+        tfNEmpregados.setDocument(new LetrasMaiusculas());
+        tfFAAConsumoDeAgua.setDocument(new LetrasMaiusculas());
+        tfFAANDocumentoOutorgaRh.setDocument(new LetrasMaiusculas());
+        tfFAANDocumentoCertidaoDo.setDocument(new LetrasMaiusculas());
+        tfFAAEmpresa.setDocument(new LetrasMaiusculas());
+        tfFAAPocoTipo.setDocument(new LetrasMaiusculas());
+        tfFAAPocoQtd.setDocument(new LetrasMaiusculas());
+        tfFAANumeroLicenca.setDocument(new LetrasMaiusculas());
+        tfFAACursoDaguaNome.setDocument(new LetrasMaiusculas());
+        tfFAALagoNome.setDocument(new LetrasMaiusculas());
+        tfFAAAguasCosteirasEspecificar.setDocument(new LetrasMaiusculas());
+        tfFAAOutrasEspecificar.setDocument(new LetrasMaiusculas());
+        tfFGEEspecificar1.setDocument(new LetrasMaiusculas());
+        tfFGEEspecificar2.setDocument(new LetrasMaiusculas());
+        tfMSTEspecificar1.setDocument(new LetrasMaiusculas());
+        tfMSTEspecificar2.setDocument(new LetrasMaiusculas());
+        tfGREspecificar1.setDocument(new LetrasMaiusculas());
+        tfGRNome1.setDocument(new LetrasMaiusculas());
+        tfGRNumeroLicenca1.setDocument(new LetrasMaiusculas());
+        tfGREspecificar2.setDocument(new LetrasMaiusculas());
+        tfGRNome2.setDocument(new LetrasMaiusculas());
+        tfGRNumeroLicenca2.setDocument(new LetrasMaiusculas());
+        tfGRNome3.setDocument(new LetrasMaiusculas());
+        tfGRNumeroLicenca3.setDocument(new LetrasMaiusculas());
+        tfGREspecificar3.setDocument(new LetrasMaiusculas());
+        taRoteiroAcesso.setDocument(new LetrasMaiusculas());
+        taTextoAnexo.setDocument(new LetrasMaiusculas());
+        //tfDataAtual.setDocument(new LetrasMaiusculas());
+        tfProfissional.setDocument(new LetrasMaiusculas());
 
     }
 
@@ -2803,7 +2855,7 @@ public class jifFormRestautante extends javax.swing.JInternalFrame {
             tfCep.setText(relatorioPrincipal.getCLIENTE_CEP());
             tfCoordenadasUtmN.setText(relatorioPrincipal.getCLIENTE_UTMN());
             tfCoordenadasUtmE.setText(relatorioPrincipal.getCLIENTE_UTME());
-            
+
             if ((relatorioPrincipal.getCLIENTE_CPF().equals("   .   .   -  ") == false) && (relatorioPrincipal.getCLIENTE_CNPJ().equals("  .   .   /    -  ") == false)) {
                 tfCpfCnpj.setText(relatorioPrincipal.getCLIENTE_CPF() + " - " + relatorioPrincipal.getCLIENTE_CNPJ());
             } else {
@@ -3269,7 +3321,7 @@ public class jifFormRestautante extends javax.swing.JInternalFrame {
             tfTelefone.setText("");
             tfCep.setText("");
             tfCoordenadasUtmN.setText("");
-            tfCoordenadasUtmE.setText("");            
+            tfCoordenadasUtmE.setText("");
             rbLocalizacaoZonaUrbana.setSelected(false);
             rbLocalizacaoZonaRural.setSelected(false);
             rbInseridoEmAreaIndustrial.setSelected(false);
@@ -3576,7 +3628,6 @@ public class jifFormRestautante extends javax.swing.JInternalFrame {
             clienteTemporario = telaRelatorioCliente.retornarClienteSelecionado();
         }
 
-        
 
     }//GEN-LAST:event_tfNomeClienteMouseClicked
 

@@ -218,7 +218,7 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Complemento:");
 
-        cbAbreviacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "Dr.", "Eng.", "Ms." }));
+        cbAbreviacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "DR.", "ENG.", "MS." }));
 
         btCancelarAtualizacaoProfissional.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/if_edit-not-validated_85308.png"))); // NOI18N
         btCancelarAtualizacaoProfissional.setToolTipText("Cancelar Atualização");
@@ -510,7 +510,7 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tpnAbasProfissionais, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
+            .addComponent(tpnAbasProfissionais, javax.swing.GroupLayout.PREFERRED_SIZE, 499, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

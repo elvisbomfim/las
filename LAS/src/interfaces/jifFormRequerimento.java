@@ -29,6 +29,7 @@ import modelo.tabelas.ModeloTabelaRecibos;
 import modelo.tabelas.ModeloTabelaRequerimentos;
 import modelos.Cliente;
 import modelos.Contratante;
+import modelos.LetrasMaiusculas;
 import modelos.Profissional;
 import modelos.Recibo;
 import modelos.Representante;
@@ -88,16 +89,27 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
         conexao = ConexaoPDF.conector();
         Calendar cal = Calendar.getInstance();
 //        dataInicioOperacao.setBaseDate(cal.getTime());
- //       pnDataAtual.add(dataInicioOperacao);
+        //       pnDataAtual.add(dataInicioOperacao);
         //Definindo o botão DateField (Data Inicio do Semestre) para seleção de uma data e atribuindo uma ação de mudança à ele.
- //       dataInicioOperacao.setSize((pnDataAtual.getWidth()), (pnDataAtual.getHeight()));
+        //       dataInicioOperacao.setSize((pnDataAtual.getWidth()), (pnDataAtual.getHeight()));
 
         btCancelarAtualizacaoRequerimento.setVisible(false);
- 
+
         tbRequerimento.setModel(modeloTabelaRequerimentos);
 
         buscarRequerimentosTabela();
 
+        tfRequerimentoCliente.setDocument(new LetrasMaiusculas());
+        tfRequerimentoProfissional1.setDocument(new LetrasMaiusculas());
+        tfRequerimentoProfissional2.setDocument(new LetrasMaiusculas());
+        tfRequerimentoRepresentante1.setDocument(new LetrasMaiusculas());
+        tfRequerimentoRepresentante2.setDocument(new LetrasMaiusculas());
+        //tfRequerimentoDataOperacao.setDocument(new LetrasMaiusculas());
+        tfRequerimentoProtocolo.setDocument(new LetrasMaiusculas());
+        tfRequerimentoLicencaiAnterior.setDocument(new LetrasMaiusculas());
+        tfRequerimentoLatN.setDocument(new LetrasMaiusculas());
+        tfRequerimentoLatE.setDocument(new LetrasMaiusculas());
+        tfRequerimentoSema.setDocument(new LetrasMaiusculas());
     }
 
     public void buscarRequerimentosTabela() {
@@ -159,7 +171,7 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
 //        requerimentoCadastro.setRequerimento_fase_empreendimento_data(cal);
         Calendar cal1 = Calendar.getInstance();
         dataAtual.setBaseDate(cal1.getTime());
- //       requerimentoCadastro.setRequerimento_data(cal);
+        //       requerimentoCadastro.setRequerimento_data(cal);
         requerimentoCadastro.setRequerimento_num_processo_protocolo(tfRequerimentoProtocolo.getText());
         requerimentoCadastro.setRequerimento_num_licenca_anterior(tfRequerimentoLicencaiAnterior.getText());
         requerimentoCadastro.setRequerimento_latn(tfRequerimentoLatN.getText());
@@ -791,7 +803,7 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
 
     private void tfRequerimentoClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfRequerimentoClienteMouseClicked
         // TODO add your handling code here:
-        TelaRelatorioCliente telaRelatorioCliente = new TelaRelatorioCliente(null, true, 0);
+        TelaRelatorioCliente telaRelatorioCliente = new TelaRelatorioCliente(null, true, 4);
         telaRelatorioCliente.setVisible(true);
         // Criando o contratante à receber o contratante da tela relatoriorecibo
         Cliente clienteSelecionado = new Cliente();
@@ -924,10 +936,9 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
             profissionalTemporario2.setProfissional_id(requerimento.getProfissional_id2());
             tfRequerimentoProtocolo.setText(requerimento.getRequerimento_num_processo_protocolo());
             tfRequerimentoLicencaiAnterior.setText(requerimento.getRequerimento_num_licenca_anterior());
-          //  Date data1 = requerimento.getRequerimento_fase_empreendimento_data().getTime();
+            //  Date data1 = requerimento.getRequerimento_fase_empreendimento_data().getTime();
 
-           // dataInicioOperacao.setValue(data1);
-
+            // dataInicioOperacao.setValue(data1);
             tfRequerimentoLatN.setText(requerimento.getRequerimento_latn());
             tfRequerimentoLatE.setText(requerimento.getRequerimento_late());
             tfRequerimentoSema.setText(requerimento.getRequerimento_sema());
@@ -1176,8 +1187,6 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
             String dataFaseEmpreendimento;
             dataFaseEmpreendimento = form.format(requerimento.getRequerimento_fase_empreendimento_data().get(Calendar.DAY_OF_MONTH)) + "/" + form.format(requerimento.getRequerimento_fase_empreendimento_data().get(Calendar.MONTH) + 1) + "/" + requerimento.getRequerimento_fase_empreendimento_data().get(Calendar.YEAR);
 
-            
-            
             try {
                 //usando a clsse HashMap para criar um filtro
                 //  JOptionPane.showMessageDialog(rootPane, recibo.getRecibo_id());

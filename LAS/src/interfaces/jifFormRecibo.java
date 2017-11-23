@@ -32,6 +32,7 @@ import modelo.tabelas.ModeloTabelaProfissionais;
 import modelo.tabelas.ModeloTabelaRecibos;
 import modelos.Cliente;
 import modelos.Cliente;
+import modelos.LetrasMaiusculas;
 import modelos.Moeda;
 import modelos.Profissional;
 import modelos.Recibo;
@@ -105,7 +106,10 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
         
         //----------------buscas na tabela--------------------------------------
         buscarRecibosTabela();
-
+        
+        tfReciboCidade.setDocument(new LetrasMaiusculas());
+        tfReciboCliente.setDocument(new LetrasMaiusculas());
+        tfReciboProfissional.setDocument(new LetrasMaiusculas());
     }
 
     /**
@@ -515,7 +519,7 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
 
     private void tfReciboClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfReciboClienteMouseClicked
         // TODO add your handling code here:
-        TelaRelatorioCliente telaRelatorioCliente = new TelaRelatorioCliente(null, true, 0);
+        TelaRelatorioCliente telaRelatorioCliente = new TelaRelatorioCliente(null, true, 4);
         telaRelatorioCliente.setVisible(true);
         // Criando o cliente à receber o cliente da tela relatoriorecibo
         Cliente clienteSelecionado = new Cliente();

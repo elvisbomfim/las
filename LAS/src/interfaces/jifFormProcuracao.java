@@ -19,6 +19,7 @@ import java.util.Date;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
 import modelo.tabelas.ModeloTabelaProcuracoes;
+import modelos.LetrasMaiusculas;
 import modelos.Procuracao;
 import modelos.Profissional;
 import modelos.Representante;
@@ -66,17 +67,21 @@ public class jifFormProcuracao extends javax.swing.JInternalFrame {
     public jifFormProcuracao() {
         initComponents();
         conexao = ConexaoPDF.conector();
-        
+
         Calendar cal = Calendar.getInstance();
         dataAtual.setBaseDate(cal.getTime());
         pnDataAtual.add(dataAtual);
         //Definindo o botão DateField (Data Inicio do Semestre) para seleção de uma data e atribuindo uma ação de mudança à ele.
         dataAtual.setSize((pnDataAtual.getWidth()), (pnDataAtual.getHeight()));
-        
+
         btCancelarAtualizacaoProcuracao.setVisible(false);
-        
+
         tbProcuracao.setModel(modeloTabelaProcuracoes);
         buscarProcuracoesTabela();
+
+        tfProcuracaoRepresentante.setDocument(new LetrasMaiusculas());
+        tfProcuracaoProfissional.setDocument(new LetrasMaiusculas());
+        tfProcuracaoCidade.setDocument(new LetrasMaiusculas());
     }
 
     /**
@@ -423,7 +428,7 @@ public class jifFormProcuracao extends javax.swing.JInternalFrame {
             Date data1 = procuracao.getProcuracao_data().getTime();
 
             dataAtual.setValue(data1);
-            
+
             tpnAbasProcuracoes.setSelectedIndex(0); // Mudando para a PRIMEIRA aba
 
             btFinalizarCadastroProcuracao.setToolTipText("Atualizar");
@@ -553,11 +558,11 @@ public class jifFormProcuracao extends javax.swing.JInternalFrame {
 
             Procuracao procuracao = modeloTabelaProcuracoes.retornaListaProcuracoes().get(tbProcuracao.getSelectedRow());
             procuracao.getProcucacao_id();
-           
+
             Date data1 = procuracao.getProcuracao_data().getTime();
 
             DateFormat df = DateFormat.getDateInstance(DateFormat.LONG);
-            
+
             try {
                 //usando a clsse HashMap para criar um filtro
                 //  JOptionPane.showMessageDialog(rootPane, procuracao.getRecibo_id());
