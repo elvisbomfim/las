@@ -83,9 +83,8 @@ public class jifAbasSecretarias extends javax.swing.JInternalFrame {
         tfEmail = new javax.swing.JTextField();
         tfEndereco = new javax.swing.JTextField();
         tfNumero = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
-        btFinalizarCadastroContratante = new javax.swing.JButton();
         btCancelarAtualizacao = new javax.swing.JButton();
+        btFinalizarCadastroContratante = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -116,16 +115,6 @@ public class jifAbasSecretarias extends javax.swing.JInternalFrame {
 
         cbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecionar--", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
 
-        btFinalizarCadastroContratante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/complete-file.png"))); // NOI18N
-        btFinalizarCadastroContratante.setToolTipText("Cadastrar");
-        btFinalizarCadastroContratante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btFinalizarCadastroContratante.setPreferredSize(new java.awt.Dimension(150, 150));
-        btFinalizarCadastroContratante.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btFinalizarCadastroContratanteActionPerformed(evt);
-            }
-        });
-
         btCancelarAtualizacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/if_edit-not-validated_85308.png"))); // NOI18N
         btCancelarAtualizacao.setToolTipText("Cancelar Atualização");
         btCancelarAtualizacao.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -136,28 +125,15 @@ public class jifAbasSecretarias extends javax.swing.JInternalFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btCancelarAtualizacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
-                .addComponent(btFinalizarCadastroContratante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btCancelarAtualizacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btFinalizarCadastroContratante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
-        btFinalizarCadastroContratante.getAccessibleContext().setAccessibleDescription("Atualizar");
+        btFinalizarCadastroContratante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/complete-file.png"))); // NOI18N
+        btFinalizarCadastroContratante.setToolTipText("Cadastrar");
+        btFinalizarCadastroContratante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btFinalizarCadastroContratante.setPreferredSize(new java.awt.Dimension(150, 150));
+        btFinalizarCadastroContratante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btFinalizarCadastroContratanteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnCadastrarNovoContratanteLayout = new javax.swing.GroupLayout(pnCadastrarNovoContratante);
         pnCadastrarNovoContratante.setLayout(pnCadastrarNovoContratanteLayout);
@@ -193,8 +169,9 @@ public class jifAbasSecretarias extends javax.swing.JInternalFrame {
                             .addComponent(tfEndereco)
                             .addComponent(tfCidade)))
                     .addGroup(pnCadastrarNovoContratanteLayout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(btCancelarAtualizacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
+                        .addComponent(btFinalizarCadastroContratante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         pnCadastrarNovoContratanteLayout.setVerticalGroup(
@@ -232,10 +209,14 @@ public class jifAbasSecretarias extends javax.swing.JInternalFrame {
                 .addGroup(pnCadastrarNovoContratanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
+                .addGroup(pnCadastrarNovoContratanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btCancelarAtualizacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btFinalizarCadastroContratante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41))
         );
+
+        btFinalizarCadastroContratante.getAccessibleContext().setAccessibleDescription("Atualizar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -326,7 +307,6 @@ public class jifAbasSecretarias extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel pnCadastrarNovoContratante;
     private javax.swing.JTextField tfBairro;
     private javax.swing.JTextField tfCep;

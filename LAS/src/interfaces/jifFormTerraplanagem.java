@@ -347,6 +347,10 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
         tfRHDistancia1.setText("");
         rbRHSim1.setSelected(false);
         rbRHNao1.setSelected(false);
+        rbRHNao2.setSelected(false);
+        rbRHSim2.setSelected(false);
+        rbRHNao3.setSelected(false);
+        rbRHSim3.setSelected(false);
         rbBotaFora1Nao.setSelected(false);
         rbBotaFora1Sim.setSelected(false);
         tfBotaForaUtmN1.setText("");
@@ -519,8 +523,6 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
         tfBotaForaUtmN1 = new javax.swing.JTextField();
         jLabel89 = new javax.swing.JLabel();
         tfBotaForaUtmE1 = new javax.swing.JTextField();
-        rbBotaForaOpcao1Sim = new javax.swing.JRadioButton();
-        rbBotaForaOpcao1Nao = new javax.swing.JRadioButton();
         jLabel90 = new javax.swing.JLabel();
         tfBotaForaNDaUc1 = new javax.swing.JTextField();
         jLabel91 = new javax.swing.JLabel();
@@ -562,6 +564,8 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
         tfBotaForaAreaEmprestimo = new javax.swing.JTextField();
         jLabel106 = new javax.swing.JLabel();
         jLabel107 = new javax.swing.JLabel();
+        rbBotaForaOpcao1Sim = new javax.swing.JRadioButton();
+        rbBotaForaOpcao1Nao = new javax.swing.JRadioButton();
         pnCROQUI = new javax.swing.JPanel();
         jLabel55 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -1203,6 +1207,7 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
 
         jLabel68.setText("Responsável Técnico:");
 
+        tfProfissional.setEditable(false);
         tfProfissional.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tfProfissionalMouseClicked(evt);
@@ -1446,21 +1451,11 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
 
         jLabel88.setText("Coordenada do local: UTM(N):");
 
+        tfBotaForaUtmN1.setEditable(false);
+
         jLabel89.setText("e UTM(E):");
 
-        rbBotaForaOpcao1Sim.setText("Sim:");
-        rbBotaForaOpcao1Sim.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                rbBotaForaOpcao1SimMouseClicked(evt);
-            }
-        });
-
-        rbBotaForaOpcao1Nao.setText("Não");
-        rbBotaForaOpcao1Nao.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                rbBotaForaOpcao1NaoMouseClicked(evt);
-            }
-        });
+        tfBotaForaUtmE1.setEditable(false);
 
         jLabel90.setText(" n o do documento referente `a anuência da UC");
 
@@ -1566,6 +1561,10 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
 
         jLabel97.setText("Coordenada do local: UTM(N):");
 
+        tfBotaForaUtmN2.setEditable(false);
+
+        tfBotaForaUtmE2.setEditable(false);
+
         jLabel98.setText("e UTM(E):");
 
         rbBotaForaOpcao3Sim.setText("Sim:");
@@ -1664,6 +1663,20 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
 
         jLabel107.setText("<html>O local onde será disposto o material de Bota-Fora está em Unidade de<br>Conservação:</html>");
 
+        rbBotaForaOpcao1Sim.setText("Sim");
+        rbBotaForaOpcao1Sim.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rbBotaForaOpcao1SimMouseClicked(evt);
+            }
+        });
+
+        rbBotaForaOpcao1Nao.setText("Não");
+        rbBotaForaOpcao1Nao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rbBotaForaOpcao1NaoMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
         jPanel28.setLayout(jPanel28Layout);
         jPanel28Layout.setHorizontalGroup(
@@ -1673,13 +1686,12 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel28Layout.createSequentialGroup()
                         .addComponent(rbBotaFora1Sim)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
                         .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel28Layout.createSequentialGroup()
                                 .addComponent(rbBotaForaOpcao1Sim)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel90))
-                            .addComponent(rbBotaForaOpcao1Nao)
                             .addGroup(jPanel28Layout.createSequentialGroup()
                                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(tfBotaForaNDaUc1, javax.swing.GroupLayout.Alignment.LEADING)
@@ -1693,7 +1705,8 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
                                 .addComponent(tfBotaForaUtmE1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel91)
                             .addComponent(rbBotaForaOpcao2Sim)
-                            .addComponent(rbBotaForaOpcao2Nao))
+                            .addComponent(rbBotaForaOpcao2Nao)
+                            .addComponent(rbBotaForaOpcao1Nao))
                         .addGap(38, 38, 38))
                     .addComponent(jPanel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel28Layout.createSequentialGroup()
@@ -1750,13 +1763,13 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
                     .addComponent(tfBotaForaUtmE1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbBotaForaOpcao1Sim)
-                    .addComponent(jLabel90))
+                    .addComponent(jLabel90)
+                    .addComponent(rbBotaForaOpcao1Sim))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfBotaForaNDaUc1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rbBotaForaOpcao1Nao)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(13, 13, 13)
                 .addComponent(jLabel91)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(rbBotaForaOpcao2Sim)
@@ -2042,6 +2055,10 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
             tfCep.setText(clienteSelecionado.getCliente_cep());
             tfCoordenadasUtmN.setText(clienteSelecionado.getCliente_utmn());
             tfCoordenadasUtmE.setText(clienteSelecionado.getCliente_utme());
+            tfBotaForaUtmN1.setText(clienteSelecionado.getCliente_utmn());
+            tfBotaForaUtmN2.setText(clienteSelecionado.getCliente_utmn());
+            tfBotaForaUtmE1.setText(clienteSelecionado.getCliente_utme());
+            tfBotaForaUtmE2.setText(clienteSelecionado.getCliente_utme());
             if ((clienteSelecionado.getCliente_cnpj().equals("  .   .   /    -  ") == false) && (clienteSelecionado.getCliente_cpf().equals("   .   .   -  ") == false)) {
                 tfCpfCnpj.setText(clienteSelecionado.getCliente_cpf() + " - " + clienteSelecionado.getCliente_cnpj());
             } else {
@@ -2153,6 +2170,10 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
             tfRHDistancia1.setText("");
             rbRHSim1.setSelected(false);
             rbRHNao1.setSelected(false);
+            rbRHNao2.setSelected(false);
+            rbRHSim2.setSelected(false);
+            rbRHNao3.setSelected(false);
+            rbRHSim3.setSelected(false);
             rbBotaFora1Nao.setSelected(false);
             rbBotaFora1Sim.setSelected(false);
             tfBotaForaUtmN1.setText("");
@@ -2162,6 +2183,14 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
             tfBotaForaNDaUc1.setText("");
             rbBotaForaOpcao2Sim.setSelected(false);
             rbBotaForaOpcao2Nao.setSelected(false);
+            rbBotaFora2Nao.setSelected(false);
+            rbBotaFora2Sim.setSelected(false);
+            rbBotaForaOpcao4Sim.setSelected(false);
+            rbBotaForaOpcao4Nao.setSelected(false);
+            rbBotaFora2Nao.setSelected(false);
+            rbBotaFora2Sim.setSelected(false);
+            rbBotaForaOpcao4Sim.setSelected(false);
+            rbBotaForaOpcao4Nao.setSelected(false);
             rbRHNao2.setText("");
             rbRHSim2.setText("");
             tfRHNome2.setText("");
@@ -2258,7 +2287,10 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
             tfCep.setText(relatorioPrincipal.getCLIENTE_CEP());
             tfCoordenadasUtmN.setText(relatorioPrincipal.getCLIENTE_UTMN());
             tfCoordenadasUtmE.setText(relatorioPrincipal.getCLIENTE_UTME());
-
+            tfBotaForaUtmN1.setText(relatorioPrincipal.getCLIENTE_UTMN());
+            tfBotaForaUtmN2.setText(relatorioPrincipal.getCLIENTE_UTMN());
+            tfBotaForaUtmE1.setText(relatorioPrincipal.getCLIENTE_UTME());
+            tfBotaForaUtmE2.setText(relatorioPrincipal.getCLIENTE_UTME());
             if ((relatorioPrincipal.getCLIENTE_CPF().equals("   .   .   -  ") == false) && (relatorioPrincipal.getCLIENTE_CNPJ().equals("  .   .   /    -  ") == false)) {
                 tfCpfCnpj.setText(relatorioPrincipal.getCLIENTE_CPF() + " - " + relatorioPrincipal.getCLIENTE_CNPJ());
             } else {
@@ -2569,14 +2601,6 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
         rbBotaFora1Sim.setSelected(false);
     }//GEN-LAST:event_rbBotaFora1NaoMouseClicked
 
-    private void rbBotaForaOpcao1SimMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbBotaForaOpcao1SimMouseClicked
-        rbBotaForaOpcao1Nao.setSelected(false);
-    }//GEN-LAST:event_rbBotaForaOpcao1SimMouseClicked
-
-    private void rbBotaForaOpcao1NaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbBotaForaOpcao1NaoMouseClicked
-        rbBotaForaOpcao1Sim.setSelected(false);
-    }//GEN-LAST:event_rbBotaForaOpcao1NaoMouseClicked
-
     private void rbBotaForaOpcao2SimMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbBotaForaOpcao2SimMouseClicked
         rbBotaForaOpcao2Nao.setSelected(false);
     }//GEN-LAST:event_rbBotaForaOpcao2SimMouseClicked
@@ -2677,6 +2701,14 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Você não selecionou nenhum arquivo.");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void rbBotaForaOpcao1SimMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbBotaForaOpcao1SimMouseClicked
+        rbBotaForaOpcao1Nao.setSelected(false);
+    }//GEN-LAST:event_rbBotaForaOpcao1SimMouseClicked
+
+    private void rbBotaForaOpcao1NaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbBotaForaOpcao1NaoMouseClicked
+        rbBotaForaOpcao1Sim.setSelected(false);
+    }//GEN-LAST:event_rbBotaForaOpcao1NaoMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

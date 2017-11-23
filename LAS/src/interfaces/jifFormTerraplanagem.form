@@ -1175,6 +1175,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="tfProfissional">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                      </Properties>
                       <Events>
                         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tfProfissionalMouseClicked"/>
                       </Events>
@@ -1461,14 +1464,13 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="rbBotaFora1Sim" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace pref="135" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
                                               <Component id="rbBotaForaOpcao1Sim" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="jLabel90" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="rbBotaForaOpcao1Nao" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                                   <Component id="tfBotaForaNDaUc1" alignment="0" max="32767" attributes="0"/>
@@ -1486,6 +1488,7 @@
                                           <Component id="jLabel91" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="rbBotaForaOpcao2Sim" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="rbBotaForaOpcao2Nao" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="rbBotaForaOpcao1Nao" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                                   </Group>
@@ -1556,14 +1559,14 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="rbBotaForaOpcao1Sim" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel90" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rbBotaForaOpcao1Sim" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="tfBotaForaNDaUc1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="rbBotaForaOpcao1Nao" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                               <Component id="jLabel91" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="rbBotaForaOpcao2Sim" min="-2" max="-2" attributes="0"/>
@@ -1640,6 +1643,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="tfBotaForaUtmN1">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel89">
                       <Properties>
@@ -1647,22 +1653,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="tfBotaForaUtmE1">
-                    </Component>
-                    <Component class="javax.swing.JRadioButton" name="rbBotaForaOpcao1Sim">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Sim:"/>
+                        <Property name="editable" type="boolean" value="false"/>
                       </Properties>
-                      <Events>
-                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rbBotaForaOpcao1SimMouseClicked"/>
-                      </Events>
-                    </Component>
-                    <Component class="javax.swing.JRadioButton" name="rbBotaForaOpcao1Nao">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="N&#xe3;o"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rbBotaForaOpcao1NaoMouseClicked"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel90">
                       <Properties>
@@ -1829,8 +1822,14 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="tfBotaForaUtmN2">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="tfBotaForaUtmE2">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel98">
                       <Properties>
@@ -2001,6 +2000,22 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="&lt;html&gt;O local onde ser&#xe1; disposto o material de Bota-Fora est&#xe1; em Unidade de&lt;br&gt;Conserva&#xe7;&#xe3;o:&lt;/html&gt;"/>
                       </Properties>
+                    </Component>
+                    <Component class="javax.swing.JRadioButton" name="rbBotaForaOpcao1Sim">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Sim"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rbBotaForaOpcao1SimMouseClicked"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JRadioButton" name="rbBotaForaOpcao1Nao">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="N&#xe3;o"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rbBotaForaOpcao1NaoMouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>

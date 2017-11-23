@@ -83,9 +83,6 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
 
         tpnAbasProfissionais = new javax.swing.JTabbedPane();
         pnCadastrarNovoProfissional = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        btCancelarAtualizacaoProfissional = new javax.swing.JButton();
-        btFinalizarCadastroProfissional = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         tfProfissionalNome = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
@@ -115,6 +112,8 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         tfProfissionalComplemento = new javax.swing.JTextField();
         cbAbreviacao = new javax.swing.JComboBox<>();
+        btCancelarAtualizacaoProfissional = new javax.swing.JButton();
+        btFinalizarCadastroProfissional = new javax.swing.JButton();
         pnGerenciarProfissionais = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -133,45 +132,6 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
         setPreferredSize(new java.awt.Dimension(515, 600));
 
         tpnAbasProfissionais.setPreferredSize(new java.awt.Dimension(500, 600));
-
-        btCancelarAtualizacaoProfissional.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/if_edit-not-validated_85308.png"))); // NOI18N
-        btCancelarAtualizacaoProfissional.setToolTipText("Cancelar Atualização");
-        btCancelarAtualizacaoProfissional.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btCancelarAtualizacaoProfissional.setPreferredSize(new java.awt.Dimension(150, 150));
-        btCancelarAtualizacaoProfissional.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btCancelarAtualizacaoProfissionalActionPerformed(evt);
-            }
-        });
-
-        btFinalizarCadastroProfissional.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/complete-file.png"))); // NOI18N
-        btFinalizarCadastroProfissional.setToolTipText("Cadastrar");
-        btFinalizarCadastroProfissional.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btFinalizarCadastroProfissional.setPreferredSize(new java.awt.Dimension(150, 150));
-        btFinalizarCadastroProfissional.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btFinalizarCadastroProfissionalActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addComponent(btCancelarAtualizacaoProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
-                .addComponent(btFinalizarCadastroProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btCancelarAtualizacaoProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btFinalizarCadastroProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
 
         jLabel7.setText("Profisisonal:");
 
@@ -260,26 +220,46 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
 
         cbAbreviacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecionar", "Dr.", "Eng.", "Ms." }));
 
+        btCancelarAtualizacaoProfissional.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/if_edit-not-validated_85308.png"))); // NOI18N
+        btCancelarAtualizacaoProfissional.setToolTipText("Cancelar Atualização");
+        btCancelarAtualizacaoProfissional.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btCancelarAtualizacaoProfissional.setPreferredSize(new java.awt.Dimension(150, 150));
+        btCancelarAtualizacaoProfissional.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelarAtualizacaoProfissionalActionPerformed(evt);
+            }
+        });
+
+        btFinalizarCadastroProfissional.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/complete-file.png"))); // NOI18N
+        btFinalizarCadastroProfissional.setToolTipText("Cadastrar");
+        btFinalizarCadastroProfissional.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btFinalizarCadastroProfissional.setPreferredSize(new java.awt.Dimension(150, 150));
+        btFinalizarCadastroProfissional.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btFinalizarCadastroProfissionalActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnCadastrarNovoProfissionalLayout = new javax.swing.GroupLayout(pnCadastrarNovoProfissional);
         pnCadastrarNovoProfissional.setLayout(pnCadastrarNovoProfissionalLayout);
         pnCadastrarNovoProfissionalLayout.setHorizontalGroup(
             pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCadastrarNovoProfissionalLayout.createSequentialGroup()
+            .addGroup(pnCadastrarNovoProfissionalLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnCadastrarNovoProfissionalLayout.createSequentialGroup()
+                .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCadastrarNovoProfissionalLayout.createSequentialGroup()
                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(22, 22, 22)
                         .addComponent(tfProfissionalRua))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnCadastrarNovoProfissionalLayout.createSequentialGroup()
+                    .addGroup(pnCadastrarNovoProfissionalLayout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addGap(47, 47, 47)
                         .addComponent(tfProfissionalNumero))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnCadastrarNovoProfissionalLayout.createSequentialGroup()
+                    .addGroup(pnCadastrarNovoProfissionalLayout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
                         .addComponent(tfProfissionalComplemento))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnCadastrarNovoProfissionalLayout.createSequentialGroup()
+                    .addGroup(pnCadastrarNovoProfissionalLayout.createSequentialGroup()
                         .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel14)
                             .addComponent(jLabel2))
@@ -287,7 +267,7 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
                         .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfProfissionalCtma)
                             .addComponent(tfProfissionalCep)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnCadastrarNovoProfissionalLayout.createSequentialGroup()
+                    .addGroup(pnCadastrarNovoProfissionalLayout.createSequentialGroup()
                         .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
                             .addComponent(jLabel20)
@@ -298,32 +278,37 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCadastrarNovoProfissionalLayout.createSequentialGroup()
                                 .addComponent(cbAbreviacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfProfissionalNome))
+                                .addComponent(tfProfissionalNome, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE))
                             .addComponent(tfProfissionalCpf, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(tfProfissionalCrea, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnCadastrarNovoProfissionalLayout.createSequentialGroup()
-                            .addComponent(jLabel18)
-                            .addGap(51, 51, 51)
-                            .addComponent(cbProfissionalEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnCadastrarNovoProfissionalLayout.createSequentialGroup()
-                            .addComponent(jLabel19)
-                            .addGap(41, 41, 41)
-                            .addComponent(tfProfissionalTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel10)
-                            .addGap(41, 41, 41)
-                            .addComponent(tfProfissionalCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnCadastrarNovoProfissionalLayout.createSequentialGroup()
-                            .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel16)
-                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(25, 25, 25)
-                            .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(tfProfissionalBairro)
-                                .addComponent(tfProfissionalCidade)))))
+                    .addGroup(pnCadastrarNovoProfissionalLayout.createSequentialGroup()
+                        .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25)
+                        .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfProfissionalBairro)
+                            .addComponent(tfProfissionalCidade)))
+                    .addGroup(pnCadastrarNovoProfissionalLayout.createSequentialGroup()
+                        .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addGroup(pnCadastrarNovoProfissionalLayout.createSequentialGroup()
+                                .addComponent(jLabel18)
+                                .addGap(51, 51, 51)
+                                .addComponent(cbProfissionalEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnCadastrarNovoProfissionalLayout.createSequentialGroup()
+                                .addComponent(jLabel19)
+                                .addGap(41, 41, 41)
+                                .addComponent(tfProfissionalTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel10)
+                                .addGap(41, 41, 41)
+                                .addComponent(tfProfissionalCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(pnCadastrarNovoProfissionalLayout.createSequentialGroup()
+                        .addComponent(btCancelarAtualizacaoProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btFinalizarCadastroProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         pnCadastrarNovoProfissionalLayout.setVerticalGroup(
@@ -386,9 +371,11 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
                     .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(tfProfissionalTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel19)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+                .addGap(32, 32, 32)
+                .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btCancelarAtualizacaoProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btFinalizarCadastroProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         tpnAbasProfissionais.addTab("Cadastrar Novos Profissionais", pnCadastrarNovoProfissional);
@@ -501,8 +488,8 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(pnGerenciarProfissionaisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnGerenciarProfissionaisLayout.setVerticalGroup(
@@ -512,9 +499,9 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGap(35, 35, 35))
         );
 
         tpnAbasProfissionais.addTab("Gerenciar Profissionais", pnGerenciarProfissionais);
@@ -523,7 +510,7 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tpnAbasProfissionais, javax.swing.GroupLayout.PREFERRED_SIZE, 499, Short.MAX_VALUE)
+            .addComponent(tpnAbasProfissionais, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -860,7 +847,6 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel pnCadastrarNovoProfissional;
