@@ -7,6 +7,7 @@ package interfaces;
 
 import bancodedados.ContratanteBD;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import modelo.tabelas.ModeloTabelaContratantes;
 import modelos.Contratante;
@@ -45,7 +46,7 @@ public class jifAbasContratantes extends javax.swing.JInternalFrame {
 
     public jifAbasContratantes() {
         initComponents();
-
+setFrameIcon(new ImageIcon(this.getClass().getResource("../imagens/icon.png")));
         //this.setSize(500, 600);
         tbContratantesCadastrados.setModel(modeloTabelaContratante);
 

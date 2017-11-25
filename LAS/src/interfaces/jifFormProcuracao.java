@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import modelo.tabelas.ModeloTabelaProcuracoes;
 import modelos.LetrasMaiusculas;
@@ -67,6 +68,8 @@ public class jifFormProcuracao extends javax.swing.JInternalFrame {
     public jifFormProcuracao() {
         initComponents();
         conexao = ConexaoPDF.conector();
+        
+        setFrameIcon(new ImageIcon(this.getClass().getResource("../imagens/icon.png")));
 
         Calendar cal = Calendar.getInstance();
         dataAtual.setBaseDate(cal.getTime());

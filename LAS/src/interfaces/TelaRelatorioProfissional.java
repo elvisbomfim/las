@@ -6,6 +6,7 @@
 package interfaces;
 
 import bancodedados.ProfissionalBD;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import modelo.tabelas.ModeloTabelaProfissionais;
 import modelos.Profissional;
@@ -34,6 +35,7 @@ public class TelaRelatorioProfissional extends javax.swing.JDialog {
     public TelaRelatorioProfissional(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../imagens/icon.png")));
         this.setLocationRelativeTo(parent);
         this.setTitle("Gerencia de profissionais");
         tfBuscarProfissional.requestFocus();

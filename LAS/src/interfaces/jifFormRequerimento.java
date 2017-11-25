@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import modelo.tabelas.ModeloTabelaClientes;
 import modelo.tabelas.ModeloTabelaContratantes;
@@ -92,6 +93,7 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
         //       pnDataAtual.add(dataInicioOperacao);
         //Definindo o botão DateField (Data Inicio do Semestre) para seleção de uma data e atribuindo uma ação de mudança à ele.
         //       dataInicioOperacao.setSize((pnDataAtual.getWidth()), (pnDataAtual.getHeight()));
+        setFrameIcon(new ImageIcon(this.getClass().getResource("../imagens/icon.png")));
 
         btCancelarAtualizacaoRequerimento.setVisible(false);
 

@@ -9,6 +9,7 @@ import Utilitarios.WebServiceCep;
 import bancodedados.ProfissionalBD;
 import java.awt.Color;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import modelo.tabelas.ModeloTabelaProfissionais;
@@ -50,7 +51,7 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
     public jifAbasProfissionais() {
         initComponents();
         
-        
+        setFrameIcon(new ImageIcon(this.getClass().getResource("../imagens/icon.png")));
      
         tbProfissionaisCadastrados.setModel(modeloTabelaProfissional);
 

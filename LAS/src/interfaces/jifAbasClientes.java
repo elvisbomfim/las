@@ -10,6 +10,7 @@ import bancodedados.ClienteBD;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import modelo.tabelas.ModeloTabelaClientes;
 import modelos.Cliente;
@@ -53,7 +54,7 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
 
         //this.setSize(500, 600);
         tbClientesCadastrados.setModel(modeloTabelaCliente);
-
+setFrameIcon(new ImageIcon(this.getClass().getResource("../imagens/icon.png")));
         //----------------buscas na tabela--------------------------------------
         buscarClientesTabela();
 

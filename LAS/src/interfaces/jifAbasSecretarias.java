@@ -7,6 +7,7 @@ package interfaces;
 
 import bancodedados.SecretariaBD;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import modelos.Secretaria;
 import modelos.LetrasMaiusculas;
@@ -39,7 +40,7 @@ public class jifAbasSecretarias extends javax.swing.JInternalFrame {
 
     public jifAbasSecretarias() {
         initComponents();
-
+        setFrameIcon(new ImageIcon(this.getClass().getResource("../imagens/icon.png")));
         //this.setSize(500, 600);
         //tbSecretariasCadastrados.setModel(modeloTabelaSecretaria);
         //----------------buscas na tabela--------------------------------------
@@ -52,7 +53,7 @@ public class jifAbasSecretarias extends javax.swing.JInternalFrame {
         tfBairro.setDocument(new LetrasMaiusculas());
         tfCidade.setDocument(new LetrasMaiusculas());
         tfEmail.setDocument(new LetrasMaiusculas());
-        
+
         buscarSecretariaTabela();
 
     }

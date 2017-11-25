@@ -6,6 +6,7 @@
 package interfaces;
 
 import bancodedados.RepresentanteBD;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import modelo.tabelas.ModeloTabelaRepresentantes;
 import modelos.Representante;
@@ -27,7 +28,7 @@ public class TelaRelatorioRepresentante extends javax.swing.JDialog {
     public TelaRelatorioRepresentante(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../imagens/icon.png")));
         this.setLocationRelativeTo(parent);
         this.setTitle("Gerencia de representantes");
         tfBuscarRepresentante.requestFocus();
@@ -171,7 +172,7 @@ public class TelaRelatorioRepresentante extends javax.swing.JDialog {
     }//GEN-LAST:event_tfBuscarRepresentanteKeyReleased
 
     private void btCancelarSelecaoRepresentanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarSelecaoRepresentanteActionPerformed
-       
+
         this.setVisible(false);
     }//GEN-LAST:event_btCancelarSelecaoRepresentanteActionPerformed
 

@@ -101,6 +101,7 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
         Calendar cal = Calendar.getInstance();
         dataAtual.setBaseDate(cal.getTime());
         pnDataAtual.add(dataAtual);
+        setFrameIcon(new ImageIcon(this.getClass().getResource("../imagens/icon.png")));
         //Definindo o botão DateField (Data Inicio do Semestre) para seleção de uma data e atribuindo uma ação de mudança à ele.
         dataAtual.setSize((pnDataAtual.getWidth()), (pnDataAtual.getHeight()));
         btCancelarAtualizacao.setVisible(false);

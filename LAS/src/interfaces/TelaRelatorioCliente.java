@@ -6,6 +6,7 @@
 package interfaces;
 
 import bancodedados.ClienteBD;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import modelo.tabelas.ModeloTabelaClientes;
 import modelos.Cliente;
@@ -28,7 +29,7 @@ public class TelaRelatorioCliente extends javax.swing.JDialog {
     public TelaRelatorioCliente(java.awt.Frame parent, boolean modal, int categoria_id) {
         super(parent, modal);
         initComponents();
-
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../imagens/icon.png")));
         this.categoria = categoria_id;
 
         this.setLocationRelativeTo(parent);
@@ -178,7 +179,7 @@ public class TelaRelatorioCliente extends javax.swing.JDialog {
             }
 
             tbListaClientes.updateUI();
-            
+
         } else {
             if (tfBuscarCliente.getText().isEmpty()) {
                 modeloTabelaCliente.inserirListaClientes(conexaoTabelaCliente.selecionarClientesCategoria(this.categoria));
@@ -197,7 +198,7 @@ public class TelaRelatorioCliente extends javax.swing.JDialog {
             }
 
             tbListaClientes.updateUI();
-            
+
         }
 
     }//GEN-LAST:event_tfBuscarClienteKeyReleased

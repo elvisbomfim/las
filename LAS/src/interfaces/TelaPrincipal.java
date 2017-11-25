@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.awt.Image;
 import java.awt.Graphics;
+import java.awt.Toolkit;
 import java.util.Locale;
 import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
@@ -21,7 +22,7 @@ import javax.swing.JInternalFrame;
  * @author Jean
  */
 public class TelaPrincipal extends javax.swing.JFrame {
-
+    
     Connection conexao = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
@@ -31,8 +32,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
      */
     public TelaPrincipal() {
         initComponents();
-
-       
+        setIcon();
+        
     }
 
     /**
@@ -219,7 +220,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
         Dimension d = obj.getDesktopPane().getSize();
         obj.setLocation((d.width - obj.getSize().width) / 2, (d.height - obj.getSize().height) / 2);
-        
+
     }//GEN-LAST:event_jmiCadastrarClienteActionPerformed
 
     private void jmiCadastrarContratanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCadastrarContratanteActionPerformed
@@ -317,24 +318,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
         obj.setVisible(true);
         setPosicao(obj);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
-
+    
     public void Fechar() {
         JInternalFrame[] frames = jdptelaPrincipal.getAllFrames();
         for (int i = 0; i < frames.length; i++) {
             frames[i].dispose();
         }
     }
-
+    
     public void setPosicao(JInternalFrame fr) {
         Dimension d = fr.getDesktopPane().getSize();
         fr.setLocation((d.width - fr.getSize().width) / 2, (d.height - fr.getSize().height) / 2);
     }
 
-
-/**
- * @param args the command line arguments
- */
-public static void main(String args[]) {
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -345,28 +345,24 @@ public static void main(String args[]) {
                 if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                
-
-}
+                    
+                }
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(TelaPrincipal.class
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        
-
-} catch (InstantiationException ex) {
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            
+        } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(TelaPrincipal.class
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        
-
-} catch (IllegalAccessException ex) {
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            
+        } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(TelaPrincipal.class
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        
-
-} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(TelaPrincipal.class
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -398,4 +394,8 @@ public static void main(String args[]) {
     private javax.swing.JMenuItem jmiRecibo;
     private javax.swing.JMenuItem miRelatorios;
     // End of variables declaration//GEN-END:variables
+
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../imagens/icon.png")));
+    }
 }

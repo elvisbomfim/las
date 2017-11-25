@@ -101,11 +101,15 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
     BufferedImage imagem;
 
     public jifFormCondominio() {
+
         initComponents();
         conexao = ConexaoPDF.conector();
         Calendar cal = Calendar.getInstance();
         dataAtual.setBaseDate(cal.getTime());
         pnDataAtual.add(dataAtual);
+
+        setFrameIcon(new ImageIcon(this.getClass().getResource("../imagens/icon.png")));
+
         // Definindo o botão DateField (Data Inicio do Semestre) para seleção de uma data e atribuindo uma ação de mudança à ele.
         dataAtual.setSize((pnDataAtual.getWidth()), (pnDataAtual.getHeight()));
 
@@ -118,7 +122,6 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
         tbRelatoriosCadastrados.setModel(modeloTabelaCondominio);
         buscarRelatoriosTabela();
 
-        
         tfNHabitacoes.setDocument(new LetrasMaiusculas());
         tfNomeCliente.setDocument(new LetrasMaiusculas());
         tfNomeFantasia.setDocument(new LetrasMaiusculas());
@@ -3518,12 +3521,17 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
             String data;
             data = form.format(condominio.getRELATORIO_DATA_ATUAL().get(Calendar.DAY_OF_MONTH)) + "/" + form.format(condominio.getRELATORIO_DATA_ATUAL().get(Calendar.MONTH) + 1) + "/" + condominio.getRELATORIO_DATA_ATUAL().get(Calendar.YEAR);
 
+            DecimalFormat form2 = new DecimalFormat("00");
+            String data_i_s_a_a;
+            data_i_s_a_a = form2.format(condominio.getRELATORIO_I_S_A_DATA().get(Calendar.DAY_OF_MONTH)) + "/" + form2.format(condominio.getRELATORIO_I_S_A_DATA().get(Calendar.MONTH) + 1) + "/" + condominio.getRELATORIO_I_S_A_DATA().get(Calendar.YEAR);
+  
             try {
                 //usando a clsse HashMap para criar um filtro
                 //  JOptionPane.showMessageDialog(rootPane, recibo.getRecibo_id());
                 HashMap filtro = new HashMap();
                 filtro.put("id", condominio.getRELATORIO_ID());
                 filtro.put("data", data);
+                filtro.put("data_i_s_a_a", data_i_s_a_a);
                 //Usando a classe JasperPrint para preparar a impressão de um relatório
                 JasperPrint print = JasperFillManager.fillReport("build/classes/reports/Condominio.jasper", filtro, conexao);
                 //a linha abaixo exibe o relatório através da classe JasperViewer
