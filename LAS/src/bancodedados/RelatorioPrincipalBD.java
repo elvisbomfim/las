@@ -141,6 +141,7 @@ public class RelatorioPrincipalBD extends ConexaoBanco {
                     + "RELATORIO_TEXTO_ANEXO,"
                     + "RELATORIO_DATA_ATUAL,"
                     + "PROFISSIONAL_ID,"
+                    + "REPRESENTANTE_ID,"
                     + "CATEGORIA_ID) "
                     + "VALUES ('"
                     + r.getRELATORIO_AREA_UTIL() + "', '"
@@ -254,6 +255,7 @@ public class RelatorioPrincipalBD extends ConexaoBanco {
                     + r.getRELATORIO_TEXTO_ANEXO() + "', '"
                     + dataAtual + "', "
                     + r.getPROFISSIONAL_ID() + ", "
+                    + r.getREPRESENTANTE_ID() + ", "
                     + r.getCATEGORIA_ID() + ")";
 
             // String com aspas simples e inteiros sem aspas simples.
@@ -411,6 +413,7 @@ public class RelatorioPrincipalBD extends ConexaoBanco {
                     + "	RELATORIO_TEXTO_ANEXO='" + r.getRELATORIO_TEXTO_ANEXO() + "',"
                     + "	RELATORIO_DATA_ATUAL='" + dataAtual + "',"
                     + "	PROFISSIONAL_ID=" + r.getPROFISSIONAL_ID() + ","
+                    + "	REPRESENTANTE_ID=" + r.getPROFISSIONAL_ID() + ","
                     + "	CATEGORIA_ID=" + r.getCATEGORIA_ID()
                     + " WHERE relatorio_id= " + relatorio_id;
 
@@ -434,10 +437,11 @@ public class RelatorioPrincipalBD extends ConexaoBanco {
 
             stm = con.createStatement();
 
-            sql = "SELECT r.*, cat.*, c.*, p.* FROM relatorio r "
+            sql = "SELECT r.*, cat.*, c.*, p.*, re.* FROM relatorio r "
                     + "INNER JOIN categoria cat ON cat.categoria_id = r.categoria_id "
                     + "INNER JOIN cliente c ON c.cliente_id = r.cliente_id "
                     + "INNER JOIN profissional p ON p.profissional_id = r.profissional_id "
+                    + "INNER JOIN representante re ON re.representante_id = r.representante_id "
                     + "WHERE cat.CATEGORIA_ID = " + relatorio_id +" ORDER by r.relatorio_id DESC";
 
             tabelaRetornada = stm.executeQuery(sql);
@@ -571,8 +575,10 @@ public class RelatorioPrincipalBD extends ConexaoBanco {
                 r.setCLIENTE_UTMN(tabelaRetornada.getString("CLIENTE_UTMN"));
                 r.setCLIENTE_UTME(tabelaRetornada.getString("CLIENTE_UTME"));
                 r.setCLIENTE_FANTASIA(tabelaRetornada.getString("CLIENTE_FANTASIA"));
+                r.setCLIENTE_DATA(retornaDateBanco(tabelaRetornada.getDate("CLIENTE_DATA_ATIVIDADE")));
                 r.setPROFISSIONAL_NOME(tabelaRetornada.getString("PROFISSIONAL_NOME"));
                 r.setCATEGORIA_NOME(tabelaRetornada.getString("CATEGORIA_NOME"));
+                r.setREPRESENTANTE_NOME(tabelaRetornada.getString("REPRESENTANTE_NOME"));
 
                 listaR.add(r);
             }

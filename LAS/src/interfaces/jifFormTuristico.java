@@ -37,6 +37,7 @@ import modelos.LetrasMaiusculas;
 import modelos.ManipularImagem;
 import modelos.Profissional;
 import modelos.RelatorioPrincipal;
+import modelos.Representante;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
@@ -66,6 +67,7 @@ public class jifFormTuristico extends javax.swing.JInternalFrame {
     RelatorioPrincipal turisticoCadastro = new RelatorioPrincipal();
     Cliente clienteTemporario = new Cliente();
     Profissional profissionalTemporario = new Profissional();
+    Representante representanteTemporario = new Representante();
     RelatorioPrincipal relatorioExcluir = new RelatorioPrincipal();
 
     /**
@@ -105,16 +107,15 @@ public class jifFormTuristico extends javax.swing.JInternalFrame {
         dataAtual.setSize((pnDataAtual.getWidth()), (pnDataAtual.getHeight()));
 
         btCancelarAtualizacao.setVisible(false);
-        
-        Calendar calISA = Calendar.getInstance();
-        dataISA.setBaseDate(calISA.getTime());
-        pnISAData.add(dataISA);
+
+        //  Calendar calISA = Calendar.getInstance();
+        //  dataISA.setBaseDate(calISA.getTime());
+        //  pnISAData.add(dataISA);
         // Definindo o botão DateField (Data Inicio do Semestre) para seleção de uma data e atribuindo uma ação de mudança à ele.
-        dataISA.setSize((pnISAData.getWidth()), (pnISAData.getHeight()));
+        //  dataISA.setSize((pnISAData.getWidth()), (pnISAData.getHeight()));
         tbRelatoriosCadastrados.setModel(modeloTabelaTuristico);
         buscarRelatoriosTabela();
-        
-       
+
         tfAreaCoberta.setDocument(new LetrasMaiusculas());
         tfAreaDescoberta.setDocument(new LetrasMaiusculas());
         tfNomeCliente.setDocument(new LetrasMaiusculas());
@@ -167,7 +168,8 @@ public class jifFormTuristico extends javax.swing.JInternalFrame {
         taTextoAnexo.setDocument(new LetrasMaiusculas());
 //        tfDataAtual.setDocument(new LetrasMaiusculas());
         tfProfissional.setDocument(new LetrasMaiusculas());
-       
+        tfFAAEmpresa.setText("CESAN");
+        tfFAAConsumoDeAgua.setText("150");
 
     }
 
@@ -187,6 +189,7 @@ public class jifFormTuristico extends javax.swing.JInternalFrame {
         //turisticoCadastro.setRELATORIO_AREA_INTERVENCAO();
         //turisticoCadastro.setRELATORIO_ALTURA_DO_TALUDE();
         turisticoCadastro.setCLIENTE_ID(clienteTemporario.getCliente_id());
+        turisticoCadastro.setREPRESENTANTE_ID(representanteTemporario.getRepresentante_id());
         //turisticoCadastro.setRELATORIO_TIPO_DE_FINANCIAMENTO();
         if (rbLocalizacaoZonaUrbana.isSelected()) {
             turisticoCadastro.setRELATORIO_LOCALIZACAO(0);
@@ -559,6 +562,7 @@ public class jifFormTuristico extends javax.swing.JInternalFrame {
         CheckBoxFGE = "";
         CheckBoxGR = "";
         CheckBoxEA = "";
+        tfRepresentante.setText("");
         tfAreaUtil.setText("");
         tfAreaCoberta.setText("");
         tfAreaDescoberta.setText("");
@@ -694,7 +698,8 @@ public class jifFormTuristico extends javax.swing.JInternalFrame {
         rbCLENadamaisexisteadeclarar.setSelected(false);
         rbCLEDeclaramosoqueconstaemanexo.setSelected(false);
         taTextoAnexo.setText("");
-//        tfDataAtual.setText("");
+        Date d = new Date();
+        dataAtual.setValue(d);
         tfProfissional.setText("");
         lblImagem.setIcon(new ImageIcon(""));
 
@@ -780,7 +785,7 @@ public class jifFormTuristico extends javax.swing.JInternalFrame {
         tfISAPrevisaoVegetacao = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         tfNEmpregados = new javax.swing.JTextField();
-        pnISAData = new com.toedter.calendar.JDayChooser();
+        tfISAData = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         ckbFAARedePublica = new javax.swing.JCheckBox();
         ckbFAAPoco = new javax.swing.JCheckBox();
@@ -937,6 +942,8 @@ public class jifFormTuristico extends javax.swing.JInternalFrame {
         jLabel68 = new javax.swing.JLabel();
         tfProfissional = new javax.swing.JTextField();
         pnDataAtual = new com.toedter.calendar.JDayChooser();
+        tfRepresentante = new javax.swing.JTextField();
+        jLabel66 = new javax.swing.JLabel();
         jPanel24 = new javax.swing.JPanel();
         jLabel69 = new javax.swing.JLabel();
         tfAreaUtil = new javax.swing.JTextField();
@@ -994,7 +1001,7 @@ public class jifFormTuristico extends javax.swing.JInternalFrame {
 
         tfCidade.setEditable(false);
 
-        jLabel6.setText("CNPJ/CPF:");
+        jLabel6.setText("CPF/CNPJ:");
 
         tfCpfCnpj.setEditable(false);
 
@@ -1377,6 +1384,8 @@ public class jifFormTuristico extends javax.swing.JInternalFrame {
 
         jLabel25.setText("N° de funcionários:");
 
+        tfISAData.setEditable(false);
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -1403,7 +1412,7 @@ public class jifFormTuristico extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfISAPrevisaoVegetacao, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnISAData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(tfISAData, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -1413,17 +1422,15 @@ public class jifFormTuristico extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rbISAPlanejamento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rbISAInstalacao)
-                            .addComponent(jLabel22)
-                            .addComponent(tfISAPrevisaoVegetacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rbISAOperacao)
-                            .addComponent(jLabel23)))
-                    .addComponent(pnISAData, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbISAInstalacao)
+                    .addComponent(jLabel22)
+                    .addComponent(tfISAPrevisaoVegetacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbISAOperacao)
+                    .addComponent(jLabel23)
+                    .addComponent(tfISAData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
@@ -1474,6 +1481,8 @@ public class jifFormTuristico extends javax.swing.JInternalFrame {
         ckbFAAOpcaoLonga.setText("<html>Não passível atualmente de outorga ou dispensa: realiza captação de águas subterrâneas, pluviais, não utiliza recurso hídrico<br> diretamente para abastecimento próprio e não realiza lançamento de efluentes em corpos de água (serviços disponibilizados pela<br> concessionária de água e esgoto).</html>");
 
         jLabel58.setText("Informar nome da Concessionária / Empresa:");
+
+        tfFAAEmpresa.setText("CESAN");
 
         jLabel61.setText("Informar: Tipo:");
 
@@ -2501,6 +2510,15 @@ public class jifFormTuristico extends javax.swing.JInternalFrame {
             }
         });
 
+        tfRepresentante.setEditable(false);
+        tfRepresentante.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tfRepresentanteMouseClicked(evt);
+            }
+        });
+
+        jLabel66.setText("Representante:");
+
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
@@ -2515,7 +2533,12 @@ public class jifFormTuristico extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(pnDataAtual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addComponent(tfProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel66)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane3)))
             .addGroup(jPanel11Layout.createSequentialGroup()
@@ -2549,9 +2572,13 @@ public class jifFormTuristico extends javax.swing.JInternalFrame {
                     .addComponent(jLabel67)
                     .addComponent(pnDataAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel68)
-                    .addComponent(tfProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel66)
+                        .addComponent(tfRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel68)
+                        .addComponent(tfProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -2696,19 +2723,19 @@ public class jifFormTuristico extends javax.swing.JInternalFrame {
             pnRestauranteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnRestauranteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnRestauranteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnCROQUI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnRestauranteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnCROQUI, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel24, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(109, Short.MAX_VALUE))
         );
@@ -2911,6 +2938,10 @@ public class jifFormTuristico extends javax.swing.JInternalFrame {
                     }
                 }
             }
+            DecimalFormat form = new DecimalFormat("00");
+            String dataInicioAtividade;
+            dataInicioAtividade = form.format(clienteSelecionado.getCliente_data_atividade().get(Calendar.DAY_OF_MONTH)) + "/" + form.format(clienteSelecionado.getCliente_data_atividade().get(Calendar.MONTH) + 1) + "/" + clienteSelecionado.getCliente_data_atividade().get(Calendar.YEAR);
+            tfISAData.setText(dataInicioAtividade);
             clienteTemporario = telaRelatorioCliente.retornarClienteSelecionado();
         }
     }//GEN-LAST:event_tfNomeClienteMouseClicked
@@ -2974,6 +3005,7 @@ public class jifFormTuristico extends javax.swing.JInternalFrame {
             CheckBoxFGE = "";
             CheckBoxGR = "";
             CheckBoxEA = "";
+            tfRepresentante.setText("");
             tfAreaUtil.setText("");
             tfAreaCoberta.setText("");
             tfAreaDescoberta.setText("");
@@ -3109,7 +3141,8 @@ public class jifFormTuristico extends javax.swing.JInternalFrame {
             rbCLENadamaisexisteadeclarar.setSelected(false);
             rbCLEDeclaramosoqueconstaemanexo.setSelected(false);
             taTextoAnexo.setText("");
-//        tfDataAtual.setText("");
+            Date d = new Date();
+            dataAtual.setValue(d);
             tfProfissional.setText("");
             lblImagem.setIcon(new ImageIcon(""));
         }
@@ -3124,14 +3157,19 @@ public class jifFormTuristico extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(tpnAbasTuristico, "Por favor escolha o profissional", "Aviso", 2);
                 tfProfissional.requestFocus();
             } else {
-                if (btFinalizarCadastro.getToolTipText().equals("Cadastrar")) {
-                    conexaoTabelaRelatorio.inserirNovoRPrincipal(preencherDadosCadastroTuristico());
-                    buscarRelatoriosTabela();
-                    limparCamposCadastroTuristico();
+                if (tfRepresentante.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(tpnAbasTuristico, "Por favor escolha o represetante", "Aviso", 2);
+                    tfRepresentante.requestFocus();
                 } else {
-                    conexaoTabelaRelatorio.alterarRelatorio(modeloTabelaTuristico.retornaListaRelatorioPrincipal().get(tbRelatoriosCadastrados.getSelectedRow()).getRELATORIO_ID(), preencherDadosCadastroTuristico());
-                    buscarRelatoriosTabela();
-                    limparCamposCadastroTuristico();
+                    if (btFinalizarCadastro.getToolTipText().equals("Cadastrar")) {
+                        conexaoTabelaRelatorio.inserirNovoRPrincipal(preencherDadosCadastroTuristico());
+                        buscarRelatoriosTabela();
+                        limparCamposCadastroTuristico();
+                    } else {
+                        conexaoTabelaRelatorio.alterarRelatorio(modeloTabelaTuristico.retornaListaRelatorioPrincipal().get(tbRelatoriosCadastrados.getSelectedRow()).getRELATORIO_ID(), preencherDadosCadastroTuristico());
+                        buscarRelatoriosTabela();
+                        limparCamposCadastroTuristico();
+                    }
                 }
             }
         }
@@ -3194,6 +3232,10 @@ public class jifFormTuristico extends javax.swing.JInternalFrame {
                     }
                 }
             }
+            DecimalFormat form = new DecimalFormat("00");
+            String dataInicioAtividade;
+            dataInicioAtividade = form.format(relatorioPrincipal.getCLIENTE_DATA().get(Calendar.DAY_OF_MONTH)) + "/" + form.format(relatorioPrincipal.getCLIENTE_DATA().get(Calendar.MONTH) + 1) + "/" + relatorioPrincipal.getCLIENTE_DATA().get(Calendar.YEAR);
+            tfISAData.setText(dataInicioAtividade);
             clienteTemporario.setCliente_id(relatorioPrincipal.getCLIENTE_ID());
             //restauranteCadastro.setRELATORIO_TIPO_DE_FINANCIAMENTO();
             if (relatorioPrincipal.getRELATORIO_LOCALIZACAO() == 0) {
@@ -3514,6 +3556,8 @@ public class jifFormTuristico extends javax.swing.JInternalFrame {
             dataAtual.setValue(data1);
             tfProfissional.setText(relatorioPrincipal.getPROFISSIONAL_NOME());
             profissionalTemporario.setProfissional_id(relatorioPrincipal.getPROFISSIONAL_ID());
+            tfRepresentante.setText(relatorioPrincipal.getREPRESENTANTE_NOME());
+            representanteTemporario.setRepresentante_id(relatorioPrincipal.getREPRESENTANTE_ID());
             relatorioPrincipal.setCATEGORIA_ID(3);
 
             try {
@@ -3731,6 +3775,18 @@ public class jifFormTuristico extends javax.swing.JInternalFrame {
         tfAreaUtil.setText(formatado + " m²");
     }//GEN-LAST:event_tfAreaUtilFocusLost
 
+    private void tfRepresentanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfRepresentanteMouseClicked
+        TelaRelatorioRepresentante telaRelatorioRepresentante = new TelaRelatorioRepresentante(null, true);
+        telaRelatorioRepresentante.setVisible(true);
+        // Criando o cliente à receber o cliente da tela relatorioprocuracao
+        Representante representanteSelecionado = new Representante();
+        representanteSelecionado = telaRelatorioRepresentante.retornarRepresentanteSelecionado();
+        if (representanteSelecionado != null) {
+            tfRepresentante.setText(representanteSelecionado.getRepresentante_nome());
+            representanteTemporario = telaRelatorioRepresentante.retornarRepresentanteSelecionado();
+        }
+    }//GEN-LAST:event_tfRepresentanteMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCancelarAtualizacao;
@@ -3870,6 +3926,7 @@ public class jifFormTuristico extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel69;
@@ -3910,7 +3967,6 @@ public class jifFormTuristico extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblImagem;
     private javax.swing.JPanel pnCROQUI;
     private com.toedter.calendar.JDayChooser pnDataAtual;
-    private com.toedter.calendar.JDayChooser pnISAData;
     private javax.swing.JPanel pnRestaurante;
     private javax.swing.JRadioButton rbAreaDaUcNao;
     private javax.swing.JRadioButton rbAreaDaUcSim;
@@ -3967,6 +4023,7 @@ public class jifFormTuristico extends javax.swing.JInternalFrame {
     private javax.swing.JTextField tfGRNumeroLicenca1;
     private javax.swing.JTextField tfGRNumeroLicenca2;
     private javax.swing.JTextField tfGRNumeroLicenca3;
+    private javax.swing.JTextField tfISAData;
     private javax.swing.JTextField tfISAPrevisaoVegetacao;
     private javax.swing.JTextField tfInseridoEmAreaOutraEspecificar;
     private javax.swing.JTextField tfMSTEspecificar1;
@@ -3977,6 +4034,7 @@ public class jifFormTuristico extends javax.swing.JInternalFrame {
     private javax.swing.JTextField tfNumero;
     private javax.swing.JTextField tfPalavraChaveTuristico;
     private javax.swing.JTextField tfProfissional;
+    private javax.swing.JTextField tfRepresentante;
     private javax.swing.JTextField tfSuprecaoVegetacaoDocumentoIdaf;
     private javax.swing.JTextField tfTelefone;
     private javax.swing.JTabbedPane tpnAbasTuristico;

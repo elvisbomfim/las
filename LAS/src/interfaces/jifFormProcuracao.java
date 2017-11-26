@@ -68,7 +68,7 @@ public class jifFormProcuracao extends javax.swing.JInternalFrame {
     public jifFormProcuracao() {
         initComponents();
         conexao = ConexaoPDF.conector();
-        
+
         setFrameIcon(new ImageIcon(this.getClass().getResource("../imagens/icon.png")));
 
         Calendar cal = Calendar.getInstance();
@@ -84,7 +84,6 @@ public class jifFormProcuracao extends javax.swing.JInternalFrame {
 
         tfProcuracaoRepresentante.setDocument(new LetrasMaiusculas());
         tfProcuracaoProfissional.setDocument(new LetrasMaiusculas());
-        tfProcuracaoCidade.setDocument(new LetrasMaiusculas());
     }
 
     /**
@@ -100,10 +99,6 @@ public class jifFormProcuracao extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        tfProcuracaoCidade = new javax.swing.JTextField();
-        cbProcuracaoEstado = new javax.swing.JComboBox<>();
         tfProcuracaoProfissional = new javax.swing.JTextField();
         tfProcuracaoRepresentante = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -132,12 +127,6 @@ public class jifFormProcuracao extends javax.swing.JInternalFrame {
         jLabel1.setText("Representante:");
 
         jLabel2.setText("Profissional:");
-
-        jLabel3.setText("Cidade:");
-
-        jLabel4.setText("Estado:");
-
-        cbProcuracaoEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Selecione--", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
 
         tfProcuracaoProfissional.setEditable(false);
         tfProcuracaoProfissional.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -205,21 +194,13 @@ public class jifFormProcuracao extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel3)
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfProcuracaoRepresentante)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(tfProcuracaoCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel4)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(cbProcuracaoEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(pnDataAtual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 60, Short.MAX_VALUE))
+                                .addComponent(pnDataAtual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 220, Short.MAX_VALUE))
                             .addComponent(tfProcuracaoProfissional)))
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -237,16 +218,9 @@ public class jifFormProcuracao extends javax.swing.JInternalFrame {
                     .addComponent(tfProcuracaoProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cbProcuracaoEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel4))
-                    .addComponent(tfProcuracaoCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(pnDataAtual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -378,7 +352,7 @@ public class jifFormProcuracao extends javax.swing.JInternalFrame {
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -424,8 +398,6 @@ public class jifFormProcuracao extends javax.swing.JInternalFrame {
             // tfReciboContratante.setText();
             tfProcuracaoRepresentante.setText(procuracao.getProcuracao_representante());
             tfProcuracaoProfissional.setText(procuracao.getProcuracao_profissional());
-            tfProcuracaoCidade.setText(procuracao.getProcuracao_cidade());
-            cbProcuracaoEstado.setSelectedItem(procuracao.getProcuracao_estado());
             representanteTemporario.setRepresentante_id(procuracao.getRepresentante_id());
             profissionalTemporario.setProfissional_id(procuracao.getProfissional_id());
             Date data1 = procuracao.getProcuracao_data().getTime();
@@ -496,9 +468,8 @@ public class jifFormProcuracao extends javax.swing.JInternalFrame {
             tpnAbasProcuracoes.setTitleAt(0, "Gerar Procurações");
             tfProcuracaoRepresentante.setText("");
             tfProcuracaoProfissional.setText("");
-            tfProcuracaoCidade.setText("");
-
-            cbProcuracaoEstado.setSelectedIndex(0);
+            Date d = new Date();
+            dataAtual.setValue(d);
         }
     }//GEN-LAST:event_btCancelarAtualizacaoProcuracaoActionPerformed
 
@@ -589,8 +560,6 @@ public class jifFormProcuracao extends javax.swing.JInternalFrame {
         procuracaoCadastro.setProfissional_id(profissionalTemporario.getProfissional_id());
         procuracaoCadastro.setProcuracao_representante(tfProcuracaoRepresentante.getText());
         procuracaoCadastro.setProcuracao_profissional(tfProcuracaoProfissional.getText());
-        procuracaoCadastro.setProcuracao_cidade(tfProcuracaoCidade.getText());
-        procuracaoCadastro.setProcuracao_estado(cbProcuracaoEstado.getSelectedItem().toString());
 
         Calendar cal = Calendar.getInstance();
         cal.setTime((Date) dataAtual.getValue());
@@ -603,8 +572,8 @@ public class jifFormProcuracao extends javax.swing.JInternalFrame {
     public void limparCamposCadastroProcuracao() {
         tfProcuracaoRepresentante.setText("");
         tfProcuracaoProfissional.setText("");
-        tfProcuracaoCidade.setText("");
-        cbProcuracaoEstado.setSelectedIndex(0);
+        Date d = new Date();
+        dataAtual.setValue(d);
         tpnAbasProcuracoes.setTitleAt(0, "Cadastrar Novas Procurações");
         btFinalizarCadastroProcuracao.setToolTipText("Cadastrar");
         tpnAbasProcuracoes.setEnabledAt(1, true);
@@ -619,13 +588,10 @@ public class jifFormProcuracao extends javax.swing.JInternalFrame {
     private javax.swing.JButton btExcluirRecibo;
     private javax.swing.JButton btFinalizarCadastroProcuracao;
     private javax.swing.JButton btnImprimir;
-    private javax.swing.JComboBox<String> cbProcuracaoEstado;
     private javax.swing.JCheckBox ckbProcuracaoProfissional;
     private javax.swing.JCheckBox ckbProcuracaoRepresentante;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
@@ -637,7 +603,6 @@ public class jifFormProcuracao extends javax.swing.JInternalFrame {
     private com.toedter.calendar.JDayChooser pnDataAtual;
     private javax.swing.JTable tbProcuracao;
     private javax.swing.JTextField tfPalavraChaveProcuracao;
-    private javax.swing.JTextField tfProcuracaoCidade;
     private javax.swing.JTextField tfProcuracaoProfissional;
     private javax.swing.JTextField tfProcuracaoRepresentante;
     private javax.swing.JTabbedPane tpnAbasProcuracoes;

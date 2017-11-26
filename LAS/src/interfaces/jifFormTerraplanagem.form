@@ -269,7 +269,7 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel6">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="CNPJ/CPF:"/>
+                        <Property name="text" type="java.lang.String" value="CPF/CNPJ:"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="tfCpfCnpj">
@@ -745,7 +745,7 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="tfISAPrevisaoVegetacao" min="-2" pref="200" max="-2" attributes="0"/>
-                                              <Component id="pnISAData" min="-2" max="-2" attributes="0"/>
+                                              <Component id="tfISAData" min="-2" pref="175" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -766,20 +766,13 @@
                                       <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="tfISAPrevisaoVegetacao" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="rbISAOperacao" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                          <Component id="pnISAData" min="-2" pref="18" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
                                   <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="rbISAOperacao" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tfISAData" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="tfNEmpregados" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -838,7 +831,10 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="tfISAPrevisaoVegetacao">
                         </Component>
-                        <Component class="com.toedter.calendar.JDayChooser" name="pnISAData">
+                        <Component class="javax.swing.JTextField" name="tfISAData">
+                          <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
+                          </Properties>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -1061,7 +1057,13 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="pnDataAtual" min="-2" max="-2" attributes="0"/>
-                                  <Component id="tfProfissional" min="-2" pref="121" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="tfProfissional" min="-2" pref="190" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jLabel66" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="tfRepresentante" min="-2" pref="190" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
@@ -1083,7 +1085,7 @@
                                               <Component id="jLabel57" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="361" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -1110,9 +1112,15 @@
                                   <Component id="pnDataAtual" min="-2" pref="17" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel68" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="tfProfissional" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel66" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tfRepresentante" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel68" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tfProfissional" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
@@ -1248,6 +1256,19 @@
                         </Component>
                       </SubComponents>
                     </Container>
+                    <Component class="javax.swing.JLabel" name="jLabel66">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Representante:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="tfRepresentante">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tfRepresentanteMouseClicked"/>
+                      </Events>
+                    </Component>
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="jPanel24">

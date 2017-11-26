@@ -54,7 +54,7 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
 
         //this.setSize(500, 600);
         tbClientesCadastrados.setModel(modeloTabelaCliente);
-setFrameIcon(new ImageIcon(this.getClass().getResource("../imagens/icon.png")));
+        setFrameIcon(new ImageIcon(this.getClass().getResource("../imagens/icon.png")));
         //----------------buscas na tabela--------------------------------------
         buscarClientesTabela();
 
@@ -83,8 +83,6 @@ setFrameIcon(new ImageIcon(this.getClass().getResource("../imagens/icon.png")));
         //Definindo o botão DateField (Data Inicio do Semestre) para seleção de uma data e atribuindo uma ação de mudança à ele.
         dataInicioOperacao.setSize((pnDataAtual.getWidth()), (pnDataAtual.getHeight()));
 
-        
-        
     }
 
     /**
@@ -314,26 +312,23 @@ setFrameIcon(new ImageIcon(this.getClass().getResource("../imagens/icon.png")));
                         .addGap(31, 31, 31)
                         .addGroup(pnCadastrarNovoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnCadastrarNovoClienteLayout.createSequentialGroup()
-                                .addGroup(pnCadastrarNovoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cbClienteAtividade, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(pnCadastrarNovoClienteLayout.createSequentialGroup()
-                                        .addComponent(tfClienteUtmn, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel17)))
+                                .addComponent(tfClienteUtmn, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel17)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pnCadastrarNovoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnCadastrarNovoClienteLayout.createSequentialGroup()
-                                        .addComponent(jLabel15)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(pnDataAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                                    .addGroup(pnCadastrarNovoClienteLayout.createSequentialGroup()
-                                        .addComponent(tfClienteUtme, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-                                .addGap(283, 283, 283))
+                                .addComponent(tfClienteUtme, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(pnCadastrarNovoClienteLayout.createSequentialGroup()
                                 .addGroup(pnCadastrarNovoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(tfClienteCelular, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
                                     .addComponent(tfClienteTelefone, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(pnCadastrarNovoClienteLayout.createSequentialGroup()
+                                .addComponent(cbClienteAtividade, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(pnDataAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(pnCadastrarNovoClienteLayout.createSequentialGroup()
                         .addGroup(pnCadastrarNovoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -794,6 +789,8 @@ setFrameIcon(new ImageIcon(this.getClass().getResource("../imagens/icon.png")));
         tfClienteComplemento.setText("");
         tfClienteUtmn.setText("");
         tfClienteUtme.setText("");
+        Date d = new Date();
+        dataInicioOperacao.setValue(d);
         tpnAbasClientes.setTitleAt(0, "Cadastrar Novos Clientes");
         btFinalizarCadastroCliente.setToolTipText("Cadastrar");
         tpnAbasClientes.setEnabledAt(1, true);
@@ -865,8 +862,13 @@ setFrameIcon(new ImageIcon(this.getClass().getResource("../imagens/icon.png")));
             tfClienteNome.setText(cliente.getCliente_nome());
             tfClienteFantasia.setText(cliente.getCliente_fantasia());
             tfClienteEmail.setText(cliente.getCliente_email());
-            tfClienteCpf.setValue(cliente.getCliente_cpf());
-            tfCliente_Cnpj.setValue(cliente.getCliente_cnpj());
+            if (cliente.getCliente_cpf().equals("   .   .   -  ") == false) {
+                tfClienteCpf.setValue(cliente.getCliente_cpf());
+            }
+            if (cliente.getCliente_cnpj().equals("  .   .   /    -  ") == false) {
+                tfCliente_Cnpj.setValue(cliente.getCliente_cnpj());
+            }
+
             tfClienteInscMunicipal.setText(cliente.getCliente_insc_municipal());
             tfClienteInscEstadual.setText(cliente.getCliente_insc_estadual());
             tfClienteCep.setValue(cliente.getCliente_cep());
@@ -919,6 +921,8 @@ setFrameIcon(new ImageIcon(this.getClass().getResource("../imagens/icon.png")));
             tfClienteComplemento.setText("");
             tfClienteTelefone.setText("");
             tfClienteCelular.setText("");
+            Date d = new Date();
+            dataInicioOperacao.setValue(d);
 
         }
     }//GEN-LAST:event_btCancelarAtualizacaoClienteActionPerformed

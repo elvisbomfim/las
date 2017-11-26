@@ -89,10 +89,10 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
         initComponents();
         conexao = ConexaoPDF.conector();
         Calendar cal = Calendar.getInstance();
-//        dataInicioOperacao.setBaseDate(cal.getTime());
-        //       pnDataAtual.add(dataInicioOperacao);
+        dataAtual.setBaseDate(cal.getTime());
+        jcDataAtual.add(dataAtual);
         //Definindo o botão DateField (Data Inicio do Semestre) para seleção de uma data e atribuindo uma ação de mudança à ele.
-        //       dataInicioOperacao.setSize((pnDataAtual.getWidth()), (pnDataAtual.getHeight()));
+        dataAtual.setSize((jcDataAtual.getWidth()), (jcDataAtual.getHeight()));
         setFrameIcon(new ImageIcon(this.getClass().getResource("../imagens/icon.png")));
 
         btCancelarAtualizacaoRequerimento.setVisible(false);
@@ -163,17 +163,17 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
         if (rbOperacao.isSelected()) {
             requerimentoCadastro.setRequerimento_fase_empreendimento(2);
         }
-        requerimentoCadastro.setRequerimento_cliente(tfRequerimentoCliente.getText());
+        requerimentoCadastro.setCliente_nome(tfRequerimentoCliente.getText());
         requerimentoCadastro.setRequerimento_representante1(tfRequerimentoRepresentante1.getText());
         requerimentoCadastro.setRequerimento_representante2(tfRequerimentoRepresentante2.getText());
         requerimentoCadastro.setRequerimento_profissional1(tfRequerimentoProfissional1.getText());
         requerimentoCadastro.setRequerimento_profissional2(tfRequerimentoProfissional2.getText());
-//        Calendar cal = Calendar.getInstance();
-//        cal.setTime((Date) dataInicioOperacao.getValue());
-//        requerimentoCadastro.setRequerimento_fase_empreendimento_data(cal);
-        Calendar cal1 = Calendar.getInstance();
-        dataAtual.setBaseDate(cal1.getTime());
-        //       requerimentoCadastro.setRequerimento_data(cal);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime((Date) dataAtual.getValue());
+        requerimentoCadastro.setRequerimento_data(cal);
+        // Calendar cal1 = Calendar.getInstance();
+        // dataAtual.setBaseDate(cal1.getTime());
+        // requerimentoCadastro.setRequerimento_data(cal);
         requerimentoCadastro.setRequerimento_num_processo_protocolo(tfRequerimentoProtocolo.getText());
         requerimentoCadastro.setRequerimento_num_licenca_anterior(tfRequerimentoLicencaiAnterior.getText());
         requerimentoCadastro.setRequerimento_latn(tfRequerimentoLatN.getText());
@@ -194,7 +194,9 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
         tfRequerimentoProfissional2.setText("");
         tfRequerimentoRepresentante1.setText("");
         tfRequerimentoRepresentante2.setText("");
-        //tfRequerimentoDataOperacao.setText("");
+        Date d = new Date();
+        dataAtual.setValue(d);
+        dtInicioAtividade.setText("");
         tfRequerimentoProtocolo.setText("");
         tfRequerimentoLicencaiAnterior.setText("");
         rbAA.setSelected(false);
@@ -270,6 +272,10 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         btFinalizarCadastroRequerimento = new javax.swing.JButton();
         btCancelarAtualizacaoRequerimento = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        dtInicioAtividade = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jcDataAtual = new com.toedter.calendar.JDayChooser();
         pnGerenciarRequerimentos = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -492,6 +498,12 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
+        jLabel11.setText("Data de Início da Operação:");
+
+        dtInicioAtividade.setEditable(false);
+
+        jLabel15.setText("Data:");
+
         javax.swing.GroupLayout pnCadastrarNovoRequerimentoLayout = new javax.swing.GroupLayout(pnCadastrarNovoRequerimento);
         pnCadastrarNovoRequerimento.setLayout(pnCadastrarNovoRequerimentoLayout);
         pnCadastrarNovoRequerimentoLayout.setHorizontalGroup(
@@ -499,42 +511,6 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
             .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
-                        .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
-                                .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
-                                        .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel13)
-                                            .addComponent(jLabel14))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(tfRequerimentoSema)
-                                            .addComponent(tfRequerimentoLatE)))
-                                    .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
-                                            .addComponent(rbPlanejamento)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(rbInstalacao)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(rbOperacao))
-                                        .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
-                                            .addComponent(jLabel12)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(tfRequerimentoLatN, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(83, 83, 83))
-                            .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
-                                .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tfRequerimentoProtocolo, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
-                                        .addComponent(jLabel9)
-                                        .addGap(14, 14, 14)
-                                        .addComponent(tfRequerimentoLicencaiAnterior)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(191, 191, 191))
                     .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
                         .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
@@ -570,7 +546,49 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
                                     .addComponent(rbLAS)))
                             .addComponent(jLabel7)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
+                        .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
+                                    .addComponent(rbPlanejamento)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(rbInstalacao)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(rbOperacao)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel11))
+                                .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
+                                    .addComponent(jLabel12)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(tfRequerimentoLatN, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
+                                .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel13)
+                                    .addComponent(jLabel14))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
+                                        .addComponent(jcDataAtual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(tfRequerimentoSema)
+                                    .addComponent(tfRequerimentoLatE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dtInicioAtividade, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(152, 152, 152))
+                    .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
+                        .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
+                                    .addComponent(jLabel8)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(tfRequerimentoProtocolo, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
+                                    .addComponent(jLabel9)
+                                    .addGap(14, 14, 14)
+                                    .addComponent(tfRequerimentoLicencaiAnterior)))
+                            .addComponent(jLabel15))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         pnCadastrarNovoRequerimentoLayout.setVerticalGroup(
             pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -619,7 +637,9 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
                 .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbPlanejamento)
                     .addComponent(rbInstalacao)
-                    .addComponent(rbOperacao))
+                    .addComponent(rbOperacao)
+                    .addComponent(jLabel11)
+                    .addComponent(dtInicioAtividade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -640,8 +660,15 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
                 .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(tfRequerimentoSema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnCadastrarNovoRequerimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
+                        .addComponent(jLabel15)
+                        .addGap(21, 21, 21)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnCadastrarNovoRequerimentoLayout.createSequentialGroup()
+                        .addComponent(jcDataAtual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -782,7 +809,7 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -814,6 +841,9 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
             tfRequerimentoCliente.setText(clienteSelecionado.getCliente_nome());
             tfRequerimentoLatN.setText(clienteSelecionado.getCliente_utmn());
             tfRequerimentoLatE.setText(clienteSelecionado.getCliente_utme());
+            DecimalFormat form = new DecimalFormat("00");
+            String data = form.format(clienteSelecionado.getCliente_data_atividade().get(Calendar.DAY_OF_MONTH)) + "/" + form.format(clienteSelecionado.getCliente_data_atividade().get(Calendar.MONTH) + 1) + "/" + clienteSelecionado.getCliente_data_atividade().get(Calendar.YEAR);
+            dtInicioAtividade.setText(data);
             clienteTemporario = telaRelatorioCliente.retornarClienteSelecionado();
         }
     }//GEN-LAST:event_tfRequerimentoClienteMouseClicked
@@ -881,7 +911,7 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
 
             if (ckbTraCliente.isSelected()) {
                 for (int i = 0; i < modeloTabelaRequerimentos.retornaListaRequerimentos().size(); i++) {
-                    if (modeloTabelaRequerimentos.retornaListaRequerimentos().get(i).getRequerimento_cliente().toLowerCase().contains(tfPalavraChaveRequerimento.getText().toLowerCase())) {
+                    if (modeloTabelaRequerimentos.retornaListaRequerimentos().get(i).getCliente_nome().toLowerCase().contains(tfPalavraChaveRequerimento.getText().toLowerCase())) {
                         listaOriginalTemporariaRequerimento.add(modeloTabelaRequerimentos.retornaListaRequerimentos().get(i));
                     }
                 }
@@ -926,7 +956,7 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
             // requerimentoCadastro.setRepresentante_id2(representanteTemporario2.getRepresentante_id());
             //  requerimentoCadastro.setProfissional_id1(profissionalTemporario1.getProfissional_id());
             // requerimentoCadastro.setProfissional_id2(profissionalTemporario2.getProfissional_id());
-            tfRequerimentoCliente.setText(requerimento.getRequerimento_cliente());
+            tfRequerimentoCliente.setText(requerimento.getCliente_nome());
             tfRequerimentoProfissional1.setText(requerimento.getRequerimento_profissional1());
             tfRequerimentoProfissional2.setText(requerimento.getRequerimento_profissional2());
             tfRequerimentoRepresentante1.setText(requerimento.getRequerimento_representante1());
@@ -938,9 +968,12 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
             profissionalTemporario2.setProfissional_id(requerimento.getProfissional_id2());
             tfRequerimentoProtocolo.setText(requerimento.getRequerimento_num_processo_protocolo());
             tfRequerimentoLicencaiAnterior.setText(requerimento.getRequerimento_num_licenca_anterior());
-            //  Date data1 = requerimento.getRequerimento_fase_empreendimento_data().getTime();
-
-            // dataInicioOperacao.setValue(data1);
+            DecimalFormat form = new DecimalFormat("00");
+            String dataInicioAtividade;
+            dataInicioAtividade = form.format(requerimento.getCliente_data_atividade().get(Calendar.DAY_OF_MONTH)) + "/" + form.format(requerimento.getCliente_data_atividade().get(Calendar.MONTH) + 1) + "/" + requerimento.getCliente_data_atividade().get(Calendar.YEAR);
+            dtInicioAtividade.setText(dataInicioAtividade);
+            Date data1 = requerimento.getRequerimento_data().getTime();
+            dataAtual.setValue(data1);
             tfRequerimentoLatN.setText(requerimento.getRequerimento_latn());
             tfRequerimentoLatE.setText(requerimento.getRequerimento_late());
             tfRequerimentoSema.setText(requerimento.getRequerimento_sema());
@@ -1151,7 +1184,9 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
             tfRequerimentoProfissional2.setText("");
             tfRequerimentoRepresentante1.setText("");
             tfRequerimentoRepresentante2.setText("");
-            //tfRequerimentoDataOperacao.setText("");
+            Date d = new Date();
+            dataAtual.setValue(d);
+            dtInicioAtividade.setText("");
             tfRequerimentoProtocolo.setText("");
             tfRequerimentoLicencaiAnterior.setText("");
             rbAA.setSelected(false);
@@ -1219,13 +1254,16 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
     private javax.swing.JCheckBox ckbTraCliente;
     private javax.swing.JCheckBox ckbTraProfissional;
     private javax.swing.JCheckBox ckbTraRepresentante;
+    private javax.swing.JTextField dtInicioAtividade;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1238,6 +1276,7 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private com.toedter.calendar.JDayChooser jcDataAtual;
     private javax.swing.JPanel pnCadastrarNovoRequerimento;
     private javax.swing.JPanel pnGerenciarRequerimentos;
     private javax.swing.JRadioButton rbAA;

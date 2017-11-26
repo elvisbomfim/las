@@ -612,7 +612,9 @@ setFrameIcon(new ImageIcon(this.getClass().getResource("../imagens/icon.png")));
             tfRepresentanteBairro.setText(representante.getRepresentante_bairro());
             tfRepresentanteCidade.setText(representante.getRepresentante_municipio());
             tfRepresentanteCep.setValue(representante.getRepresentante_cep());
-            tfRepresentanteCpf.setValue(representante.getRepresentante_cpf());
+            if (representante.getRepresentante_cpf().equals("   .   .   -  ") == false) {
+                tfRepresentanteCpf.setValue(representante.getRepresentante_cpf());
+            }
             tfRepresentanteTelefone.setValue(representante.getRepresentante_telefone());
             tfRepresentanteCelular.setValue(representante.getRepresentante_celular());
             tfRepresentanteNacionalidade.setText(representante.getRepresentante_nacionalidade());

@@ -36,6 +36,7 @@ import modelos.LetrasMaiusculas;
 import modelos.ManipularImagem;
 import modelos.Profissional;
 import modelos.RelatorioPrincipal;
+import modelos.Representante;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
@@ -67,6 +68,7 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
     RelatorioPrincipal terraplanagemCadastro = new RelatorioPrincipal();
     Cliente clienteTemporario = new Cliente();
     Profissional profissionalTemporario = new Profissional();
+    Representante representanteTemporario = new Representante();
     RelatorioPrincipal relatorioExcluir = new RelatorioPrincipal();
 
     /**
@@ -105,11 +107,11 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
         //Definindo o botão DateField (Data Inicio do Semestre) para seleção de uma data e atribuindo uma ação de mudança à ele.
         dataAtual.setSize((pnDataAtual.getWidth()), (pnDataAtual.getHeight()));
         btCancelarAtualizacao.setVisible(false);
-        Calendar calISA = Calendar.getInstance();
-        dataISA.setBaseDate(calISA.getTime());
-        pnISAData.add(dataISA);
+//        Calendar calISA = Calendar.getInstance();
+        //       dataISA.setBaseDate(calISA.getTime());
+        //       pnISAData.add(dataISA);
         // Definindo o botão DateField (Data Inicio do Semestre) para seleção de uma data e atribuindo uma ação de mudança à ele.
-        dataISA.setSize((pnISAData.getWidth()), (pnISAData.getHeight()));
+        //       dataISA.setSize((pnISAData.getWidth()), (pnISAData.getHeight()));
         tbRelatoriosCadastrados.setModel(modeloTabelaTerraplanagem);
         buscarRelatoriosTabela();
 
@@ -311,6 +313,7 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
         cal.setTime((Date) dataAtual.getValue());
         terraplanagemCadastro.setRELATORIO_DATA_ATUAL(cal);
         terraplanagemCadastro.setPROFISSIONAL_ID(profissionalTemporario.getProfissional_id());
+        terraplanagemCadastro.setREPRESENTANTE_ID(representanteTemporario.getRepresentante_id());
         terraplanagemCadastro.setCATEGORIA_ID(4);
 
         System.out.println("imagem fora do  if:" + imagem);
@@ -347,6 +350,7 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
         CheckBoxFGE = "";
         CheckBoxGR = "";
         CheckBoxEA = "";
+        tfRepresentante.setText("");
         tfAreaIntervencao.setText("");
         tfAlturaTalude.setText("");
         tfNomeCliente.setText("");
@@ -423,6 +427,8 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
         rbCLEDeclaramosoqueconstaemanexo.setSelected(false);
         taTextoAnexo.setText("");
         tfProfissional.setText("");
+        Date d = new Date();
+        dataAtual.setValue(d);
         imagem = null;
         lblImagem.setIcon(new ImageIcon(""));
 
@@ -507,7 +513,7 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
         jLabel23 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         tfISAPrevisaoVegetacao = new javax.swing.JTextField();
-        pnISAData = new com.toedter.calendar.JDayChooser();
+        tfISAData = new javax.swing.JTextField();
         jPanel26 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel73 = new javax.swing.JLabel();
@@ -541,6 +547,8 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         btCancelarAtualizacao = new javax.swing.JButton();
         btFinalizarCadastro = new javax.swing.JButton();
+        jLabel66 = new javax.swing.JLabel();
+        tfRepresentante = new javax.swing.JTextField();
         jPanel24 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel69 = new javax.swing.JLabel();
@@ -658,7 +666,7 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
 
         tfCidade.setEditable(false);
 
-        jLabel6.setText("CNPJ/CPF:");
+        jLabel6.setText("CPF/CNPJ:");
 
         tfCpfCnpj.setEditable(false);
 
@@ -1034,6 +1042,8 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
 
         jLabel22.setText("Previsão de início da operação:");
 
+        tfISAData.setEditable(false);
+
         javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
         jPanel25.setLayout(jPanel25Layout);
         jPanel25Layout.setHorizontalGroup(
@@ -1060,7 +1070,7 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfISAPrevisaoVegetacao, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnISAData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(tfISAData, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel25Layout.setVerticalGroup(
@@ -1075,16 +1085,12 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
                     .addComponent(rbISAInstalacao)
                     .addComponent(jLabel22)
                     .addComponent(tfISAPrevisaoVegetacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel25Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rbISAOperacao)
-                            .addComponent(jLabel23)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel25Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(pnISAData, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbISAOperacao)
+                    .addComponent(jLabel23)
+                    .addComponent(tfISAData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
                 .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
                     .addComponent(tfNEmpregados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1298,6 +1304,15 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabel66.setText("Representante:");
+
+        tfRepresentante.setEditable(false);
+        tfRepresentante.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tfRepresentanteMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
@@ -1310,7 +1325,12 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnDataAtual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(tfProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel66)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1326,7 +1346,7 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
                             .addGroup(jPanel11Layout.createSequentialGroup()
                                 .addGap(333, 333, 333)
                                 .addComponent(jLabel57)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 361, Short.MAX_VALUE)))
                 .addContainerGap())
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -1348,9 +1368,13 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
                     .addComponent(jLabel67)
                     .addComponent(pnDataAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel68)
-                    .addComponent(tfProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel66)
+                        .addComponent(tfRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel68)
+                        .addComponent(tfProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(27, 27, 27)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -2113,6 +2137,10 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
                     }
                 }
             }
+            DecimalFormat form = new DecimalFormat("00");
+            String dataInicioAtividade;
+            dataInicioAtividade = form.format(clienteSelecionado.getCliente_data_atividade().get(Calendar.DAY_OF_MONTH)) + "/" + form.format(clienteSelecionado.getCliente_data_atividade().get(Calendar.MONTH) + 1) + "/" + clienteSelecionado.getCliente_data_atividade().get(Calendar.YEAR);
+            tfISAData.setText(dataInicioAtividade);
             clienteTemporario = telaRelatorioCliente.retornarClienteSelecionado();
         }
     }//GEN-LAST:event_tfNomeClienteMouseClicked
@@ -2170,6 +2198,7 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
             CheckBoxFGE = "";
             CheckBoxGR = "";
             CheckBoxEA = "";
+            tfRepresentante.setText("");
             tfAreaIntervencao.setText("");
             tfAlturaTalude.setText("");
             tfNomeCliente.setText("");
@@ -2254,6 +2283,8 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
             rbCLEDeclaramosoqueconstaemanexo.setSelected(false);
             taTextoAnexo.setText("");
             tfProfissional.setText("");
+            Date d = new Date();
+            dataAtual.setValue(d);
             imagem = null;
             lblImagem.setIcon(new ImageIcon(""));
             tpnAbasTerraplanagem.setSelectedIndex(1); // Mudando para a PRIMEIRA aba
@@ -2275,14 +2306,19 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(tpnAbasTerraplanagem, "Por favor escolha o profissional", "Aviso", 2);
                 tfProfissional.requestFocus();
             } else {
-                if (btFinalizarCadastro.getToolTipText().equals("Cadastrar")) {
-                    conexaoTabelaRelatorio.inserirNovoRPrincipal(preencherDadosCadastroTuristico());
-                    buscarRelatoriosTabela();
-                    limparCamposCadastroTuristico();
+                if (tfRepresentante.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(tpnAbasTerraplanagem, "Por favor escolha o represetante", "Aviso", 2);
+                    tfRepresentante.requestFocus();
                 } else {
-                    conexaoTabelaRelatorio.alterarRelatorio(modeloTabelaTerraplanagem.retornaListaRelatorioPrincipal().get(tbRelatoriosCadastrados.getSelectedRow()).getRELATORIO_ID(), preencherDadosCadastroTuristico());
-                    buscarRelatoriosTabela();
-                    limparCamposCadastroTuristico();
+                    if (btFinalizarCadastro.getToolTipText().equals("Cadastrar")) {
+                        conexaoTabelaRelatorio.inserirNovoRPrincipal(preencherDadosCadastroTuristico());
+                        buscarRelatoriosTabela();
+                        limparCamposCadastroTuristico();
+                    } else {
+                        conexaoTabelaRelatorio.alterarRelatorio(modeloTabelaTerraplanagem.retornaListaRelatorioPrincipal().get(tbRelatoriosCadastrados.getSelectedRow()).getRELATORIO_ID(), preencherDadosCadastroTuristico());
+                        buscarRelatoriosTabela();
+                        limparCamposCadastroTuristico();
+                    }
                 }
             }
         }
@@ -2345,6 +2381,10 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
                     }
                 }
             }
+            DecimalFormat form = new DecimalFormat("00");
+            String dataInicioAtividade;
+            dataInicioAtividade = form.format(relatorioPrincipal.getCLIENTE_DATA().get(Calendar.DAY_OF_MONTH)) + "/" + form.format(relatorioPrincipal.getCLIENTE_DATA().get(Calendar.MONTH) + 1) + "/" + relatorioPrincipal.getCLIENTE_DATA().get(Calendar.YEAR);
+            tfISAData.setText(dataInicioAtividade);
             clienteTemporario.setCliente_id(relatorioPrincipal.getCLIENTE_ID());
             tfAreaIntervencao.setText(relatorioPrincipal.getRELATORIO_AREA_INTERVENCAO());
             tfAlturaTalude.setText(relatorioPrincipal.getRELATORIO_ALTURA_DO_TALUDE());
@@ -2522,6 +2562,8 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
             dataAtual.setValue(data1);
             profissionalTemporario.setProfissional_id(relatorioPrincipal.getPROFISSIONAL_ID());
             tfProfissional.setText(relatorioPrincipal.getPROFISSIONAL_NOME());
+            representanteTemporario.setRepresentante_id(relatorioPrincipal.getREPRESENTANTE_ID());
+            tfRepresentante.setText(relatorioPrincipal.getREPRESENTANTE_NOME());
             relatorioPrincipal.setCATEGORIA_ID(4);
 
             try {
@@ -2753,6 +2795,18 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
         rbBotaForaOpcao1Sim.setSelected(false);
     }//GEN-LAST:event_rbBotaForaOpcao1NaoMouseClicked
 
+    private void tfRepresentanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfRepresentanteMouseClicked
+        TelaRelatorioRepresentante telaRelatorioRepresentante = new TelaRelatorioRepresentante(null, true);
+        telaRelatorioRepresentante.setVisible(true);
+        // Criando o cliente à receber o cliente da tela relatorioprocuracao
+        Representante representanteSelecionado = new Representante();
+        representanteSelecionado = telaRelatorioRepresentante.retornarRepresentanteSelecionado();
+        if (representanteSelecionado != null) {
+            tfRepresentante.setText(representanteSelecionado.getRepresentante_nome());
+            representanteTemporario = telaRelatorioRepresentante.retornarRepresentanteSelecionado();
+        }
+    }//GEN-LAST:event_tfRepresentanteMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCancelarAtualizacao;
@@ -2797,6 +2851,7 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel69;
@@ -2856,7 +2911,6 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblImagem;
     private javax.swing.JPanel pnCROQUI;
     private com.toedter.calendar.JDayChooser pnDataAtual;
-    private com.toedter.calendar.JDayChooser pnISAData;
     private javax.swing.JPanel pnTerraplanagem;
     private javax.swing.JRadioButton rbAreaDaUcNao;
     private javax.swing.JRadioButton rbAreaDaUcSim;
@@ -2918,6 +2972,7 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
     private javax.swing.JTextField tfISAAreaAterro;
     private javax.swing.JTextField tfISAAreaCorte;
     private javax.swing.JTextField tfISAAreaTotalMovimentacaoTerra;
+    private javax.swing.JTextField tfISAData;
     private javax.swing.JTextField tfISAPrevisaoVegetacao;
     private javax.swing.JTextField tfISATaludesFormados;
     private javax.swing.JTextField tfInseridoEmAreaOutraEspecificar;
@@ -2933,6 +2988,7 @@ public class jifFormTerraplanagem extends javax.swing.JInternalFrame {
     private javax.swing.JTextField tfRHNome1;
     private javax.swing.JTextField tfRHNome2;
     private javax.swing.JTextField tfRHNome3;
+    private javax.swing.JTextField tfRepresentante;
     private javax.swing.JTextField tfTelefone;
     private javax.swing.JTabbedPane tpnAbasTerraplanagem;
     // End of variables declaration//GEN-END:variables

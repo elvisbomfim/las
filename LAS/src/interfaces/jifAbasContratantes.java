@@ -46,7 +46,7 @@ public class jifAbasContratantes extends javax.swing.JInternalFrame {
 
     public jifAbasContratantes() {
         initComponents();
-setFrameIcon(new ImageIcon(this.getClass().getResource("../imagens/icon.png")));
+        setFrameIcon(new ImageIcon(this.getClass().getResource("../imagens/icon.png")));
         //this.setSize(500, 600);
         tbContratantesCadastrados.setModel(modeloTabelaContratante);
 
@@ -546,8 +546,12 @@ setFrameIcon(new ImageIcon(this.getClass().getResource("../imagens/icon.png")));
             Contratante contratante = modeloTabelaContratante.retornarListaContratantes().get(tbContratantesCadastrados.getSelectedRow());
 
             tfContratanteNome.setText(contratante.getContratante_empresa());
-            tfContratanteCpf.setValue(contratante.getContratante_cpf());
-            tfContratanteCnpj.setValue(contratante.getContratante_cnpj());
+            if (contratante.getContratante_cpf().equals("   .   .   -  ") == false) {
+                tfContratanteCpf.setValue(contratante.getContratante_cpf());
+            }
+            if (contratante.getContratante_cnpj().equals("  .   .   /    -  ") == false) {
+                tfContratanteCnpj.setValue(contratante.getContratante_cnpj());
+            }
             tfContratanteTelefone.setText(contratante.getContratante_telefone());
             tfContratanteCelular.setText(contratante.getContratante_celular());
 

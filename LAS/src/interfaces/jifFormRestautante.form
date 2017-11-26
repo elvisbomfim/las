@@ -87,9 +87,11 @@
                                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="tfAreaUtil" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jLabel69" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
                               <Component id="pnCROQUI" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="170" max="32767" attributes="0"/>
                       </Group>
@@ -102,6 +104,7 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="tfAreaUtil" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel69" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
@@ -293,7 +296,7 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel6">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="CNPJ/CPF:"/>
+                        <Property name="text" type="java.lang.String" value="CPF/CNPJ:"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="tfCpfCnpj">
@@ -750,13 +753,13 @@
                                           </Group>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="tfISAPrevisaoVegetacao" max="32767" attributes="0"/>
-                                          <Component id="pnISAData" pref="200" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="tfISAPrevisaoVegetacao" min="-2" pref="200" max="-2" attributes="0"/>
+                                          <Component id="tfISAData" min="-2" pref="175" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="182" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -773,14 +776,12 @@
                                   <Component id="tfISAPrevisaoVegetacao" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="rbISAOperacao" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="pnISAData" pref="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="rbISAOperacao" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="tfISAData" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace pref="6" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="tfNEmpregados" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -839,7 +840,10 @@
                     </Component>
                     <Component class="javax.swing.JTextField" name="tfNEmpregados">
                     </Component>
-                    <Component class="com.toedter.calendar.JDayChooser" name="pnISAData">
+                    <Component class="javax.swing.JTextField" name="tfISAData">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                      </Properties>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -2584,7 +2588,7 @@
                                               <Component id="jLabel57" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="361" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
@@ -2596,9 +2600,15 @@
                                                   <Component id="jLabel67" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="tfProfissional" pref="121" max="32767" attributes="0"/>
-                                                  <Component id="pnDataAtual" pref="0" max="32767" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="pnDataAtual" alignment="0" min="-2" pref="121" max="-2" attributes="0"/>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="tfProfissional" min="-2" pref="190" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="jLabel66" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="tfRepresentante" min="-2" pref="190" max="-2" attributes="0"/>
+                                                  </Group>
                                               </Group>
                                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
@@ -2626,9 +2636,12 @@
                                   <Component id="jLabel67" min="-2" max="-2" attributes="0"/>
                                   <Component id="pnDataAtual" min="-2" pref="18" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel68" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="tfProfissional" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel66" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="tfRepresentante" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -2697,6 +2710,19 @@
                       </Events>
                     </Component>
                     <Component class="com.toedter.calendar.JDayChooser" name="pnDataAtual">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel66">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Representante:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="tfRepresentante">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tfRepresentanteMouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -2829,6 +2855,11 @@
                     </Component>
                   </SubComponents>
                 </Container>
+                <Component class="javax.swing.JLabel" name="jLabel69">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="m&#xb2;"/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
           </SubComponents>

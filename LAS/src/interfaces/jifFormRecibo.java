@@ -96,7 +96,7 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
         pnDataAtual.add(dataAtual);
         //Definindo o botão DateField (Data Inicio do Semestre) para seleção de uma data e atribuindo uma ação de mudança à ele.
         dataAtual.setSize((pnDataAtual.getWidth()), (pnDataAtual.getHeight()));
-        
+
         setFrameIcon(new ImageIcon(this.getClass().getResource("../imagens/icon.png")));
         /**
          * Definição de modelos de tabela e buscas na tabela
@@ -106,11 +106,10 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
         System.out.println("teste");
 
         btCancelarAtualizacaoRecibo.setVisible(false);
-        
+
         //----------------buscas na tabela--------------------------------------
         buscarRecibosTabela();
-        
-        tfReciboCidade.setDocument(new LetrasMaiusculas());
+
         tfReciboCliente.setDocument(new LetrasMaiusculas());
         tfReciboProfissional.setDocument(new LetrasMaiusculas());
     }
@@ -129,10 +128,6 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        tfReciboCidade = new javax.swing.JTextField();
-        cbReciboEstado = new javax.swing.JComboBox<>();
         tfReciboCliente = new javax.swing.JTextField();
         tfReciboProfissional = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -165,12 +160,6 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
         jLabel1.setText("Cliente:");
 
         jLabel2.setText("Profissional:");
-
-        jLabel3.setText("Cidade:");
-
-        jLabel4.setText("Estado:");
-
-        cbReciboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Selecionar---", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
 
         tfReciboCliente.setEditable(false);
         tfReciboCliente.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -242,20 +231,16 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
                     .addComponent(jLabel2)
                     .addComponent(jLabel1)
                     .addComponent(jLabel5)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(tfReciboCidade, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
                     .addComponent(tfReciboProfissional, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbReciboEstado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnDataAtual, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfReciboValor)
-                    .addComponent(tfReciboCliente, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(tfReciboCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -275,21 +260,13 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
                     .addComponent(tfReciboProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(tfReciboCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(tfReciboValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(cbReciboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addComponent(pnDataAtual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -462,8 +439,6 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
         reciboCadastro.setProfissional_id(profissionalTemporario.getProfissional_id());
         reciboCadastro.setRecibo_profissional(tfReciboProfissional.getText());
         reciboCadastro.setRecibo_cliente(tfReciboCliente.getText());
-        reciboCadastro.setRecibo_estado(cbReciboEstado.getSelectedItem().toString());
-        reciboCadastro.setRecibo_cidade(tfReciboCidade.getText());
         reciboCadastro.setRecibo_valor(tfReciboValor.getText());
         //reciboCadastro.setRecibo_valor(m.mascaraDinheiro(Double.parseDouble(tfReciboValor.getText()), Moeda.DINHEIRO_REAL));
 
@@ -481,9 +456,9 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
     public void limparCamposCadastroCliente() {
         tfReciboCliente.setText("");
         tfReciboProfissional.setText("");
-        tfReciboCidade.setText("");
         tfReciboValor.setText("");
-        cbReciboEstado.setSelectedIndex(0);
+        Date d = new Date();
+        dataAtual.setValue(d);
 
         tpnAbasRecibos.setTitleAt(0, "Cadastrar Novos Recibos");
         btFinalizarCadastroRecibo.setToolTipText("Cadastrar");
@@ -562,11 +537,9 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
             // tfReciboCliente.setText();
             tfReciboCliente.setText(recibo.getRecibo_cliente());
             tfReciboProfissional.setText(recibo.getRecibo_profissional());
-            tfReciboCidade.setText(recibo.getRecibo_cidade());
             String valor;
             valor = "" + recibo.getRecibo_valor() + "";
             tfReciboValor.setText(valor);
-            cbReciboEstado.setSelectedItem(recibo.getRecibo_estado());
             clienteTemporario.setCliente_id(recibo.getCliente_id());
             profissionalTemporario.setProfissional_id(recibo.getProfissional_id());
 
@@ -598,9 +571,9 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
             tpnAbasRecibos.setTitleAt(0, "Gerar Recibos");
             tfReciboCliente.setText("");
             tfReciboProfissional.setText("");
-            tfReciboCidade.setText("");
             tfReciboValor.setText("");
-            cbReciboEstado.setSelectedIndex(0);
+            Date d = new Date();
+            dataAtual.setValue(d);
         }
     }//GEN-LAST:event_btCancelarAtualizacaoReciboActionPerformed
 
@@ -699,14 +672,11 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
     private javax.swing.JButton btEditarRecibo;
     private javax.swing.JButton btExcluirRecibo;
     private javax.swing.JButton btFinalizarCadastroRecibo;
-    private javax.swing.JComboBox<String> cbReciboEstado;
     private javax.swing.JCheckBox ckbReciboCliente;
     private javax.swing.JCheckBox ckbTraProfissional;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -720,7 +690,6 @@ public class jifFormRecibo extends javax.swing.JInternalFrame {
     private com.toedter.calendar.JDayChooser pnDataAtual;
     private javax.swing.JTable tbRecibo;
     private javax.swing.JTextField tfPalavraChaveRecibo;
-    private javax.swing.JTextField tfReciboCidade;
     private javax.swing.JTextField tfReciboCliente;
     private javax.swing.JTextField tfReciboProfissional;
     private javax.swing.JTextField tfReciboValor;

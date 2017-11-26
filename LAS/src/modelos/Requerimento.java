@@ -21,7 +21,6 @@ public class Requerimento {
     private String requerimento_num_licenca_anterior;
     private String requerimento_num_de_guia_de_enquadramento_e_documentacao;
     private Calendar requerimento_data;
-    private String requerimento_cliente;
     private String requerimento_representante1;
     private String requerimento_representante2;
     private String requerimento_profissional1;
@@ -30,6 +29,8 @@ public class Requerimento {
     private String requerimento_late;
     private String requerimento_sema;
     private int cliente_id;
+    private String cliente_nome;
+    private Calendar cliente_data_atividade;
     private int representante_id1;
     private int representante_id2;
     private int profissional_id1;
@@ -99,14 +100,6 @@ public class Requerimento {
         this.requerimento_data = requerimento_data;
     }
 
-    public String getRequerimento_cliente() {
-        return requerimento_cliente;
-    }
-
-    public void setRequerimento_cliente(String requerimento_cliente) {
-        this.requerimento_cliente = requerimento_cliente;
-    }
-
     public String getRequerimento_representante1() {
         return requerimento_representante1;
     }
@@ -171,6 +164,22 @@ public class Requerimento {
         this.cliente_id = cliente_id;
     }
 
+    public String getCliente_nome() {
+        return cliente_nome;
+    }
+
+    public void setCliente_nome(String cliente_nome) {
+        this.cliente_nome = cliente_nome;
+    }
+
+    public Calendar getCliente_data_atividade() {
+        return cliente_data_atividade;
+    }
+
+    public void setCliente_data_atividade(Calendar cliente_data_atividade) {
+        this.cliente_data_atividade = cliente_data_atividade;
+    }
+
     public int getRepresentante_id1() {
         return representante_id1;
     }
@@ -203,5 +212,6 @@ public class Requerimento {
         this.profissional_id2 = profissional_id2;
     }
 
+ 
  
 }

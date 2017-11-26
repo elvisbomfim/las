@@ -38,6 +38,7 @@ import modelos.LetrasMaiusculas;
 import modelos.ManipularImagem;
 import modelos.Profissional;
 import modelos.RelatorioPrincipal;
+import modelos.Representante;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
@@ -66,6 +67,7 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
     RelatorioPrincipal condominioCadastro = new RelatorioPrincipal();
     Cliente clienteTemporario = new Cliente();
     Profissional profissionalTemporario = new Profissional();
+    Representante representanteTemporario = new Representante();
     RelatorioPrincipal relatorioExcluir = new RelatorioPrincipal();
 
     /**
@@ -114,11 +116,11 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
         dataAtual.setSize((pnDataAtual.getWidth()), (pnDataAtual.getHeight()));
 
         btCancelarAtualizacao.setVisible(false);
-        Calendar calISA = Calendar.getInstance();
-        dataISA.setBaseDate(calISA.getTime());
-        pnISAData.add(dataISA);
+        //  Calendar calISA = Calendar.getInstance();
+        //  dataISA.setBaseDate(calISA.getTime());
+        //  pnISAData.add(dataISA);
         // Definindo o botão DateField (Data Inicio do Semestre) para seleção de uma data e atribuindo uma ação de mudança à ele.
-        dataISA.setSize((pnISAData.getWidth()), (pnISAData.getHeight()));
+        //  dataISA.setSize((pnISAData.getWidth()), (pnISAData.getHeight()));
         tbRelatoriosCadastrados.setModel(modeloTabelaCondominio);
         buscarRelatoriosTabela();
 
@@ -173,7 +175,8 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
         tfGRNumeroLicenca2.setDocument(new LetrasMaiusculas());
         tfGRNDeclaracao.setDocument(new LetrasMaiusculas());
         tfEAEspecificar.setDocument(new LetrasMaiusculas());
-
+        tfFAAEmpresa.setText("CESAN");
+        tfFAAConsumoDeAgua.setText("150");
     }
 
     /**
@@ -227,6 +230,7 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
         jLabel74 = new javax.swing.JLabel();
         jLabel75 = new javax.swing.JLabel();
         tfLoteMenorArea = new javax.swing.JTextField();
+        jLabel35 = new javax.swing.JLabel();
         jPanel25 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         rbSuprecaoVegetacaoSim = new javax.swing.JRadioButton();
@@ -291,7 +295,7 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
         tfISAPrevisaoVegetacao = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         tfNEmpregados = new javax.swing.JTextField();
-        pnISAData = new com.toedter.calendar.JDayChooser();
+        tfISAData = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         ckbFAARedePublica = new javax.swing.JCheckBox();
         ckbFAAPoco = new javax.swing.JCheckBox();
@@ -386,6 +390,8 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
         jLabel68 = new javax.swing.JLabel();
         tfProfissional = new javax.swing.JTextField();
         pnDataAtual = new com.toedter.calendar.JDayChooser();
+        jLabel66 = new javax.swing.JLabel();
+        tfRepresentante = new javax.swing.JTextField();
         jLabel69 = new javax.swing.JLabel();
         tfNHabitacoes = new javax.swing.JTextField();
         jPanel31 = new javax.swing.JPanel();
@@ -477,7 +483,7 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
 
         tfCidade.setEditable(false);
 
-        jLabel6.setText("CNPJ/CPF:");
+        jLabel6.setText("CPF/CNPJ:");
 
         tfCpfCnpj.setEditable(false);
 
@@ -689,6 +695,8 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel35.setText("m²");
+
         javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
         jPanel24.setLayout(jPanel24Layout);
         jPanel24Layout.setHorizontalGroup(
@@ -700,8 +708,10 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
                     .addGroup(jPanel24Layout.createSequentialGroup()
                         .addComponent(jLabel75)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfLoteMenorArea, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(tfLoteMenorArea, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel35)))
+                .addContainerGap(462, Short.MAX_VALUE))
         );
         jPanel24Layout.setVerticalGroup(
             jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -711,7 +721,8 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel75)
-                    .addComponent(tfLoteMenorArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfLoteMenorArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel35))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1241,6 +1252,8 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
 
         jLabel25.setText("Nº de empregados (na fase de instalação): ");
 
+        tfISAData.setEditable(false);
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -1267,7 +1280,7 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfISAPrevisaoVegetacao, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnISAData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(tfISAData, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -1282,11 +1295,10 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
                     .addComponent(jLabel22)
                     .addComponent(tfISAPrevisaoVegetacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(rbISAOperacao)
-                        .addComponent(jLabel23))
-                    .addComponent(pnISAData, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbISAOperacao)
+                    .addComponent(jLabel23)
+                    .addComponent(tfISAData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
@@ -1825,6 +1837,15 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel66.setText("Representante:");
+
+        tfRepresentante.setEditable(false);
+        tfRepresentante.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tfRepresentanteMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
@@ -1836,7 +1857,12 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
                     .addComponent(jLabel67))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(tfProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel66)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tfRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(pnDataAtual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel11Layout.createSequentialGroup()
@@ -1874,9 +1900,13 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
                     .addComponent(jLabel67, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(pnDataAtual, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel68)
-                    .addComponent(tfProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel66)
+                        .addComponent(tfRepresentante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel68)
+                        .addComponent(tfProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(231, 231, 231))
         );
 
@@ -2073,7 +2103,7 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
                         .addGroup(pnCROQUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblImagem))
-                        .addGap(0, 22, Short.MAX_VALUE)))
+                        .addGap(0, 21, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnCROQUILayout.setVerticalGroup(
@@ -2147,20 +2177,20 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
                         .addComponent(jLabel69)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tfNHabitacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnCROQUI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 147, Short.MAX_VALUE))
+                    .addComponent(pnCROQUI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 148, Short.MAX_VALUE))
         );
         pnCondominioLayout.setVerticalGroup(
             pnCondominioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2389,6 +2419,10 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
                     }
                 }
             }
+            DecimalFormat form = new DecimalFormat("00");
+            String dataInicioAtividade;
+            dataInicioAtividade = form.format(clienteSelecionado.getCliente_data_atividade().get(Calendar.DAY_OF_MONTH)) + "/" + form.format(clienteSelecionado.getCliente_data_atividade().get(Calendar.MONTH) + 1) + "/" + clienteSelecionado.getCliente_data_atividade().get(Calendar.YEAR);
+            tfISAData.setText(dataInicioAtividade);
             clienteTemporario = telaRelatorioCliente.retornarClienteSelecionado();
         }
     }//GEN-LAST:event_tfNomeClienteMouseClicked
@@ -2406,6 +2440,7 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
         condominioCadastro.setRELATORIO_N_HABITACOES(tfNHabitacoes.getText());
         System.out.println(clienteTemporario.getCliente_id());
         condominioCadastro.setCLIENTE_ID(clienteTemporario.getCliente_id());
+        condominioCadastro.setREPRESENTANTE_ID(representanteTemporario.getRepresentante_id());
         if (rbTipoFinanciamentoSim.isSelected()) {
             condominioCadastro.setRELATORIO_TIPO_DE_FINANCIAMENTO(1);
         }
@@ -2758,6 +2793,7 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
             rbISAInstalacao.setSelected(false);
             rbISAOperacao.setSelected(false);
             tfISAPrevisaoVegetacao.setText("");
+            tfISAData.setText("");
             tfNEmpregados.setText("");
             rbSDPEEscoamentoSuperficial.setSelected(false);
             rbSDPERedeColetora.setSelected(false);
@@ -2827,6 +2863,8 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
             ckbEAUmectacao.setSelected(false);
             ckbEAOutro.setSelected(false);
             tfEAEspecificar.setText("");
+            Date d = new Date();
+            dataAtual.setValue(d);
 
         }
     }//GEN-LAST:event_btCancelarAtualizacaoActionPerformed
@@ -2889,6 +2927,7 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
         rbISAInstalacao.setSelected(false);
         rbISAOperacao.setSelected(false);
         tfISAPrevisaoVegetacao.setText("");
+        tfISAData.setText("");
         tfNEmpregados.setText("");
         rbSDPEEscoamentoSuperficial.setSelected(false);
         rbSDPERedeColetora.setSelected(false);
@@ -2958,6 +2997,8 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
         ckbEAUmectacao.setSelected(false);
         ckbEAOutro.setSelected(false);
         tfEAEspecificar.setText("");
+        Date d = new Date();
+        dataAtual.setValue(d);
 
         tpnAbasCondominios.setSelectedIndex(0); // Mudando para a PRIMEIRA aba
 
@@ -2977,18 +3018,22 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(tpnAbasCondominios, "Por favor escolha o profissional", "Aviso", 2);
                 tfProfissional.requestFocus();
             } else {
-                if (btFinalizarCadastro.getToolTipText().equals("Cadastrar")) {
-                    conexaoTabelaRelatorio.inserirNovoRPrincipal(preencherDadosCadastroCondominio());
-                    buscarRelatoriosTabela();
-                    limparCamposCadastroCondominio();
+                if (tfRepresentante.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(tpnAbasCondominios, "Por favor escolha o represetante", "Aviso", 2);
+                    tfRepresentante.requestFocus();
                 } else {
-                    conexaoTabelaRelatorio.alterarRelatorio(modeloTabelaCondominio.retornaListaRelatorioPrincipal().get(tbRelatoriosCadastrados.getSelectedRow()).getRELATORIO_ID(), preencherDadosCadastroCondominio());
-                    buscarRelatoriosTabela();
-                    limparCamposCadastroCondominio();
+                    if (btFinalizarCadastro.getToolTipText().equals("Cadastrar")) {
+                        conexaoTabelaRelatorio.inserirNovoRPrincipal(preencherDadosCadastroCondominio());
+                        buscarRelatoriosTabela();
+                        limparCamposCadastroCondominio();
+                    } else {
+                        conexaoTabelaRelatorio.alterarRelatorio(modeloTabelaCondominio.retornaListaRelatorioPrincipal().get(tbRelatoriosCadastrados.getSelectedRow()).getRELATORIO_ID(), preencherDadosCadastroCondominio());
+                        buscarRelatoriosTabela();
+                        limparCamposCadastroCondominio();
+                    }
                 }
             }
         }
-
     }//GEN-LAST:event_btFinalizarCadastroActionPerformed
 
     private void tfPalavraChaveCondominioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfPalavraChaveCondominioKeyReleased
@@ -3081,6 +3126,10 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
                     }
                 }
             }
+            DecimalFormat form = new DecimalFormat("00");
+            String dataInicioAtividade;
+            dataInicioAtividade = form.format(relatorioPrincipal.getCLIENTE_DATA().get(Calendar.DAY_OF_MONTH)) + "/" + form.format(relatorioPrincipal.getCLIENTE_DATA().get(Calendar.MONTH) + 1) + "/" + relatorioPrincipal.getCLIENTE_DATA().get(Calendar.YEAR);
+            tfISAData.setText(dataInicioAtividade);
             clienteTemporario.setCliente_id(relatorioPrincipal.getCLIENTE_ID());
             if (relatorioPrincipal.getRELATORIO_TIPO_DE_FINANCIAMENTO() == 1) {
                 rbTipoFinanciamentoSim.setSelected(true);
@@ -3336,6 +3385,8 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
             dataAtual.setValue(data1);
             tfProfissional.setText(relatorioPrincipal.getPROFISSIONAL_NOME());
             profissionalTemporario.setProfissional_id(relatorioPrincipal.getPROFISSIONAL_ID());
+            tfRepresentante.setText(relatorioPrincipal.getREPRESENTANTE_NOME());
+            representanteTemporario.setRepresentante_id(relatorioPrincipal.getREPRESENTANTE_ID());
             relatorioPrincipal.setCATEGORIA_ID(2);
             if (relatorioPrincipal.getRELATORIO_CROQUI_DE_LOCALIZACAO_EMPREENDIMENTO() != null) {
                 try {
@@ -3524,7 +3575,7 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
             DecimalFormat form2 = new DecimalFormat("00");
             String data_i_s_a_a;
             data_i_s_a_a = form2.format(condominio.getRELATORIO_I_S_A_DATA().get(Calendar.DAY_OF_MONTH)) + "/" + form2.format(condominio.getRELATORIO_I_S_A_DATA().get(Calendar.MONTH) + 1) + "/" + condominio.getRELATORIO_I_S_A_DATA().get(Calendar.YEAR);
-  
+
             try {
                 //usando a clsse HashMap para criar um filtro
                 //  JOptionPane.showMessageDialog(rootPane, recibo.getRecibo_id());
@@ -3587,6 +3638,18 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
         String formatado = nf.format(valor);
         tfLoteMenorArea.setText(formatado + " m²");
     }//GEN-LAST:event_tfLoteMenorAreaFocusLost
+
+    private void tfRepresentanteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfRepresentanteMouseClicked
+        TelaRelatorioRepresentante telaRelatorioRepresentante = new TelaRelatorioRepresentante(null, true);
+        telaRelatorioRepresentante.setVisible(true);
+        // Criando o cliente à receber o cliente da tela relatorioprocuracao
+        Representante representanteSelecionado = new Representante();
+        representanteSelecionado = telaRelatorioRepresentante.retornarRepresentanteSelecionado();
+        if (representanteSelecionado != null) {
+            tfRepresentante.setText(representanteSelecionado.getRepresentante_nome());
+            representanteTemporario = telaRelatorioRepresentante.retornarRepresentanteSelecionado();
+        }
+    }//GEN-LAST:event_tfRepresentanteMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -3661,6 +3724,7 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
@@ -3692,6 +3756,7 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel69;
@@ -3748,7 +3813,6 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
     private javax.swing.JPanel pnCROQUI;
     private javax.swing.JPanel pnCondominio;
     private com.toedter.calendar.JDayChooser pnDataAtual;
-    private com.toedter.calendar.JDayChooser pnISAData;
     private javax.swing.JRadioButton rbAreaDaUcNao;
     private javax.swing.JRadioButton rbAreaDaUcSim;
     private javax.swing.JRadioButton rbCLEDeclaramosoqueconstaemanexo;
@@ -3816,6 +3880,7 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
     private javax.swing.JTextField tfGRNome2;
     private javax.swing.JTextField tfGRNumeroLicenca1;
     private javax.swing.JTextField tfGRNumeroLicenca2;
+    private javax.swing.JTextField tfISAData;
     private javax.swing.JTextField tfISAPrevisaoVegetacao;
     private javax.swing.JTextField tfInseridoEmAreaOutraEspecificar;
     private javax.swing.JTextField tfLeiPerimetroUrbano;
@@ -3829,6 +3894,7 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
     private javax.swing.JTextField tfPalavraChaveCondominio;
     private javax.swing.JTextField tfPlanoDiretorUrbano;
     private javax.swing.JTextField tfProfissional;
+    private javax.swing.JTextField tfRepresentante;
     private javax.swing.JTextField tfSDPEEspecificar;
     private javax.swing.JTextField tfSuprecaoVegetacaoDocumentoIdaf;
     private javax.swing.JTextField tfTelefone;

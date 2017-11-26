@@ -55,7 +55,7 @@ public class ModeloTabelaRequerimentos extends javax.swing.table.AbstractTableMo
 
         switch (columnIndex) {
             case 0:
-                return requerimento.getRequerimento_cliente();
+                return requerimento.getCliente_nome();
             case 1:
                 return requerimento.getRequerimento_representante1();
             case 2:

@@ -104,7 +104,6 @@ public class jifFormTra extends javax.swing.JInternalFrame {
         tfTraProfissional.setDocument(new LetrasMaiusculas());
         tfTraRepresentante1.setDocument(new LetrasMaiusculas());
         tfTraRepresentante2.setDocument(new LetrasMaiusculas());
-        tfTraCidade.setDocument(new LetrasMaiusculas());
         tfTraNArtigo.setDocument(new LetrasMaiusculas());
     }
 
@@ -126,14 +125,10 @@ public class jifFormTra extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         tfTraRepresentante2 = new javax.swing.JTextField();
-        tfTraCidade = new javax.swing.JTextField();
         tfTraRepresentante1 = new javax.swing.JTextField();
         tfTraProfissional = new javax.swing.JTextField();
         tfTraCliente = new javax.swing.JTextField();
-        cbTraEstado = new javax.swing.JComboBox<>();
         rbTraLocalizado = new javax.swing.JRadioButton();
         rbTraAselocalizar = new javax.swing.JRadioButton();
         rbTraJaInstalado = new javax.swing.JRadioButton();
@@ -180,10 +175,6 @@ public class jifFormTra extends javax.swing.JInternalFrame {
 
         jLabel7.setText("Declaração:");
 
-        jLabel8.setText("Cidade:");
-
-        jLabel9.setText("Estado:");
-
         tfTraRepresentante2.setEditable(false);
         tfTraRepresentante2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -211,8 +202,6 @@ public class jifFormTra extends javax.swing.JInternalFrame {
                 tfTraClienteMouseClicked(evt);
             }
         });
-
-        cbTraEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---Selecionar---", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
 
         rbTraLocalizado.setText("localizado");
         rbTraLocalizado.addActionListener(new java.awt.event.ActionListener() {
@@ -307,18 +296,9 @@ public class jifFormTra extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(pnCadastrarNovosTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCadastrarNovosTraLayout.createSequentialGroup()
-                        .addGroup(pnCadastrarNovosTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8))
+                        .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(pnCadastrarNovosTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCadastrarNovosTraLayout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cbTraEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnCadastrarNovosTraLayout.createSequentialGroup()
-                                .addGap(169, 169, 169)
-                                .addComponent(rbTraDeclara))))
+                        .addComponent(rbTraDeclara))
                     .addGroup(pnCadastrarNovosTraLayout.createSequentialGroup()
                         .addGroup(pnCadastrarNovosTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -349,9 +329,7 @@ public class jifFormTra extends javax.swing.JInternalFrame {
                                 .addGroup(pnCadastrarNovosTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(rbTraAseinstalar)
                                     .addComponent(rbTraAselocalizar)))
-                            .addGroup(pnCadastrarNovosTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(tfTraNArtigo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
-                                .addComponent(tfTraCidade, javax.swing.GroupLayout.Alignment.LEADING)))
+                            .addComponent(tfTraNArtigo))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCadastrarNovosTraLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -392,12 +370,6 @@ public class jifFormTra extends javax.swing.JInternalFrame {
                     .addComponent(jLabel7)
                     .addComponent(rbTraDeclara)
                     .addComponent(rbTraNaoDeclara))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnCadastrarNovosTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(tfTraCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(cbTraEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnCadastrarNovosTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
@@ -406,7 +378,7 @@ public class jifFormTra extends javax.swing.JInternalFrame {
                 .addGroup(pnCadastrarNovosTraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnDataAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -715,9 +687,7 @@ public class jifFormTra extends javax.swing.JInternalFrame {
             tfTraProfissional.setText(tra.getTra_profissional1());
             tfTraRepresentante1.setText(tra.getTra_representante1());
             tfTraRepresentante2.setText(tra.getTra_representante2());
-            tfTraCidade.setText(tra.getTra_cidade());
             tfTraNArtigo.setText(tra.getTra_n_artigo());
-            cbTraEstado.setSelectedItem(tra.getTra_estado());
             clienteTemporario.setCliente_id(tra.getCliente_id());
             profissionalTemporario.setProfissional_id(tra.getProfissional_id1());
             representanteTemporario1.setRepresentante_id(tra.getRepresentante_id1());
@@ -821,9 +791,9 @@ public class jifFormTra extends javax.swing.JInternalFrame {
             tfTraProfissional.setText("");
             tfTraRepresentante1.setText("");
             tfTraRepresentante2.setText("");
-            tfTraCidade.setText("");
             tfTraNArtigo.setText("");
-            cbTraEstado.setSelectedIndex(0);
+            Date d = new Date();
+            dataAtual.setValue(d);
             rbTraLocalizado.setSelected(false);
             rbTraAselocalizar.setSelected(false);
             rbTraJaInstalado.setSelected(false);
@@ -893,8 +863,6 @@ public class jifFormTra extends javax.swing.JInternalFrame {
             traCadastro.setTra_declaracao(1);
 
         }
-        traCadastro.setTra_cidade(tfTraCidade.getText());
-        traCadastro.setTra_estado(cbTraEstado.getSelectedItem().toString());
         Calendar cal = Calendar.getInstance();
         cal.setTime((Date) dataAtual.getValue());
         //DateFormat df = DateFormat.getDateInstance(DateFormat.LONG);
@@ -914,9 +882,9 @@ public class jifFormTra extends javax.swing.JInternalFrame {
         tfTraProfissional.setText("");
         tfTraRepresentante1.setText("");
         tfTraRepresentante2.setText("");
-        tfTraCidade.setText("");
-        cbTraEstado.setSelectedIndex(0);
         tfTraNArtigo.setText("");
+        Date d = new Date();
+        dataAtual.setValue(d);
 
         rbTraLocalizado.setSelected(false);
         rbTraAselocalizar.setSelected(false);
@@ -939,7 +907,6 @@ public class jifFormTra extends javax.swing.JInternalFrame {
     private javax.swing.JButton btExcluirTra;
     private javax.swing.JButton btFinalizarCadastroTra;
     private javax.swing.JButton btnImprimir;
-    private javax.swing.JComboBox<String> cbTraEstado;
     private javax.swing.JCheckBox ckbTraCliente;
     private javax.swing.JCheckBox ckbTraProfissional;
     private javax.swing.JCheckBox ckbTraRepresentante;
@@ -953,8 +920,6 @@ public class jifFormTra extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -970,7 +935,6 @@ public class jifFormTra extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton rbTraNaoDeclara;
     private javax.swing.JTable tbTra;
     private javax.swing.JTextField tfPalavraChaveTra;
-    private javax.swing.JTextField tfTraCidade;
     private javax.swing.JTextField tfTraCliente;
     private javax.swing.JTextField tfTraNArtigo;
     private javax.swing.JTextField tfTraProfissional;

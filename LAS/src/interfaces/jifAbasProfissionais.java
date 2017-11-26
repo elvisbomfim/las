@@ -22,7 +22,6 @@ import modelos.Profissional;
  */
 public class jifAbasProfissionais extends javax.swing.JInternalFrame {
 
-    
     /**
      * Creates new form jifAbasProfissionals
      */
@@ -50,9 +49,9 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
 
     public jifAbasProfissionais() {
         initComponents();
-        
+
         setFrameIcon(new ImageIcon(this.getClass().getResource("../imagens/icon.png")));
-     
+
         tbProfissionaisCadastrados.setModel(modeloTabelaProfissional);
 
         //----------------buscas na tabela--------------------------------------
@@ -530,7 +529,6 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
         tbProfissionaisCadastrados.updateUI();
     }
 
-
     public Profissional preencherDadosCadastroProfissional() {
 
         profissionalCadastro.setProfissional_nome(cbAbreviacao.getSelectedItem().toString() + " " + tfProfissionalNome.getText());
@@ -637,7 +635,10 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
 //            System.out.println(Nome[1]);
             tfProfissionalNome.setText(Nome[1]);
             tfProfissionalProfissao.setText(profissional.getProfissional_profissao());
-            tfProfissionalCpf.setValue(profissional.getProfissional_cpf());
+            
+            if (profissional.getProfissional_cpf().equals("   .   .   -  ") == false) {
+                tfProfissionalCpf.setValue(profissional.getProfissional_cpf());
+            }
             tfProfissionalCrea.setText(profissional.getProfissional_crea());
             tfProfissionalCtma.setText(profissional.getProfissional_ctma());
             tfProfissionalCep.setValue(profissional.getProfissional_cep());

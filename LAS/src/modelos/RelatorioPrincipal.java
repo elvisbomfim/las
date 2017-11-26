@@ -137,8 +137,11 @@ public class RelatorioPrincipal {
     private String CLIENTE_CNPJ;
     private String CLIENTE_UTMN;
     private String CLIENTE_UTME;
+    private Calendar CLIENTE_DATA;
     private String PROFISSIONAL_NOME;
     private String CATEGORIA_NOME;
+    private int REPRESENTANTE_ID;
+    private String REPRESENTANTE_NOME;
 
     public int getRELATORIO_ID() {
         return RELATORIO_ID;
@@ -1132,6 +1135,14 @@ public class RelatorioPrincipal {
         this.CLIENTE_UTME = CLIENTE_UTME;
     }
 
+    public Calendar getCLIENTE_DATA() {
+        return CLIENTE_DATA;
+    }
+
+    public void setCLIENTE_DATA(Calendar CLIENTE_DATA) {
+        this.CLIENTE_DATA = CLIENTE_DATA;
+    }
+
     public String getPROFISSIONAL_NOME() {
         return PROFISSIONAL_NOME;
     }
@@ -1148,5 +1159,21 @@ public class RelatorioPrincipal {
         this.CATEGORIA_NOME = CATEGORIA_NOME;
     }
 
-  
+    public int getREPRESENTANTE_ID() {
+        return REPRESENTANTE_ID;
+    }
+
+    public void setREPRESENTANTE_ID(int REPRESENTANTE_ID) {
+        this.REPRESENTANTE_ID = REPRESENTANTE_ID;
+    }
+
+    public String getREPRESENTANTE_NOME() {
+        return REPRESENTANTE_NOME;
+    }
+
+    public void setREPRESENTANTE_NOME(String REPRESENTANTE_NOME) {
+        this.REPRESENTANTE_NOME = REPRESENTANTE_NOME;
+    }
+
+   
 }
