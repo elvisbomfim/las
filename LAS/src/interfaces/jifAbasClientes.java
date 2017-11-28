@@ -789,6 +789,8 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
         tfClienteComplemento.setText("");
         tfClienteUtmn.setText("");
         tfClienteUtme.setText("");
+        tfClienteUtmn.setText("");
+        tfClienteUtme.setText("");
         Date d = new Date();
         dataInicioOperacao.setValue(d);
         tpnAbasClientes.setTitleAt(0, "Cadastrar Novos Clientes");
@@ -921,6 +923,8 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
             tfClienteComplemento.setText("");
             tfClienteTelefone.setText("");
             tfClienteCelular.setText("");
+            tfClienteUtmn.setText("");
+            tfClienteUtme.setText("");
             Date d = new Date();
             dataInicioOperacao.setValue(d);
 
