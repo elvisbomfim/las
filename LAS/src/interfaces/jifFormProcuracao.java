@@ -69,7 +69,7 @@ public class jifFormProcuracao extends javax.swing.JInternalFrame {
         initComponents();
         conexao = ConexaoPDF.conector();
 
-        setFrameIcon(new ImageIcon(this.getClass().getResource("../imagens/icon.png")));
+        setFrameIcon(new ImageIcon(this.getClass().getResource("/imagens/icon.png")));
 
         Calendar cal = Calendar.getInstance();
         dataAtual.setBaseDate(cal.getTime());

@@ -28,7 +28,7 @@ public class TelaRelatorioRepresentante extends javax.swing.JDialog {
     public TelaRelatorioRepresentante(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../imagens/icon.png")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/imagens/icon.png")));
         this.setLocationRelativeTo(parent);
         this.setTitle("Gerencia de representantes");
         tfBuscarRepresentante.requestFocus();

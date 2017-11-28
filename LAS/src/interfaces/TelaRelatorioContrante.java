@@ -31,7 +31,7 @@ public class TelaRelatorioContrante extends javax.swing.JDialog {
     public TelaRelatorioContrante(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../imagens/icon.png")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/imagens/icon.png")));
         this.setLocationRelativeTo(parent);
         this.setTitle("Gerencia de Contratantes");
         tfBuscarContratante.requestFocus();

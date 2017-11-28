@@ -50,7 +50,7 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
     public jifAbasProfissionais() {
         initComponents();
 
-        setFrameIcon(new ImageIcon(this.getClass().getResource("../imagens/icon.png")));
+        setFrameIcon(new ImageIcon(this.getClass().getResource("/imagens/icon.png")));
 
         tbProfissionaisCadastrados.setModel(modeloTabelaProfissional);
 

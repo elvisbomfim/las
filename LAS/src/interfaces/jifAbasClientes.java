@@ -54,7 +54,7 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
 
         //this.setSize(500, 600);
         tbClientesCadastrados.setModel(modeloTabelaCliente);
-        setFrameIcon(new ImageIcon(this.getClass().getResource("../imagens/icon.png")));
+        setFrameIcon(new ImageIcon(this.getClass().getResource("/imagens/icon.png")));
         //----------------buscas na tabela--------------------------------------
         buscarClientesTabela();
 

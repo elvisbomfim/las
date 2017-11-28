@@ -93,7 +93,7 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
         jcDataAtual.add(dataAtual);
         //Definindo o botão DateField (Data Inicio do Semestre) para seleção de uma data e atribuindo uma ação de mudança à ele.
         dataAtual.setSize((jcDataAtual.getWidth()), (jcDataAtual.getHeight()));
-        setFrameIcon(new ImageIcon(this.getClass().getResource("../imagens/icon.png")));
+        setFrameIcon(new ImageIcon(this.getClass().getResource("/imagens/icon.png")));
 
         btCancelarAtualizacaoRequerimento.setVisible(false);
 
@@ -1222,7 +1222,7 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
 
             DecimalFormat form = new DecimalFormat("00");
             String dataFaseEmpreendimento;
-            dataFaseEmpreendimento = form.format(requerimento.getRequerimento_fase_empreendimento_data().get(Calendar.DAY_OF_MONTH)) + "/" + form.format(requerimento.getRequerimento_fase_empreendimento_data().get(Calendar.MONTH) + 1) + "/" + requerimento.getRequerimento_fase_empreendimento_data().get(Calendar.YEAR);
+            dataFaseEmpreendimento = form.format(requerimento.getCliente_data_atividade().get(Calendar.DAY_OF_MONTH)) + "/" + form.format(requerimento.getCliente_data_atividade().get(Calendar.MONTH) + 1) + "/" + requerimento.getCliente_data_atividade().get(Calendar.YEAR);
 
             try {
                 //usando a clsse HashMap para criar um filtro

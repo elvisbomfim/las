@@ -46,7 +46,7 @@ public class jifAbasContratantes extends javax.swing.JInternalFrame {
 
     public jifAbasContratantes() {
         initComponents();
-        setFrameIcon(new ImageIcon(this.getClass().getResource("../imagens/icon.png")));
+        setFrameIcon(new ImageIcon(this.getClass().getResource("/imagens/icon.png")));
         //this.setSize(500, 600);
         tbContratantesCadastrados.setModel(modeloTabelaContratante);
 

@@ -29,7 +29,7 @@ public class TelaRelatorioCliente extends javax.swing.JDialog {
     public TelaRelatorioCliente(java.awt.Frame parent, boolean modal, int categoria_id) {
         super(parent, modal);
         initComponents();
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../imagens/icon.png")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/imagens/icon.png")));
         this.categoria = categoria_id;
 
         this.setLocationRelativeTo(parent);

@@ -40,7 +40,7 @@ public class jifAbasSecretarias extends javax.swing.JInternalFrame {
 
     public jifAbasSecretarias() {
         initComponents();
-        setFrameIcon(new ImageIcon(this.getClass().getResource("../imagens/icon.png")));
+        setFrameIcon(new ImageIcon(this.getClass().getResource("/imagens/icon.png")));
         //this.setSize(500, 600);
         //tbSecretariasCadastrados.setModel(modeloTabelaSecretaria);
         //----------------buscas na tabela--------------------------------------

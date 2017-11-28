@@ -50,7 +50,7 @@ public class jifAbasRepresentantes extends javax.swing.JInternalFrame {
 
   //      this.setSize(500, 600);
         tbRepresentantesCadastrados.setModel(modeloTabelaRepresentante);
-setFrameIcon(new ImageIcon(this.getClass().getResource("../imagens/icon.png")));
+setFrameIcon(new ImageIcon(this.getClass().getResource("/imagens/icon.png")));
         //----------------Desabilitar bostoes cancelar atualização--------------
         btCancelarAtualizacaoRepresentantes.setVisible(false);
 
