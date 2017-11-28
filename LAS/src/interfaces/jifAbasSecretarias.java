@@ -69,7 +69,6 @@ public class jifAbasSecretarias extends javax.swing.JInternalFrame {
 
         pnCadastrarNovoContratante = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        tfCep = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -86,6 +85,7 @@ public class jifAbasSecretarias extends javax.swing.JInternalFrame {
         tfNumero = new javax.swing.JTextField();
         btCancelarAtualizacao = new javax.swing.JButton();
         btFinalizarCadastroContratante = new javax.swing.JButton();
+        tfCep = new javax.swing.JFormattedTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -136,6 +136,12 @@ public class jifAbasSecretarias extends javax.swing.JInternalFrame {
             }
         });
 
+        try {
+            tfCep.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout pnCadastrarNovoContratanteLayout = new javax.swing.GroupLayout(pnCadastrarNovoContratante);
         pnCadastrarNovoContratante.setLayout(pnCadastrarNovoContratanteLayout);
         pnCadastrarNovoContratanteLayout.setHorizontalGroup(
@@ -161,14 +167,14 @@ public class jifAbasSecretarias extends javax.swing.JInternalFrame {
                             .addComponent(jLabel1))
                         .addGap(14, 14, 14)
                         .addGroup(pnCadastrarNovoContratanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfBairro, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(tfNumero, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(tfEndereco)
+                            .addComponent(tfCidade)
                             .addGroup(pnCadastrarNovoContratanteLayout.createSequentialGroup()
                                 .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(tfBairro, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(tfNumero, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(tfCep, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(tfEndereco)
-                            .addComponent(tfCidade)))
+                            .addComponent(tfCep)))
                     .addGroup(pnCadastrarNovoContratanteLayout.createSequentialGroup()
                         .addComponent(btCancelarAtualizacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
@@ -202,7 +208,7 @@ public class jifAbasSecretarias extends javax.swing.JInternalFrame {
                 .addGroup(pnCadastrarNovoContratanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnCadastrarNovoContratanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(tfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -210,7 +216,7 @@ public class jifAbasSecretarias extends javax.swing.JInternalFrame {
                 .addGroup(pnCadastrarNovoContratanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
                 .addGroup(pnCadastrarNovoContratanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btCancelarAtualizacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btFinalizarCadastroContratante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -239,6 +245,7 @@ public class jifAbasSecretarias extends javax.swing.JInternalFrame {
         conexaoTabelaSecretarias.alterarSecretaria(1, preencherDadosCadastroSecretaria());
 
         limparCamposCadastroSecretaria();
+        buscarSecretariaTabela();
 
     }//GEN-LAST:event_btFinalizarCadastroContratanteActionPerformed
 
@@ -292,7 +299,6 @@ public class jifAbasSecretarias extends javax.swing.JInternalFrame {
         cbEstado.setSelectedIndex(0);
         tfTelefone.setText("");
         tfEmail.setText("");
-
     }
 
 
@@ -310,7 +316,7 @@ public class jifAbasSecretarias extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel pnCadastrarNovoContratante;
     private javax.swing.JTextField tfBairro;
-    private javax.swing.JTextField tfCep;
+    private javax.swing.JFormattedTextField tfCep;
     private javax.swing.JTextField tfCidade;
     private javax.swing.JTextField tfEmail;
     private javax.swing.JTextField tfEndereco;
