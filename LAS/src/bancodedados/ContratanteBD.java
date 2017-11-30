@@ -50,9 +50,9 @@ public class ContratanteBD extends ConexaoBanco {
 
             stm = con.createStatement();
 
-            sql = "DELETE FROM RECIBO WHERE contratante_id=" + contratante_id;
+//            sql = "DELETE FROM RECIBO WHERE contratante_id=" + contratante_id;
 
-            stm.executeUpdate(sql);
+//            stm.executeUpdate(sql);
 
 //            sql = "DELETE FROM RELATORIO WHERE contratante_id=" + contratante_id;
 

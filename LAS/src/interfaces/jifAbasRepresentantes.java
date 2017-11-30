@@ -636,7 +636,7 @@ setFrameIcon(new ImageIcon(this.getClass().getResource("/imagens/icon.png")));
             JOptionPane.showMessageDialog(rootPane, "Não existem representantes selecionados para serem deletados");
         } else if (tbRepresentantesCadastrados.getRowCount() == 0) {
             JOptionPane.showMessageDialog(rootPane, "Não existem mais representantes para serem deletados");
-        } else if (JOptionPane.showConfirmDialog(rootPane, "Deseja realmente excluir esse cliente?", "Excluir cliente", 0) == 0) {
+        } else if (JOptionPane.showConfirmDialog(rootPane, "Deseja realmente excluir esse representante?", "Excluir representante", 0) == 0) {
             if (tbRepresentantesCadastrados.getSelectedRow() != -1) {
                 conexaoTabelaRepresentantes.removerRepresentante(modeloTabelaRepresentante.retornaListaRepresentantes().get(tbRepresentantesCadastrados.getSelectedRow()).getRepresentante_id(), tbRepresentantesCadastrados.getValueAt(tbRepresentantesCadastrados.getSelectedRow(), 0).toString());
                 modeloTabelaRepresentante.inserirListaRepresentantes(conexaoTabelaRepresentantes.selecionarTodosRepresentantes());

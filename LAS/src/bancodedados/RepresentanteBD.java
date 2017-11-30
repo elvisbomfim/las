@@ -47,22 +47,22 @@ public class RepresentanteBD extends ConexaoBanco {
             conectarBanco();
 
             stm = con.createStatement();
+            
+            sql = "DELETE FROM RELATORIO WHERE representante_id=" + representante_id;
+
+            stm.executeUpdate(sql);
 
             sql = "DELETE FROM PROCURACAO WHERE representante_id=" + representante_id;
 
-            stm = con.createStatement();
-
-            sql = "DELETE FROM RELATORIO WHERE representante_id1=" + representante_id + " OR representante_id2=" + representante_id;
-
-            stm = con.createStatement();
+            stm.executeUpdate(sql);
 
             sql = "DELETE FROM REQUERIMENTO_PLA WHERE representante_id1=" + representante_id + " OR representante_id2=" + representante_id;
 
-            stm = con.createStatement();
+            stm.executeUpdate(sql);
 
             sql = "DELETE FROM TRA WHERE representante_id1=" + representante_id + " OR representante_id2=" + representante_id;
 
-            stm = con.createStatement();
+            stm.executeUpdate(sql);
 
             sql = "DELETE FROM REPRESENTANTE WHERE representante_id=" + representante_id;
 

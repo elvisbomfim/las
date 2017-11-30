@@ -413,7 +413,7 @@ public class RelatorioPrincipalBD extends ConexaoBanco {
                     + "	RELATORIO_TEXTO_ANEXO='" + r.getRELATORIO_TEXTO_ANEXO() + "',"
                     + "	RELATORIO_DATA_ATUAL='" + dataAtual + "',"
                     + "	PROFISSIONAL_ID=" + r.getPROFISSIONAL_ID() + ","
-                    + "	REPRESENTANTE_ID=" + r.getPROFISSIONAL_ID() + ","
+                    + "	REPRESENTANTE_ID=" + r.getREPRESENTANTE_ID() + ","
                     + "	CATEGORIA_ID=" + r.getCATEGORIA_ID()
                     + " WHERE relatorio_id= " + relatorio_id;
 
@@ -579,6 +579,7 @@ public class RelatorioPrincipalBD extends ConexaoBanco {
                 r.setPROFISSIONAL_NOME(tabelaRetornada.getString("PROFISSIONAL_NOME"));
                 r.setCATEGORIA_NOME(tabelaRetornada.getString("CATEGORIA_NOME"));
                 r.setREPRESENTANTE_NOME(tabelaRetornada.getString("REPRESENTANTE_NOME"));
+                r.setREPRESENTANTE_ID(tabelaRetornada.getInt("REPRESENTANTE_ID"));
 
                 listaR.add(r);
             }
