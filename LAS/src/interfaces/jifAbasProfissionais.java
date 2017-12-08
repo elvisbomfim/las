@@ -609,10 +609,10 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
     private void btExcluirProfissionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirProfissionalActionPerformed
         // TODO add your handling code here:
         if (tbProfissionaisCadastrados.getSelectedRow() == -1) {
-            JOptionPane.showMessageDialog(rootPane, "Não existem clientes selecionados para serem deletados");
+            JOptionPane.showMessageDialog(rootPane, "Não existem profissionais selecionados para serem deletados");
         } else if (tbProfissionaisCadastrados.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Não existem mais clientes para serem deletados");
-        } else if (JOptionPane.showConfirmDialog(rootPane, "Deseja realmente excluir esse cliente?", "Excluir cliente", 0) == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Não existem mais profissionais para serem deletados");
+        } else if (JOptionPane.showConfirmDialog(rootPane, "Deseja realmente excluir esse profissional?", "Excluir profissional", 0) == 0) {
             if (tbProfissionaisCadastrados.getSelectedRow() != -1) {
                 conexaoTabelaProfissionais.removerProfissional(modeloTabelaProfissional.retornaListaProfissionais().get(tbProfissionaisCadastrados.getSelectedRow()).getProfissional_id(), tbProfissionaisCadastrados.getValueAt(tbProfissionaisCadastrados.getSelectedRow(), 0).toString());
                 modeloTabelaProfissional.inserirListaProfissionais(conexaoTabelaProfissionais.selecionarTodosProfissionais());
