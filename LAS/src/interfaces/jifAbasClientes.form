@@ -497,14 +497,14 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel16">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="UTM(N):"/>
+                    <Property name="text" type="java.lang.String" value="Long UTM:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="tfClienteUtmn">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel17">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="UTM(E):"/>
+                    <Property name="text" type="java.lang.String" value="Lat UTM:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="tfClienteUtme">

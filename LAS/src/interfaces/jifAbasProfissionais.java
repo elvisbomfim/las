@@ -96,7 +96,6 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
         tfProfissionalRua = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        tfProfissionalNumero = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         tfProfissionalBairro = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
@@ -114,6 +113,7 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
         cbAbreviacao = new javax.swing.JComboBox<>();
         btCancelarAtualizacaoProfissional = new javax.swing.JButton();
         btFinalizarCadastroProfissional = new javax.swing.JButton();
+        tfProfissionalNumero = new javax.swing.JTextField();
         pnGerenciarProfissionais = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -175,8 +175,6 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
         jLabel15.setText("Logradouro:");
 
         jLabel11.setText("Número:");
-
-        tfProfissionalNumero.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         jLabel16.setText("Bairro:");
 
@@ -252,10 +250,6 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
                         .addGap(22, 22, 22)
                         .addComponent(tfProfissionalRua))
                     .addGroup(pnCadastrarNovoProfissionalLayout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addGap(47, 47, 47)
-                        .addComponent(tfProfissionalNumero))
-                    .addGroup(pnCadastrarNovoProfissionalLayout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
                         .addComponent(tfProfissionalComplemento))
@@ -290,6 +284,10 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
                             .addComponent(tfProfissionalBairro)
                             .addComponent(tfProfissionalCidade)))
                     .addGroup(pnCadastrarNovoProfissionalLayout.createSequentialGroup()
+                        .addComponent(btCancelarAtualizacaoProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btFinalizarCadastroProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnCadastrarNovoProfissionalLayout.createSequentialGroup()
                         .addGroup(pnCadastrarNovoProfissionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
                             .addGroup(pnCadastrarNovoProfissionalLayout.createSequentialGroup()
@@ -306,9 +304,9 @@ public class jifAbasProfissionais extends javax.swing.JInternalFrame {
                                 .addComponent(tfProfissionalCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(pnCadastrarNovoProfissionalLayout.createSequentialGroup()
-                        .addComponent(btCancelarAtualizacaoProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btFinalizarCadastroProfissional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel11)
+                        .addGap(47, 47, 47)
+                        .addComponent(tfProfissionalNumero)))
                 .addContainerGap())
         );
         pnCadastrarNovoProfissionalLayout.setVerticalGroup(

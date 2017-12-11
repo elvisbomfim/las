@@ -251,9 +251,9 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
 
         jLabel15.setText("Data da Atividade:");
 
-        jLabel16.setText("UTM(N):");
+        jLabel16.setText("Long UTM:");
 
-        jLabel17.setText("UTM(E):");
+        jLabel17.setText("Lat UTM:");
 
         btCancelarAtualizacaoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/if_edit-not-validated_85308.png"))); // NOI18N
         btCancelarAtualizacaoCliente.setToolTipText("Cancelar");

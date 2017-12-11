@@ -186,7 +186,7 @@ public class jifFormRestautante extends javax.swing.JInternalFrame {
             restauranteCadastro.setRELATORIO_LOCALIZACAO(0);
         }
         if (rbLocalizacaoZonaRural.isSelected()) {
-            restauranteCadastro.setRELATORIO_LOCALIZACAO(0);
+            restauranteCadastro.setRELATORIO_LOCALIZACAO(1);
         }
         if (rbInseridoEmAreaIndustrial.isSelected()) {
             restauranteCadastro.setRELATORIO_INSERIDO_EM_AREA(0);
