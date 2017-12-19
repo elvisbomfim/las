@@ -651,12 +651,12 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
             tfClienteNome.requestFocus();
         } else {
 
-            if (tfCondicao.getValue() == null) {
+            if (tfCondicao.getText().equals("   .   .   -  ") || tfCondicao.getText().equals("  .   .   /    -  ")) {
                 JOptionPane.showMessageDialog(pnCadastrarNovoCliente, "Por favor insira o cpf ou o cnpj do cliente", "Aviso", 2);
                 tfCondicao.requestFocus();
             } else {
                 if (btFinalizarCadastroCliente.getToolTipText().equals("Cadastrar")) {
-                    if (tfCondicao.getValue() != null) {
+                    if (tfCondicao.getText().equals("   .   .   -  ") == false ) {
                         st = conexaoTabelaClientes.pesquisarCpf(0, tfCondicao.getText());
                         if (st == 1) {
                             JOptionPane.showMessageDialog(pnCadastrarNovoCliente, "O cpf informado já existe!", "Aviso", 2);
@@ -760,17 +760,17 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
         clienteCadastro.setCliente_nome(tfClienteNome.getText());
         clienteCadastro.setCliente_fantasia(tfClienteFantasia.getText());
         clienteCadastro.setCliente_email(tfClienteEmail.getText());
-        if(rbCpf.isSelected()){
+        if (rbCpf.isSelected()) {
             clienteCadastro.setCliente_cpf(tfCondicao.getText());
-        }else{
+        } else {
             clienteCadastro.setCliente_cpf("   .   .   -  ");
         }
-        if(rbCnpj.isSelected()){
+        if (rbCnpj.isSelected()) {
             clienteCadastro.setCliente_cnpj(tfCondicao.getText());
-        }else{
+        } else {
             clienteCadastro.setCliente_cnpj("  .   .   /    -  ");
         }
-            
+
         //clienteCadastro.setCliente_cpf(tfClienteCpf.getText());
         //clienteCadastro.setCliente_cnpj(tfCondicao.getText());
         clienteCadastro.setCliente_insc_municipal(tfClienteInscMunicipal.getText());
@@ -799,14 +799,16 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
         tfClienteNome.setText("");
         tfClienteFantasia.setText("");
         tfClienteEmail.setText("");
+        tfClienteInscMunicipal.setText("");
+        tfClienteInscEstadual.setText("");
         try {
             tfCondicao.setFormatterFactory(new DefaultFormatterFactory(
                     new MaskFormatter("###.###.###-##")));
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        tfClienteInscMunicipal.setText("");
-        tfClienteInscEstadual.setText("");
+        rbCpf.setSelected(true);
+        rbCnpj.setSelected(false);
         tfClienteCep.setText("");
         tfClienteRua.setText("");
         tfClienteNumero.setText("");
@@ -895,15 +897,26 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
             tfClienteFantasia.setText(cliente.getCliente_fantasia());
             tfClienteEmail.setText(cliente.getCliente_email());
             if (cliente.getCliente_cpf().equals("   .   .   -  ") == false) {
-                System.out.println("ENTROooooooo");
+                try {
+                    tfCondicao.setFormatterFactory(new DefaultFormatterFactory(
+                            new MaskFormatter("###.###.###-##")));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 rbCpf.setSelected(true);
                 rbCnpj.setSelected(false);
-                tfCondicao.setValue(cliente.getCliente_cpf());
+                tfCondicao.setText(cliente.getCliente_cpf());
             }
             if (cliente.getCliente_cnpj().equals("  .   .   /    -  ") == false) {
+                try {
+                    tfCondicao.setFormatterFactory(new DefaultFormatterFactory(
+                            new MaskFormatter("##.###.###/####-##")));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 rbCnpj.setSelected(true);
                 rbCpf.setSelected(false);
-                tfCondicao.setValue(cliente.getCliente_cnpj());
+                tfCondicao.setText(cliente.getCliente_cnpj());
             }
 
             tfClienteInscMunicipal.setText(cliente.getCliente_insc_municipal());
@@ -945,12 +958,14 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
             tfClienteFantasia.setText("");
             tfClienteEmail.setText("");
 //            tfClienteCpf.setText("");
-        try {
-            tfCondicao.setFormatterFactory(new DefaultFormatterFactory(
-                    new MaskFormatter("###.###.###-##")));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+            try {
+                tfCondicao.setFormatterFactory(new DefaultFormatterFactory(
+                        new MaskFormatter("###.###.###-##")));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            rbCpf.setSelected(true);
+            rbCnpj.setSelected(false);
             tfClienteInscMunicipal.setText("");
             tfClienteInscEstadual.setText("");
             tfClienteCep.setText("");
