@@ -7,11 +7,15 @@ package interfaces;
 
 import Utilitarios.WebServiceCep;
 import bancodedados.ClienteBD;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.ImageIcon;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
 import modelo.tabelas.ModeloTabelaClientes;
 import modelos.Cliente;
 import modelos.LetrasMaiusculas;
@@ -52,6 +56,9 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
     public jifAbasClientes() {
         initComponents();
 
+        //lbCondicao.setVisible(false);
+        //tfCondicao.setVisible(false);
+        rbCpf.setSelected(true);
         //this.setSize(500, 600);
         tbClientesCadastrados.setModel(modeloTabelaCliente);
         setFrameIcon(new ImageIcon(this.getClass().getResource("/imagens/icon.png")));
@@ -101,10 +108,8 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
         tfClienteNome = new javax.swing.JTextField();
         jLabel37 = new javax.swing.JLabel();
         tfClienteFantasia = new javax.swing.JTextField();
-        jLabel38 = new javax.swing.JLabel();
-        tfClienteCpf = new javax.swing.JFormattedTextField();
-        jLabel2 = new javax.swing.JLabel();
-        tfCliente_Cnpj = new javax.swing.JFormattedTextField();
+        lbCondicao = new javax.swing.JLabel();
+        tfCondicao = new javax.swing.JFormattedTextField();
         jLabel24 = new javax.swing.JLabel();
         tfClienteInscEstadual = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
@@ -140,6 +145,8 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         btCancelarAtualizacaoCliente = new javax.swing.JButton();
         btFinalizarCadastroCliente = new javax.swing.JButton();
+        rbCpf = new javax.swing.JRadioButton();
+        rbCnpj = new javax.swing.JRadioButton();
         pnGerenciarClientes = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -175,24 +182,16 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
 
         jLabel37.setText("Nome Fantasia:");
 
-        jLabel38.setText("CPF:");
+        lbCondicao.setText("CPF:");
 
         try {
-            tfClienteCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+            tfCondicao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-
-        jLabel2.setText("CNPJ:");
-
-        try {
-            tfCliente_Cnpj.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        tfCliente_Cnpj.addActionListener(new java.awt.event.ActionListener() {
+        tfCondicao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfCliente_CnpjActionPerformed(evt);
+                tfCondicaoActionPerformed(evt);
             }
         });
 
@@ -296,6 +295,20 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
+        rbCpf.setText("CPF");
+        rbCpf.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rbCpfMouseClicked(evt);
+            }
+        });
+
+        rbCnpj.setText("CNPJ");
+        rbCnpj.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rbCnpjMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnCadastrarNovoClienteLayout = new javax.swing.GroupLayout(pnCadastrarNovoCliente);
         pnCadastrarNovoCliente.setLayout(pnCadastrarNovoClienteLayout);
         pnCadastrarNovoClienteLayout.setHorizontalGroup(
@@ -342,10 +355,9 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
                                     .addComponent(tfClienteNome)))
                             .addGroup(pnCadastrarNovoClienteLayout.createSequentialGroup()
                                 .addGroup(pnCadastrarNovoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel38)
                                     .addComponent(jLabel24)
                                     .addComponent(jLabel25)
-                                    .addComponent(jLabel2)
+                                    .addComponent(lbCondicao)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel5)
@@ -365,10 +377,13 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
                                         .addComponent(tfClienteCep, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(tfClienteInscMunicipal, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(tfClienteEmail, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(tfClienteCpf, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(tfCliente_Cnpj, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(tfCondicao, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(tfClienteInscEstadual, javax.swing.GroupLayout.Alignment.LEADING))
-                                    .addComponent(tfClienteComplemento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(tfClienteComplemento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(pnCadastrarNovoClienteLayout.createSequentialGroup()
+                                        .addComponent(rbCpf)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(rbCnpj))))
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
@@ -389,12 +404,12 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
                     .addComponent(tfClienteEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnCadastrarNovoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel38)
-                    .addComponent(tfClienteCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(rbCpf)
+                    .addComponent(rbCnpj))
+                .addGap(7, 7, 7)
                 .addGroup(pnCadastrarNovoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(tfCliente_Cnpj, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbCondicao)
+                    .addComponent(tfCondicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnCadastrarNovoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24)
@@ -625,9 +640,9 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
         tbClientesCadastrados.updateUI();
     }
 
-    private void tfCliente_CnpjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCliente_CnpjActionPerformed
+    private void tfCondicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfCondicaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfCliente_CnpjActionPerformed
+    }//GEN-LAST:event_tfCondicaoActionPerformed
 
     private void btFinalizarCadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFinalizarCadastroClienteActionPerformed
 
@@ -636,43 +651,43 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
             tfClienteNome.requestFocus();
         } else {
 
-            if ((tfClienteCpf.getValue() == null) && (tfCliente_Cnpj.getValue() == null)) {
+            if (tfCondicao.getValue() == null) {
                 JOptionPane.showMessageDialog(pnCadastrarNovoCliente, "Por favor insira o cpf ou o cnpj do cliente", "Aviso", 2);
-                tfClienteCpf.requestFocus();
+                tfCondicao.requestFocus();
             } else {
                 if (btFinalizarCadastroCliente.getToolTipText().equals("Cadastrar")) {
-                    if (tfClienteCpf.getValue() != null) {
-                        st = conexaoTabelaClientes.pesquisarCpf(0, tfClienteCpf.getText());
+                    if (tfCondicao.getValue() != null) {
+                        st = conexaoTabelaClientes.pesquisarCpf(0, tfCondicao.getText());
                         if (st == 1) {
                             JOptionPane.showMessageDialog(pnCadastrarNovoCliente, "O cpf informado já existe!", "Aviso", 2);
-                            tfClienteCpf.requestFocus();
+                            tfCondicao.requestFocus();
                             return;
                         }
                     }
-                    if (tfCliente_Cnpj.getValue() != null) {
-                        st = conexaoTabelaClientes.pesquisarCnpj(0, tfCliente_Cnpj.getText());
+                    if (tfCondicao.getValue() != null) {
+                        st = conexaoTabelaClientes.pesquisarCnpj(0, tfCondicao.getText());
                         if (st == 1) {
                             JOptionPane.showMessageDialog(pnCadastrarNovoCliente, "O cnpj informado já existe!", "Aviso", 2);
-                            tfCliente_Cnpj.requestFocus();
+                            tfCondicao.requestFocus();
                             return;
                         }
                     }
 
                 } else {
                     Cliente cliente = modeloTabelaCliente.retornaListaClientes().get(tbClientesCadastrados.getSelectedRow());
-                    if ((tfClienteCpf.getValue() != null)) {
-                        st = conexaoTabelaClientes.pesquisarCpf(cliente.getCliente_id(), tfClienteCpf.getText());
+                    if ((tfCondicao.getValue() != null)) {
+                        st = conexaoTabelaClientes.pesquisarCpf(cliente.getCliente_id(), tfCondicao.getText());
                         if (st == 1) {
                             JOptionPane.showMessageDialog(pnCadastrarNovoCliente, "O cpf informado já existe!", "Aviso", 2);
-                            tfClienteCpf.requestFocus();
+                            tfCondicao.requestFocus();
                             return;
                         }
                     }
-                    if (tfCliente_Cnpj.getValue() != null) {
-                        st = conexaoTabelaClientes.pesquisarCnpj(cliente.getCliente_id(), tfCliente_Cnpj.getText());
+                    if (tfCondicao.getValue() != null) {
+                        st = conexaoTabelaClientes.pesquisarCnpj(cliente.getCliente_id(), tfCondicao.getText());
                         if (st == 1) {
                             JOptionPane.showMessageDialog(pnCadastrarNovoCliente, "O cnpj informado já existe!", "Aviso", 2);
-                            tfCliente_Cnpj.requestFocus();
+                            tfCondicao.requestFocus();
                             return;
                         }
                     }
@@ -745,8 +760,19 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
         clienteCadastro.setCliente_nome(tfClienteNome.getText());
         clienteCadastro.setCliente_fantasia(tfClienteFantasia.getText());
         clienteCadastro.setCliente_email(tfClienteEmail.getText());
-        clienteCadastro.setCliente_cpf(tfClienteCpf.getText());
-        clienteCadastro.setCliente_cnpj(tfCliente_Cnpj.getText());
+        if(rbCpf.isSelected()){
+            clienteCadastro.setCliente_cpf(tfCondicao.getText());
+        }else{
+            clienteCadastro.setCliente_cpf("   .   .   -  ");
+        }
+        if(rbCnpj.isSelected()){
+            clienteCadastro.setCliente_cnpj(tfCondicao.getText());
+        }else{
+            clienteCadastro.setCliente_cnpj("  .   .   /    -  ");
+        }
+            
+        //clienteCadastro.setCliente_cpf(tfClienteCpf.getText());
+        //clienteCadastro.setCliente_cnpj(tfCondicao.getText());
         clienteCadastro.setCliente_insc_municipal(tfClienteInscMunicipal.getText());
         clienteCadastro.setCliente_insc_estadual(tfClienteInscEstadual.getText());
         clienteCadastro.setCliente_cep(tfClienteCep.getText());
@@ -773,8 +799,12 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
         tfClienteNome.setText("");
         tfClienteFantasia.setText("");
         tfClienteEmail.setText("");
-        tfClienteCpf.setText("");
-        tfCliente_Cnpj.setText("");
+        try {
+            tfCondicao.setFormatterFactory(new DefaultFormatterFactory(
+                    new MaskFormatter("###.###.###-##")));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         tfClienteInscMunicipal.setText("");
         tfClienteInscEstadual.setText("");
         tfClienteCep.setText("");
@@ -865,10 +895,15 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
             tfClienteFantasia.setText(cliente.getCliente_fantasia());
             tfClienteEmail.setText(cliente.getCliente_email());
             if (cliente.getCliente_cpf().equals("   .   .   -  ") == false) {
-                tfClienteCpf.setValue(cliente.getCliente_cpf());
+                System.out.println("ENTROooooooo");
+                rbCpf.setSelected(true);
+                rbCnpj.setSelected(false);
+                tfCondicao.setValue(cliente.getCliente_cpf());
             }
             if (cliente.getCliente_cnpj().equals("  .   .   /    -  ") == false) {
-                tfCliente_Cnpj.setValue(cliente.getCliente_cnpj());
+                rbCnpj.setSelected(true);
+                rbCpf.setSelected(false);
+                tfCondicao.setValue(cliente.getCliente_cnpj());
             }
 
             tfClienteInscMunicipal.setText(cliente.getCliente_insc_municipal());
@@ -909,8 +944,13 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
             tfClienteNome.setText("");
             tfClienteFantasia.setText("");
             tfClienteEmail.setText("");
-            tfClienteCpf.setText("");
-            tfCliente_Cnpj.setText("");
+//            tfClienteCpf.setText("");
+        try {
+            tfCondicao.setFormatterFactory(new DefaultFormatterFactory(
+                    new MaskFormatter("###.###.###-##")));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
             tfClienteInscMunicipal.setText("");
             tfClienteInscEstadual.setText("");
             tfClienteCep.setText("");
@@ -948,6 +988,29 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_tfClienteCepKeyReleased
+
+    private void rbCpfMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbCpfMouseClicked
+        rbCnpj.setSelected(false);
+        //JFormattedTextField tfCPF = new JFormattedTextField();
+        try {
+            tfCondicao.setFormatterFactory(new DefaultFormatterFactory(
+                    new MaskFormatter("###.###.###-##")));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        lbCondicao.setText("CPF:");
+    }//GEN-LAST:event_rbCpfMouseClicked
+
+    private void rbCnpjMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbCnpjMouseClicked
+        rbCpf.setSelected(false);
+        try {
+            tfCondicao.setFormatterFactory(new DefaultFormatterFactory(
+                    new MaskFormatter("##.###.###/####-##")));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        lbCondicao.setText("CNPJ:");
+    }//GEN-LAST:event_rbCnpjMouseClicked
 
     public void correio() {
 
@@ -988,12 +1051,10 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel37;
-    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1005,16 +1066,18 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lbCondicao;
     private javax.swing.JPanel pnCadastrarNovoCliente;
     private com.toedter.calendar.JDayChooser pnDataAtual;
     private javax.swing.JPanel pnGerenciarClientes;
+    private javax.swing.JRadioButton rbCnpj;
+    private javax.swing.JRadioButton rbCpf;
     private javax.swing.JTable tbClientesCadastrados;
     private javax.swing.JTextField tfClienteBairro;
     private javax.swing.JFormattedTextField tfClienteCelular;
     private javax.swing.JFormattedTextField tfClienteCep;
     private javax.swing.JTextField tfClienteCidade;
     private javax.swing.JTextField tfClienteComplemento;
-    private javax.swing.JFormattedTextField tfClienteCpf;
     private javax.swing.JTextField tfClienteEmail;
     private javax.swing.JTextField tfClienteFantasia;
     private javax.swing.JTextField tfClienteInscEstadual;
@@ -1025,7 +1088,7 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
     private javax.swing.JFormattedTextField tfClienteTelefone;
     private javax.swing.JTextField tfClienteUtme;
     private javax.swing.JTextField tfClienteUtmn;
-    private javax.swing.JFormattedTextField tfCliente_Cnpj;
+    private javax.swing.JFormattedTextField tfCondicao;
     private javax.swing.JTextField tfPalavraChaveCliente;
     private javax.swing.JTabbedPane tpnAbasClientes;
     // End of variables declaration//GEN-END:variables

@@ -137,10 +137,9 @@
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel38" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel24" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel25" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lbCondicao" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -161,11 +160,15 @@
                                                   <Component id="tfClienteCep" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="tfClienteInscMunicipal" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="tfClienteEmail" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="tfClienteCpf" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="tfCliente_Cnpj" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="tfCondicao" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="tfClienteInscEstadual" alignment="0" max="32767" attributes="0"/>
                                               </Group>
                                               <Component id="tfClienteComplemento" alignment="1" min="-2" pref="364" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="rbCpf" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="rbCnpj" min="-2" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
                                       <Component id="jPanel2" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -196,13 +199,13 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel38" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tfClienteCpf" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rbCpf" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rbCnpj" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tfCliente_Cnpj" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbCondicao" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="tfCondicao" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -302,31 +305,19 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="tfClienteFantasia">
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel38">
+                <Component class="javax.swing.JLabel" name="lbCondicao">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="CPF:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JFormattedTextField" name="tfClienteCpf">
+                <Component class="javax.swing.JFormattedTextField" name="tfCondicao">
                   <Properties>
                     <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                       <Format format="###.###.###-##" subtype="-1" type="5"/>
                     </Property>
                   </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel2">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="CNPJ:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JFormattedTextField" name="tfCliente_Cnpj">
-                  <Properties>
-                    <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-                      <Format format="##.###.###/####-##" subtype="-1" type="5"/>
-                    </Property>
-                  </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfCliente_CnpjActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfCondicaoActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel24">
@@ -573,6 +564,22 @@
                     </Component>
                   </SubComponents>
                 </Container>
+                <Component class="javax.swing.JRadioButton" name="rbCpf">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="CPF"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rbCpfMouseClicked"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JRadioButton" name="rbCnpj">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="CNPJ"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rbCnpjMouseClicked"/>
+                  </Events>
+                </Component>
               </SubComponents>
             </Container>
           </SubComponents>
