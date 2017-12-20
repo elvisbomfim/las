@@ -656,15 +656,17 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
                 tfCondicao.requestFocus();
             } else {
                 if (btFinalizarCadastroCliente.getToolTipText().equals("Cadastrar")) {
-                    if (tfCondicao.getText().equals("   .   .   -  ") == false ) {
-                        st = conexaoTabelaClientes.pesquisarCpf(0, tfCondicao.getText());
+                    String condicao = tfCondicao.getText();
+                    if (condicao.equals("   .   .   -  ") == false && condicao.length() == 14) {
+                        st = conexaoTabelaClientes.pesquisarCpf(0, condicao);
                         if (st == 1) {
                             JOptionPane.showMessageDialog(pnCadastrarNovoCliente, "O cpf informado já existe!", "Aviso", 2);
+
                             tfCondicao.requestFocus();
                             return;
                         }
                     }
-                    if (tfCondicao.getValue() != null) {
+                    if (tfCondicao.getText().equals("  .   .   /    -  ") == false && tfCondicao.getText().length() == 18) {
                         st = conexaoTabelaClientes.pesquisarCnpj(0, tfCondicao.getText());
                         if (st == 1) {
                             JOptionPane.showMessageDialog(pnCadastrarNovoCliente, "O cnpj informado já existe!", "Aviso", 2);
@@ -675,7 +677,7 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
 
                 } else {
                     Cliente cliente = modeloTabelaCliente.retornaListaClientes().get(tbClientesCadastrados.getSelectedRow());
-                    if ((tfCondicao.getValue() != null)) {
+                    if (tfCondicao.getText().equals("   .   .   -  ") == false && tfCondicao.getText().length() == 14) {
                         st = conexaoTabelaClientes.pesquisarCpf(cliente.getCliente_id(), tfCondicao.getText());
                         if (st == 1) {
                             JOptionPane.showMessageDialog(pnCadastrarNovoCliente, "O cpf informado já existe!", "Aviso", 2);
@@ -683,7 +685,7 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
                             return;
                         }
                     }
-                    if (tfCondicao.getValue() != null) {
+                    if (tfCondicao.getText().equals("  .   .   /    -  ") == false && tfCondicao.getText().length() == 18) {
                         st = conexaoTabelaClientes.pesquisarCnpj(cliente.getCliente_id(), tfCondicao.getText());
                         if (st == 1) {
                             JOptionPane.showMessageDialog(pnCadastrarNovoCliente, "O cnpj informado já existe!", "Aviso", 2);
@@ -1005,18 +1007,14 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tfClienteCepKeyReleased
 
     private void rbCpfMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbCpfMouseClicked
-        rbCnpj.setSelected(false);
-        //JFormattedTextField tfCPF = new JFormattedTextField();
-        try {
-            tfCondicao.setFormatterFactory(new DefaultFormatterFactory(
-                    new MaskFormatter("###.###.###-##")));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        lbCondicao.setText("CPF:");
+        Cpf();
     }//GEN-LAST:event_rbCpfMouseClicked
 
     private void rbCnpjMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbCnpjMouseClicked
+        Cnpj();
+    }//GEN-LAST:event_rbCnpjMouseClicked
+
+    public void Cnpj() {
         rbCpf.setSelected(false);
         try {
             tfCondicao.setFormatterFactory(new DefaultFormatterFactory(
@@ -1025,7 +1023,19 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
         lbCondicao.setText("CNPJ:");
-    }//GEN-LAST:event_rbCnpjMouseClicked
+    }
+    
+    public void Cpf(){
+        rbCnpj.setSelected(false);
+        //JFormattedTextField tfCPF = new JFormattedTextField();
+        try {
+            tfCondicao.setFormatterFactory(new DefaultFormatterFactory(
+                    new MaskFormatter("###.###.###-##")));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        lbCondicao.setText("CPF:");    
+    }
 
     public void correio() {
 
