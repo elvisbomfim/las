@@ -863,15 +863,27 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
 
     private void tfRequerimentoRepresentante2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfRequerimentoRepresentante2MouseClicked
         // TODO add your handling code here:
-        TelaRelatorioRepresentante telaRelatorioRepresentante2 = new TelaRelatorioRepresentante(null, true);
-        telaRelatorioRepresentante2.setVisible(true);
-        // Criando o cliente à receber o cliente da tela relatoriorecibo
-        Representante representanteSelecionado = new Representante();
-        representanteSelecionado = telaRelatorioRepresentante2.retornarRepresentanteSelecionado();
-        if (representanteSelecionado != null) {
-            tfRequerimentoRepresentante2.setText(representanteSelecionado.getRepresentante_nome());
-            representanteTemporario2 = telaRelatorioRepresentante2.retornarRepresentanteSelecionado();
+        if (tfRequerimentoRepresentante1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(tpnAbasRequerimentos, "Por favor selecione o primeiro representante", "Aviso", 2);
+            //tfRequerimentoCliente.requestFocus();
+        } else {
+            TelaRelatorioRepresentante telaRelatorioRepresentante2 = new TelaRelatorioRepresentante(null, true);
+            telaRelatorioRepresentante2.setVisible(true);
+            // Criando o cliente à receber o cliente da tela relatoriorecibo
+            Representante representanteSelecionado = new Representante();
+            representanteSelecionado = telaRelatorioRepresentante2.retornarRepresentanteSelecionado();
+            if (representanteSelecionado != null) {
+                if (!tfRequerimentoRepresentante1.getText().equals(representanteSelecionado.getRepresentante_nome())) {
+                    tfRequerimentoRepresentante2.setText(representanteSelecionado.getRepresentante_nome());
+                    representanteTemporario2 = telaRelatorioRepresentante2.retornarRepresentanteSelecionado();
+                } else {
+                    JOptionPane.showMessageDialog(tpnAbasRequerimentos, "O representante " + tfRequerimentoRepresentante1.getText() + " já está selecionado, por favor selecione outro!", "Aviso", 2);
+
+                }
+
+            }
         }
+
     }//GEN-LAST:event_tfRequerimentoRepresentante2MouseClicked
 
     private void tfRequerimentoProfissional1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfRequerimentoProfissional1MouseClicked
@@ -888,16 +900,25 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tfRequerimentoProfissional1MouseClicked
 
     private void tfRequerimentoProfissional2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfRequerimentoProfissional2MouseClicked
-        // TODO add your handling code here:
-        TelaRelatorioProfissional telaRelatorioProfissional2 = new TelaRelatorioProfissional(null, true);
-        telaRelatorioProfissional2.setVisible(true);
-        // Criando o cliente à receber o cliente da tela relatoriorecibo
-        Profissional profissionalSelecionado = new Profissional();
-        profissionalSelecionado = telaRelatorioProfissional2.retornarProfissionalSelecionado();
-        if (profissionalSelecionado != null) {
-            tfRequerimentoProfissional2.setText(profissionalSelecionado.getProfissional_nome());
-            profissionalTemporario2 = telaRelatorioProfissional2.retornarProfissionalSelecionado();
+        if (tfRequerimentoProfissional1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(tpnAbasRequerimentos, "Por favor selecione o primeiro profissional", "Aviso", 2);
+        } else {
+            TelaRelatorioProfissional telaRelatorioProfissional2 = new TelaRelatorioProfissional(null, true);
+            telaRelatorioProfissional2.setVisible(true);
+            // Criando o cliente à receber o cliente da tela relatoriorecibo
+            Profissional profissionalSelecionado = new Profissional();
+            profissionalSelecionado = telaRelatorioProfissional2.retornarProfissionalSelecionado();
+            if (profissionalSelecionado != null) {
+                if (!tfRequerimentoProfissional1.getText().equals(profissionalSelecionado.getProfissional_nome())) {
+                    tfRequerimentoProfissional2.setText(profissionalSelecionado.getProfissional_nome());
+                    profissionalTemporario2 = telaRelatorioProfissional2.retornarProfissionalSelecionado();
+                } else {
+                    JOptionPane.showMessageDialog(tpnAbasRequerimentos, "O profissional " + tfRequerimentoProfissional1.getText() + " já está selecionado, por favor selecione outro!", "Aviso", 2);
+                }
+
+            }
         }
+
     }//GEN-LAST:event_tfRequerimentoProfissional2MouseClicked
 
     private void tfPalavraChaveRequerimentoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfPalavraChaveRequerimentoKeyReleased
@@ -1001,7 +1022,7 @@ public class jifFormRequerimento extends javax.swing.JInternalFrame {
                 rbLAR.setSelected(true);
             }
             if (requerimento.getRequerimento_tipo() == 7) {
-                rbLMO.setSelected(true);
+                rbRLMO.setSelected(true);
             }
             if (requerimento.getRequerimento_fase_empreendimento() == 0) {
                 rbPlanejamento.setSelected(true);

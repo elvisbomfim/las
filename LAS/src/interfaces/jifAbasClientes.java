@@ -163,7 +163,7 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setTitle("Cliente");
-        setPreferredSize(new java.awt.Dimension(515, 600));
+        setPreferredSize(new java.awt.Dimension(515, 680));
 
         tpnAbasClientes.setPreferredSize(new java.awt.Dimension(500, 600));
 
@@ -606,7 +606,7 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
                 .addGap(55, 55, 55)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -626,12 +626,11 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(tpnAbasClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
+                .addComponent(tpnAbasClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        setBounds(0, 0, 515, 600);
+        setBounds(0, 0, 515, 680);
     }// </editor-fold>//GEN-END:initComponents
 
     public void buscarClientesTabela() {
@@ -899,25 +898,11 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
             tfClienteFantasia.setText(cliente.getCliente_fantasia());
             tfClienteEmail.setText(cliente.getCliente_email());
             if (cliente.getCliente_cpf().equals("   .   .   -  ") == false) {
-                try {
-                    tfCondicao.setFormatterFactory(new DefaultFormatterFactory(
-                            new MaskFormatter("###.###.###-##")));
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                rbCpf.setSelected(true);
-                rbCnpj.setSelected(false);
+                Cpf();
                 tfCondicao.setText(cliente.getCliente_cpf());
             }
             if (cliente.getCliente_cnpj().equals("  .   .   /    -  ") == false) {
-                try {
-                    tfCondicao.setFormatterFactory(new DefaultFormatterFactory(
-                            new MaskFormatter("##.###.###/####-##")));
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                rbCnpj.setSelected(true);
-                rbCpf.setSelected(false);
+                Cnpj();
                 tfCondicao.setText(cliente.getCliente_cnpj());
             }
 
@@ -1016,25 +1001,33 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
 
     public void Cnpj() {
         rbCpf.setSelected(false);
-        try {
-            tfCondicao.setFormatterFactory(new DefaultFormatterFactory(
-                    new MaskFormatter("##.###.###/####-##")));
-        } catch (ParseException e) {
-            e.printStackTrace();
+        //rbCnpj.setSelected(false);
+        if (tfCondicao.getText().equals("  .   .   /    -  ") == false) {
+            try {
+                tfCondicao.setFormatterFactory(new DefaultFormatterFactory(
+                        new MaskFormatter("##.###.###/####-##")));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
+
         lbCondicao.setText("CNPJ:");
     }
-    
-    public void Cpf(){
+
+    public void Cpf() {
+        //rbCpf.setSelected(false);
         rbCnpj.setSelected(false);
         //JFormattedTextField tfCPF = new JFormattedTextField();
-        try {
-            tfCondicao.setFormatterFactory(new DefaultFormatterFactory(
-                    new MaskFormatter("###.###.###-##")));
-        } catch (ParseException e) {
-            e.printStackTrace();
+        if (tfCondicao.getText().equals("   .   .   -  ") == false) {
+            try {
+                tfCondicao.setFormatterFactory(new DefaultFormatterFactory(
+                        new MaskFormatter("###.###.###-##")));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
-        lbCondicao.setText("CPF:");    
+
+        lbCondicao.setText("CPF:");
     }
 
     public void correio() {

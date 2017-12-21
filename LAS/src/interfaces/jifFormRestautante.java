@@ -136,7 +136,7 @@ public class jifFormRestautante extends javax.swing.JInternalFrame {
         tfISAPrevisaoVegetacao.setDocument(new LetrasMaiusculas());
         //pnISAData.setDocument(new LetrasMaiusculas());
         tfNEmpregados.setDocument(new LetrasMaiusculas());
-        tfFAAConsumoDeAgua.setDocument(new LetrasMaiusculas());
+        //tfFAAConsumoDeAgua.setDocument(new LetrasMaiusculas());
         tfFAANDocumentoOutorgaRh.setDocument(new LetrasMaiusculas());
         tfFAANDocumentoCertidaoDo.setDocument(new LetrasMaiusculas());
         tfFAAEmpresa.setDocument(new LetrasMaiusculas());
@@ -165,7 +165,7 @@ public class jifFormRestautante extends javax.swing.JInternalFrame {
         //tfDataAtual.setDocument(new LetrasMaiusculas());
         tfProfissional.setDocument(new LetrasMaiusculas());
         tfFAAEmpresa.setText("CESAN");
-        tfFAAConsumoDeAgua.setText("150");
+        tfFAAConsumoDeAgua.setText("150 m3/dia");
     }
 
     public void buscarRelatoriosTabela() {
@@ -1379,7 +1379,7 @@ public class jifFormRestautante extends javax.swing.JInternalFrame {
                     .addComponent(rbISAOperacao)
                     .addComponent(jLabel23)
                     .addComponent(tfISAData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
                     .addComponent(tfNEmpregados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1411,6 +1411,12 @@ public class jifFormRestautante extends javax.swing.JInternalFrame {
         ckbFAANaoRealiza.setText("Não realiza.");
 
         jLabel26.setText("Consumo de água:");
+
+        tfFAAConsumoDeAgua.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfFAAConsumoDeAguaFocusLost(evt);
+            }
+        });
 
         jLabel27.setText("m3/dia.");
 
@@ -2698,7 +2704,7 @@ public class jifFormRestautante extends javax.swing.JInternalFrame {
                 .addComponent(tfPalavraChaveRestaurante)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel33Layout.createSequentialGroup()
-                .addContainerGap(265, Short.MAX_VALUE)
+                .addContainerGap(409, Short.MAX_VALUE)
                 .addComponent(ckbCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ckbProfissional)
@@ -3700,6 +3706,17 @@ public class jifFormRestautante extends javax.swing.JInternalFrame {
             representanteTemporario = telaRelatorioRepresentante.retornarRepresentanteSelecionado();
         }
     }//GEN-LAST:event_tfRepresentanteMouseClicked
+
+    private void tfFAAConsumoDeAguaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfFAAConsumoDeAguaFocusLost
+        String a = tfFAAConsumoDeAgua.getText();
+        String d = a.replace("R$", "").replace(" ", "").replace(".", "").replace(",", ".").replace("m²", "").replace("m3/dia", "");
+        //BigDecimal valor = new BigDecimal(d);
+        //NumberFormat nf = NumberFormat.getCurrencyInstance();
+        //DecimalFormat nf = new DecimalFormat();
+        //nf.applyPattern("#,##0.00");
+        //String formatado = nf.format(valor);
+        tfFAAConsumoDeAgua.setText(d + " m3/dia");        
+    }//GEN-LAST:event_tfFAAConsumoDeAguaFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

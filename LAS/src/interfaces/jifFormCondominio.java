@@ -150,7 +150,7 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
         tfISAPrevisaoVegetacao.setDocument(new LetrasMaiusculas());
         tfNEmpregados.setDocument(new LetrasMaiusculas());
         tfSDPEEspecificar.setDocument(new LetrasMaiusculas());
-        tfFAAConsumoDeAgua.setDocument(new LetrasMaiusculas());
+        //tfFAAConsumoDeAgua.setDocument(new LetrasMaiusculas());
         tfFAANDocumentoOutorgaRh.setDocument(new LetrasMaiusculas());
         tfFAANDocumentoCertidaoDo.setDocument(new LetrasMaiusculas());
         tfFAAEmpresa.setDocument(new LetrasMaiusculas());
@@ -176,7 +176,7 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
         tfGRNDeclaracao.setDocument(new LetrasMaiusculas());
         tfEAEspecificar.setDocument(new LetrasMaiusculas());
         tfFAAEmpresa.setText("CESAN");
-        tfFAAConsumoDeAgua.setText("150");
+        tfFAAConsumoDeAgua.setText("150 L/hab.dia");
     }
 
     /**
@@ -1329,6 +1329,11 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
         jLabel26.setText("Previsão de Consumo de água:");
 
         tfFAAConsumoDeAgua.setText("150");
+        tfFAAConsumoDeAgua.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfFAAConsumoDeAguaFocusLost(evt);
+            }
+        });
 
         jLabel27.setText("L/hab.dia.");
 
@@ -3650,6 +3655,17 @@ public class jifFormCondominio extends javax.swing.JInternalFrame {
             representanteTemporario = telaRelatorioRepresentante.retornarRepresentanteSelecionado();
         }
     }//GEN-LAST:event_tfRepresentanteMouseClicked
+
+    private void tfFAAConsumoDeAguaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfFAAConsumoDeAguaFocusLost
+        String a = tfFAAConsumoDeAgua.getText();
+        String d = a.replace("R$", "").replace(" ", "").replace(".", "").replace(",", ".").replace("m²", "").replace("L/hab.dia", "");
+        //BigDecimal valor = new BigDecimal(d);
+        //NumberFormat nf = NumberFormat.getCurrencyInstance();
+        //DecimalFormat nf = new DecimalFormat();
+        //nf.applyPattern("#,##0.00");
+        //String formatado = nf.format(valor);
+        tfFAAConsumoDeAgua.setText(d + " L/hab.dia");         
+    }//GEN-LAST:event_tfFAAConsumoDeAguaFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

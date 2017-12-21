@@ -138,7 +138,7 @@ public class jifFormTuristico extends javax.swing.JInternalFrame {
         tfISAPrevisaoVegetacao.setDocument(new LetrasMaiusculas());
 //        tfISAData.setDocument(new LetrasMaiusculas());
         tfNEmpregados.setDocument(new LetrasMaiusculas());
-        tfFAAConsumoDeAgua.setDocument(new LetrasMaiusculas());
+        //tfFAAConsumoDeAgua.setDocument(new LetrasMaiusculas());
         tfFAANDocumentoOutorgaRh.setDocument(new LetrasMaiusculas());
         tfFAANDocumentoCertidaoDo.setDocument(new LetrasMaiusculas());
         tfFAAEmpresa.setDocument(new LetrasMaiusculas());
@@ -169,7 +169,7 @@ public class jifFormTuristico extends javax.swing.JInternalFrame {
 //        tfDataAtual.setDocument(new LetrasMaiusculas());
         tfProfissional.setDocument(new LetrasMaiusculas());
         tfFAAEmpresa.setText("CESAN");
-        tfFAAConsumoDeAgua.setText("150");
+        tfFAAConsumoDeAgua.setText("150 m3/dia");
 
     }
 
@@ -1463,6 +1463,12 @@ public class jifFormTuristico extends javax.swing.JInternalFrame {
         ckbFAANaoRealiza.setText("Não se aplica.");
 
         jLabel26.setText("Consumo de água:");
+
+        tfFAAConsumoDeAgua.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tfFAAConsumoDeAguaFocusLost(evt);
+            }
+        });
 
         jLabel27.setText("m3/dia.");
 
@@ -3786,6 +3792,17 @@ public class jifFormTuristico extends javax.swing.JInternalFrame {
             representanteTemporario = telaRelatorioRepresentante.retornarRepresentanteSelecionado();
         }
     }//GEN-LAST:event_tfRepresentanteMouseClicked
+
+    private void tfFAAConsumoDeAguaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tfFAAConsumoDeAguaFocusLost
+        String a = tfFAAConsumoDeAgua.getText();
+        String d = a.replace("R$", "").replace(" ", "").replace(".", "").replace(",", ".").replace("m²", "").replace("m3/dia", "");
+        //BigDecimal valor = new BigDecimal(d);
+        //NumberFormat nf = NumberFormat.getCurrencyInstance();
+        //DecimalFormat nf = new DecimalFormat();
+        //nf.applyPattern("#,##0.00");
+        //String formatado = nf.format(valor);
+        tfFAAConsumoDeAgua.setText(d + " m3/dia"); 
+    }//GEN-LAST:event_tfFAAConsumoDeAguaFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

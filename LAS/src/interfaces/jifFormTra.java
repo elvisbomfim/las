@@ -594,16 +594,25 @@ public class jifFormTra extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tfTraRepresentante1MouseClicked
 
     private void tfTraRepresentante2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfTraRepresentante2MouseClicked
-        // TODO add your handling code here:
-        TelaRelatorioRepresentante telaRelatorioRepresentante = new TelaRelatorioRepresentante(null, true);
-        telaRelatorioRepresentante.setVisible(true);
-        // Criando o cliente à receber o cliente da tela relatoriorecibo
-        Representante representanteSelecionado = new Representante();
-        representanteSelecionado = telaRelatorioRepresentante.retornarRepresentanteSelecionado();
-        if (representanteSelecionado != null) {
-            tfTraRepresentante2.setText(representanteSelecionado.getRepresentante_nome());
-            representanteTemporario2 = telaRelatorioRepresentante.retornarRepresentanteSelecionado();
+        if (tfTraRepresentante1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(tpnAbasTra, "Por favor selecione o primeiro representante", "Aviso", 2);
+        } else {
+            TelaRelatorioRepresentante telaRelatorioRepresentante = new TelaRelatorioRepresentante(null, true);
+            telaRelatorioRepresentante.setVisible(true);
+            // Criando o cliente à receber o cliente da tela relatoriorecibo
+            Representante representanteSelecionado = new Representante();
+            representanteSelecionado = telaRelatorioRepresentante.retornarRepresentanteSelecionado();
+            if (representanteSelecionado != null) {
+                if (!tfTraRepresentante1.getText().equals(representanteSelecionado.getRepresentante_nome())) {
+                    tfTraRepresentante2.setText(representanteSelecionado.getRepresentante_nome());
+                    representanteTemporario2 = telaRelatorioRepresentante.retornarRepresentanteSelecionado();
+                } else {
+                    JOptionPane.showMessageDialog(tpnAbasTra, "O representante " + tfTraRepresentante1.getText() + " já está selecionado, por favor selecione outro!", "Aviso", 2);
+                }
+
+            }
         }
+
     }//GEN-LAST:event_tfTraRepresentante2MouseClicked
 
     private void tfPalavraChaveTraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfPalavraChaveTraKeyReleased

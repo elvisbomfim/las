@@ -1720,6 +1720,9 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="150"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tfFAAConsumoDeAguaFocusLost"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel27">
                       <Properties>

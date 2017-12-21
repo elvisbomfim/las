@@ -1,11 +1,11 @@
 ----------------------------------------------------------------
-Wed Dec 20 12:12:41 BRST 2017:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-0160-7444-eae7-0000062a4ea8 
-on database directory C:\Users\elvis.ELVIS-NOTEBOOK\Documents\NetBeansProjects\las\las\LAS\DBLA with class loader sun.misc.Launcher$AppClassLoader@238e0d81 
-Loaded from file:/C:/Users/elvis.ELVIS-NOTEBOOK/Documents/NetBeansProjects/las/las/LAS/lib/derby.jar
+Thu Dec 21 00:09:08 BRST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-0160-76d4-d637-0000028d67a8 
+on database directory C:\Users\Jean\Documents\NetBeansProjects\las\LAS\DBLA with class loader sun.misc.Launcher$AppClassLoader@238e0d81 
+Loaded from file:/C:/Users/Jean/Documents/NetBeansProjects/las/LAS/lib/derby.jar
 java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_151-b12
-user.dir=C:\Users\elvis.ELVIS-NOTEBOOK\Documents\NetBeansProjects\las\las\LAS
+java.runtime.version=1.8.0_111-b14
+user.dir=C:\Users\Jean\Documents\NetBeansProjects\las\LAS
 os.name=Windows 10
 os.arch=amd64
 os.version=10.0
