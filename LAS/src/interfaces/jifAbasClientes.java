@@ -1001,8 +1001,10 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
 
     public void Cnpj() {
         rbCpf.setSelected(false);
-        //rbCnpj.setSelected(false);
+        rbCpf.setSelected(false);
         if (tfCondicao.getText().equals("  .   .   /    -  ") == false) {
+            System.out.println("MASCARA CNPJ");
+            tfCondicao.setValue(null);
             try {
                 tfCondicao.setFormatterFactory(new DefaultFormatterFactory(
                         new MaskFormatter("##.###.###/####-##")));
@@ -1015,15 +1017,18 @@ public class jifAbasClientes extends javax.swing.JInternalFrame {
     }
 
     public void Cpf() {
-        //rbCpf.setSelected(false);
+        rbCnpj.setSelected(false);
         rbCnpj.setSelected(false);
         //JFormattedTextField tfCPF = new JFormattedTextField();
         if (tfCondicao.getText().equals("   .   .   -  ") == false) {
+            System.out.println("MASCARA CPF");
+            tfCondicao.setValue(null);
             try {
                 tfCondicao.setFormatterFactory(new DefaultFormatterFactory(
                         new MaskFormatter("###.###.###-##")));
             } catch (ParseException e) {
-                e.printStackTrace();
+                System.err.println("Erro na formatação: " + e.getMessage());
+                System.exit(-1);
             }
         }
 
